@@ -1,0 +1,11 @@
+<h1 id='logo'>
+  <div id="logo">
+    <%= link_to image_tag(asset_path("tiny_logo.jpeg")), "http://site.douban.com/125155/" %>
+  </div>
+
+  <% # TODO: use image as background. for seo link_to Refinery::Core.site_name, refinery.root_path %>
+</h1>
+<%= render(:partial => "/refinery/menu", :locals => {
+             :dom_id => 'menu',
+             :css => 'menu'
+           }) %>
