@@ -64,5 +64,6 @@ module Tao
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    config.assets.initialize_on_precompile = true
   end
 end
