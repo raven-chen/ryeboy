@@ -23,7 +23,13 @@ group :production do
   gem 'fog'
 end
 
+group :development, :test do
+  gem "pry"
+end
+
 gem 'jquery-rails', '~> 2.0.0'
+
+gem 'rails_admin'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -41,10 +47,9 @@ gem 'jquery-rails', '~> 2.0.0'
 # gem 'debugger'
 
 # Refinery CMS
-gem 'refinerycms', '~> 2.0.0'
-
+# gem 'refinerycms', '~> 2.0.0'
 # Specify additional Refinery CMS Extensions here (all optional):
-gem 'refinerycms-i18n', '~> 2.0.0'
+#  gem 'refinerycms-i18n', '~> 2.0.0'
 #  gem 'refinerycms-blog', '~> 2.0.0'
 #  gem 'refinerycms-inquiries', '~> 2.0.0'
 #  gem 'refinerycms-search', '~> 2.0.0'
