@@ -11,6 +11,8 @@
     <body>
         <div class="main">
             <div class="header">
+              大中医　文档管理系统　DEMO
+              <div>Login as <%= current_user.try(:email) %></div>
               <p><%= flash[:notice] %></p>
               <p><%= flash[:alert] %></p>
             </div>
