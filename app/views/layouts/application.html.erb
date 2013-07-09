@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<%= render '/refinery/html_tag' %>
-  <% site_bar = render('/refinery/site_bar', :head => true) -%>
-  <%= render '/refinery/head' %>
-  <body>
-    <%= site_bar -%>
-    <%= render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
-    <div id="page_container">
-      <header id="header" class="header">
-        <%= render '/refinery/header' -%>
-      </header>
-      <section id="page">
-        <%= yield %>
-      </section>
-      <footer>
-        <%= render '/refinery/footer' -%>
-      </footer>
-    </div>
-    <%= render '/refinery/javascripts' %>
-  </body>
+<html>
+  <head>
+    <title>TAO</title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+
+    <%= csrf_meta_tags %>
+    <%= yield :head %>
+  </head>
+    <body>
+        <div class="main">
+            <div class="header">
+              <p><%= flash[:notice] %></p>
+              <p><%= flash[:alert] %></p>
+            </div>
+            <div class="body">
+                <%= yield %>
+            </div>
+            <div class="footer"></div>
+        </div>
+    </body>
 </html>

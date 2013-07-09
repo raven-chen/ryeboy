@@ -1,0 +1,16 @@
+<h1>Listing documents</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @documents.each do |document| %>
+  <tr>
+    <td><%= document.name %></td>
+    <td><%= link_to 'Show', document %></td>
+  </tr>
+<% end %>
+</table>
