@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
 
   rescue_from CanCan::AccessDenied do |exception|
-    binding.pry
     redirect_to main_app.root_path, :alert => exception.message
   end
 end
