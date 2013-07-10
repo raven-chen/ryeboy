@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130709103238) do
+ActiveRecord::Schema.define(:version => 20130710004613) do
 
   create_table "documents", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(:version => 20130709103238) do
     t.integer  "author_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "groups", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "rails_admin_histories", :force => true do |t|
@@ -52,6 +59,14 @@ ActiveRecord::Schema.define(:version => 20130709103238) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "sno"
+    t.string   "forum_id"
+    t.integer  "group_id"
+    t.string   "qq"
+    t.string   "tel_number"
+    t.string   "address"
+    t.date     "birth_date"
+    t.text     "note"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
