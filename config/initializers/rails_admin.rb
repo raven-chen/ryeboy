@@ -52,5 +52,25 @@ RailsAdmin.config do |config|
   # Now you probably need to tour the wiki a bit: https://github.com/sferik/rails_admin/wiki
   # Anyway, here is how RailsAdmin saw your application's models when you ran the initializer:
 
+  config.model 'User' do
+    edit do
+      hide_attributes = [:reset_password_token, :reset_password_sent_at, :remember_created_at, :sign_in_count, :current_sign_in_at, :last_sign_in_at,
+                        :current_sign_in_ip, :last_sign_in_ip, :confirmation_token, :confirmed_at, :confirmation_sent_at, :unconfirmed_email]
+      hide_attributes.each do |attr|
+        configure(attr) do
+          hide
+        end
+      end
+    end
 
+    show do
+      hide_attributes = [:reset_password_token, :reset_password_sent_at, :remember_created_at, :sign_in_count, :current_sign_in_at, :last_sign_in_at,
+                        :current_sign_in_ip, :last_sign_in_ip, :confirmation_token, :confirmed_at, :confirmation_sent_at, :unconfirmed_email]
+      hide_attributes.each do |attr|
+        configure(attr) do
+          hide
+        end
+      end
+    end
+  end
 end
