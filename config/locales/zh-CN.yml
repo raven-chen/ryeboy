@@ -1,4 +1,4 @@
-en:
+zh-CN:
   admin:
     loading: "Loading..."
     home:
@@ -43,7 +43,7 @@ en:
       message: "Message"
     actions:
       dashboard:
-        title: "Site administration"
+        title: "后台管理"
         menu: "Dashboard"
         breadcrumb: "Dashboard"
       index:
