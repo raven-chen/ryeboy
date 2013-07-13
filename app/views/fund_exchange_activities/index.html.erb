@@ -1,0 +1,21 @@
+<h1>Listing fund_exchange_activities</h1>
+
+<table>
+  <tr>
+    <th><%= User.human_attribute_name("sno") %></th>
+    <th><%= FundExchangeActivity.human_attribute_name("amount") %></th>
+    <th><%= FundExchangeActivity.human_attribute_name("date") %></th>
+    <th><%= FundExchangeActivity.human_attribute_name("exchange_type") %></th>
+    <th></th>
+  </tr>
+
+<% @fund_exchange_activities.each do |fund_exchange_activity| %>
+  <tr>
+    <td><%= fund_exchange_activity.user.sno %></td>
+    <td><%= fund_exchange_activity.amount %></td>
+    <td><%= fund_exchange_activity.date %></td>
+    <td><%= fund_exchange_activity.exchange_type %></td>
+    <td><%= link_to 'Show', fund_exchange_activity %></td>
+  </tr>
+<% end %>
+</table>

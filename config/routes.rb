@@ -7,5 +7,6 @@ Tao::Application.routes.draw do
 
   resources :documents, :only => [:index, :show]
   resources :fines, :only => [:index, :show]
+  resources :fund_exchange_activities, :only => [:index, :show]
   resources :users, :only => [:index, :show]
 end

@@ -3,6 +3,9 @@ zh-CN:
       models:
         user: "用户"
         fine: "罚款"
+        fund_exchange_activity:
+          one: "收支明细"
+          other: "收支明细"
       attributes:
         fine:
           amount: "数额"
@@ -23,6 +26,15 @@ zh-CN:
           tel_number: "电话号码"
           birth_date: "生日"
           note: "备注"
+        fund_exchange_activity:
+          amount: "金额"
+          comment: "备注"
+          date: "交易日期"
+          exchange_type: "类型"
+          place: "交易地点"
+          trading_way: "交易方式"
+          usage: "用途"
+
 
 
   datetime:
