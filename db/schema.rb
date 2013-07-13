@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20130713002230) do
     t.string   "exchange_type"
     t.integer  "amount"
     t.string   "usage"
-    t.text     "commet"
+    t.text     "comment"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end

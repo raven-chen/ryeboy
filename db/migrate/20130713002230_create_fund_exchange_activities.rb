@@ -8,7 +8,7 @@ class CreateFundExchangeActivities < ActiveRecord::Migration
       t.string :exchange_type
       t.integer :amount
       t.string :usage
-      t.text :commet
+      t.text :comment
 
       t.timestamps
     end
