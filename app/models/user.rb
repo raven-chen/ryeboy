@@ -10,6 +10,12 @@ class User < ActiveRecord::Base
   :tel_number, :birth_date, :note
 
   belongs_to :group
+  has_many :user_activities
+  has_many :fund_exchange_activities
+  has_many :fines
+  has_many :documents
+
+  validates :sno, :email, :roles, :presence => true
 
   before_save do
     self.roles = ["normal"] if roles.blank?
