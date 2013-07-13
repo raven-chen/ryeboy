@@ -16,6 +16,11 @@
               <div>Login as <%= current_user.try(:email) %></div>
               <p><%= flash[:notice] %></p>
               <p><%= flash[:alert] %></p>
+
+              <%= link_to '收支明细', fund_exchange_activities_path %>
+              <%= link_to '用户', users_path %>
+              <%= link_to '罚款', fines_path %>
+              <%= link_to '文档', documents_path %>
             </div>
             <div class="body">
                 <%= yield %>
