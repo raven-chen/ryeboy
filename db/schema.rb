@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130710004613) do
+ActiveRecord::Schema.define(:version => 20130713002230) do
 
   create_table "documents", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,30 @@ ActiveRecord::Schema.define(:version => 20130710004613) do
     t.integer  "author_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "fines", :force => true do |t|
+    t.integer  "amount"
+    t.date     "date"
+    t.string   "reason"
+    t.boolean  "paid"
+    t.text     "comment"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "fund_exchange_activities", :force => true do |t|
+    t.integer  "user_id"
+    t.date     "date"
+    t.string   "place"
+    t.string   "trading_way"
+    t.string   "exchange_type"
+    t.integer  "amount"
+    t.string   "usage"
+    t.text     "commet"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "groups", :force => true do |t|
@@ -40,6 +64,15 @@ ActiveRecord::Schema.define(:version => 20130710004613) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
+  create_table "user_activities", :force => true do |t|
+    t.text     "note"
+    t.boolean  "sign_in"
+    t.boolean  "ask_for_leave"
+    t.integer  "user_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.integer  "roles_mask"
