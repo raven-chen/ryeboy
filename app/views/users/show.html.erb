@@ -1,0 +1,43 @@
+<div class="show">
+  <p id="notice"><%= notice %></p>
+
+  <p style="font-weight: bold"><%= @user.sno %></p>
+
+  <div>
+    <label><%= User.human_attribute_name("email") %></label>
+    <%= @user.email %>
+  </div>
+
+  <div>
+    <label><%= User.human_attribute_name("address") %></label>
+    <%= @user.address %>
+  </div>
+
+  <div>
+    <label><%= User.human_attribute_name("forum_id") %></label>
+    <%= @user.forum_id %>
+  </div>
+
+  <div>
+    <label><%= User.human_attribute_name("qq") %></label>
+    <%= @user.qq %>
+  </div>
+
+  <div>
+    <label><%= User.human_attribute_name("tel_number") %></label>
+    <%= @user.tel_number %>
+  </div>
+
+  <div>
+    <label><%= User.human_attribute_name("birth_date") %></label>
+    <%= @user.birth_date %>
+  </div>
+
+  <div>
+    <label><%= User.human_attribute_name("note") %></label>
+    <%= @user.note %>
+  </div>
+  <br>
+
+  <%= link_to 'Back', users_path %>
+</div>

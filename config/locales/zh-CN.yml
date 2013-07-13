@@ -12,6 +12,17 @@ zh-CN:
           reason: "原因"
         user:
           sno: "学号"
+          email: "电子邮件"
+          password: "密码"
+          password_confirmation: "确认密码"
+          remember_me: "记住我"
+          roles: "权限"
+          address: "地址"
+          forum_id: "论坛ID"
+          qq: "QQ"
+          tel_number: "电话号码"
+          birth_date: "生日"
+          note: "备注"
 
 
   datetime:
