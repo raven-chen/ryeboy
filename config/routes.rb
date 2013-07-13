@@ -6,4 +6,5 @@ Tao::Application.routes.draw do
   root :to => 'documents#index'
 
   resources :documents, :only => [:index, :show]
+  resources :fines, :only => [:index, :show]
 end

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p style="font-weight: bold"><%= @fine.user.sno %></p>
+
+<div>
+  <label><%= Fine.human_attribute_name("amount") %></label>
+  <%= @fine.amount %>
+</div>
+
+<div>
+  <label><%= Fine.human_attribute_name("date") %></label>
+  <%= @fine.date %>
+</div>
+
+<div>
+  <label><%= Fine.human_attribute_name("reason") %></label>
+  <%= @fine.reason %>
+</div>
+
+<div>
+  <label><%= Fine.human_attribute_name("paid") %></label>
+  <%= @fine.paid %>
+</div>
+
+<div>
+  <label><%= Fine.human_attribute_name("comment") %></label>
+  <%= @fine.comment %>
+</div>
+<br>
+
+<%= link_to 'Back', fines_path %>

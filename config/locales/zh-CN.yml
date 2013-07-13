@@ -1,4 +1,19 @@
 zh-CN:
+  activerecord:
+      models:
+        user: "用户"
+        fine: "罚款"
+      attributes:
+        fine:
+          amount: "数额"
+          comment: "备注"
+          date: "日期"
+          paid: "已支付"
+          reason: "原因"
+        user:
+          sno: "学号"
+
+
   datetime:
     distance_in_words:
       half_a_minute: "half a minute"
