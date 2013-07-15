@@ -16,8 +16,12 @@ class User < ActiveRecord::Base
 
   validates :sno, :email, :roles, :presence => true
 
-  before_save do
+  before_validation do
     self.roles = ["normal"] if roles.blank?
+    if password.blank?
+      self.password = "11111111"
+      self.password_confirmation = "11111111"
+    end
   end
 
   ROLES = %w{admin normal}
