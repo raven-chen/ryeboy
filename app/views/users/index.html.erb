@@ -1,10 +1,15 @@
-<h1>Listing users</h1>
+<h1>用户列表</h1>
 
-<table>
+<table class="table">
   <tr>
     <th><%= User.human_attribute_name("sno") %></th>
     <th><%= User.human_attribute_name("email") %></th>
     <th><%= User.human_attribute_name("address") %></th>
+    <th><%= User.human_attribute_name("forum_id") %></th>
+    <th><%= User.human_attribute_name("qq") %></th>
+    <th><%= User.human_attribute_name("tel_number") %></th>
+    <th><%= User.human_attribute_name("birth_date") %></th>
+    <th><%= User.human_attribute_name("note") %></th>
     <th></th>
   </tr>
 
@@ -13,6 +18,11 @@
     <td><%= user.sno %></td>
     <td><%= user.email %></td>
     <td><%= user.address %></td>
+    <td><%= user.forum_id %></td>
+    <td><%= user.qq %></td>
+    <td><%= user.tel_number %></td>
+    <td><%= user.birth_date %></td>
+    <td><%= user.note %></td>
     <td><%= link_to 'Show', user %></td>
   </tr>
 <% end %>
