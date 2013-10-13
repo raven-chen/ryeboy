@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  DEFAULT_PASSWORD = "11111111"
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -19,8 +20,8 @@ class User < ActiveRecord::Base
   before_validation do
     self.roles = ["normal"] if roles.blank?
     if password.blank?
-      self.password = "11111111"
-      self.password_confirmation = "11111111"
+      self.password = DEFAULT_PASSWORD
+      self.password_confirmation = DEFAULT_PASSWORD
     end
   end
 
