@@ -182,6 +182,7 @@ DEPENDENCIES
   devise
   fog
   jquery-rails (~> 2.0.0)
+  jquery-ui-rails
   mysql2
   pg
   pry
