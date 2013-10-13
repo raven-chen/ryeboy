@@ -1,0 +1,15 @@
+<h1>Listing groups</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @groups.each do |group| %>
+  <tr>
+    <td><%= link_to 'Show', group %></td>
+  </tr>
+<% end %>
+</table>
