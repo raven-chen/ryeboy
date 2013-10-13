@@ -5,8 +5,6 @@ Tao::Application.routes.draw do
 
   root :to => 'users#profile'
 
-  post "/users/add_to_my_task" => "users#add_to_my_tasks", :as => :add_to_my_tasks
-
   resources :users, :only => [:index, :show]
   resources :exercises
 

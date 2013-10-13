@@ -6,7 +6,6 @@
     <tr>
       <th>功课名称</th>
       <th>功课内容</th>
-      <th>操作</th>
       <th>打卡</th>
     </tr>
   </thead>
@@ -16,8 +15,7 @@
     <tr>
       <td><%= task.name %></td>
       <td><%= task.description %></td>
-      <td><%= current_user.has_task?(task) ? "已选择" : link_to("加为日常功课", add_to_my_tasks_path(:id => task.id), :method => :post)  %></td>
-      <td><%= current_user.has_task?(task) ? link_to("打卡", new_exercise_path(:task_id => task.id)) : "请先添加功课"  %></td>
+      <td><%= link_to("打卡", new_exercise_path(:task_id => task.id)) %></td>
     </tr>
     <% end -%>
   </tbody>
