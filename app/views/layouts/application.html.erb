@@ -44,7 +44,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">大中医</a>
+          <%= link_to "大中医", root_path, :class => "brand" %>
           <div class="container nav-collapse">
             <ul class="nav">
               <li><%= link_to '用户', users_path %></li>
@@ -53,6 +53,16 @@
                 <li><%= link_to '文档', documents_path %></li>
               <% end -%>
             </ul>
+
+            <ul class="nav pull-right">
+              <% if user_signed_in? -%>
+                <li><%= link_to "欢迎你 #{current_user.name || current_user.email}", root_path %></li>
+                <li><%= link_to "退出", destroy_user_session_path, :method => :delete %></li>
+              <% else -%>
+                <li><%= link_to "登录", new_user_session_path %></li>
+              <% end -%>
+            </ul>
+
           </div><!--/.nav-collapse -->
         </div>
       </div>
