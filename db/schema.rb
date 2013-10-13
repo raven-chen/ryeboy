@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(:version => 20131013090045) do
     t.string   "address"
     t.date     "birth_date"
     t.text     "note"
+    t.string   "name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
