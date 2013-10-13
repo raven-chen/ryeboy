@@ -20,4 +20,23 @@ class UsersController < ApplicationController
       format.json { render json: @user }
     end
   end
+
+  def profile
+    respond_to do |format|
+      format.html # show.html.erb
+    end
+  end
+
+  def add_to_my_tasks
+    task = Task.find(params[:id])
+    current_user.tasks << task
+
+    if current_user.save
+      flash[:notice]= "已添加"
+    else
+      flash[:alert]= "添加出现错误"
+    end
+
+    redirect_to root_path
+  end
 end

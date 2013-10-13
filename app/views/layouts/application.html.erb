@@ -47,10 +47,11 @@
           <a class="brand" href="#">大中医</a>
           <div class="container nav-collapse">
             <ul class="nav">
-              <li><%= link_to '收支明细', fund_exchange_activities_path %></li>
               <li><%= link_to '用户', users_path %></li>
-              <li><%= link_to '罚款', fines_path %></li>
-              <li><%= link_to '文档', documents_path %></li>
+              <% if false -%>
+                <li><%= link_to '罚款', fines_path %></li>
+                <li><%= link_to '文档', documents_path %></li>
+              <% end -%>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -68,7 +69,7 @@
               <h3>常用链接</h3>
               <ul class="nav nav-list">
                 <li class="nav-header">常用链接</li>
-                <li><%= link_to "论坛", "http://www.dazhongyi.cn/bbs/forum.php"  %></li>
+                <li><%= link_to "我的功课", root_path %></li>
                 <li><%= link_to "豆瓣小站", "http://site.douban.com/125155/"  %></li>
               </ul>
             </div><!--/.well -->

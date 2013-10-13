@@ -3,4 +3,6 @@ class Exercise < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :task
+
+  validates :user, :task, :date, :content, :presence => :true
 end

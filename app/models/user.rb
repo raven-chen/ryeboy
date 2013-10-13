@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
   has_many :fund_exchange_activities
   has_many :fines
 
+  has_many :tasks, :through => :exercises
+  has_many :exercises
+
   validates :sno, :email, :roles, :presence => true
 
   before_validation do
@@ -35,5 +38,9 @@ class User < ActiveRecord::Base
     ROLES.reject do |r|
       ((roles_mask || 0) & 2**ROLES.index(r)).zero?
     end
+  end
+
+  def has_task? task
+    tasks.include?(task)
   end
 end
