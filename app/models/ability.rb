@@ -13,4 +13,8 @@ class Ability
   def normal
     can :read, Document
   end
+
+  def gold
+    can :manage, Exercise
+  end
 end
