@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :fines
 
   has_many :tasks, :through => :exercises
-  has_many :exercises
+  has_many :exercises, :order => "date DESC"
 
   validates :sno, :email, :roles, :presence => true
 

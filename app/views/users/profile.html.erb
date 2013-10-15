@@ -1,4 +1,25 @@
-<h2>我的功课</h2>
+<h2>今日未打卡功课</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>功课名称</th>
+      <th>功课内容</th>
+      <th>打卡</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% unsigned_tasks_today.each do |task| -%>
+    <tr>
+      <td><%= task.name %></td>
+      <td><%= task.description %></td>
+      <td><%= link_to("打卡", new_exercise_path(:task_id => task.id)) %></td>
+    </tr>
+    <% end -%>
+  </tbody>
+</table>
+
+<h2>功课列表</h2>
 <table class="table">
   <thead>
     <tr>
