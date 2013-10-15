@@ -6,7 +6,12 @@ Tao::Application.routes.draw do
   root :to => 'users#profile'
 
   resources :users, :only => [:index, :show]
-  resources :exercises
+
+  resources :exercises do
+    collection do
+      get :my
+    end
+  end
 
   resources :documents, :only => [:index, :show]
   resources :groups, :only => [:index, :show]

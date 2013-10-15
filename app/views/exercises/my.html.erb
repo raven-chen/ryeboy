@@ -1,0 +1,22 @@
+<h2>我的打卡</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>功课名称</th>
+      <th>打卡日期</th>
+      <th>打卡内容</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% current_user.exercises.each do |exercise| -%>
+    <tr>
+      <td><%= exercise.task.name %></td>
+      <td><%= exercise.date %></td>
+      <td><%= exercise.content %></td>
+      <td><%= link_to "编辑", edit_exercise_path(exercise) %></td>
+    </tr>
+    <% end -%>
+  </tbody>
+</table>

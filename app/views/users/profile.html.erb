@@ -52,7 +52,7 @@
   </thead>
 
   <tbody>
-    <% current_user.exercises.each do |exercise| -%>
+    <% current_user.exercises.limit(10).each do |exercise| -%>
     <tr>
       <td><%= exercise.task.name %></td>
       <td><%= exercise.date %></td>
@@ -60,6 +60,7 @@
       <td><%= link_to "编辑", edit_exercise_path(exercise) %></td>
     </tr>
     <% end -%>
+    <tr><td colspan="4" style="text-align:center;"><%= link_to "更多...", my_exercises_path %></td></tr>
   </tbody>
 </table>
 

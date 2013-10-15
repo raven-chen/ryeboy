@@ -38,4 +38,7 @@ class ExercisesController < ApplicationController
     end
   end
 
+  def my
+
+  end
 end
