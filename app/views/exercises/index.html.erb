@@ -1,0 +1,32 @@
+<h1>最新打卡</h1>
+
+<%= form_tag(exercises_path, :method => :get, :class => "form-inline", :role => "form") do %>
+  <div class="searchfield-above-table">
+    <%= text_field_tag :keyword, @keyword, :placeholder => "用户昵称或学号" %>
+    <%= submit_tag "搜索", :class => "btn btn-default" %>
+  </div>
+<% end -%>
+
+<table class="table">
+  <tr>
+    <th><%= Task.human_attribute_name("name") %></th>
+    <th><%= Exercise.human_attribute_name("date") %></th>
+    <th><%= Exercise.human_attribute_name("content") %></th>
+    <th><%= User.human_attribute_name("name") %></th>
+  </tr>
+
+<% if @exercises.present? -%>
+  <% @exercises.each do |exercise| %>
+    <tr>
+      <td><%= exercise.task.name %></td>
+      <td><%= exercise.date %></td>
+      <td><%= exercise.content %></td>
+      <td><%= exercise.user.name %></td>
+    </tr>
+  <% end %>
+<% else -%>
+  <tr>
+    <td colpan="4"><%= t("helpers.no_results") %></td>
+  </tr>
+<% end -%>
+</table>

@@ -9,4 +9,8 @@ class Exercise < ActiveRecord::Base
   def self.on_date date
     where(:date => date)
   end
+
+  def self.newest
+    order("date DESC").limit(20)
+  end
 end

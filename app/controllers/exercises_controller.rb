@@ -38,6 +38,18 @@ class ExercisesController < ApplicationController
     end
   end
 
+  def index
+    @keyword = params[:keyword]
+
+    @exercises = if @keyword.present?
+                   @user = User.find_by_name(@keyword)
+                   @user = User.find_by_sno(@keyword) unless @user.present?
+                   @user.try(:excercises)
+                 else
+                   Exercise.newest
+                 end
+  end
+
   def my
 
   end

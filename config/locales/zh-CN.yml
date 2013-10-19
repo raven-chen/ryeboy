@@ -1,6 +1,8 @@
 zh-CN:
   helpers:
-    actions: "Actions"
+    actions: "操作"
+    no_results: "无搜索结果"
+    view_more_about_this_user: "查看此同学更多打卡"
     links:
       back: "Back"
       cancel: "Cancel"
@@ -22,7 +24,15 @@ zh-CN:
           one: "收支明细"
           other: "收支明细"
         document: "文档"
+        exercise: "打卡"
+        task: "功课"
       attributes:
+        task:
+          name: "名称"
+          description: "描述"
+        exercise:
+          date: "日期"
+          content: "内容"
         group:
           name: "权限组"
         document:
@@ -35,6 +45,7 @@ zh-CN:
           paid: "已支付"
           reason: "原因"
         user:
+          name: "用户昵称"
           sno: "学号"
           email: "电子邮件"
           password: "密码"
