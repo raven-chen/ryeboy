@@ -5,7 +5,7 @@ Tao::Application.routes.draw do
 
   root :to => 'users#profile'
 
-  resources :users, :only => [:index, :show]
+  resources :users, :except => [:destroy]
 
   resources :exercises do
     collection do

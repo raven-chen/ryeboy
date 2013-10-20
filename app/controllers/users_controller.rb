@@ -26,4 +26,20 @@ class UsersController < ApplicationController
       format.html # show.html.erb
     end
   end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to root_path, notice: '密码已更新' }
+      else
+        format.html { render action: "edit" }
+      end
+    end
+  end
 end
