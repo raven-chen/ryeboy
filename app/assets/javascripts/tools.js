@@ -6,4 +6,8 @@ $(function(){
     yearRange: "c-100:c+10",
     defaultDate: new Date(),
   });
+
+  $(".ckeditor").ckeditor({
+
+  });
 });

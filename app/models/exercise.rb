@@ -13,4 +13,8 @@ class Exercise < ActiveRecord::Base
   def self.newest
     order("date DESC").limit(20)
   end
+
+  def content
+    read_attribute(:content).html_safe
+  end
 end

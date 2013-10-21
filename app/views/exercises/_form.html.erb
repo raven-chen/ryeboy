@@ -10,7 +10,7 @@
       <label>日期</label>
       <%= f.text_field :date, :class => "js-date-field" %>
       <label>内容</label>
-      <%= f.text_area :content %>
+      <%= f.cktext_area :content, :class => "ckeditor" %>
       <br>
       <%= submit_tag "提交" %>
     </fieldset>
