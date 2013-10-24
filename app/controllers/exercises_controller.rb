@@ -13,7 +13,8 @@ class ExercisesController < ApplicationController
 
       redirect_to root_path
     else
-      flash[:alert]= "#{@exercise.task.try(:name)} 打卡失败"
+      flash[:alert]= "#{@exercise.task.try(:name)} 打卡失败. <br> #{@exercise.errors.messages.values.join}"
+      @task = @exercise.task
 
       respond_to do |format|
         format.html { render :new }

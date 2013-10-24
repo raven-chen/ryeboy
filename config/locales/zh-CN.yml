@@ -17,55 +17,61 @@ zh-CN:
       delete: "Delete"
 
   activerecord:
-      models:
-        user: "用户"
-        fine: "罚款"
-        fund_exchange_activity:
-          one: "收支明细"
-          other: "收支明细"
-        document: "文档"
-        exercise: "打卡"
-        task: "功课"
-      attributes:
-        task:
-          name: "名称"
-          description: "描述"
-        exercise:
-          date: "日期"
-          content: "内容"
-        group:
-          name: "权限组"
-        document:
-          name: "标题"
-          content: "正文"
-        fine:
-          amount: "数额"
-          comment: "备注"
-          date: "日期"
-          paid: "已支付"
-          reason: "原因"
-        user:
-          name: "用户昵称"
-          sno: "学号"
-          email: "电子邮件"
-          password: "密码"
-          password_confirmation: "确认密码"
-          remember_me: "记住我"
-          roles: "权限"
-          address: "地址"
-          forum_id: "论坛ID"
-          qq: "QQ"
-          tel_number: "电话号码"
-          birth_date: "生日"
-          note: "备注"
-        fund_exchange_activity:
-          amount: "金额"
-          comment: "备注"
-          date: "交易日期"
-          exchange_type: "类型"
-          place: "交易地点"
-          trading_way: "交易方式"
-          usage: "用途"
+    errors:
+     models:
+      exercise:
+        attributes:
+          content:
+            blank: "内容不能为空"
+    models:
+      user: "用户"
+      fine: "罚款"
+      fund_exchange_activity:
+        one: "收支明细"
+        other: "收支明细"
+      document: "文档"
+      exercise: "打卡"
+      task: "功课"
+    attributes:
+      task:
+        name: "名称"
+        description: "描述"
+      exercise:
+        date: "日期"
+        content: "内容"
+      group:
+        name: "权限组"
+      document:
+        name: "标题"
+        content: "正文"
+      fine:
+        amount: "数额"
+        comment: "备注"
+        date: "日期"
+        paid: "已支付"
+        reason: "原因"
+      user:
+        name: "用户昵称"
+        sno: "学号"
+        email: "电子邮件"
+        password: "密码"
+        password_confirmation: "确认密码"
+        remember_me: "记住我"
+        roles: "权限"
+        address: "地址"
+        forum_id: "论坛ID"
+        qq: "QQ"
+        tel_number: "电话号码"
+        birth_date: "生日"
+        note: "备注"
+      fund_exchange_activity:
+        amount: "金额"
+        comment: "备注"
+        date: "交易日期"
+        exchange_type: "类型"
+        place: "交易地点"
+        trading_way: "交易方式"
+        usage: "用途"
 
 
 
