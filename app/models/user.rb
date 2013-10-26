@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   has_many :exercises, :order => "date DESC"
 
   validates :sno, :email, :roles, :presence => true
+  validates_uniqueness_of :sno
 
   before_validation do
     self.roles = ["normal"] if roles.blank?

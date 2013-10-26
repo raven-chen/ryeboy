@@ -18,7 +18,9 @@ zh-CN:
 
   activerecord:
     errors:
-     models:
+      messages:
+        record_invalid: "数据无效"
+    models:
       exercise:
         attributes:
           content:

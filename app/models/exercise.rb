@@ -5,6 +5,7 @@ class Exercise < ActiveRecord::Base
   belongs_to :task
 
   validates :user, :task, :date, :content, :presence => :true
+  validates_uniqueness_of :date, :scope => [:user_id, :task_id]
 
   def self.on_date date
     where(:date => date)
@@ -15,6 +16,6 @@ class Exercise < ActiveRecord::Base
   end
 
   def content
-    read_attribute(:content).html_safe
+    read_attribute(:content).try(:html_safe)
   end
 end

@@ -54,14 +54,11 @@ gem "ckeditor"
 # To use debugger
 # gem 'debugger'
 
-# Refinery CMS
-# gem 'refinerycms', '~> 2.0.0'
-# Specify additional Refinery CMS Extensions here (all optional):
-#  gem 'refinerycms-i18n', '~> 2.0.0'
-#  gem 'refinerycms-blog', '~> 2.0.0'
-#  gem 'refinerycms-inquiries', '~> 2.0.0'
-#  gem 'refinerycms-search', '~> 2.0.0'
-#  gem 'refinerycms-page-images', '~> 2.0.0'
-
+group :test do
+  gem 'factory_girl'
+  gem "factory_girl_rails"
+  gem "shoulda-context"
+  gem "shoulda-matchers"
+end
 
 gem "devise"
