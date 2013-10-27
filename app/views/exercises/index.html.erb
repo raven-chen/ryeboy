@@ -9,26 +9,29 @@
   </div>
 <% end -%>
 
-<table class="table">
-  <tr>
-    <th><%= Task.human_attribute_name("name") %></th>
-    <th><%= Exercise.human_attribute_name("date") %></th>
-    <th><%= Exercise.human_attribute_name("content") %></th>
-    <th><%= User.human_attribute_name("name") %></th>
-  </tr>
-
-<% if @exercises.present? -%>
-  <% @exercises.each do |exercise| %>
+<table class="table table-hover">
+  <thead>
     <tr>
-      <td><%= exercise.task.name %></td>
-      <td><%= exercise.date %></td>
-      <td><%= exercise.content %></td>
-      <td><%= exercise.user.name %></td>
+      <th><%= Task.human_attribute_name("name") %></th>
+      <th><%= Exercise.human_attribute_name("date") %></th>
+      <th><%= Exercise.human_attribute_name("content") %></th>
+      <th><%= User.human_attribute_name("name") %></th>
     </tr>
-  <% end %>
-<% else -%>
-  <tr>
-    <td colpan="4"><%= t("helpers.no_results") %></td>
-  </tr>
-<% end -%>
+  </thead>
+  <tbody>
+    <% if @exercises.present? -%>
+      <% @exercises.each do |exercise| %>
+        <tr>
+          <td><%= exercise.task.name %></td>
+          <td><%= exercise.date %></td>
+          <td><%= exercise.content %></td>
+          <td><%= exercise.user.name %></td>
+        </tr>
+      <% end %>
+    <% else -%>
+      <tr>
+        <td colpan="4"><%= t("helpers.no_results") %></td>
+      </tr>
+    <% end -%>
+  </tbody>
 </table>
