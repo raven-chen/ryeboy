@@ -7,7 +7,5 @@ $(function(){
     defaultDate: new Date(),
   });
 
-  $(".ckeditor").ckeditor({
-
-  });
+  // $(".ckeditor").ckeditor(); already initialized by ckeditor gem
 });
