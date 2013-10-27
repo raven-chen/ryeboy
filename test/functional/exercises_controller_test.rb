@@ -39,4 +39,16 @@ class ExercisesControllerTest < ActionController::TestCase
       assert_equal [@user3.id], assigns(:exercises).map(&:user_id).uniq
     end
   end
+
+  should "copy content from last one" do
+    @user = FactoryGirl.create(:user)
+    @task = FactoryGirl.create(:task)
+    @date = Date.current
+    sign_in(@user)
+
+    previous_one = Exercise.create!(:user_id => @user.id, :task_id => @task.id, :date => Date.yesterday, :content => "last one content")
+
+    get :new, :task_id => @task.id
+    assert_equal "last one content", assigns(:exercise).content
+  end
 end

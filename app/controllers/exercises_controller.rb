@@ -1,8 +1,8 @@
 class ExercisesController < ApplicationController
   def new
-    # TODO: validate task_id
     @task = Task.find(params[:task_id])
-    @exercise = Exercise.new(:date => Date.today, :task_id => @task.id)
+    @exercise = Exercise.new(:date => Date.today, :task_id => @task.id, :user_id => current_user.id)
+    @exercise.copy_content_from_previous_one
   end
 
   def create
