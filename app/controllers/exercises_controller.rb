@@ -40,15 +40,18 @@ class ExercisesController < ApplicationController
   end
 
   def index
-    @keyword = params[:keyword]
+    if params[:task_id].blank? && params[:date].blank? && params[:user_id].blank?
+      @exercises = Exercise.newest
+    else
+      @exercises = Exercise.scoped
+      @date = params[:date]
+      @task_id = params[:task_id]
+      @user_id = params[:user_id]
 
-    @exercises = if @keyword.present?
-                   @user = User.find_by_name(@keyword)
-                   @user = User.find_by_sno(@keyword) unless @user.present?
-                   @user.try(:exercises)
-                 else
-                   Exercise.newest
-                 end
+      [:task_id, :date, :user_id].each do |attr|
+        @exercises = @exercises.where(attr => params[attr]) if params[attr].present?
+      end
+    end
   end
 
   def my

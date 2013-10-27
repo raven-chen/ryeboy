@@ -2,7 +2,9 @@
 
 <%= form_tag(exercises_path, :method => :get, :class => "form-inline", :role => "form") do %>
   <div class="searchfield-above-table">
-    <%= text_field_tag :keyword, @keyword, :placeholder => "用户昵称或学号" %>
+    <%= select_tag :user_id, options_from_collection_for_select(User.all, "id", "name", @user_id), :prompt => "昵称" %>
+    <%= select_tag :task_id, options_from_collection_for_select(Task.all, "id", "name", @task_id), :prompt => "功课" %>
+    <%= text_field_tag :date, @date, :class => "js-date-field", :placeholder => "日期" %>
     <%= submit_tag "搜索", :class => "btn btn-default" %>
   </div>
 <% end -%>
