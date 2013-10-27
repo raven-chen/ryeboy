@@ -51,6 +51,8 @@ class ExercisesController < ApplicationController
       [:task_id, :date, :user_id].each do |attr|
         @exercises = @exercises.where(attr => params[attr]) if params[attr].present?
       end
+
+      @exercises.order("date DESC")
     end
   end
 
