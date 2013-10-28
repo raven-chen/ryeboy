@@ -23,8 +23,12 @@
       <% @exercises.each do |exercise| %>
         <tr>
           <td><%= exercise.task.name %></td>
-          <td><%= exercise.date %></td>
-          <td><%= exercise.content %></td>
+          <td><%= exercise.date.strftime(t("date.formats.default")) %></td>
+          <td>
+            <div class="content">
+              <%= exercise.content %>
+            </div>
+          </td>
           <td><%= exercise.user.name %></td>
         </tr>
       <% end %>

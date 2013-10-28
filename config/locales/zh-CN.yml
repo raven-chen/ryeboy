@@ -1,4 +1,9 @@
 zh-CN:
+  date:
+    formats:
+      # Use the strftime parameters for formats.
+      default: "%y年%m月%-d日"
+
   helpers:
     actions: "操作"
     no_results: "无搜索结果"

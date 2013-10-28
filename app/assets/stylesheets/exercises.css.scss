@@ -15,3 +15,8 @@
 .searchfield-above-table {
   text-align: right;
 }
+.content {
+  width: 450px;
+  max-height: 200px !important;
+  overflow: scroll;
+}
