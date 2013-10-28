@@ -52,7 +52,7 @@ class ExercisesController < ApplicationController
         @exercises = @exercises.where(attr => params[attr]) if params[attr].present?
       end
 
-      @exercises.order("date DESC")
+      @exercises = @exercises.order("date DESC")
     end
   end
 
