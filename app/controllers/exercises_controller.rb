@@ -14,6 +14,12 @@ class ExercisesController < ApplicationController
       redirect_to root_path
     else
       flash[:alert]= "#{@exercise.task.try(:name)} 打卡失败. <br> #{@exercise.errors.messages.values.join}"
+
+      if @exercise.errors.messages.keys.include?(:date) && @exercise.date.present?
+        existing_exercise = Exercise.where(:date => @exercise.date, :task_id => @exercise.task_id, :user_id => @exercise.user_id).first
+        @edit_existing_exercise = I18n.t("helpers.may_want_to_edit", :edit_exercise_link => edit_exercise_url(existing_exercise))
+      end
+
       @task = @exercise.task
 
       respond_to do |format|

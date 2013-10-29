@@ -1,6 +1,13 @@
 require 'test_helper'
 
 class ExercisesControllerTest < ActionController::TestCase
+  setup do
+    @user = FactoryGirl.create(:user)
+    @task = FactoryGirl.create(:task)
+    @date = Date.current
+    sign_in(@user)
+  end
+
   context "search" do
     setup do
       @user1 = FactoryGirl.create(:user)
@@ -16,8 +23,6 @@ class ExercisesControllerTest < ActionController::TestCase
           FactoryGirl.create(:exercise, :user_id => user.id, :task_id => task.id, :date => (user == @user3) ? Date.yesterday : Date.current)
         end
       end
-
-      sign_in(@user1)
     end
 
     should "return newest records if no conditions passed in" do
@@ -41,14 +46,30 @@ class ExercisesControllerTest < ActionController::TestCase
   end
 
   should "copy content from last one" do
-    @user = FactoryGirl.create(:user)
-    @task = FactoryGirl.create(:task)
-    @date = Date.current
-    sign_in(@user)
-
     previous_one = Exercise.create!(:user_id => @user.id, :task_id => @task.id, :date => Date.yesterday, :content => "last one content")
 
     get :new, :task_id => @task.id
     assert_equal "last one content", assigns(:exercise).content
+  end
+
+  context "Friendly notice of taken date" do
+    should "add friendly notice when submitted exercise's date has been taken" do
+      exist_exercise = Exercise.create!(:user_id => @user.id, :task_id => @task.id, :date => Date.yesterday, :content => "last one content")
+
+      post :create, :exercise => {:user_id => @user.id, :task_id => @task.id, :date => Date.yesterday, :content => "new one content"}
+
+      assert_present assigns(:exercise).errors
+      assert assigns(:edit_existing_exercise).present?
+      assert_match /#{exist_exercise.id}/, assigns(:edit_existing_exercise)
+    end
+
+    should "do nothing if exercise invalid because of nil date" do
+      exist_exercise = Exercise.create!(:user_id => @user.id, :task_id => @task.id, :date => Date.yesterday, :content => "last one content")
+
+      post :create, :exercise => {:user_id => @user.id, :task_id => @task.id, :date => nil, :content => "new one content"}
+
+      assert_present assigns(:exercise).errors
+      assert !assigns(:edit_existing_exercise).present?
+    end
   end
 end

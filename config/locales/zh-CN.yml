@@ -9,6 +9,7 @@ zh-CN:
     actions: "操作"
     no_results: "无搜索结果"
     view_more_about_this_user: "查看此同学更多打卡"
+    may_want_to_edit: "如果想编辑所选日期的打卡，<a href='%{edit_exercise_link}'>请猛击这里</a>"
     links:
       back: "Back"
       cancel: "Cancel"
@@ -26,11 +27,13 @@ zh-CN:
     errors:
       messages:
         record_invalid: "数据无效"
-    models:
-      exercise:
-        attributes:
-          content:
-            blank: "内容不能为空"
+      models:
+        exercise:
+          attributes:
+            date:
+              taken: "所选日期已经有当前功课的打卡"
+            content:
+              blank: "内容不能为空"
     models:
       user: "用户"
       fine: "罚款"
