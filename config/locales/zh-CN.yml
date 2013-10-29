@@ -3,7 +3,8 @@ zh-CN:
     formats:
       # Use the strftime parameters for formats.
       default: "%y年%m月%-d日"
-
+  notices:
+    good_job: "干得好！今天所有功课都已打卡！"
   helpers:
     actions: "操作"
     no_results: "无搜索结果"

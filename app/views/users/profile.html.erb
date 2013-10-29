@@ -9,12 +9,22 @@
   </thead>
 
   <tbody>
-    <% unsigned_tasks_today.each do |task| -%>
-    <tr>
-      <td><%= task.name %></td>
-      <td><%= task.description %></td>
-      <td><%= link_to("打卡", new_exercise_path(:task_id => task.id)) %></td>
-    </tr>
+    <% if unsigned_tasks_today.present? -%>
+      <% unsigned_tasks_today.each do |task| -%>
+      <tr>
+        <td><%= task.name %></td>
+        <td><%= task.description %></td>
+        <td><%= link_to("打卡", new_exercise_path(:task_id => task.id)) %></td>
+      </tr>
+      <% end -%>
+    <% else -%>
+      <tr>
+        <td colspan="3">
+          <div class="alert alert-success">
+            <%= I18n.t("notices.good_job") %>
+          </div>
+        </td>
+      </tr>
     <% end -%>
   </tbody>
 </table>
