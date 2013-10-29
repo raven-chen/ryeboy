@@ -29,7 +29,7 @@ class ExercisesController < ApplicationController
   end
 
   def edit
-    @exercise = Exercise.find(params[:id])
+    @exercise = current_user.exercises.find(params[:id])
     @task = @exercise.task
   end
 
