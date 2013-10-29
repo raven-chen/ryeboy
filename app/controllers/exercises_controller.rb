@@ -63,6 +63,18 @@ class ExercisesController < ApplicationController
   end
 
   def my
+    if params[:task_id] or params[:date]
+      @exercises = Exercise.scoped
+      @date = params[:date]
+      @task_id = params[:task_id]
 
+      [:task_id, :date].each do |attr|
+        @exercises = @exercises.where(attr => params[attr]) if params[attr].present?
+      end
+
+      @exercises = @exercises.order("date DESC")
+    else
+      @exercises = current_user.exercises
+    end
   end
 end

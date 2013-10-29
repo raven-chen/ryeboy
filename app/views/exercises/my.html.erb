@@ -1,4 +1,12 @@
 <h2>我的打卡</h2>
+
+<%= form_tag(my_exercises_path, :method => :get, :class => "form-inline js-submit-on-change", :role => "form") do %>
+  <div class="searchfield-above-table">
+    <%= select_tag :task_id, options_from_collection_for_select(Task.all, "id", "name", @task_id), :prompt => "功课" %>
+    <%= text_field_tag :date, @date, :class => "js-date-field", :placeholder => "日期" %>
+  </div>
+<% end -%>
+
 <table class="table table-hover">
   <thead>
     <tr>
@@ -10,7 +18,7 @@
   </thead>
 
   <tbody>
-    <% current_user.exercises.each do |exercise| -%>
+    <% @exercises.each do |exercise| -%>
     <tr>
       <td><%= exercise.task.name %></td>
       <td><%= exercise.date %></td>
