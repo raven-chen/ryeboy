@@ -77,4 +77,12 @@ class ExercisesController < ApplicationController
       @exercises = current_user.exercises
     end
   end
+
+  def unfinished
+    @start_date = params[:start_date] || Date.current
+    @end_date = params[:end_date] || Date.current
+    @users = params[:ids] ? User.find(params[:ids]) : User.all
+
+    @unfinished_exercise_stats = Exercise.unfinished_exercises(@users, @start_date.to_date, @end_date.to_date)
+  end
 end

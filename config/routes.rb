@@ -10,6 +10,7 @@ Tao::Application.routes.draw do
   resources :exercises do
     collection do
       get :my
+      get :unfinished
     end
   end
 

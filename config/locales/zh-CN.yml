@@ -6,6 +6,9 @@ zh-CN:
   notices:
     good_job: "干得好！今天所有功课都已打卡！"
   helpers:
+    finished: "完成"
+    unfinished: "未完成"
+    detail: "查看详细"
     actions: "操作"
     no_results: "无搜索结果"
     view_more_about_this_user: "查看此同学更多打卡"

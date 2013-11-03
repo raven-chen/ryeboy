@@ -1,0 +1,42 @@
+<h2>查卡大厅</h2>
+
+<%= form_tag(unfinished_exercises_path, :method => :get, :class => "form-inline", :role => "form") do %>
+  <div class="searchfield-above-table">
+    <%= select_tag :ids, options_from_collection_for_select(User.all, "id", "name", @users), :multiple => true, :class => "form-control" %>
+    <%= text_field_tag :start_date, @start_date, :class => "js-date-field", :placeholder => "开始日期" %>
+    <%= text_field_tag :end_date, @end_date, :class => "js-date-field", :placeholder => "结束日期" %>
+    <%= submit_tag "搜索", :class => "btn btn-default" %>
+  </div>
+<% end -%>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>昵称</th>
+      <th>功课</th>
+      <th>完成情况</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @unfinished_exercise_stats.each do |date, users| -%>
+    <tr class="info">
+      <td colspan="3">
+        <%= date %>
+      </td>
+    </tr>
+      <% users.each do |user, tasks| %>
+        <% i = 0 -%>
+        <% tasks.each do |task, stats| -%>
+        <% i += 1 -%>
+        <tr>
+          <td><%= user.name unless i <= 1 %></td>
+          <td><%= task.name %></td>
+          <td><%= stats ? content_tag(:span, t("helpers.finished"), :class => "alert alert-success") : content_tag(:span, t("helpers.unfinished"), :class => "alert alert-danger") %></td>
+        </tr>
+        <% end -%>
+      <% end -%>
+    <% end -%>
+  </tbody>
+</table>
+
