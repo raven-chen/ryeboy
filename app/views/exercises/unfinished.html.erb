@@ -12,29 +12,33 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>昵称</th>
-      <th>功课</th>
-      <th>完成情况</th>
+      <th>日期</th>
+      <th>未完成人员名单</th>
     </tr>
   </thead>
 
   <tbody>
     <% @unfinished_exercise_stats.each do |date, users| -%>
-    <tr class="info">
-      <td colspan="3">
-        <%= date %>
+    <tr>
+      <td>
+        <%= date.strftime(t("date.formats.default")) %>
+      </td>
+      <td>
+        <%= users.keys.map(&:name).join(", ") %>
       </td>
     </tr>
-      <% users.each do |user, tasks| %>
-        <% i = 0 -%>
-        <% tasks.each do |task, stats| -%>
-        <% i += 1 -%>
-        <tr>
-          <td><%= user.name unless i <= 1 %></td>
-          <td><%= task.name %></td>
-          <td><%= stats ? content_tag(:span, t("helpers.finished"), :class => "alert alert-success") : content_tag(:span, t("helpers.unfinished"), :class => "alert alert-danger") %></td>
-        </tr>
-        <% end -%>
+      <% if false -%>
+          <% users.each do |user, tasks| %>
+            <% i = 0 -%>
+            <% tasks.each do |task, stats| -%>
+            <% i += 1 -%>
+            <tr>
+              <td><%= user.name if i == 1 %></td>
+              <td><%= task.name %></td>
+              <td><%= stats ? content_tag(:span, t("helpers.finished"), :class => "alert alert-success") : content_tag(:span, t("helpers.unfinished"), :class => "alert alert-danger") %></td>
+            </tr>
+            <% end -%>
+          <% end -%>
       <% end -%>
     <% end -%>
   </tbody>
