@@ -15,7 +15,11 @@ class User < ActiveRecord::Base
   has_many :fines
 
   has_many :tasks, :through => :exercises
-  has_many :exercises, :order => "date DESC"
+  has_many :exercises, :order => "date DESC" do
+    def finished_on_date date
+      where("date = ? AND created_at <= ?", date, User.valid_exercise_log_date(date))
+    end
+  end
 
   validates :sno, :email, :roles, :presence => true
   validates_uniqueness_of :sno
@@ -42,5 +46,9 @@ class User < ActiveRecord::Base
 
   def has_task? task
     tasks.include?(task)
+  end
+
+  def self.valid_exercise_log_date date
+    date.tomorrow.to_datetime + 18.hours # Exercise must be logged before next day's 18pm
   end
 end

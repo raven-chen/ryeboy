@@ -26,4 +26,37 @@ class Exercise < ActiveRecord::Base
   def content
     read_attribute(:content).try(:html_safe)
   end
+
+  class << self
+    def unfinished_exercises users, start_date, end_date
+      result = {}
+
+      (start_date..end_date).each do |date|
+        result[date] ||= {}
+
+        users.each do |user|
+          next if all_exercises_finished?(user, date)
+
+          result[date].merge! exercises_stats(user, date)
+        end
+      end
+
+      result
+    end
+
+    def all_exercises_finished? user, date
+      user.exercises.finished_on_date(date).size == Task.count
+    end
+
+    def exercise_finished? user, date, task
+      user.exercises.where(:date => date, :task_id => task.id).present?
+    end
+
+    def exercises_stats user, date
+      stats = {}; stats[user] = {}
+
+      Task.all.each{ |task| stats[user].merge!({task => exercise_finished?(user, date, task)}) }
+      stats
+    end
+  end
 end
