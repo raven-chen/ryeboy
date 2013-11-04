@@ -11,5 +11,9 @@ $(function(){
     $("form.js-submit-on-change").submit();
   });
 
+  $(".tab ul.tab-nav a").click(function() {
+    $(this).tab("show");
+  });
+
   // $(".ckeditor").ckeditor(); already initialized by ckeditor gem
 });

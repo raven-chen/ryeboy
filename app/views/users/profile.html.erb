@@ -1,33 +1,22 @@
-<h2>今日未打卡功课</h2>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>功课名称</th>
-      <th>功课内容</th>
-      <th>打卡</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% if unsigned_tasks_today.present? -%>
-      <% unsigned_tasks_today.each do |task| -%>
-      <tr>
-        <td><%= task.name %></td>
-        <td><%= task.description %></td>
-        <td><%= link_to("打卡", new_exercise_path(:task_id => task.id)) %></td>
-      </tr>
-      <% end -%>
-    <% else -%>
-      <tr>
-        <td colspan="3">
-          <div class="alert alert-success">
-            <%= I18n.t("notices.good_job") %>
-          </div>
-        </td>
-      </tr>
-    <% end -%>
-  </tbody>
-</table>
+<h2>未打卡功课</h2>
+<div class="tab">
+  <ul class="nav-tabs nav">
+    <li class="active">
+      <a href="#content-1" data-toggle="tab">昨日</a>
+    </li>
+    <li>
+      <a href="#content-2" data-toggle="tab">今日</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div id="content-1" class="tab-pane">
+      <%= render :partial => "exercises/unsigned_tasks", :locals => { :unsigned_tasks => unsigned_tasks_at(Date.yesterday), :date => Date.yesterday } %>
+    </div>
+    <div id="content-2" class="tab-pane">
+      <%= render :partial => "exercises/unsigned_tasks", :locals => { :unsigned_tasks => unsigned_tasks_at(Date.current), :date => Date.current } %>
+    </div>
+  </div>
+</div>
 
 <h2>功课列表</h2>
 <table class="table table-hover">

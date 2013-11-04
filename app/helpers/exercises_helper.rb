@@ -1,5 +1,5 @@
 module ExercisesHelper
-  def unsigned_tasks_today
-    Task.all - current_user.exercises.on_date(Date.today).map{ |e| e.task }
+  def unsigned_tasks_at date
+    Task.all - current_user.exercises.on_date(date).map{ |e| e.task }
   end
 end
