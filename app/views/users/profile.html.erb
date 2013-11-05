@@ -1,18 +1,18 @@
 <h2>未打卡功课</h2>
 <div class="tab">
   <ul class="nav-tabs nav">
-    <li class="active">
+    <li>
       <a href="#content-1" data-toggle="tab">昨日</a>
     </li>
-    <li>
-      <a href="#content-2" data-toggle="tab">今日</a>
+    <li class="active">
+      <a href="#content-2" data-toggle="tab"><%= "今日 #{Date.current.strftime(t("date.formats.default"))}" %></a>
     </li>
   </ul>
   <div class="tab-content">
     <div id="content-1" class="tab-pane">
       <%= render :partial => "exercises/unsigned_tasks", :locals => { :unsigned_tasks => unsigned_tasks_at(Date.yesterday), :date => Date.yesterday } %>
     </div>
-    <div id="content-2" class="tab-pane">
+    <div id="content-2" class="tab-pane active">
       <%= render :partial => "exercises/unsigned_tasks", :locals => { :unsigned_tasks => unsigned_tasks_at(Date.current), :date => Date.current } %>
     </div>
   </div>
