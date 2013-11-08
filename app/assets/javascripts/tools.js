@@ -15,5 +15,10 @@ $(function(){
     $(this).tab("show");
   });
 
+  $(".js-popover").popover({
+    "placement" : "top",
+    "trigger" : "hover"
+  });
+
   // $(".ckeditor").ckeditor(); already initialized by ckeditor gem
 });

@@ -19,27 +19,14 @@
 
   <tbody>
     <% @unfinished_exercise_stats.each do |date, users| -%>
-    <tr>
-      <td>
-        <%= date.strftime(t("date.formats.default")) %>
-      </td>
-      <td>
-        <%= users.keys.map(&:name).join(", ") %>
-      </td>
-    </tr>
-      <% if false -%>
-          <% users.each do |user, tasks| %>
-            <% i = 0 -%>
-            <% tasks.each do |task, stats| -%>
-            <% i += 1 -%>
-            <tr>
-              <td><%= user.name if i == 1 %></td>
-              <td><%= task.name %></td>
-              <td><%= stats ? content_tag(:span, t("helpers.finished"), :class => "alert alert-success") : content_tag(:span, t("helpers.unfinished"), :class => "alert alert-danger") %></td>
-            </tr>
-            <% end -%>
-          <% end -%>
-      <% end -%>
+      <tr>
+        <td>
+          <%= date.strftime(t("date.formats.default")) %>
+        </td>
+        <td>
+          <%= unfinished_exercises_detail(users) %>
+        </td>
+      </tr>
     <% end -%>
   </tbody>
 </table>
