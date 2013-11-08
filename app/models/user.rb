@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :roles, :address, :sno, :forum_id, :group_id, :qq,
@@ -23,14 +23,6 @@ class User < ActiveRecord::Base
 
   validates :sno, :email, :roles, :presence => true
   validates_uniqueness_of :sno
-
-  before_validation do
-    self.roles = ["normal"] if roles.blank?
-    if password.blank?
-      self.password = DEFAULT_PASSWORD
-      self.password_confirmation = DEFAULT_PASSWORD
-    end
-  end
 
   ROLES = %w{admin normal gold}
 
