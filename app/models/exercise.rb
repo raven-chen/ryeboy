@@ -45,7 +45,7 @@ class Exercise < ActiveRecord::Base
     end
 
     def all_exercises_finished? user, date
-      user.exercises.finished_on_date(date).size == Task.count
+      user.my_tasks.blank? || (user.exercises.finished_on_date(date).size == user.my_tasks.size)
     end
 
     def exercise_finished? user, date, task
@@ -55,7 +55,7 @@ class Exercise < ActiveRecord::Base
     def exercises_stats user, date
       stats = {}; stats[user] = {}
 
-      Task.all.each{ |task| stats[user].merge!({task => exercise_finished?(user, date, task)}) }
+      user.my_tasks.each{ |task| stats[user].merge!({task => exercise_finished?(user, date, task)}) }
       stats
     end
   end

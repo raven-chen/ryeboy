@@ -7,59 +7,76 @@
     <li class="active">
       <a href="#content-2" data-toggle="tab"><%= "今日 #{Date.current.strftime(t("date.formats.default"))}" %></a>
     </li>
+    <li>
+      <a href="#content-3" data-toggle="tab"><%= "我的功课" %></a>
+    </li>
+    <li>
+      <a href="#content-4" data-toggle="tab"><%= "我的打卡" %></a>
+    </li>
+    <li>
+      <a href="#content-5" data-toggle="tab"><%= "全部功课" %></a>
+    </li>
   </ul>
+
   <div class="tab-content">
     <div id="content-1" class="tab-pane">
       <%= render :partial => "exercises/unsigned_tasks", :locals => { :unsigned_tasks => unsigned_tasks_at(Date.yesterday), :date => Date.yesterday } %>
     </div>
+
     <div id="content-2" class="tab-pane active">
       <%= render :partial => "exercises/unsigned_tasks", :locals => { :unsigned_tasks => unsigned_tasks_at(Date.current), :date => Date.current } %>
     </div>
+
+    <div id="content-3" class="tab-pane">
+      <%= render :partial => "users/my_tasks" %>
+    </div>
+
+    <div id="content-4" class="tab-pane">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>功课名称</th>
+            <th>打卡日期</th>
+            <th>打卡内容</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% current_user.exercises.limit(10).each do |exercise| -%>
+          <tr>
+            <td><%= exercise.task.name %></td>
+            <td><%= exercise.date %></td>
+            <td><%= exercise.content %></td>
+            <td><%= link_to "编辑", edit_exercise_path(exercise) %></td>
+          </tr>
+          <% end -%>
+          <tr><td colspan="4" style="text-align:center;"><%= link_to "更多...", my_exercises_path %></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="content-5" class="tab-pane">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>功课名称</th>
+            <th>功课内容</th>
+            <th>打卡</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% Task.all.each do |task| -%>
+          <tr>
+            <td><%= task.name %></td>
+            <td><%= task.description %></td>
+            <td><%= link_to("打卡", new_exercise_path(:task_id => task.id)) %></td>
+          </tr>
+          <% end -%>
+        </tbody>
+      </table>
+    </div>
+
   </div>
 </div>
-
-<h2>功课列表</h2>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>功课名称</th>
-      <th>功课内容</th>
-      <th>打卡</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% Task.all.each do |task| -%>
-    <tr>
-      <td><%= task.name %></td>
-      <td><%= task.description %></td>
-      <td><%= link_to("打卡", new_exercise_path(:task_id => task.id)) %></td>
-    </tr>
-    <% end -%>
-  </tbody>
-</table>
-
-<h2>我的打卡</h2>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>功课名称</th>
-      <th>打卡日期</th>
-      <th>打卡内容</th>
-      <th>操作</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% current_user.exercises.limit(10).each do |exercise| -%>
-    <tr>
-      <td><%= exercise.task.name %></td>
-      <td><%= exercise.date %></td>
-      <td><%= exercise.content %></td>
-      <td><%= link_to "编辑", edit_exercise_path(exercise) %></td>
-    </tr>
-    <% end -%>
-    <tr><td colspan="4" style="text-align:center;"><%= link_to "更多...", my_exercises_path %></td></tr>
-  </tbody>
-</table>
-

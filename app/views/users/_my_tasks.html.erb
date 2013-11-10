@@ -1,0 +1,21 @@
+<%= form_for(current_user, :as => :user, :url => assign_my_tasks_user_path(current_user), :method => :put, :html => {:class => "form-inline", :role => "form"} ) do |f| %>
+  <fieldset>
+    <legend>
+      <div class="alert alert-warning">
+        <%= t("notices.my_task") %>
+      </div>
+    </legend>
+
+    <label>功课</label>
+    <div class="task-list">
+      <% Task.all.each do |task| -%>
+        <label class="checkbox-inline">
+          <%= check_box_tag "task_ids[]", task.id, current_user.has_task?(task) %>
+          <%= task.name %>
+        </label>
+      <% end -%>
+    </div>
+
+    <%= submit_tag "更新我的功课", :class => "btn btn-default btn-lg" %>
+  </fieldset>
+<% end -%>

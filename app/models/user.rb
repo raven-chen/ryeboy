@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
   has_many :fund_exchange_activities
   has_many :fines
 
+  has_many :my_tasks, :class_name => "Task", :through => :user_tasks, :source => :task
+  has_many :user_tasks
+
   has_many :tasks, :through => :exercises
   has_many :exercises, :order => "date DESC" do
     def finished_on_date date
@@ -37,7 +40,7 @@ class User < ActiveRecord::Base
   end
 
   def has_task? task
-    tasks.include?(task)
+    my_tasks.include?(task)
   end
 
   def self.valid_exercise_log_date date

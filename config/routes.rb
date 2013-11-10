@@ -5,7 +5,11 @@ Tao::Application.routes.draw do
 
   root :to => 'users#profile'
 
-  resources :users, :except => [:destroy]
+  resources :users, :except => [:destroy] do
+    member do
+      put :assign_my_tasks
+    end
+  end
 
   resources :exercises do
     collection do

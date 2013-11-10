@@ -27,6 +27,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def assign_my_tasks
+    tasks = Task.find(params[:task_ids])
+    user = User.find(params[:id])
+
+    user.my_tasks = tasks
+
+    if user.save
+      flash[:notice]= "操作成功"
+    else
+      flash[:alert]= "操作失败"
+    end
+
+    redirect_to root_path
+  end
+
   def edit
     @user = current_user
   end
