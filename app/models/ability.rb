@@ -16,5 +16,10 @@ class Ability
 
   def gold
     can :manage, Exercise
+    can :read, Notification
+  end
+
+  def discipline
+    can :manage, Notification
   end
 end

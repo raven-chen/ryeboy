@@ -47,7 +47,11 @@ zh-CN:
       document: "文档"
       exercise: "打卡"
       task: "功课"
+      notification: "通知"
     attributes:
+      notification:
+        active: "显示"
+        content: "内容"
       task:
         name: "名称"
         description: "描述"
@@ -150,7 +154,7 @@ zh-CN:
       add_filter: "Add filter"
       bulk_menu_title: "Selected items"
       remove: "Remove"
-      add_new: "Add new"
+      add_new: "新建"
       chosen: "Chosen %{name}"
       chose_all: "Choose all"
       clear_all: "Clear all"

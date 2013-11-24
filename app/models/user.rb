@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  DEFAULT_PASSWORD = "11111111"
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -27,7 +26,7 @@ class User < ActiveRecord::Base
   validates :sno, :email, :roles, :presence => true
   validates_uniqueness_of :sno
 
-  ROLES = %w{admin normal gold}
+  ROLES = %w{admin normal gold discipline}
 
   def roles=(roles)
     self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)

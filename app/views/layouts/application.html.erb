@@ -80,11 +80,11 @@
           </div>
           <div class="span3">
             <div class="well sidebar-nav">
-              <h3>常用链接</h3>
               <ul class="nav nav-list">
-                <li class="nav-header">常用链接</li>
-                <li><%= link_to "我的功课", root_path %></li>
-                <li><%= link_to "豆瓣小站", "http://site.douban.com/125155/"  %></li>
+                <% Notification.active.each do |notification| -%>
+                  <li><%= notification.updated_at.strftime(t("date.formats.default")) %></li>
+                  <li class="alert alert-danger"><%= notification.content %></li>
+                <% end -%>
               </ul>
             </div><!--/.well -->
           </div><!--/span-->
