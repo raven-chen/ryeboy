@@ -2,7 +2,6 @@
   <thead>
     <tr>
       <th>功课名称</th>
-      <th>功课内容</th>
       <th>打卡</th>
     </tr>
   </thead>
@@ -12,7 +11,6 @@
       <% unsigned_tasks.each do |task| -%>
       <tr>
         <td><%= task.name %></td>
-        <td><%= task.description %></td>
         <td><%= link_to("打卡", new_exercise_path(:date => date, :task_id => task.id)) %></td>
       </tr>
       <% end -%>
