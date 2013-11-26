@@ -1,18 +1,20 @@
-<h1>Listing fines</h1>
+<h1>罚款记录</h1>
 
 <table class="table table-hover">
   <tr>
-    <th><%= User.human_attribute_name("sno") %></th>
     <th><%= Fine.human_attribute_name("amount") %></th>
     <th><%= Fine.human_attribute_name("date") %></th>
+    <th><%= Fine.human_attribute_name("reason") %></th>
+    <th><%= Fine.human_attribute_name("paid") %></th>
     <th></th>
   </tr>
 
 <% @fines.each do |fine| %>
   <tr>
-    <td><%= fine.user.sno %></td>
     <td><%= fine.amount %></td>
     <td><%= fine.date %></td>
+    <td><%= fine.reason %></td>
+    <td><%= I18n.t("notices.#{fine.paid}") %></td>
     <td><%= link_to 'Show', fine %></td>
   </tr>
 <% end %>

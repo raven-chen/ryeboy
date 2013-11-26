@@ -2,7 +2,7 @@ class FinesController < ApplicationController
   # GET /fines
   # GET /fines.json
   def index
-    @fines = Fine.all
+    @fines = current_user.fines
 
     respond_to do |format|
       format.html # index.html.erb

@@ -47,12 +47,15 @@
           <%= link_to "大中医", root_path, :class => "brand" %>
           <div class="container nav-collapse">
             <ul class="nav">
-              <li><%= link_to '首页', root_path %></li>
-              <li><%= link_to '一览众卡', exercises_path %></li>
-              <li><%= link_to '查卡监督', unfinished_exercises_path %></li>
-              <li><%= link_to '我的打卡', my_exercises_path %></li>
+              <% if user_signed_in? -%>
+                <li><%= link_to '首页', root_path %></li>
+                <li><%= link_to '一览众卡', exercises_path %></li>
+                <li><%= link_to '查卡监督', unfinished_exercises_path %></li>
+                <li><%= link_to '我的打卡', my_exercises_path %></li>
+                <li><%= link_to '罚款记录', fines_path %></li>
+              <% end -%>
+
               <% if false -%>
-                <li><%= link_to '罚款', fines_path %></li>
                 <li><%= link_to '文档', documents_path %></li>
               <% end -%>
             </ul>
