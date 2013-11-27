@@ -151,7 +151,7 @@ zh-CN:
       filter_date_format: "mm/dd/yy" # a combination of 'dd', 'mm' and 'yy' with any delimiter. No other interpolation will be done!
       search: "Search"
       filter: "Filter"
-      refresh: "Refresh"
+      refresh: "搜索"
       show_all: "Show all"
       add_filter: "Add filter"
       bulk_menu_title: "Selected items"

@@ -90,4 +90,25 @@ RailsAdmin.config do |config|
       field :description
     end
   end
+
+  config.model "Fine" do
+    list do
+      field :user do
+        searchable [{User => :name}]
+        queryable true
+      end
+
+      field :amount do
+        searchable false
+      end
+      field :date
+      field :paid
+      field :reason do
+        searchable false
+      end
+      field :comment do
+        searchable false
+      end
+    end
+  end
 end

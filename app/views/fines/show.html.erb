@@ -1,33 +1,17 @@
-<div class="show">
-  <p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
-  <p style="font-weight: bold"><%= @fine.user.sno %></p>
+<label><%= Fine.human_attribute_name("amount") %></label>
+<%= @fine.amount %>
 
-  <div>
-    <label><%= Fine.human_attribute_name("amount") %></label>
-    <%= @fine.amount %>
-  </div>
+<label><%= Fine.human_attribute_name("date") %></label>
+<%= @fine.date.strftime(t("date.formats.default")) %>
 
-  <div>
-    <label><%= Fine.human_attribute_name("date") %></label>
-    <%= @fine.date %>
-  </div>
+<label><%= Fine.human_attribute_name("reason") %></label>
+<%= @fine.reason %>
 
-  <div>
-    <label><%= Fine.human_attribute_name("reason") %></label>
-    <%= @fine.reason %>
-  </div>
-
-  <div>
-    <label><%= Fine.human_attribute_name("paid") %></label>
-    <%= @fine.paid %>
-  </div>
-
-  <div>
-    <label><%= Fine.human_attribute_name("comment") %></label>
-    <%= @fine.comment %>
-  </div>
-  <br>
-
-  <%= link_to 'Back', fines_path %>
-</div>
+<label>
+  <%= Fine.human_attribute_name("paid") %>
+</label>
+<%= I18n.t("notices.#{@fine.paid}") %>
+<br>
+<%= link_to '编辑', edit_fine_path(@fine), :class => "btn btn-primary" %>

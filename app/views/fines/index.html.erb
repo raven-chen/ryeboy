@@ -1,11 +1,17 @@
 <h1>罚款记录</h1>
 
+<p>
+  <%= link_to '新建', new_fine_path, :class => "btn btn-primary" %>
+</p>
+
 <table class="table table-hover">
   <tr>
     <th><%= Fine.human_attribute_name("amount") %></th>
     <th><%= Fine.human_attribute_name("date") %></th>
     <th><%= Fine.human_attribute_name("reason") %></th>
     <th><%= Fine.human_attribute_name("paid") %></th>
+    <th></th>
+    <th></th>
     <th></th>
   </tr>
 
@@ -15,7 +21,10 @@
     <td><%= fine.date %></td>
     <td><%= fine.reason %></td>
     <td><%= I18n.t("notices.#{fine.paid}") %></td>
-    <td><%= link_to 'Show', fine %></td>
+    <td><%= link_to '查看', fine %></td>
+    <td><%= link_to '编辑', edit_fine_path(fine) %></td>
+    <td><%= link_to '删除', fine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
   </tr>
 <% end %>
 </table>
