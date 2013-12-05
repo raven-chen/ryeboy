@@ -8,3 +8,7 @@
 .show div label {
   margin-right: 10px;
 }
+.notification {
+  height: 450px;
+  overflow-y: scroll;
+}

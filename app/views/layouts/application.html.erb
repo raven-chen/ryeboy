@@ -82,7 +82,7 @@
             <%= yield %>
           </div>
           <div class="span3">
-            <div class="well sidebar-nav">
+            <div class="well sidebar-nav notification">
               <ul class="nav nav-list">
                 <% if user_signed_in? -%>
                   <% Notification.active.each do |notification| -%>
