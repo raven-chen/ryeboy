@@ -27,6 +27,8 @@ group :production do
   gem 'thin'
 end
 
+gem 'rails_12factor' # Disable inject plugin for heroku. https://devcenter.heroku.com/articles/ruby-support#injected-plugins
+
 group :development, :test do
   gem "pry"
 end
