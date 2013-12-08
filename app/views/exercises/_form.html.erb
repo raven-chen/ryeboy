@@ -1,10 +1,10 @@
 <div>
   <%= form_for(@exercise) do |f| %>
     <fieldset>
-      <legend><%= @task.try(:name) %>　打卡</legend>
-      <%= f.hidden_field :task_id, :value => @task.id %>
+      <legend><%= @exercise.task.try(:name) %>　打卡</legend>
+      <%= f.hidden_field :task_id, :value => @exercise.task.id %>
       <div class="task-description">
-        <%= @task.description %>
+        <%= @exercise.task.description %>
       </div>
 
       <label>日期</label>

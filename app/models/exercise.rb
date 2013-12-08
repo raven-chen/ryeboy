@@ -6,7 +6,7 @@ class Exercise < ActiveRecord::Base
 
   validates :user, :task, :date, :content, :presence => :true
   validates_uniqueness_of :date, :scope => [:user_id, :task_id]
-  validate :unique_for_common_task
+  validate :unique_for_common_task, :on => :create
 
   def unique_for_common_task
     return true if !task.common
