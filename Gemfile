@@ -28,6 +28,7 @@ group :production do
 end
 
 gem 'rails_12factor' # Disable inject plugin for heroku. https://devcenter.heroku.com/articles/ruby-support#injected-plugins
+gem "bugsnag"
 
 group :development, :test do
   gem "pry"
