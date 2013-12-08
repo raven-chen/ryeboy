@@ -8,7 +8,7 @@
 
     <label>功课</label>
     <div class="task-list">
-      <% Task.all.each do |task| -%>
+      <% Task.daily.each do |task| -%>
         <label class="checkbox-inline">
           <%= check_box_tag "task_ids[]", task.id, current_user.has_task?(task) %>
           <%= task.name %>

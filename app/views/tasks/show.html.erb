@@ -1,0 +1,56 @@
+<h1><%= @task.name %></h1>
+
+<fieldset>
+  <legend><%= @task.description %></legend>
+
+  <div>
+    <h3>我的回答</h3>
+    <% if @exercise.new_record? %>
+      <%= form_for(@exercise) do |f| %>
+        <%= f.hidden_field :task_id, :value => @task.id %>
+        <label>日期</label>
+        <%= f.text_field :date, :class => "js-date-field" %>
+        <label>内容</label>
+        <%= f.cktext_area :content, :class => "ckeditor" %>
+        <br>
+        <%= submit_tag "提交" %>
+      <% end -%>
+    <% else -%>
+      <%= @exercise.content %>
+      <%= link_to I18n.t("helpers.edit"), edit_exercise_path(@exercise) %>
+    <% end -%>
+  </div>
+
+  <div class="others-exercises">
+    <h2>其它同学的回答</h2>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th><%= Exercise.human_attribute_name("date") %></th>
+          <th><%= Exercise.human_attribute_name("content") %></th>
+          <th><%= User.human_attribute_name("name") %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @task.exercises.present? -%>
+          <% @task.exercises.each do |exercise| %>
+            <% next if exercise.user == current_user %>
+            <tr>
+              <td><%= I18n.l(exercise.date) %></td>
+              <td>
+                <div class="content">
+                  <%= exercise.content %>
+                </div>
+              </td>
+              <td><%= exercise.user.name %></td>
+            </tr>
+          <% end %>
+        <% else -%>
+          <tr>
+            <td colpan="3"><%= t("helpers.no_results") %></td>
+          </tr>
+        <% end -%>
+      </tbody>
+    </table>
+  </div>
+</fieldset>

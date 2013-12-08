@@ -15,6 +15,15 @@ class ExerciseTest < ActiveSupport::TestCase
     assert !dup_exercise.save
   end
 
+  should "common task's answer should be unique" do
+    @task.update_attributes!({:common => true})
+    Exercise.create!(:user_id => @user.id, :task_id => @task.id, :date => @date, :content => "test")
+    exercise = Exercise.new(:user_id => @user.id, :task_id => @task.id, :date => Date.yesterday, :content => "test")
+
+    assert !exercise.valid?
+    assert_equal I18n.t("activerecord.errors.messages.answer_on_common_task_should_be_unique"), exercise.errors[:user_id].first
+  end
+
   should "copy content from last exercise" do
     previous_one = Exercise.create!(:user_id => @user.id, :task_id => @task.id, :date => Date.yesterday, :content => "last one content")
 

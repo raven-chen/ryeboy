@@ -23,5 +23,9 @@ Tao::Application.routes.draw do
   resources :fines
   resources :fund_exchange_activities, :only => [:index, :show]
   resources :user_activities, :only => [:index, :show]
-  resources :tasks, :only => [:index, :show]
+  resources :tasks, :only => [:index, :show] do
+    collection do
+      get :common
+    end
+  end
 end

@@ -6,6 +6,13 @@ class Exercise < ActiveRecord::Base
 
   validates :user, :task, :date, :content, :presence => :true
   validates_uniqueness_of :date, :scope => [:user_id, :task_id]
+  validate :unique_for_common_task
+
+  def unique_for_common_task
+    return true if !task.common
+
+    errors.add(:user_id, I18n.t("activerecord.errors.messages.answer_on_common_task_should_be_unique")) if Exercise.exists?(:task_id => task.id, :user_id => user.id)
+  end
 
   def copy_content_from_previous_one
     self.content = previous_one.content if previous_one
