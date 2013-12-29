@@ -11,4 +11,5 @@
 .notification {
   height: 450px;
   overflow-y: scroll;
+  word-break: break-word;
 }
