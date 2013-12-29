@@ -5,6 +5,7 @@ CKEDITOR.editorConfig = function( config ) {
         { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
         { name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
         { name: 'tools' },
+        { name: 'insert' },
         { name: 'document',    groups: [ 'mode' ] },
         { name: 'others' },
         '/',
