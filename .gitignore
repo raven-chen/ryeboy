@@ -94,3 +94,5 @@ capybara-*html
 # vendor/extensions dummy applications.
 vendor/extensions/**/spec/dummy
 
+# Private Files
+info.csv
