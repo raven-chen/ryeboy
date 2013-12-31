@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :user_activities
   has_many :fund_exchange_activities
   has_many :fines
+  has_many :comments
 
   has_many :my_tasks, :class_name => "Task", :through => :user_tasks, :source => :task
   has_many :user_tasks

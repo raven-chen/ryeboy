@@ -47,7 +47,7 @@ class ExercisesController < ApplicationController
 
   def index
     if params[:task_id].blank? && params[:date].blank? && params[:user_id].blank?
-      @exercises = Exercise.newest
+      @exercises = Exercise.includes(:comments).newest
     else
       @exercises = Exercise.scoped
       @date = params[:date]
@@ -55,7 +55,7 @@ class ExercisesController < ApplicationController
       @user_id = params[:user_id]
 
       [:task_id, :date, :user_id].each do |attr|
-        @exercises = @exercises.where(attr => params[attr]) if params[attr].present?
+        @exercises = @exercises.includes(:comments).where(attr => params[attr]) if params[attr].present?
       end
 
       @exercises = @exercises.order("date DESC")

@@ -16,6 +16,7 @@
       <th><%= Exercise.human_attribute_name("date") %></th>
       <th><%= Exercise.human_attribute_name("content") %></th>
       <th><%= User.human_attribute_name("name") %></th>
+      <th><%= Comment.model_name.human %></th>
     </tr>
   </thead>
   <tbody>
@@ -30,7 +31,11 @@
             </div>
           </td>
           <td><%= exercise.user.name %></td>
+          <td><%= link_to t("helpers.comment"), new_comment_path(:exercise_id => exercise.id) %></td>
         </tr>
+
+        <%= render :partial => "comments", :locals => {:exercise => exercise} if exercise.comments.present? %>
+
       <% end %>
     <% else -%>
       <tr>

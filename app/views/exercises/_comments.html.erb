@@ -1,0 +1,12 @@
+<% exercise.comments.each do |comment| %>
+  <tr class="warning comment">
+    <td></td>
+    <td colspan="3"><%= comment.author.name %> : <%= comment.content %></td>
+    <td>
+      <% if false -%>
+        <%= link_to t("helpers.edit"), edit_comment_path(comment) %>
+        <%= link_to t("helpers.delete"), comment_path(comment), :method => :delete %>
+      <% end -%>
+    </td>
+  </tr>
+<% end -%>

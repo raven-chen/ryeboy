@@ -1,0 +1,16 @@
+<div>
+  <%= form_for(@comment, :role => "form") do |f| %>
+    <fieldset>
+      <legend></legend>
+      <%= f.hidden_field :exercise_id, :value => @comment.exercise.id %>
+      <div class="task-description">
+        <%= @comment.exercise.content %>
+      </div>
+
+      <br>
+      <%= f.text_area :content, :class => "full-width", :rows => "3" %>
+      <br>
+      <%= submit_tag t("helpers.submit") %>
+    </fieldset>
+  <% end -%>
+</div>
