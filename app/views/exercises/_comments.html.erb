@@ -3,9 +3,9 @@
     <td></td>
     <td colspan="3"><%= comment.author.name %> : <%= comment.content %></td>
     <td>
-      <% if false -%>
+      <% if current_user.id == comment.author_id -%>
         <%= link_to t("helpers.edit"), edit_comment_path(comment) %>
-        <%= link_to t("helpers.delete"), comment_path(comment), :method => :delete %>
+        <%= link_to '删除', comment, method: :delete, data: { confirm: I18n.t("helpers.are_you_sure") } %>
       <% end -%>
     </td>
   </tr>
