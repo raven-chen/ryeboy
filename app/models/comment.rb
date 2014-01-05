@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :content, :exercise_id
+  attr_accessible :content, :exercise_id, :read_at
 
   belongs_to :exercise, :inverse_of => :comments
   belongs_to :author, :class_name => "User"
