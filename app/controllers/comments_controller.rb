@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :find_comment, :on => [:edit, :update, :destroy]
+  before_filter :find_comment, :only => [:edit, :update, :destroy]
 
   def new
     exercise = Exercise.find(params[:exercise_id])
