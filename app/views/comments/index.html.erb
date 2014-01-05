@@ -1,0 +1,36 @@
+<h1><%= t("helpers.master_comment") %></h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th><%= Exercise.model_name.human %></th>
+      <th><%= Comment.model_name.human %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @comments.present? -%>
+      <% @comments.each do |comment| %>
+        <% exercise = comment.exercise -%>
+        <tr>
+          <td>
+              <%= exercise.task.name %> <%= exercise.user.name %> <%= I18n.l(exercise.date) %>
+              <br>
+              <br>
+              <div class="content">
+                <%= exercise.content %>
+              </div>
+          </td>
+          <td>
+            <div class="comment">
+              <%= comment.content %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    <% else -%>
+      <tr>
+        <td colpan="4"><%= t("helpers.no_results") %></td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>

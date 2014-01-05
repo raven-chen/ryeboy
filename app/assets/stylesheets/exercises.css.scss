@@ -23,3 +23,8 @@
 tr.comment td{
   border-top: none;
 }
+.comment {
+  width: 400px;
+  max-height: 200px !important;
+  overflow-y: scroll;
+}

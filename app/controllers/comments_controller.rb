@@ -1,6 +1,10 @@
 class CommentsController < ApplicationController
   before_filter :find_comment, :only => [:edit, :update, :destroy]
 
+  def index
+    @comments = Comment.master_comments
+  end
+
   def new
     exercise = Exercise.find(params[:exercise_id])
     @comment = exercise.comments.build

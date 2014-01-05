@@ -15,6 +15,7 @@ zh-CN:
     update_%{obj}_failed_%{errors}: "%{obj} 更新失败 %{errors}"
     delete_%{obj}_failed_%{errors}: "%{obj} 删除失败 %{errors}"
   helpers:
+    master_comment: "先生点评"
     comment: "点评"
     submit: "提交"
     finished: "完成"
