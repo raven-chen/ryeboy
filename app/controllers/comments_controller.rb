@@ -5,6 +5,11 @@ class CommentsController < ApplicationController
     @comments = Comment.master_comments
   end
 
+  def received
+    @unread_comments = Comment.unread(current_user)
+    @read_comments = Comment.received(current_user) - @unread_comments
+  end
+
   def new
     exercise = Exercise.find(params[:exercise_id])
     @comment = exercise.comments.build

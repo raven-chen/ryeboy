@@ -18,7 +18,12 @@ Tao::Application.routes.draw do
     end
   end
 
-  resources :comments
+  resources :comments do
+    collection do
+      get :received
+    end
+  end
+
   resources :documents, :only => [:index, :show]
   resources :groups, :only => [:index, :show]
   resources :fines

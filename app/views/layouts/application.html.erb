@@ -64,6 +64,9 @@
             <ul class="nav pull-right">
               <% if user_signed_in? -%>
                 <li><%= link_to "欢迎你 #{current_user.name || current_user.email}", root_path %></li>
+                <li>
+                  <%= link_to received_comment_text.html_safe, received_comments_path %>
+                </li>
                 <li><%= link_to "修改密码", edit_user_path(current_user) %></li>
                 <li><%= link_to "退出", destroy_user_session_path, :method => :delete %></li>
               <% else -%>

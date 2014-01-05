@@ -3,7 +3,7 @@ class Exercise < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :task
-  has_many :comments
+  has_many :comments, :inverse_of => :exercise
 
   validates :user, :task, :date, :content, :presence => :true
   validates_uniqueness_of :date, :scope => [:user_id, :task_id]
