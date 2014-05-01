@@ -67,3 +67,6 @@ module Tao
     config.assets.initialize_on_precompile = false
   end
 end
+
+require 'soft_deletion'
+

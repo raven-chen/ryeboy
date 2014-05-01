@@ -65,3 +65,4 @@ group :test do
 end
 
 gem "devise"
+gem "soft_deletion"

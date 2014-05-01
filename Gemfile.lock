@@ -170,6 +170,7 @@ GEM
     shoulda-matchers (2.4.0)
       activesupport (>= 3.0.0)
     slop (3.4.4)
+    soft_deletion (0.5.6)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -219,6 +220,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   shoulda-context
   shoulda-matchers
+  soft_deletion
   thin
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
