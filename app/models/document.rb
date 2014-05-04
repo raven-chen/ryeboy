@@ -3,5 +3,5 @@ class Document < ActiveRecord::Base
 
   belongs_to :author, :class_name => "User", :foreign_key => :author_id
 
-  validates :author, :name, :content, :presence => true
+  validates :name, :content, :presence => true
 end

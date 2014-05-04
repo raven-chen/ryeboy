@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
+
 <p style="font-weight: bold"><%= @document.name %></p>
+
 <div>
-  <%= @document.content %>
+  <%= sanitize @document.content %>
 </div>
 <br>
 <%= link_to 'Back', documents_path %>

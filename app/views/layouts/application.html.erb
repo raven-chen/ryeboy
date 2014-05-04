@@ -49,6 +49,7 @@
             <ul class="nav">
               <% if user_signed_in? -%>
                 <li><%= link_to '首页', root_path %></li>
+                <li><%= link_to '大白菜批发中心', documents_path %></li>
                 <li><%= link_to '一览众卡', exercises_path %></li>
                 <li><%= link_to '查卡监督', unfinished_exercises_path %></li>
                 <li><%= link_to '集体作业', common_tasks_path %></li>
@@ -86,16 +87,18 @@
             <%= yield %>
           </div>
           <div class="span3">
-            <div class="well sidebar-nav notification">
-              <ul class="nav nav-list">
-                <% if user_signed_in? -%>
-                  <% Notification.active.each do |notification| -%>
-                    <li><%= notification.updated_at.strftime(t("date.formats.default")) %></li>
-                    <li class="alert alert-danger"><%= notification.content %></li>
+            <% if !@hide_notification -%>
+              <div class="well sidebar-nav notification">
+                <ul class="nav nav-list">
+                  <% if user_signed_in? -%>
+                    <% Notification.active.each do |notification| -%>
+                      <li><%= notification.updated_at.strftime(t("date.formats.default")) %></li>
+                      <li class="alert alert-danger"><%= notification.content %></li>
+                    <% end -%>
                   <% end -%>
-                <% end -%>
-              </ul>
-            </div><!--/.well -->
+                </ul>
+              </div><!--/.well -->
+            <% end -%>
           </div><!--/span-->
         </div><!--/row-->
 
