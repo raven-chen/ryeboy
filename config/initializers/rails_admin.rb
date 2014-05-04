@@ -29,7 +29,7 @@ RailsAdmin.config do |config|
   # config.default_items_per_page = 20
 
   # Exclude specific models (keep the others):
-  config.excluded_models = ["UserTask", "Group", "UserActivity", "FundExchangeActivity", "Document"]
+  config.excluded_models = ["UserTask", "Group", "UserActivity", "FundExchangeActivity"]
 
   # Include specific models (exclude the others):
   # config.included_models = []
@@ -114,4 +114,14 @@ RailsAdmin.config do |config|
       end
     end
   end
+
+  config.model Document do
+    edit do
+      field :name
+      field :content do
+        ckeditor true
+      end
+    end
+  end
+
 end
