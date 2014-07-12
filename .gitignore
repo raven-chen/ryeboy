@@ -96,3 +96,4 @@ vendor/extensions/**/spec/dummy
 
 # Private Files
 info.csv
+users.csv
