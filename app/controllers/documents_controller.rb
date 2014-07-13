@@ -12,7 +12,6 @@ class DocumentsController < ApplicationController
   # GET /documents/1.json
   def show
     @document = Document.find(params[:id])
-    @hide_notification = true
 
     respond_to do |format|
       format.html # show.html.erb

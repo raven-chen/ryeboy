@@ -20,5 +20,6 @@ $(function(){
     "trigger" : "hover"
   });
 
+  $(".collapse").collapse()
   // $(".ckeditor").ckeditor(); already initialized by ckeditor gem
 });

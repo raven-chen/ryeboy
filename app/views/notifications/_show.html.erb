@@ -1,0 +1,23 @@
+<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+        通知
+      </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        <div class="well sidebar-nav notification" id="notification">
+          <ul class="nav nav-list">
+            <% if user_signed_in? -%>
+              <% Notification.active.each do |notification| -%>
+                <li><%= notification.updated_at.strftime(t("date.formats.default")) %></li>
+                <li class="alert alert-danger"><%= notification.content %></li>
+              <% end -%>
+            <% end -%>
+          </ul>
+        </div><!--/.well -->
+      </div>
+    </div>
+  </div>
+</div>
