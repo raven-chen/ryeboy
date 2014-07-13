@@ -1,12 +1,10 @@
 <% exercise.comments.each do |comment| %>
-  <tr class="warning comment">
-    <td></td>
-    <td colspan="3"><%= comment.author.name %> : <%= comment.content %></td>
-    <td>
-      <% if current_user.id == comment.author_id -%>
-        <%= link_to t("helpers.edit"), edit_comment_path(comment) %>
-        <%= link_to '删除', comment, method: :delete, data: { confirm: I18n.t("helpers.are_you_sure") } %>
-      <% end -%>
-    </td>
-  </tr>
+  <div class="comment">
+    <%= comment.author.name %> : <%= comment.content %>
+
+    <% if current_user.id == comment.author_id -%>
+      <%= link_to t("helpers.edit"), edit_comment_path(comment) %>
+      <%= link_to '删除', comment, method: :delete, data: { confirm: I18n.t("helpers.are_you_sure") } %>
+    <% end -%>
+  </div>
 <% end -%>

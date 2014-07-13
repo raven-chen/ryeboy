@@ -9,38 +9,28 @@
   </div>
 <% end -%>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th><%= Task.human_attribute_name("name") %></th>
-      <th><%= Exercise.human_attribute_name("date") %></th>
-      <th><%= Exercise.human_attribute_name("content") %></th>
-      <th><%= User.human_attribute_name("name") %></th>
-      <th><%= Comment.model_name.human %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if @exercises.present? -%>
-      <% @exercises.each do |exercise| %>
-        <tr>
-          <td><%= exercise.task.name %></td>
-          <td><%= exercise.date.strftime(t("date.formats.default")) %></td>
-          <td>
-            <div class="content">
-              <%= exercise.content %>
-            </div>
-          </td>
-          <td><%= exercise.user.name %></td>
-          <td><%= link_to t("helpers.comment"), new_comment_path(:exercise_id => exercise.id) %></td>
-        </tr>
+<div>
+  <% if @exercises.present? -%>
+  <ul id="exercise-list">
+    <% @exercises.each do |exercise| %>
+      <li class="exercise-container">
+        <ol class="title">
+          <li class="name"><%= exercise.task.name %></li>
+          <li><%= exercise.user.name %></li>
+          <li><%= exercise.date.strftime(t("date.formats.default")) %></li>
+          <li><%= link_to t("helpers.comment"), new_comment_path(:exercise_id => exercise.id) %></li>
+        </ol>
+        <div class="clearfix"></div>
+
+        <div class="content">
+          <%= exercise.content %>
+        </div>
 
         <%= render :partial => "comments", :locals => {:exercise => exercise} if exercise.comments.present? %>
-
-      <% end %>
-    <% else -%>
-      <tr>
-        <td colpan="4"><%= t("helpers.no_results") %></td>
-      </tr>
+      </li>
     <% end -%>
-  </tbody>
-</table>
+  </ul>
+  <% else -%>
+    <%= t("helpers.no_results") %>
+  <% end -%>
+</div>
