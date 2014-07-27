@@ -24,7 +24,7 @@ class Exercise < ActiveRecord::Base
   end
 
   def self.newest
-    order("date DESC").limit(20)
+    order("updated_at DESC").limit(20)
   end
 
   def previous_one
