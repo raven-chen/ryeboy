@@ -46,19 +46,31 @@ class ExercisesController < ApplicationController
   end
 
   def index
-    if params[:task_id].blank? && params[:date].blank? && params[:user_id].blank?
+    if params.blank?
       @exercises = Exercise.includes(:comments).newest
     else
-      @exercises = Exercise.scoped
-      @date = params[:date]
-      @task_id = params[:task_id]
-      @user_id = params[:user_id]
+      @options = %w{from to task_id user_id}.inject({}.with_indifferent_access) { |m, key|
+        params.delete(key) if params[key].blank? # Strip out blank string
 
-      [:task_id, :date, :user_id].each do |attr|
-        @exercises = @exercises.includes(:comments).where(attr => params[attr]) if params[attr].present?
-      end
+        case key
+        when "from"
+          m[key] = params[key] || 1.weeks.ago.to_date
+        when "to"
+          m[key] = params[key] || Date.today
+        else
+          m[key] = params[key] if params[key].present?
+        end
 
-      @exercises = @exercises.order("date DESC")
+        m
+      }
+
+      @exercises = Exercise.scoped.includes(:comments, :task, :user)
+
+      @exercises = @exercises.where(:date => @options[:from]..@options[:to])
+
+      [:task_id, :user_id].each {|attr| @exercises = @exercises.where(attr => params[attr]) if params[attr].present? }
+
+      @exercises = @exercises.order("updated_at DESC")
     end
   end
 
