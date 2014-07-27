@@ -2,7 +2,7 @@
 
 <%= form_tag(unfinished_exercises_path, :method => :get, :class => "form-inline", :role => "form") do %>
   <div class="searchfield-above-table">
-    <%= select_tag :ids, options_from_collection_for_select(User.all, "id", "name", @users), :multiple => true, :class => "form-control" %>
+    <%= select_tag :task_id, options_from_collection_for_select(Task.all, "id", "name", @task), :prompt => "功课", :class => "js-select2 normal-width-select2" %>
     <%= text_field_tag :start_date, @start_date, :class => "js-date-field", :placeholder => "开始日期" %>
     <%= text_field_tag :end_date, @end_date, :class => "js-date-field", :placeholder => "结束日期" %>
     <%= submit_tag "搜索", :class => "btn btn-default" %>
@@ -12,22 +12,20 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>日期</th>
-      <th>未完成人员名单</th>
+      <th><%= unfinished_title %> 未完成人员名单 </th>
     </tr>
   </thead>
 
   <tbody>
-    <% @unfinished_exercise_stats.each do |date, users| -%>
       <tr>
         <td>
-          <%= date.strftime(t("date.formats.default")) %>
-        </td>
-        <td>
-          <%= unfinished_exercises_detail(users) %>
+          <% if @unfinished_user_list -%>
+            <%= @unfinished_user_list.map(&:name).join(", ") %>
+          <% else -%>
+            <%= t("helpers.no_results") %>
+          <% end -%>
         </td>
       </tr>
-    <% end -%>
   </tbody>
 </table>
 

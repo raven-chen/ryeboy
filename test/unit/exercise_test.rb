@@ -53,41 +53,8 @@ class ExerciseTest < ActiveSupport::TestCase
       @date = Date.today
     end
 
-    should "Return blank hash if everyone are logged their exercise in time" do
-      [@user1, @user2, @user3].each do |user|
-        [@task1, @task2, @task3].each do |task|
-          Exercise.create!(:user_id => user.id, :task_id => task.id, :date => @date, :content => "test")
-        end
-      end
-
-      results = Exercise.unfinished_exercises [@user1, @user2, @user3], @date, @date
-      assert results[@date].blank?
-    end
-
-    should "Return not finish exercises user's exercise log stats include not logged in time" do
-      [@task1, @task2, @task3].each do |task|
-        Exercise.create!(:user_id => @user1.id, :task_id => task.id, :date => @date, :content => "test") # User1 finished all exercise
-      end
-
-      # user2 finished task1 but not log task2 in time.
-      Exercise.create!(:user_id => @user2.id, :task_id => @task1.id, :date => @date, :content => "test")
-      not_log_in_time = Exercise.create!(:user_id => @user2.id, :task_id => @task2.id, :date => @date.yesterday, :content => "test")
-      not_log_in_time.created_at = (@date.to_datetime + 19.hours)
-      not_log_in_time.save!
-
-      # user3 only has task 2 and 3 need to do. but he only finished task 2
-      @user3.my_tasks << [@task2, @task3]
-      Exercise.create!(:user_id => @user3.id, :task_id => @task2.id, :date => @date, :content => "test")
-
-      results = Exercise.unfinished_exercises [@user1, @user2, @user3], @date.yesterday, @date
-
-      assert_nil results[@date][@user1]
-      assert results[@date][@user2][@task1]
-      assert !results[@date][@user2][@task2]
-      assert !results[@date][@user2][@task3]
-      assert_nil results[@date][@user3][@task1]
-      assert results[@date][@user3][@task2]
-      assert !results[@date][@user3][@task3]
+    should "select all users that didn't log given taks's exercise in given date range" do
+      pending
     end
   end
 end
