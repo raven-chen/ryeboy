@@ -46,8 +46,10 @@ class ExercisesController < ApplicationController
   end
 
   def index
-    if params.blank?
-      @exercises = Exercise.includes(:comments).newest
+    @options = {}
+
+    if params.except("action", "controller").blank?
+      @exercises = Exercise.includes(:comments, :task, :user).newest
     else
       @options = %w{from to task_id user_id}.inject({}.with_indifferent_access) { |m, key|
         params.delete(key) if params[key].blank? # Strip out blank string
