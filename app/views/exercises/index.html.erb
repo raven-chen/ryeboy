@@ -12,9 +12,9 @@
 
 <div>
   <% if @exercises.present? -%>
-  <ul id="exercise-list">
+  <ul id="list">
     <% @exercises.each do |exercise| %>
-      <li class="exercise-container">
+      <li class="item-container">
         <ol class="title">
           <li class="name"><%= exercise.task.name %></li>
           <li><%= exercise.user.name %></li>

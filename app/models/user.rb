@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
       where("date = ? AND created_at <= ?", date, User.valid_exercise_log_date(date))
     end
   end
+  has_many :topics, :foreign_key => :author_id
 
   validates :sno, :email, :roles, :presence => true
   validates_uniqueness_of :sno

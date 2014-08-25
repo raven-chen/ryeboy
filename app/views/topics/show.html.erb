@@ -1,0 +1,32 @@
+<h2><%= @topic.title %></h2>
+<div>
+  <%= @topic.author.name %>
+</div>
+
+<div class="content-container">
+  <%= sanitize @topic.content %>
+</div>
+
+<div>
+  <ul id="list">
+    <% @topic.replies.each do |reply| %>
+      <li class="item-container">
+        <ol class="title">
+          <li><%= reply.author.name %></li>
+          <li><%= reply.created_at.strftime(t("date.formats.default")) %></li>
+        </ol>
+        <div class="clearfix"></div>
+
+        <div class="content">
+          <%= sanitize(reply.content) %>
+        </div>
+      </li>
+    <% end -%>
+  </ul>
+</div>
+
+<div class="new-reply">
+  <%= render 'replies/form' %>
+</div>
+
+<%= link_to('编辑', edit_topic_path(@topic), :class => "btn btn-primary") if is_own_topic?(@topic) %>

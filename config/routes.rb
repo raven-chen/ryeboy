@@ -1,4 +1,8 @@
 Tao::Application.routes.draw do
+  resources :replies, :except => [:index, :show, :new]
+
+  resources :topics
+
   devise_for :users
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
