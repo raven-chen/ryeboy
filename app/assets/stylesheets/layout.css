@@ -13,6 +13,15 @@
   overflow-y: scroll;
   word-break: break-word;
 }
+#notification-switcher {
+  display: block;
+  padding: 10px;
+  border: 1px solid #CCC;
+  border-top: none;
+}
+#notification-content {
+  display: none;
+}
 .top-button-area {
   margin-bottom: 30px;
 }
