@@ -10,7 +10,7 @@
     <% if unsigned_tasks.present? -%>
       <% unsigned_tasks.each do |task| -%>
       <tr>
-        <td><%= task.name %></td>
+        <td><%= link_to(task.name, new_exercise_path(:date => date, :task_id => task.id)) %></td>
         <td><%= link_to("打卡", new_exercise_path(:date => date, :task_id => task.id)) %></td>
       </tr>
       <% end -%>
