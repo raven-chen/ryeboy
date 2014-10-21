@@ -12,6 +12,8 @@ class RepliesController < ApplicationController
 
     respond_to do |format|
       if @reply.save
+        @reply.topic.touch
+
         format.html { redirect_to topic_path(@reply.topic), notice: 'Reply was successfully created.' }
         format.json { render json: @reply, status: :created, location: @reply }
       else
