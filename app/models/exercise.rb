@@ -5,7 +5,7 @@ class Exercise < ActiveRecord::Base
   belongs_to :task
   has_many :comments, :inverse_of => :exercise
 
-  validates :user, :task, :date, :content, :presence => :true
+  validates :user, :task, :date, :presence => :true
   validates_uniqueness_of :date, :scope => [:user_id, :task_id]
   validate :unique_for_common_task, :on => :create
 
@@ -25,6 +25,10 @@ class Exercise < ActiveRecord::Base
 
   def self.newest
     order("updated_at DESC").limit(20)
+  end
+
+  def quick_logged?
+    content.blank?
   end
 
   def previous_one

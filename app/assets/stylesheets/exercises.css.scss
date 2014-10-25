@@ -15,3 +15,9 @@
 .searchfield-above-table {
   text-align: right;
 }
+.form-in-table {
+  margin: 0;
+}
+table.has-inline-form tr td {
+  vertical-align: middle;
+}
