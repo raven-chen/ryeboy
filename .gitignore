@@ -44,11 +44,6 @@ vendor/cache
 # Acts as Indexed
 index/**/*
 
-# Refinery Specific
-*.tmproj
-*.autobackupbyrefinery.*
-refinerycms-*.gem
-
 # Mac
 .DS_Store
 
