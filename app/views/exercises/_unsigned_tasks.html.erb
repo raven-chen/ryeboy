@@ -8,11 +8,20 @@
 
   <tbody>
     <% if unsigned_tasks.present? -%>
-      <% unsigned_tasks.each do |task| -%>
-      <tr>
-        <td><%= link_to(task.name, new_exercise_path(:date => date, :task_id => task.id)) %></td>
-        <td><%= link_to("打卡", new_exercise_path(:date => date, :task_id => task.id)) %></td>
-      </tr>
+      <% separated_tasks = separate_tasks_by_required(unsigned_tasks) -%>
+      <% separated_tasks.each_with_index do |task_group, i| -%>
+        <% task_group.each do |task| -%>
+          <tr>
+            <td><%= link_to(task.name, new_exercise_path(:date => date, :task_id => task.id)) %></td>
+            <td><%= link_to("打卡", new_exercise_path(:date => date, :task_id => task.id)) %></td>
+          </tr>
+        <% end -%>
+
+        <% if i == 0 && separated_tasks[1].present? # display label after required tasks are rendered -%>
+          <tr class="warning">
+            <td colspan="2"><span class="label label-success">选修</span></td>
+          </tr>
+        <% end -%>
       <% end -%>
     <% else -%>
       <tr>

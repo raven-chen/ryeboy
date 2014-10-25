@@ -208,6 +208,7 @@ zh-CN:
         name: "名称"
         description: "描述"
         common: "集体作业"
+        required: "必修"
         due_date: "截至日期"
       exercise:
         date: "日期"

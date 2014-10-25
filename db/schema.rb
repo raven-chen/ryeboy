@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140825090141) do
+ActiveRecord::Schema.define(:version => 20141025001750) do
 
   create_table "comments", :force => true do |t|
     t.integer  "author_id"
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(:version => 20140825090141) do
     t.datetime "updated_at",  :null => false
     t.boolean  "common"
     t.date     "due_date"
+    t.boolean  "required"
   end
 
   create_table "topics", :force => true do |t|

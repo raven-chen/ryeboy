@@ -8,11 +8,20 @@
 
     <label>功课</label>
     <div class="task-list">
-      <% Task.daily.each do |task| -%>
-        <label class="checkbox-inline">
-          <%= check_box_tag "task_ids[]", task.id, current_user.has_task?(task) %>
-          <%= task.name %>
-        </label>
+      <% separated_tasks = separate_tasks_by_required(Task.daily) -%>
+      <% separated_tasks.each_with_index do |task_group, i| -%>
+        <% task_group.each do |task| -%>
+          <label class="checkbox-inline">
+            <%= check_box_tag "task_ids[]", task.id, current_user.has_task?(task) %>
+            <%= task.name %>
+          </label>
+        <% end -%>
+
+        <% if i == 0 && separated_tasks[1].present? # display label after required tasks are rendered -%>
+          <h4>
+            <span class="label label-success">选修</span>
+          </h4>
+        <% end -%>
       <% end -%>
     </div>
 

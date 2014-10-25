@@ -74,22 +74,24 @@ RailsAdmin.config do |config|
   config.model 'Task' do
     list do
       field :name
-      field :description
+      field :required
       field :common
       field :due_date
     end
 
     edit do
       field :name
-      field :description
       field :common
+      field :required
+      field :description
       field :due_date
     end
 
     show do
       field :name
-      field :description
       field :common
+      field :required
+      field :description
       field :due_date
     end
   end
