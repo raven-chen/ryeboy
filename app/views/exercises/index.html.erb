@@ -17,7 +17,7 @@
       <li class="item-container">
         <ol class="title">
           <li class="name">
-            <%= exercise.task.name %>
+            <%= exercise.task.try(:name) %>
             <% if exercise.quick_logged? -%>
               <span class="label label-success">快速打卡</span>
             <% end -%>
