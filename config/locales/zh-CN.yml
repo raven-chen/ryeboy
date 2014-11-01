@@ -129,7 +129,7 @@ zh-CN:
         col_sep_help: "留空使用默认设置（'%{value}'）" # value is default_col_sep
   date:
     formats:
-      default: "%y年%m月%-d日"
+      default: "%Y-%m-%d"
   notices:
     "false": "否"
     "true": "是"
