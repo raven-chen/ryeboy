@@ -15,11 +15,6 @@ $(function(){
     $(this).tab("show");
   });
 
-  $(".js-popover").popover({
-    "placement" : "top",
-    "trigger" : "hover"
-  });
-
   $("#notification-switcher").click(function(){
     $("#notification-content").toggle();
   });
