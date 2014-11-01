@@ -14,10 +14,18 @@
 }
 .searchfield-above-table {
   text-align: right;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #CCC;
+}
+#quick-search-conditions {
+  margin-top: 20px;
 }
 .form-in-table {
   margin: 0;
 }
 table.has-inline-form tr td {
   vertical-align: middle;
+}
+.no-result {
+  margin-top: 20px;
 }

@@ -48,32 +48,28 @@ class ExercisesController < ApplicationController
   def index
     @options = {}
 
-    if params.except("action", "controller").blank?
-      @exercises = Exercise.includes(:comments, :task, :user).newest
-    else
-      @options = %w{from to task_id user_id}.inject({}.with_indifferent_access) { |m, key|
-        params.delete(key) if params[key].blank? # Strip out blank string
+    @options = %w{from to task_id user_id}.inject({}.with_indifferent_access) { |m, key|
+      params.delete(key) if params[key].blank? # Strip out blank string
 
-        case key
-        when "from"
-          m[key] = params[key] || 1.weeks.ago.to_date
-        when "to"
-          m[key] = params[key] || Date.today
-        else
-          m[key] = params[key] if params[key].present?
-        end
+      case key
+      when "from"
+        m[key] = params[key] || 1.day.ago.to_date
+      when "to"
+        m[key] = params[key] || Date.current
+      else
+        m[key] = params[key] if params[key].present?
+      end
 
-        m
-      }
+      m
+    }
 
-      @exercises = Exercise.scoped.includes(:comments, :task, :user)
+    @exercises = Exercise.scoped.includes(:comments, :task, :user)
 
-      @exercises = @exercises.where(:date => @options[:from]..@options[:to])
+    @exercises = @exercises.where(:date => @options[:from]..@options[:to])
 
-      [:task_id, :user_id].each {|attr| @exercises = @exercises.where(attr => params[attr]) if params[attr].present? }
+    [:task_id, :user_id].each {|attr| @exercises = @exercises.where(attr => params[attr]) if params[attr].present? }
 
-      @exercises = @exercises.order("updated_at DESC")
-    end
+    @exercises = @exercises.order("updated_at DESC")
   end
 
   def my

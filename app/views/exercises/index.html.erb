@@ -8,35 +8,41 @@
     <%= text_field_tag :to, @options[:to], :class => "js-date-field", :placeholder => "结束日期" %>
     <%= submit_tag "搜索", :class => "btn btn-default" %>
   </div>
-<% end -%>
 
-<div>
-  <% if @exercises.present? -%>
-  <ul id="list">
-    <% @exercises.each do |exercise| %>
-      <li class="item-container">
-        <ol class="title">
-          <li class="name">
-            <%= exercise.task.try(:name) %>
-            <% if exercise.quick_logged? -%>
-              <span class="label label-success">快速打卡</span>
-            <% end -%>
-          </li>
-          <li><%= exercise.user.name %></li>
-          <li><%= exercise.date.strftime(t("date.formats.default")) %></li>
-          <li><%= link_to t("helpers.comment"), new_comment_path(:exercise_id => exercise.id) unless exercise.quick_logged? %></li>
-        </ol>
-        <div class="clearfix"></div>
+  <div>
+    <div id="quick-search-conditions">
+      <%= quick_date_select_buttons @options %>
+    </div>
 
-        <div class="content">
-          <%= exercise.content %>
-        </div>
+    <% if @exercises.present? -%>
+    <ul id="list">
+      <% @exercises.each do |exercise| %>
+        <li class="item-container">
+          <ol class="title">
+            <li class="name">
+              <%= exercise.task.try(:name) %>
+              <% if exercise.quick_logged? -%>
+                <span class="label label-success">快速打卡</span>
+              <% end -%>
+            </li>
+            <li class="text-muted"><%= exercise.user.name %></li>
+            <li class="text-muted"><%= exercise.date.strftime(t("date.formats.default")) %></li>
+            <li><%= link_to t("helpers.comment"), new_comment_path(:exercise_id => exercise.id) unless exercise.quick_logged? %></li>
+          </ol>
+          <div class="clearfix"></div>
 
-        <%= render :partial => "comments", :locals => {:exercise => exercise} if exercise.comments.present? %>
-      </li>
+          <div class="content">
+            <%= exercise.content %>
+          </div>
+
+          <%= render :partial => "comments", :locals => {:exercise => exercise} if exercise.comments.present? %>
+        </li>
+      <% end -%>
+    </ul>
+    <% else -%>
+      <div class="well no-result">
+        <%= t("helpers.no_results") %>
+      </div>
     <% end -%>
-  </ul>
-  <% else -%>
-    <%= t("helpers.no_results") %>
-  <% end -%>
-</div>
+  </div>
+<% end -%>
