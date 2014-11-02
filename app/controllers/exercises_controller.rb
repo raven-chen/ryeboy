@@ -95,4 +95,16 @@ class ExercisesController < ApplicationController
 
     @unfinished_user_list = Exercise.unfinished_user(@task, @start_date.to_date, @end_date.to_date) if @task
   end
+
+  def like
+    @exercise = Exercise.find(params[:id])
+
+    if current_user.liked_exercises.exclude?(@exercise)
+      current_user.liked_exercises << @exercise
+
+      render :json => ""
+    else
+      render :json => "", :status => :unprocessable_entity
+    end
+  end
 end

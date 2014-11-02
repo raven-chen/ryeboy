@@ -29,3 +29,13 @@ table.has-inline-form tr td {
 .no-result {
   margin-top: 20px;
 }
+.like-widget {
+  cursor: pointer;
+
+  .icon-heart.liked {
+    color: #a23a52;
+  }
+  .liked-count {
+    margin-left: 5px;
+  }
+}

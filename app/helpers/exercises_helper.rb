@@ -22,4 +22,12 @@ module ExercisesHelper
 
     result.join(" ").html_safe
   end
+
+  def like_widget user, exercise
+    icon_class = user.liked_exercises.include?(exercise) ? "icon-heart hint-text liked" : "icon-heart-empty hint-text"
+    icon = content_tag(:i, nil, :class => icon_class)
+    counter = content_tag(:span, exercise.fan, :class => "counter liked-count")
+
+    content_tag(:span, icon + counter + "人喜欢", :class => "js-like-exercise like-widget hint-text", "data-exercise-id" => exercise.id).html_safe
+  end
 end

@@ -19,6 +19,7 @@ Tao::Application.routes.draw do
     collection do
       get :my
       get :unfinished
+      post :like
     end
   end
 
