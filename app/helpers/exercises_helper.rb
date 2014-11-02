@@ -23,6 +23,18 @@ module ExercisesHelper
     result.join(" ").html_safe
   end
 
+  def order_buttons options
+    result = [
+      ["最受欢迎", "favorite"]
+#      ["最近被评论", "recent_commented"]
+    ].map do |item|
+      active_class = options[:order] == item[1] ? "btn-info active" : "btn-info"
+      content_tag(:button, item[0], :class => "btn #{active_class} js-order-select", "data-order" => item[1])
+    end
+
+    result.join(" ").html_safe
+  end
+
   def like_widget user, exercise
     icon_class = user.liked_exercises.include?(exercise) ? "icon-heart hint-text liked" : "icon-heart-empty hint-text"
     icon = content_tag(:i, nil, :class => icon_class)

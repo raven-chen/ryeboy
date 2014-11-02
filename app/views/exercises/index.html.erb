@@ -6,12 +6,14 @@
     <%= select_tag :task_id, options_from_collection_for_select(Task.all, "id", "name", @options[:task_id]), :prompt => "功课", :class => "js-select2 normal-width-select2" %>
     <%= text_field_tag :from, @options[:from], :class => "js-date-field", :placeholder => "起始日期" %>
     <%= text_field_tag :to, @options[:to], :class => "js-date-field", :placeholder => "结束日期" %>
+    <%= hidden_field_tag :order, @options[:order] %>
     <%= submit_tag "搜索", :class => "btn btn-default" %>
   </div>
 
   <div>
     <div id="quick-search-conditions">
       <%= quick_date_select_buttons @options %>
+      <%= order_buttons @options %>
     </div>
 
     <% if @exercises.present? -%>

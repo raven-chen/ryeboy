@@ -5,6 +5,11 @@ $(function(){
     $("form").submit();
   });
 
+  $("#quick-search-conditions button.js-order-select").click(function(){
+    $("#order").val($(this).data("order"));
+    $("form").submit();
+  });
+
   $(".js-like-exercise").click(function(){
     var view = $(this);
 

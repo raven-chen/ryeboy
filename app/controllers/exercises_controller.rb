@@ -48,7 +48,7 @@ class ExercisesController < ApplicationController
   def index
     @options = {}
 
-    @options = %w{from to task_id user_id}.inject({}.with_indifferent_access) { |m, key|
+    @options = %w{from to task_id user_id order}.inject({}.with_indifferent_access) { |m, key|
       params.delete(key) if params[key].blank? # Strip out blank string
 
       case key
@@ -69,7 +69,12 @@ class ExercisesController < ApplicationController
 
     [:task_id, :user_id].each {|attr| @exercises = @exercises.where(attr => params[attr]) if params[attr].present? }
 
-    @exercises = @exercises.order("updated_at DESC")
+    @exercises = case @options[:order]
+                   when "favorite"
+                     @exercises.order("fan DESC, updated_at")
+                   else
+                     @exercises.order("updated_at DESC")
+                 end
   end
 
   def my
