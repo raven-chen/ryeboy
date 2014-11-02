@@ -20,6 +20,7 @@ Tao::Application.routes.draw do
       get :my
       get :unfinished
       post :like
+      post :dislike
     end
   end
 

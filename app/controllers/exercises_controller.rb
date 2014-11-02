@@ -107,4 +107,16 @@ class ExercisesController < ApplicationController
       render :json => "", :status => :unprocessable_entity
     end
   end
+
+  def dislike
+    @exercise = Exercise.find(params[:id])
+
+    if current_user.liked_exercises.include?(@exercise)
+      current_user.liked_exercises.delete @exercise
+
+      render :json => ""
+    else
+      render :json => "", :status => :unprocessable_entity
+    end
+  end
 end

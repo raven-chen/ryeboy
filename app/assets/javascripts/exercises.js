@@ -8,20 +8,38 @@ $(function(){
   $(".js-like-exercise").click(function(){
     var view = $(this);
 
-    $.post(
-      Tao.Routes.likeExercises,
-      { id: view.data("exercise-id") },
+    if (view.find("i").hasClass("liked")) {
+      $.post(
+        Tao.Routes.disLikeExercises,
+        { id: view.data("exercise-id") },
 
-      function() {
-        var icon = view.find("i");
-        var counter = view.find(".counter");
-        var oldCount = parseInt(counter.text());
+        function() {
+          var icon = view.find("i");
+          var counter = view.find(".counter");
+          var oldCount = parseInt(counter.text());
 
-        icon.removeClass("icon-heart-empty").addClass("liked icon-heart");
-        counter.text(oldCount + 1);
-      }
-    ).fail(function() {
-      alert("未成功");
-    });
+          icon.removeClass("liked icon-heart").addClass("icon-heart-empty");
+          counter.text(oldCount - 1);
+        }
+      ).fail(function() {
+        alert("未成功");
+      });
+    } else {
+      $.post(
+        Tao.Routes.likeExercises,
+        { id: view.data("exercise-id") },
+
+        function() {
+          var icon = view.find("i");
+          var counter = view.find(".counter");
+          var oldCount = parseInt(counter.text());
+
+          icon.removeClass("icon-heart-empty").addClass("liked icon-heart");
+          counter.text(oldCount + 1);
+        }
+      ).fail(function() {
+        alert("未成功");
+      });
+    }
   });
 });
