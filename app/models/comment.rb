@@ -11,7 +11,7 @@ class Comment < ActiveRecord::Base
     self.user_id = exercise.user_id
   }
 
-  scope :master_comments, includes(:exercise => [:task, :user]).where(:author_id => User.master.id).order("updated_at DESC")
+  scope :master_comments, includes(:exercise => [:task, :user]).where(:author_id => User.master.try(:id)).order("updated_at DESC")
   scope :received, lambda { |user| includes(:exercise => [:task, :user], :author => []).where(:user_id => user.id).order("updated_at DESC") }
   scope :unread, lambda { |user| includes(:exercise => [:task, :user], :author => []).where(:user_id => user.id, :read_at => nil).order("updated_at DESC") }
 
