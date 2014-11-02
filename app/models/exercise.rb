@@ -4,6 +4,8 @@ class Exercise < ActiveRecord::Base
   belongs_to :user
   belongs_to :task
   has_many :comments, :inverse_of => :exercise
+  has_many :fans, :through => :interests, :class_name => "User", :source => :user, :dependent => :destroy
+  has_many :interests
 
   validates :user, :task, :date, :presence => :true
   validates_uniqueness_of :date, :scope => [:user_id, :task_id]

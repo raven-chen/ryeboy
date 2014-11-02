@@ -24,6 +24,9 @@ class User < ActiveRecord::Base
   end
   has_many :topics, :foreign_key => :author_id
 
+  has_many :liked_exercises, :through => :interests, :class_name => "Exercise", :source => :exercise, :dependent => :destroy
+  has_many :interests
+
   validates :sno, :email, :roles, :presence => true
   validates_uniqueness_of :sno
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141025001750) do
+ActiveRecord::Schema.define(:version => 20141102013859) do
 
   create_table "comments", :force => true do |t|
     t.integer  "author_id"
@@ -40,8 +40,10 @@ ActiveRecord::Schema.define(:version => 20141025001750) do
     t.text     "content"
     t.integer  "task_id"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.boolean  "finished"
+    t.integer  "fan",        :default => 0
   end
 
   create_table "fines", :force => true do |t|
@@ -74,6 +76,15 @@ ActiveRecord::Schema.define(:version => 20141025001750) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "interests", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "exercise_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "interests", ["user_id", "exercise_id"], :name => "index_interests_on_user_id_and_exercise_id", :unique => true
 
   create_table "notifications", :force => true do |t|
     t.text     "content"
