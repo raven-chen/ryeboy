@@ -7,16 +7,18 @@ worker_processes 1
 
 # Help ensure your application will always spawn in the symlinked
 # "current" directory that Capistrano sets up.
-home_dir = "/home/app/tao"
+home_dir = ENV['HOME_DIR'] || "/home/app/tao"
+unicorn_sock_file = ENV['UNICORN_SOCK_FILE'] || "/tmp/unicorn.sock"
+
 working_directory home_dir # available in 0.94.0+
 
-listen 8080, :tcp_nopush => true
+listen unicorn_sock_file
 
 # nuke workers after 30 seconds instead of 60 seconds (the default)
 timeout 30
 
 # feel free to point this anywhere accessible on the filesystem
-pid_file = "#{home_dir}/tmp/pids/unicorn.pid"
+pid_file = ENV['UNICORN_PID_FILE'] || "/tmp/unicorn.pid"
 pid pid_file
 
 # By default, the Unicorn logger will write to stderr.
