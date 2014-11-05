@@ -23,7 +23,7 @@ end
 
 group :production do
   gem 'fog'
-  gem 'thin'
+  gem 'unicorn'
 end
 
 gem 'rails_12factor' # Disable inject plugin for heroku. https://devcenter.heroku.com/articles/ruby-support#injected-plugins
