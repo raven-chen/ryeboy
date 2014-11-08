@@ -6,7 +6,7 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
+gem 'mysql2'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -23,8 +23,7 @@ end
 
 group :production do
   gem 'fog'
-  gem 'pg'
-  gem 'thin'
+  gem 'unicorn'
 end
 
 gem 'rails_12factor' # Disable inject plugin for heroku. https://devcenter.heroku.com/articles/ruby-support#injected-plugins
