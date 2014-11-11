@@ -17,33 +17,7 @@
     </div>
 
     <% if @exercises.present? -%>
-    <ul id="list">
-      <% @exercises.each do |exercise| %>
-        <li class="item-container">
-          <ol class="title">
-            <li class="name">
-              <%= exercise.task.try(:name) %>
-              <% if exercise.quick_logged? -%>
-                <span class="label label-success">快速打卡</span>
-              <% end -%>
-            </li>
-            <li class="hint-text"><%= exercise.user.name %></li>
-            <li class="hint-text"><%= exercise.date.strftime(t("date.formats.default")) %></li>
-            <li>
-              <%= like_widget(current_user, exercise) %>
-            </li>
-            <li><%= link_to t("helpers.comment"), new_comment_path(:exercise_id => exercise.id) unless exercise.quick_logged? %></li>
-          </ol>
-          <div class="clearfix"></div>
-
-          <div class="content">
-            <%= exercise.content %>
-          </div>
-
-          <%= render :partial => "comments", :locals => {:exercise => exercise} if exercise.comments.present? %>
-        </li>
-      <% end -%>
-    </ul>
+      <%= render :partial => "list", locals: { exercises: @exercises } %>
     <% else -%>
       <div class="well no-result">
         <%= t("helpers.no_results") %>

@@ -32,9 +32,14 @@
 
   .content {
     width: 100%;
-    max-height: 200px !important;
+    max-height: 400px !important;
     overflow-y: scroll;
-    margin: 10px 0 0 20px;
+    padding: 20px;
+
+    &:hover {
+      background-color: #f2f1d7;
+      color: lightseagreen;
+    }
   }
   tr.comment td{
     border-top: none;
