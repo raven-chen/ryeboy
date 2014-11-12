@@ -20,5 +20,9 @@ $(function(){
   });
 
   $(".js-select2").select2();
-  // $(".ckeditor").ckeditor(); already initialized by ckeditor gem
+
+  $(".rich-editor").trumbowyg({
+    lang: "zh_cn",
+    autogrow: true
+  });
 });

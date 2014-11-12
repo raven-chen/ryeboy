@@ -120,9 +120,7 @@ RailsAdmin.config do |config|
   config.model Document do
     edit do
       field :name
-      field :content do
-        ckeditor true
-      end
+      field :content
     end
   end
 

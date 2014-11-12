@@ -1,5 +1,6 @@
 # m h  dom mon dow   command
 MAILTO=enn.raven@gmail.com
+PATH=/usr/bin
 
 # Backup tao_production db
 * 0 * * * mysqldump -utao -pKiBr11EY23nj --sock=/tmp/mysql.sock tao_production | gzip > /home/app/backups/tao_`date +'%Y-%m-%d-%T'`.sql.gz
