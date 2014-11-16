@@ -3,6 +3,8 @@
     <fieldset>
       <legend></legend>
       <%= f.hidden_field :exercise_id, :value => @comment.exercise.id %>
+      <%= f.hidden_field :replied_comment_id, :value => @comment.replied_comment_id %>
+
       <div class="task-description">
         <%= @comment.exercise.content %>
       </div>

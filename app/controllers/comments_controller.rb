@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
 
   def new
     exercise = Exercise.find(params[:exercise_id])
-    @comment = exercise.comments.build
+    @comment = exercise.comments.build(replied_comment_id: params[:replied_comment_id])
   end
 
   def create

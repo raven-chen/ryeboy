@@ -42,4 +42,10 @@ module ExercisesHelper
 
     content_tag(:span, icon + counter + "人喜欢", :class => "js-like-exercise like-widget hint-text", "data-exercise-id" => exercise.id).html_safe
   end
+
+  def comment_detail comment
+    author_info = [content_tag(:span, comment.author.name, class: "username")]
+    author_info.concat [t('helpers.reply'), content_tag(:span, comment.replied_comment.author.name, class: "username")] if comment.reply_to_comment?
+    "#{author_info.join(" ")} : #{comment.content}".html_safe
+  end
 end
