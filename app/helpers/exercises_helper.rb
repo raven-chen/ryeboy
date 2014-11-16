@@ -25,11 +25,11 @@ module ExercisesHelper
 
   def order_buttons options
     result = [
-      ["最受欢迎", "favorite"]
-#      ["最近被评论", "recent_commented"]
+      ["最受欢迎", "favorite", "btn-info"],
+      ["求点评!", "ask_for_comment", "btn-success"]
     ].map do |item|
-      active_class = options[:order] == item[1] ? "btn-info active" : "btn-info"
-      content_tag(:button, item[0], :class => "btn #{active_class} js-order-select", "data-order" => item[1])
+      active_class = "active" if options[:order] == item[1]
+      content_tag(:button, item[0], :class => "btn #{active_class} js-order-select #{item[2]}", "data-order" => item[1])
     end
 
     result.join(" ").html_safe

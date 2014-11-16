@@ -72,6 +72,8 @@ class ExercisesController < ApplicationController
     @exercises = case @options[:order]
                    when "favorite"
                      @exercises.order("fan DESC, updated_at")
+                   when "ask_for_comment"
+                     @exercises.order("ask_for_comment DESC, updated_at")
                    else
                      @exercises.order("updated_at DESC")
                  end

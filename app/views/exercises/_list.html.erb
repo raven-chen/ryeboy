@@ -2,6 +2,9 @@
   <% exercises.each do |exercise| %>
     <li class="item-container">
       <ol class="title">
+        <li>
+          <%= content_tag(:i, nil, :class => "icon-comments text-success") if exercise.ask_for_comment? %>
+        </li>
         <li class="name">
           <%= exercise.task.try(:name) %>
           <% if exercise.quick_logged? -%>

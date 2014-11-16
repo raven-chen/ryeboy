@@ -1,5 +1,5 @@
 class Exercise < ActiveRecord::Base
-  attr_accessible :content, :date, :task_id, :user_id
+  attr_accessible :content, :date, :task_id, :user_id, :ask_for_comment
 
   belongs_to :user
   belongs_to :task
