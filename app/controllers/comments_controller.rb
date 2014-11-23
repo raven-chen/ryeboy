@@ -7,9 +7,9 @@ class CommentsController < ApplicationController
 
   def received
     @unread_comments = Comment.unread(current_user)
-    @unread_comments.update_all(:read_at => Time.now)
 
     @read_comments = Comment.received(current_user) - @unread_comments
+    @unread_comments.update_all(:read_at => Time.now)
   end
 
   def new
