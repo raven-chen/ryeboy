@@ -16,8 +16,8 @@
         <%= submit_tag "提交" %>
       <% end -%>
     <% else -%>
-      <%= @exercise.content %>
       <%= link_to I18n.t("helpers.edit"), edit_exercise_path(@exercise) %>
+      <%= render :partial => "exercises/list", locals: { exercises: [@exercise] } %>
     <% end -%>
   </div>
 
