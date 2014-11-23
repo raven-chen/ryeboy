@@ -1,5 +1,5 @@
+#!/bin/sh
 # Start and stop servers
-#
 
 function start_server() {
   home_dir=$1
