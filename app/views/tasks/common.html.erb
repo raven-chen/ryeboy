@@ -3,17 +3,17 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th><%= Task.human_attribute_name("name") %></th>
-      <th><%= Task.human_attribute_name("description") %></th>
-      <th><%= I18n.t("helpers.status") %></th>
-      <th><%= I18n.t("helpers.actions") %></th>
+      <th width="200"><%= Task.human_attribute_name("name") %></th>
+      <th width="300"><%= Task.human_attribute_name("description") %></th>
+      <th width="100"><%= I18n.t("helpers.status") %></th>
+      <th width="100"><%= I18n.t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% if @tasks.present? -%>
       <% @tasks.each do |task| %>
         <tr>
-          <td><%= task.name %></td>
+          <td><%= link_to task.name, task_path(task) %></td>
           <td>
             <div class="content">
               <%= task.description %>
