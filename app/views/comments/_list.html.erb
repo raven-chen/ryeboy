@@ -3,6 +3,7 @@
     <tr>
       <th><%= Exercise.model_name.human %></th>
       <th><%= Comment.model_name.human %></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -24,6 +25,9 @@
               <br>
               <%= comment.content %>
             </div>
+          </td>
+          <td>
+            <%= link_to t("helpers.view"), exercise_path(exercise) %>
           </td>
         </tr>
       <% end %>
