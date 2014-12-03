@@ -21,17 +21,9 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
     @comment.author = current_user
 
-    if @comment.save
-      flash[:notice]= I18n.t("notices.create_%{obj}_successfully", :obj => Comment.model_name.human)
-
-      redirect_to exercises_path
-    else
-      flash[:alert]= I18n.t("notices.create_%{obj}_failed_%{errors}", :obj => Comment.model_name.human,
-                            :errors => "<br> #{@comment.errors.messages.values.join}")
-
-      respond_to do |format|
-        format.html { render :new }
-      end
+    unless @comment.save
+      @notice = I18n.t("notices.create_%{obj}_failed_%{errors}", :obj => Comment.model_name.human,
+            :errors => "<br> #{@comment.errors.messages.values.join}")
     end
   end
 

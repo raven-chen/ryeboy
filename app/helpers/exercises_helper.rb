@@ -48,4 +48,12 @@ module ExercisesHelper
     author_info.concat [t('helpers.reply'), content_tag(:span, comment.replied_comment.author.name, class: "username")] if comment.reply_to_comment?
     "#{author_info.join(" ")} : #{comment.content}".html_safe
   end
+
+  def comment_place_holder comment
+    if comment.reply_to_comment?
+      "#{t('helpers.reply')} : #{comment.replied_comment.author.name}"
+    else
+      "新点评"
+    end
+  end
 end

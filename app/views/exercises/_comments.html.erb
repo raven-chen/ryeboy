@@ -1,12 +1,3 @@
 <% exercise.comments.each do |comment| %>
-  <div class="comment">
-    <%= comment_detail comment %>
-
-    <% if current_user.id == comment.author_id -%>
-      <%= link_to t("helpers.edit"), edit_comment_path(comment) %>
-      <%= link_to '删除', comment, method: :delete, data: { confirm: I18n.t("helpers.are_you_sure") } %>
-    <% else -%>
-      <%= link_to t("helpers.reply"), new_comment_path(:exercise_id => exercise.id, :replied_comment_id => comment.id) %>
-    <% end -%>
-  </div>
+  <%= render partial: "comments/show", locals: { comment: comment } %>
 <% end -%>

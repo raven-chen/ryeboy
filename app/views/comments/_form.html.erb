@@ -1,16 +1,11 @@
 <div>
-  <%= form_for(@comment, :role => "form") do |f| %>
+  <%= form_for(@comment, :role => "form", :remote => true) do |f| %>
     <fieldset>
-      <legend></legend>
       <%= f.hidden_field :exercise_id, :value => @comment.exercise.id %>
       <%= f.hidden_field :replied_comment_id, :value => @comment.replied_comment_id %>
 
-      <div class="task-description">
-        <%= @comment.exercise.content %>
-      </div>
-
       <br>
-      <%= f.text_area :content, :class => "full-width", :rows => "3" %>
+      <%= f.text_area :content, :class => "full-width", :rows => "2", :placeholder => comment_place_holder(@comment) %>
       <br>
       <%= submit_tag t("helpers.submit") %>
     </fieldset>

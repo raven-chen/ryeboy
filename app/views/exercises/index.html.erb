@@ -10,18 +10,19 @@
     <%= submit_tag "搜索", :class => "btn btn-default" %>
   </div>
 
-  <div>
-    <div id="quick-search-conditions">
-      <%= quick_date_select_buttons @options %>
-      <%= order_buttons @options %>
-    </div>
 
-    <% if @exercises.present? -%>
-      <%= render :partial => "list", locals: { exercises: @exercises } %>
-    <% else -%>
-      <div class="well no-result">
-        <%= t("helpers.no_results") %>
-      </div>
-    <% end -%>
+  <div id="quick-search-conditions">
+    <%= quick_date_select_buttons @options %>
+    <%= order_buttons @options %>
   </div>
 <% end -%>
+
+<div>
+  <% if @exercises.present? -%>
+    <%= render :partial => "list", locals: { exercises: @exercises } %>
+  <% else -%>
+    <div class="well no-result">
+      <%= t("helpers.no_results") %>
+    </div>
+  <% end -%>
+</div>

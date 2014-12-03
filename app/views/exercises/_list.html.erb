@@ -16,7 +16,7 @@
         <li>
           <%= like_widget(current_user, exercise) %>
         </li>
-        <li><%= link_to t("helpers.comment"), new_comment_path(:exercise_id => exercise.id) unless exercise.quick_logged? %></li>
+        <li><%= link_to t("helpers.comment"), new_comment_path(:exercise_id => exercise.id), remote: true unless exercise.quick_logged? %></li>
       </ol>
       <div class="clearfix"></div>
 
@@ -24,7 +24,11 @@
         <%= exercise.content %>
       </div>
 
-      <%= render :partial => "exercises/comments", :locals => {:exercise => exercise} if exercise.comments.present? %>
+      <div id=<%= "comments-of-#{exercise.id}" %>>
+        <%= render :partial => "exercises/comments", :locals => {:exercise => exercise} if exercise.comments.present? %>
+      </div>
+      <div id=<%= "new-comment-for-#{exercise.id}" %>></div>
+      <div id=<%= "new-comment-for-#{exercise.id}-errors" %> class="text-danger"></div>
     </li>
   <% end -%>
 </ul>
