@@ -56,4 +56,8 @@ module ExercisesHelper
       "新点评"
     end
   end
+
+  def visible_exercises task
+    (task.visible_to_admin_only && !current_user.master?) ? [] : task.exercises
+  end
 end

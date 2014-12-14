@@ -48,6 +48,10 @@ class User < ActiveRecord::Base
     where(:sno => "0").first
   end
 
+  def master?
+    self.id == User.master.id
+  end
+
   def has_task? task
     my_tasks.include?(task)
   end

@@ -83,6 +83,7 @@ RailsAdmin.config do |config|
       field :name
       field :common
       field :required
+      field :visible_to_admin_only
       field :description
       field :due_date
     end

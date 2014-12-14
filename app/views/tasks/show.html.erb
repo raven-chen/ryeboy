@@ -4,7 +4,9 @@
   <legend><%= @task.description %></legend>
 
   <div>
-    <h3>我的回答</h3>
+    <h3>我的回答</h3>(<%= content_tag(:span, "仅自己与老师可见", :class => "text-danger") if @task.visible_to_admin_only -%>)
+    <div class="clearfix"></div>
+
     <% if @exercise.new_record? %>
       <%= form_for(@exercise) do |f| %>
         <%= f.hidden_field :task_id, :value => @task.id %>
@@ -23,7 +25,7 @@
 
   <div class="others-exercises">
     <% if @task.exercises.present? -%>
-      <%= render :partial => "exercises/list", locals: { exercises: @task.exercises } %>
+      <%= render :partial => "exercises/list", locals: { exercises: visible_exercises(@task) } %>
     <% else -%>
       <div class="well no-result">
         <%= t("helpers.no_results") %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141116020756) do
+ActiveRecord::Schema.define(:version => 20141214091018) do
 
   create_table "comments", :force => true do |t|
     t.integer  "author_id"
@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(:version => 20141116020756) do
     t.boolean  "common"
     t.date     "due_date"
     t.boolean  "required"
+    t.boolean  "visible_to_admin_only"
   end
 
   create_table "topics", :force => true do |t|
