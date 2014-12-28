@@ -5,24 +5,5 @@
 </div>
 
 <div>
-  <% if @topics.present? -%>
-  <ul id="list">
-    <% @topics.each do |topic| %>
-      <li class="item-container">
-        <ol class="title">
-          <li class="name"><%= link_to topic.title, topic_path(topic) %></li>
-          <li><%= topic.author.name %></li>
-          <li><%= topic.created_at.strftime(t("date.formats.default")) %></li>
-        </ol>
-        <div class="clearfix"></div>
-
-        <div class="content">
-          <%= sanitize(topic.content) %>
-        </div>
-      </li>
-    <% end -%>
-  </ul>
-  <% else -%>
-    <%= t("helpers.no_results") %>
-  <% end -%>
+  <%= render :partial => "topics/topic_list", :locals => { :topics => @topics } %>
 </div>

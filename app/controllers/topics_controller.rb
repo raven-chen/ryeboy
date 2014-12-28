@@ -2,7 +2,7 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
-    @topics = Topic.all(order: "updated_at DESC")
+    @topics = Topic.includes(:replies).all(order: "updated_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
