@@ -3,6 +3,7 @@
   <span class="hint-text"><%= @topic.author.name %></span>
   发布于
   <span class="hint-text"><%= @topic.created_at.strftime(t("time.formats.default")) %></span>
+  <%= link_to "编辑", edit_topic_path(@topic) if current_user == @topic.author %>
 </div>
 
 <div class="well">
