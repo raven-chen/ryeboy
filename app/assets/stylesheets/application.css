@@ -9,5 +9,16 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require jquery.ui.datepicker
- *= require_tree .
+ *= require bootstrap_and_overrides
+ *= require select2-bootstrap
+ *= require select2
+ *= require trumbowyg.min
+ *= require layout
+
+ *= require exercises
+ *= require list
+ *= require replies
+ *= require tasks
+ *= require topics
+ *= require z_custom
  */
