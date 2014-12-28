@@ -1,5 +1,5 @@
 <div>
-  <%= form_for(@comment, :role => "form", :remote => true) do |f| %>
+  <%= form_for(@comment, :role => "form", :remote => @comment.new_record?) do |f| %>
     <fieldset>
       <%= f.hidden_field :exercise_id, :value => @comment.exercise.id %>
       <%= f.hidden_field :replied_comment_id, :value => @comment.replied_comment_id %>
