@@ -1,19 +1,21 @@
-<h2><%= @topic.title %></h2>
-<div>
-  <%= @topic.author.name %>
+<div class="topic-title">
+  <h2><%= @topic.title %></h2>
+  <span class="hint-text"><%= @topic.author.name %></span>
+  发布于
+  <span class="hint-text"><%= @topic.created_at.strftime(t("time.formats.default")) %></span>
 </div>
 
-<div class="content-container">
+<div class="well">
   <%= sanitize @topic.content %>
 </div>
 
-<div>
+<div class="replies">
   <ul id="list">
     <% @topic.replies.each do |reply| %>
-      <li class="item-container">
-        <ol class="title">
-          <li><%= reply.author.name %></li>
-          <li><%= reply.created_at.strftime(t("date.formats.default")) %></li>
+      <li class="reply-container">
+        <ol class="title reply">
+          <li class="hint-text author-name"><%= reply.author.name %></li>
+          <li class="hint-text"><%= reply.created_at.strftime(t("time.formats.default")) %></li>
         </ol>
         <div class="clearfix"></div>
 

@@ -130,6 +130,10 @@ zh-CN:
   date:
     formats:
       default: "%Y-%m-%d"
+  time:
+    formats:
+      default: '%Y-%m-%d %H:%M:%S'
+
   notices:
     "false": "否"
     "true": "是"
