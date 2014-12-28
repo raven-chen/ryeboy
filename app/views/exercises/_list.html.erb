@@ -10,7 +10,7 @@
         <% end -%>
 
         <li class="name">
-          <%= exercise.task.try(:name) %>
+          <%= link_to exercise.task.try(:name), exercise_path(exercise) %>
           <% if exercise.quick_logged? -%>
             <span class="label label-success">快速打卡</span>
           <% end -%>
