@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="viewport" content="width=480px, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title><%= content_for?(:title) ? yield(:title) : "Tao" %></title>
     <%= csrf_meta_tags %>
 
@@ -35,10 +35,14 @@
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
   </head>
   <body>
-
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
+          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
           <%= link_to "大中医", root_path, :class => "brand" %>
           <div class="container nav-collapse">
             <ul class="nav">
@@ -68,8 +72,8 @@
                 <li><%= link_to "登录", new_user_session_path %></li>
               <% end -%>
             </ul>
-
           </div><!--/.nav-collapse -->
+
         </div>
       </div>
     </div>
