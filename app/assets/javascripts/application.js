@@ -14,5 +14,11 @@
 //= require jquery_ujs
 //= require dist/trumbowyg.min
 //= require twitter/bootstrap/bootstrap-tab
+//= require twitter/bootstrap/bootstrap-modal
 //= require jquery.ui.datepicker
-//= require_tree .
+//= require select2.min
+//= require select2_locale_zh-CN
+//= require unslider
+
+//= require tools
+//= require exercises

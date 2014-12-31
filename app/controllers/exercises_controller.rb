@@ -1,4 +1,9 @@
 class ExercisesController < ApplicationController
+
+  def review
+    @month = params[:month]
+  end
+
   def show
     @exercise = Exercise.find(params[:id])
   end

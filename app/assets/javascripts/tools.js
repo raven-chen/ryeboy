@@ -25,4 +25,15 @@ $(function(){
     lang: "zh_cn",
     autogrow: true
   });
+
+  $(".slider").unslider({
+    dots: true
+  });
+
+  // Auto trigger review before 2015-1-1
+  var newYear = new Date(2015,1,2);
+  var today = new Date;
+  if (today < newYear) {
+    $("button#review").trigger("click");
+  }
 });

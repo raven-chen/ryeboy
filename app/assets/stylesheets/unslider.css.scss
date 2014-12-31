@@ -1,0 +1,62 @@
+.slider-container {
+  border: 5px solid #E2D9BF;
+
+  .slider {
+    position: relative;
+    overflow: auto;
+
+    li {
+      list-style: none;
+
+      &.item-container {
+        min-height: 600px !important;
+      }
+
+      &.month_1 { background: image-url("months/1.jpg") no-repeat   50% 0; }
+      &.month_2 { background: image-url("months/2.jpg") no-repeat   50% 0; }
+      &.month_3 { background: image-url("months/3.jpg") no-repeat   50% 0; }
+      &.month_4 { background: image-url("months/4.jpg") no-repeat   50% 0; }
+      &.month_5 { background: image-url("months/5.jpg") no-repeat   50% 0; }
+      &.month_6 { background: image-url("months/6.jpg") no-repeat   50% 0; }
+      &.month_7 { background: image-url("months/7.jpg") no-repeat   50% 0; }
+      &.month_8 { background: image-url("months/8.jpg") no-repeat   50% 0; }
+      &.month_9 { background: image-url("months/9.jpg") no-repeat   50% 0; }
+      &.month_10 { background: image-url("months/10.jpg") no-repeat 50% 0; }
+      &.month_11 { background: image-url("months/11.jpg") no-repeat 50% 0; }
+      &.month_12 { background: image-url("months/12.jpg") no-repeat 50% 0; }
+
+      .aligner {
+        padding-left: 20px;
+      }
+
+      .content {
+        &:hover {
+          background: none !important;
+        }
+      }
+    }
+
+    ul li {
+      float: left;
+    }
+  }
+
+}
+.modal {
+  width: 600px;
+}
+
+div.month-selector {
+  margin: 30px 0;
+
+  ul.month-select {
+    margin-left: 0;
+
+    li {
+      list-style: none;
+      float: left;
+      margin-right: 5px;
+      width: 40px;
+    }
+  }
+}

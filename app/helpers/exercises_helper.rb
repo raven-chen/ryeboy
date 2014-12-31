@@ -60,4 +60,27 @@ module ExercisesHelper
   def visible_exercises task
     (task.visible_to_admin_only && !current_user.master?) ? [] : task.exercises
   end
+
+  def exercises_from_each_month user
+    result = {}
+
+    (1..12).each do |i|
+      date = Date.new(2014,i,1)
+      start = date.beginning_of_month
+      end_date = date.end_of_month
+
+      sample_exercise = exercises_of_month(user, i).try(:last)
+      result[i]= sample_exercise if sample_exercise.present?
+    end
+
+    result
+  end
+
+  def exercises_of_month user, month
+    date = Date.new(2014, month.to_i, 1)
+    start = date.beginning_of_month
+    end_date = date.end_of_month
+
+    user.exercises.where(:date => start..end_date).reverse
+  end
 end

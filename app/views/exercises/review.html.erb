@@ -1,0 +1,16 @@
+<div class="month-selector">
+  <h2>
+    2014年<%= @month %>月　记录
+  </h2>
+
+  <ul class="month-select">
+    <% (1..12).each do |month| %>
+      <li>
+        <%= month == @month.to_i ? "#{month}月" : link_to("#{month}月", review_exercises_path(:month => month)) %>
+      </li>
+    <% end -%>
+    <div class="clearfix"></div>
+  </ul>
+
+</div>
+<%= render :partial => "list", locals: { exercises: exercises_of_month(current_user, @month) } %>
