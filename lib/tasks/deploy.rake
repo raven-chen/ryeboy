@@ -1,7 +1,10 @@
 namespace :deploy do
   task :update_code do
+    p "git checkout ."
+    `git checkout .`
+
     p "git fetch"
-    p `git fetch`
+    `git fetch`
 
     p "git pull --rebase origin master"
     p `git pull --rebase origin master`
@@ -12,11 +15,11 @@ namespace :deploy do
   end
 
   task :stop do
-    system "server.sh stop_#{current_project}"
+    p `server.sh stop_#{current_project}`
   end
 
   task :start do
-    system "server.sh start_#{current_project}"
+    p `server.sh start_#{current_project}`
   end
 
   def current_project
@@ -24,5 +27,5 @@ namespace :deploy do
     current_dir.match(/tao_1s/) ? "1s" : "gold"
   end
 
-  task :go => [:update_code, :compile_assets, :stop, :start]
+  task :go => [:update_code, :stop, :compile_assets, :start]
 end
