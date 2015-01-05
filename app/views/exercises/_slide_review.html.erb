@@ -1,34 +1,44 @@
+<%= link_to "查看2014回顾", review_exercises_path(:month => 1), :class => "btn btn-primary btn-lg", :style => "margin-top: 20px;" %>
+
+<% if false -%>
 <button id="review" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="margin-top: 20px;">
   查看回顾
 </button>
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="slider-container">
-    <div class="slider">
-      <ul id="list">
-      <% exercises_from_each_month(current_user).each do |month, exercise| %>
-        <li class="item-container <%= "month_#{month}" %>">
-          <div class="aligner">
-            <ol class="title">
-              <li class="name">
-                <%= link_to exercise.task.try(:name), exercise_path(exercise) %>
-                <% if exercise.quick_logged? -%>
-                  <span class="label label-success">快速打卡</span>
-                <% end -%>
+<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="slider-container">
+          <div class="slider">
+            <ul id="list">
+            <% exercises_from_each_month(current_user).each do |month, exercise| %>
+              <li class="item-container <%= "month_#{month}" %>">
+                <div class="aligner">
+                  <ol class="title">
+                    <li class="name">
+                      <%= link_to exercise.task.try(:name), exercise_path(exercise) %>
+                      <% if exercise.quick_logged? -%>
+                        <span class="label label-success">快速打卡</span>
+                      <% end -%>
+                    </li>
+
+                    <li class="hint-text"><%= exercise.date.strftime(t("date.formats.default")) %></li>
+                    <li><%= link_to "查看更多...", review_exercises_path(:month => month), :class => "text-danger" %></li>
+                  </ol>
+                  <div class="clearfix"></div>
+
+                  <div class="content">
+                    <%= exercise.content %>
+                  </div>
+                </div>
               </li>
-
-              <li class="hint-text"><%= exercise.date.strftime(t("date.formats.default")) %></li>
-              <li><%= link_to "查看更多...", review_exercises_path(:month => month), :class => "text-danger" %></li>
-            </ol>
-            <div class="clearfix"></div>
-
-            <div class="content">
-              <%= exercise.content %>
-            </div>
+            <% end -%>
+            </ul>
           </div>
-        </li>
-      <% end -%>
-      </ul>
-    </div>
-  </div>
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
 </div>
+<% end -%>
