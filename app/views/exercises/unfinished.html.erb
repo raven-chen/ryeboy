@@ -12,20 +12,29 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th><%= unfinished_title %> 未完成人员名单 </th>
+      <th colspan="2"><%= unfinished_title %> 未完成人员名单 </th>
     </tr>
   </thead>
 
   <tbody>
+      <% if @unfinished_user_list -%>
+        <% @unfinished_user_list.each do |data| -%>
+          <tr>
+            <td>
+              <%= data[0] %>
+            </td>
+            <td>
+              <%= data[1].map(&:name).join(", ") %>
+            </td>
+          </tr>
+        <% end -%>
+      <% else -%>
       <tr>
         <td>
-          <% if @unfinished_user_list -%>
-            <%= @unfinished_user_list.map(&:name).join(", ") %>
-          <% else -%>
-            <%= t("helpers.no_results") %>
-          <% end -%>
+          <%= t("helpers.no_results") %>
         </td>
       </tr>
+      <% end -%>
   </tbody>
 </table>
 
