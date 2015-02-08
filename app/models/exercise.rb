@@ -44,16 +44,15 @@ class Exercise < ActiveRecord::Base
   class << self
     def unfinished_user task, start_date, end_date
       result = []
-      user_with_exercises = User.includes(:exercises).all
+      date_range = start_date..end_date
+      exercises = Exercise.includes(:user).where(:date => date_range, :task_id => task.id)
+      users = User.all
 
       (start_date..end_date).each do |date|
         unfinished_users = []
+        unfinished_users << users - exercises.where(:date => date).map(&:user)
 
-        user_with_exercises.each do |user|
-          unfinished_users << user unless exercise_finished?(user, date, task)
-        end
-
-        result << [date] + [unfinished_users]
+        result << [date] + unfinished_users
       end
 
       result
