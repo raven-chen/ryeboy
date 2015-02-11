@@ -1,0 +1,83 @@
+.main {
+  width: 960px;
+  margin: 0 auto;
+}
+.show div {
+  margin: 10px;
+}
+.show div label {
+  margin-right: 10px;
+}
+.notification {
+  height: 450px;
+  overflow-y: scroll;
+  word-break: break-word;
+}
+#notification-switcher {
+  display: block;
+  padding: 10px;
+  border: 1px solid #CCC;
+  border-top: none;
+}
+#notification-content {
+  display: none;
+}
+.top-button-area {
+  margin-bottom: 30px;
+}
+footer {
+  margin-top: 30px;
+}
+.page-title {
+  margin-top: 30px;
+}
+
+.two-columns {
+  width: 100%;
+
+  &.students {
+    margin-top: 30px;
+
+    .comment {
+      label {
+        width: 95%;
+      }
+
+      p {
+        padding: 10px 0;
+        width: 96%;
+
+        &:hover {
+          background-color: #fff;
+        }
+      }
+    }
+
+    label {
+      padding: 5px 10px;
+      background-color: #F0F6F3;
+      width: 90%;
+      margin: 0;
+    }
+
+    p {
+      padding: 10px;
+      margin: 0;
+      width: 90%;
+
+      &:hover {
+        background-color: #f2f1d7;
+      }
+    }
+  }
+
+  .left-column {
+    width: 50%;
+    float: left;
+  }
+
+  .right-column {
+    width: 50%;
+    float: left;
+  }
+}

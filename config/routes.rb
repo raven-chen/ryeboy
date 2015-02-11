@@ -32,7 +32,7 @@ Tao::Application.routes.draw do
   end
 
   resources :documents, :only => [:index, :show]
-  resources :groups, :only => [:index, :show]
+  resources :students
   resources :fines
   resources :fund_exchange_activities, :only => [:index, :show]
   resources :user_activities, :only => [:index, :show]
