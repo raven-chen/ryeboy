@@ -14,6 +14,10 @@ namespace :deploy do
     `RAILS_ENV=production bundle exec rake assets:precompile`
   end
 
+  task :migrate_db do
+    `RAILS_ENV=production bundle exec rake db:migrate`
+  end
+
   task :stop do
     p `server.sh stop_#{current_project}`
   end
@@ -27,5 +31,5 @@ namespace :deploy do
     current_dir.match(/tao_1s/) ? "1s" : "gold"
   end
 
-  task :go => [:update_code, :stop, :compile_assets, :start]
+  task :go => [:update_code, :stop, :migrate_db, :compile_assets, :start]
 end
