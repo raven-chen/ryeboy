@@ -4,6 +4,14 @@
   <%= link_to '新建', new_student_path, :class => "btn btn-primary pull-right" %>
 </div>
 
+<%= form_tag(students_path, :method => :get, :class => "form-inline", :role => "form") do %>
+  <div class="searchfield-above-table no-border">
+    <%= text_field_tag :name, @options[:name], :placeholder => "昵称" %>
+    <%= submit_tag "搜索", :class => "btn btn-default" %>
+  </div>
+<% end -%>
+
+
 <div>
   <table class="table table-hover">
     <thead>

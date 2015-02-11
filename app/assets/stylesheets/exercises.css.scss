@@ -16,6 +16,10 @@
   text-align: right;
   padding-bottom: 10px;
   border-bottom: 1px solid #CCC;
+
+  &.no-border {
+    border: none;
+  }
 }
 #quick-search-conditions {
   margin-top: 20px;

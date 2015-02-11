@@ -1,6 +1,19 @@
 class StudentsController < ApplicationController
   def index
-    @students = Student.all
+    @options = {}
+    @options = %w{name}.inject({}.with_indifferent_access) { |m, key|
+      params.delete(key) if params[key].blank? # Strip out blank string
+
+      m[key] = params[key]
+
+      m
+    }
+
+    if @options[:name]
+      @students = Student.where("name LIKE ?", "%#{@options[:name]}%")
+    else
+      @students = Student.limit(30)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
