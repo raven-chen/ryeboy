@@ -1,6 +1,6 @@
 upstream tao_app
 {
-  server unix:/tmp/unicorn.sock fail_timeout=0;
+  server unix:/tmp/unicorn.sock;
 }
 
 server {
@@ -39,7 +39,7 @@ server {
 
 upstream tao_1s_app
 {
-  server unix:/tmp/unicorn_1s.sock fail_timeout=0;
+  server unix:/tmp/unicorn_1s.sock;
 }
 
 server {
