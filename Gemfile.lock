@@ -205,6 +205,7 @@ DEPENDENCIES
   fog
   jquery-rails (~> 2.0.0)
   jquery-ui-rails
+  kaminari
   mysql2
   pry
   rails (= 3.2.13)

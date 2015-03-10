@@ -20,6 +20,7 @@
 <div>
   <% if @exercises.present? -%>
     <%= render :partial => "list", locals: { exercises: @exercises } %>
+    <%= paginate @exercises %>
   <% else -%>
     <div class="well no-result">
       <%= t("helpers.no_results") %>

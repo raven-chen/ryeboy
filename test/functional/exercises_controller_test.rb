@@ -20,7 +20,7 @@ class ExercisesControllerTest < ActionController::TestCase
 
       [@user1, @user2, @user3].each do |user|
         [@task1, @task2, @task3].each do |task|
-          FactoryGirl.create(:exercise, :user_id => user.id, :task_id => task.id, :date => (user == @user3) ? Date.yesterday : Date.current)
+          FactoryGirl.create(:exercise, :user_id => user.id, :task_id => task.id, :date => (user == @user3) ? 1.week.ago : Date.current)
         end
       end
     end
@@ -32,13 +32,13 @@ class ExercisesControllerTest < ActionController::TestCase
     end
 
     should "return results by given conditions" do
-      get :index, :user_id => @user1.id, :task_id => @task1.id, :date => Date.current
+      get :index, user_id: @user1.id, task_id: @task1.id, from: Date.current, to: Date.current
 
       assert_equal 1, assigns(:exercises).size
     end
 
     should "exercises by given date" do
-      get :index, :date => Date.yesterday
+      get :index, from: 9.days.ago, to: 5.days.ago
 
       assert_equal 3, assigns(:exercises).size
       assert_equal [@user3.id], assigns(:exercises).map(&:user_id).uniq

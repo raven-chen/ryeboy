@@ -26,7 +26,7 @@ class ExercisesController < ApplicationController
 
       if @exercise.errors.messages.keys.include?(:date) && @exercise.date.present?
         existing_exercise = Exercise.where(:date => @exercise.date, :task_id => @exercise.task_id, :user_id => @exercise.user_id).first
-        @edit_existing_exercise = I18n.t("helpers.may_want_to_edit", :edit_exercise_url => edit_exercise_url(existing_exercise))
+        @edit_existing_exercise = I18n.t("helpers.may_want_to_edit", :edit_exercise_link => edit_exercise_url(existing_exercise))
       end
 
       @task = @exercise.task
@@ -62,7 +62,7 @@ class ExercisesController < ApplicationController
 
       case key
       when "from"
-        m[key] = params[key] || 1.day.ago.to_date
+        m[key] = params[key] || 1.week.ago.to_date
       when "to"
         m[key] = params[key] || Date.current
       else
@@ -86,6 +86,8 @@ class ExercisesController < ApplicationController
                    else
                      @exercises.order("updated_at DESC")
                  end
+
+    @exercises = @exercises.page(params[:page])
   end
 
   def my
