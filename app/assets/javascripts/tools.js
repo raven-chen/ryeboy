@@ -35,6 +35,11 @@ $(function(){
     autogrow: true
   });
 
+  // Clean content inside editor
+  $("#clean-editor").click(function(){
+    $(".rich-editor").trumbowyg("html", new String);
+  });
+
   $(".slider").unslider({
     dots: true
   });

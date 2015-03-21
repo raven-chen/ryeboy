@@ -15,8 +15,10 @@
       </div>
 
       <label>内容</label>
+      <button id="clean-editor" type="button">清空内容</button>
       <%= f.text_area :content, :class => "rich-editor" %>
       <br>
+
       <%= submit_tag "提交" %>
     </fieldset>
   <% end -%>
