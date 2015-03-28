@@ -1,5 +1,6 @@
 <ul id="list">
   <% exercises.each do |exercise| %>
+    <% next unless visible_exercise?(exercise) -%>
     <li class="item-container">
       <ol class="title">
 

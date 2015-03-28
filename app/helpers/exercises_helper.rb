@@ -61,6 +61,11 @@ module ExercisesHelper
     (task.visible_to_admin_only && !current_user.master?) ? [] : task.exercises
   end
 
+  # Display visible_to_admin_only exercise for admin only
+  def visible_exercise? exercise
+    !exercise.task.visible_to_admin_only || current_user.master?
+  end
+
   def exercises_from_each_month user
     result = {}
 

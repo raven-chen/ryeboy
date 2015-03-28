@@ -1,9 +1,9 @@
 <h1>打卡</h1>
 
 <% if @edit_existing_exercise -%>
-<div class="alert alert-warning">
-  <%= @edit_existing_exercise.html_safe %>
-</div>
+  <div class="alert alert-warning">
+    <%= @edit_existing_exercise.html_safe %>
+  </div>
 <% end -%>
 
 <%= render "form" %>
