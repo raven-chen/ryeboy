@@ -37,6 +37,10 @@ GEM
       multi_json (~> 1.0)
     builder (3.0.4)
     cancan (1.6.10)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.7)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -101,6 +105,11 @@ GEM
     net-ssh (2.0.23)
     nokogiri (1.5.6)
     orm_adapter (0.4.0)
+    paperclip (4.2.1)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     polyglot (0.3.5)
     pry (0.9.12.1)
       coderay (~> 1.0.5)
@@ -112,6 +121,8 @@ GEM
     rack-pjax (0.7.0)
       nokogiri (~> 1.5)
       rack (~> 1.3)
+    rack-raw-upload (1.1.1)
+      multi_json
     rack-ssl (1.3.4)
       rack
     rack-test (0.6.2)
@@ -124,9 +135,6 @@ GEM
       activesupport (= 3.2.13)
       bundler (~> 1.0)
       railties (= 3.2.13)
-    rails_12factor (0.0.2)
-      rails_serve_static_assets
-      rails_stdout_logging
     rails_admin (0.1.2)
       bootstrap-sass (~> 2.0)
       builder (~> 3.0)
@@ -141,8 +149,6 @@ GEM
       rails (~> 3.1)
       remotipart (~> 1.0)
       sass-rails (~> 3.1)
-    rails_serve_static_assets (0.0.1)
-    rails_stdout_logging (0.0.3)
     railties (3.2.13)
       actionpack (= 3.2.13)
       activesupport (= 3.2.13)
@@ -155,6 +161,14 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     remotipart (1.2.1)
+    rich (1.4.6)
+      jquery-rails
+      kaminari
+      mime-types
+      paperclip
+      rack-raw-upload
+      rails (>= 3.2.0)
+      sass-rails
     ruby-hmac (0.4.0)
     sass (3.2.9)
     sass-rails (3.2.6)
@@ -209,8 +223,8 @@ DEPENDENCIES
   mysql2
   pry
   rails (= 3.2.13)
-  rails_12factor
   rails_admin
+  rich
   sass-rails (~> 3.2.3)
   shoulda-context
   shoulda-matchers

@@ -1,4 +1,6 @@
 Tao::Application.routes.draw do
+  mount Rich::Engine => '/rich', :as => 'rich'
+
   resources :replies, :except => [:index, :show, :new]
 
   resources :topics

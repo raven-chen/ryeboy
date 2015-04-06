@@ -121,7 +121,22 @@ RailsAdmin.config do |config|
   config.model Document do
     edit do
       field :name
-      field :content
+      field :category
+      field :content, :rich_editor do
+        config({
+          :insert_many => true
+        })
+      end
+    end
+
+    list do
+      field :name
+      field :category
+      field :content do
+        formatted_value do
+          value.truncate(100)
+        end
+      end
     end
   end
 

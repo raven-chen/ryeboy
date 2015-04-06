@@ -26,7 +26,6 @@ group :production do
   gem 'unicorn'
 end
 
-gem 'rails_12factor' # Disable inject plugin for heroku. https://devcenter.heroku.com/articles/ruby-support#injected-plugins
 gem "bugsnag"
 
 group :development, :test do
@@ -37,6 +36,7 @@ gem 'jquery-rails', '~> 2.0.0'
 gem 'jquery-ui-rails'
 
 gem 'rails_admin'
+gem "rich"
 gem "cancan"
 gem "kaminari"
 
