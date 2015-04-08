@@ -26,6 +26,7 @@ group :production do
   gem 'unicorn'
 end
 
+gem 'rails_12factor'
 gem "bugsnag"
 
 group :development, :test do
