@@ -29,10 +29,10 @@ RailsAdmin.config do |config|
   # config.default_items_per_page = 20
 
   # Exclude specific models (keep the others):
-  config.excluded_models = ["UserTask", "Group", "UserActivity", "FundExchangeActivity"]
+  # config.excluded_models = ["UserTask", "Group", "UserActivity", "FundExchangeActivity", "Interest", "Reply", "Student", "Fine"]
 
   # Include specific models (exclude the others):
-  # config.included_models = []
+  config.included_models = ["Task", "Exercise", "Document", "Topic", "User", "Notification"]
 
   # Label methods for model instances:
   # config.label_methods << :description # Default is [:name, :title]
@@ -84,7 +84,11 @@ RailsAdmin.config do |config|
       field :common
       field :required
       field :visible_to_admin_only
-      field :description
+      field :description, :rich_editor do
+        config({
+          :insert_many => true
+        })
+      end
       field :due_date
     end
 
@@ -97,26 +101,37 @@ RailsAdmin.config do |config|
     end
   end
 
-  config.model "Fine" do
-    list do
-      field :user do
-        searchable [{User => :name}]
-        queryable true
-      end
-
-      field :amount do
-        searchable false
-      end
-      field :date
-      field :paid
-      field :reason do
-        searchable false
-      end
-      field :comment do
-        searchable false
+  config.model 'Topic' do
+    edit do
+      field :title
+      field :content, :rich_editor do
+        config({
+          :insert_many => true
+        })
       end
     end
   end
+
+  # config.model "Fine" do
+  #   list do
+  #     field :user do
+  #       searchable [{User => :name}]
+  #       queryable true
+  #     end
+
+  #     field :amount do
+  #       searchable false
+  #     end
+  #     field :date
+  #     field :paid
+  #     field :reason do
+  #       searchable false
+  #     end
+  #     field :comment do
+  #       searchable false
+  #     end
+  #   end
+  # end
 
   config.model Document do
     edit do
