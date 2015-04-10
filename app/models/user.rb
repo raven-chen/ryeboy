@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   validates :sno, :email, :roles, :presence => true
   validates_uniqueness_of :sno
 
-  ROLES = %w{admin normal gold discipline}
+  ROLES = %w{admin bronze silver gold platinum}
 
   def roles=(roles)
     self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
