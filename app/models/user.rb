@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
 
   validates :sno, :email, :roles, :presence => true
   validates_uniqueness_of :sno
-  validates_inclusion_of :level, in: LEVELS
+  validates_inclusion_of :level, in: LEVELS, allow_nil: true
 
   def roles=(roles)
     self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
