@@ -109,9 +109,9 @@ class ExercisesController < ApplicationController
   def unfinished
     @start_date = params[:start_date] || Date.current
     @end_date = params[:end_date] || Date.current
-    @task = Task.find_by_id(params[:task_id])
+    @tasks = Task.where(id: params[:task_ids])
 
-    @unfinished_user_list = Exercise.unfinished_user(@task, @start_date.to_date, @end_date.to_date) if @task
+    @unfinished_user_list = Exercise.unfinished_user(@tasks, @start_date.to_date, @end_date.to_date) if @tasks
   end
 
   def like

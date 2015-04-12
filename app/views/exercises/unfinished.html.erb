@@ -2,30 +2,52 @@
 
 <%= form_tag(unfinished_exercises_path, :method => :get, :class => "form-inline", :role => "form") do %>
   <div class="searchfield-above-table">
-    <%= select_tag :task_id, options_from_collection_for_select(Task.all, "id", "name", @task), :prompt => "功课", :class => "js-select2 normal-width-select2" %>
+    <%= select_tag "task_ids[]", options_from_collection_for_select(Task.all, "id", "name", @tasks.map(&:id)), :prompt => "功课", :multiple => "multiple", :class => "js-select2 normal-width-select2" %>
     <%= text_field_tag :start_date, @start_date, :class => "js-date-field", :placeholder => "开始日期" %>
     <%= text_field_tag :end_date, @end_date, :class => "js-date-field", :placeholder => "结束日期" %>
     <%= submit_tag "搜索", :class => "btn btn-default" %>
   </div>
 <% end -%>
 
-<table class="table table-hover">
+<table class="table table-hover table-bordered">
   <thead>
     <tr>
-      <th colspan="2"><%= unfinished_title %> 未完成人员名单 </th>
+      <th>昵称</th>
+      <% (@start_date..@end_date).each do |date| -%>
+        <th colspan=<%= @tasks.try(:size) %>><%= date %></th>
+      <% end -%>
     </tr>
   </thead>
 
   <tbody>
       <% if @unfinished_user_list -%>
+        <tr>
+          <td></td>
+          <% (@start_date..@end_date).each do |_| -%>
+            <% @tasks.each do |task| -%>
+              <td><%= task.name %></td>
+            <% end -%>
+          <% end -%>
+        </tr>
+
         <% @unfinished_user_list.each do |data| -%>
           <tr>
             <td>
-              <%= data[0] %>
+              <%= data.keys.first %>
             </td>
-            <td>
-              <%= data[1].map(&:name).join(", ") %>
-            </td>
+            <% data.values.each do |exercise_detail| -%>
+              <% (@start_date..@end_date).each do |date| -%>
+                <% @tasks.each do |task| -%>
+                  <td>
+                    <% if exercise_detail[date.to_s][task.name] -%>
+                      <span class="text-success">完成</span>
+                    <% else -%>
+                      <span class="text-danger">未完成</span>
+                    <% end -%>
+                  </td>
+                <% end -%>
+              <% end -%>
+            <% end -%>
           </tr>
         <% end -%>
       <% else -%>

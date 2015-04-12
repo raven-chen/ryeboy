@@ -42,24 +42,30 @@ class Exercise < ActiveRecord::Base
   end
 
   class << self
-    def unfinished_user task, start_date, end_date
+    def unfinished_user tasks, start_date, end_date
       result = []
       date_range = start_date..end_date
-      exercises = Exercise.includes(:user).where(:date => date_range, :task_id => task.id)
-      users = User.all
+      users = Site.users
+      exercises = Exercise.where(date: date_range).to_a
 
-      (start_date..end_date).each do |date|
-        unfinished_users = []
-        unfinished_users << users - exercises.where(:date => date).map(&:user)
+      users.each do |user|
+        user_name = user.name
+        user_result = {user_name => {}}
+        (start_date..end_date).each do |date|
+          user_result[user_name][date.to_s] = {}
+          tasks.each do |task|
+            user_result[user_name][date.to_s][task.name] = exercise_finished?(exercises, user, date, task)
+          end
+        end
 
-        result << [date] + unfinished_users
+        result << user_result
       end
 
       result
     end
 
-    def exercise_finished? user, date, task
-      user.exercises.where(:date => date, :task_id => task.id).present?
+    def exercise_finished? exercises, user, date, task
+      exercises.any?{|exercise| exercise.id == user.id && exercise.date == user.date && exercise.task_id == task.id}
     end
   end
 end
