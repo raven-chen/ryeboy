@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150406105636) do
+ActiveRecord::Schema.define(:version => 20150411131829) do
 
   create_table "comments", :force => true do |t|
     t.integer  "author_id"
@@ -130,6 +130,12 @@ ActiveRecord::Schema.define(:version => 20150406105636) do
     t.string   "simplified_type",        :default => "file"
   end
 
+  create_table "sites", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "students", :force => true do |t|
     t.string   "name"
     t.string   "gender"
@@ -210,6 +216,7 @@ ActiveRecord::Schema.define(:version => 20150406105636) do
     t.text     "note"
     t.string   "name"
     t.date     "deleted_at"
+    t.string   "level"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

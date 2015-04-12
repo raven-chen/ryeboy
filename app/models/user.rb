@@ -27,10 +27,12 @@ class User < ActiveRecord::Base
   has_many :liked_exercises, :through => :interests, :class_name => "Exercise", :source => :exercise, :dependent => :destroy
   has_many :interests
 
+  ROLES = %w{master admin user documenter}
+  LEVELS = %w{bronze silver gold platinum}
+
   validates :sno, :email, :roles, :presence => true
   validates_uniqueness_of :sno
-
-  ROLES = %w{admin bronze silver gold platinum}
+  validates_inclusion_of :level, in: LEVELS
 
   def roles=(roles)
     self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
