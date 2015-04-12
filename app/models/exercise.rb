@@ -65,7 +65,7 @@ class Exercise < ActiveRecord::Base
     end
 
     def exercise_finished? exercises, user, date, task
-      exercises.any?{|exercise| exercise.id == user.id && exercise.date == user.date && exercise.task_id == task.id}
+      exercises.any?{|exercise| exercise.user_id == user.id && exercise.date == date && exercise.task_id == task.id}
     end
   end
 end
