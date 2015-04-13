@@ -1,7 +1,6 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th><%= Exercise.model_name.human %></th>
       <th><%= Comment.model_name.human %></th>
       <th></th>
     </tr>
@@ -11,14 +10,6 @@
       <% comments.each do |comment| %>
         <% exercise = comment.exercise -%>
         <tr>
-          <td>
-              <%= exercise.task.try(:name) %> <%= exercise.user.try(:name) %> <%= I18n.l(exercise.date) %>
-              <br>
-              <br>
-              <div class="content">
-                <%= truncate(exercise.content).html_safe %>
-              </div>
-          </td>
           <td>
             <div class="comment">
               <%= comment.author.name %> <%= I18n.l(comment.updated_at.to_date) %>
