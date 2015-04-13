@@ -4,7 +4,7 @@
       <legend><%= @exercise.task.try(:name) %>　打卡 <%= content_tag(:span, "仅自己与老师可见", :class => "text-danger") if @task.visible_to_admin_only -%></legend>
       <%= f.hidden_field :task_id, :value => @exercise.task.id %>
       <div class="task-description">
-        <%= @exercise.task.description %>
+        <%= @exercise.task.description.html_safe %>
       </div>
 
       <label>日期</label>
