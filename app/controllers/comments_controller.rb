@@ -9,6 +9,11 @@ class CommentsController < ApplicationController
     @unread_comments = Comment.unread(current_user)
 
     @read_comments = Comment.received(current_user) - @unread_comments
+
+    # Filter out delete user's comments
+    @unread_comments.select!{|c| c.valid?}
+    @read_comments.select!{|c| c.valid?}
+
     @unread_comments.update_all(:read_at => Time.now)
   end
 

@@ -18,8 +18,8 @@ class Comment < ActiveRecord::Base
   }
 
   scope :master_comments, includes(:exercise => [:task, :user]).where(:author_id => User.master.try(:id)).order("updated_at DESC")
-  scope :received, lambda { |user| includes(:exercise => [:task, :user], :author => []).where(:user_id => user.id).order("updated_at DESC") }
-  scope :unread, lambda { |user| includes(:exercise => [:task, :user], :author => []).where(:user_id => user.id, :read_at => nil).order("updated_at DESC") }
+  scope :received, lambda { |user| includes(:author, :exercise => [:task, :user]).where(:user_id => user.id).order("updated_at DESC") }
+  scope :unread, lambda { |user| includes(:author, :exercise => [:task, :user]).where(:user_id => user.id, :read_at => nil).order("updated_at DESC") }
 
   def reply_to_comment?
     replied_comment.present?
