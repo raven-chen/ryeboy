@@ -12,7 +12,7 @@
         <% exercise = comment.exercise -%>
         <tr>
           <td>
-              <%= exercise.task.name %> <%= exercise.user.name %> <%= I18n.l(exercise.date) %>
+              <%= exercise.task.try(:name) %> <%= exercise.user.try(:name) %> <%= I18n.l(exercise.date) %>
               <br>
               <br>
               <div class="content">
