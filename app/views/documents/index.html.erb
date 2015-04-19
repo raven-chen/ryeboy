@@ -1,10 +1,24 @@
 <h1>文档中心</h1>
 
-<table class="table table-hover">
-<% @documents.each do |document| %>
-  <tr>
-    <td><%= link_to document.name, document %></td>
-    <td><%= document.category %></td>
-  </tr>
-<% end %>
-</table>
+<div class="searchfield-above-table">
+  <% Document::CATEGORIES.each_with_index do |category, i| -%>
+    <%= link_to category, documents_path(category: category), :class => "btn btn-default" %>
+  <% end -%>
+</div>
+
+<div>
+  <% if @documents.present? -%>
+    <table class="table table-hover">
+      <% @documents.each do |document| %>
+        <tr>
+          <td><%= link_to document.name, document %></td>
+          <td><%= document.category %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% else -%>
+    <div class="well no-result">
+      <%= t("helpers.no_results") %>
+    </div>
+  <% end -%>
+</div>

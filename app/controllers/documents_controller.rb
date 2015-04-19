@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
   def index
-    @documents = Document.all
+    @documents = params[:category].present? ? Document.where(category: params[:category]) : Document.all
 
     respond_to do |format|
       format.html # index.html.erb
