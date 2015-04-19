@@ -3,7 +3,7 @@ FactoryGirl.define do
     user.sequence(:email) { |n| "user#{n}@example.com" }
     user.password "password"
     user.sequence(:sno)
-    user.roles ["gold"]
+    user.roles ["user"]
   end
 
   factory :task do |task|

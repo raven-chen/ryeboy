@@ -34,7 +34,7 @@ class Exercise < ActiveRecord::Base
   end
 
   def previous_one
-    self.class.where(:user_id => user_id, :task_id => task_id).order("date DESC").limit(1).try(:first)
+    self.class.where(:user_id => user_id, :task_id => task_id).where("content IS NOT NULL").order("date DESC").limit(1).try(:first)
   end
 
   def content

@@ -33,6 +33,16 @@ class ExerciseTest < ActiveSupport::TestCase
     assert_equal "last one content", new_exercise.content
   end
 
+  should "copy content from last exercise that has content" do
+    previous_one_with_content = Exercise.create!(:user_id => @user.id, :task_id => @task.id, :date => Date.yesterday, :content => "last one content")
+    previous_one = Exercise.create!(:user_id => @user.id, :task_id => @task.id, :date => Date.yesterday, :content => nil)
+
+    new_exercise = Exercise.new(:user_id => @user.id, :task_id => @task.id, :date => @date)
+    new_exercise.copy_content_from_previous_one
+
+    assert_equal previous_one_with_content.content, new_exercise.content
+  end
+
   context "Unfinished exercises" do
     setup do
       Task.delete_all
