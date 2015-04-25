@@ -42,18 +42,18 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def edit
+  def change_password
     @user = current_user
   end
 
-  def update
+  def update_password
     @user = current_user
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to root_path, notice: '密码已更新' }
       else
-        format.html { render action: "edit" }
+        format.html { render action: "change_password" }
       end
     end
   end

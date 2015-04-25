@@ -14,6 +14,8 @@ Tao::Application.routes.draw do
   resources :users, :except => [:destroy] do
     member do
       put :assign_my_tasks
+      get :change_password
+      put :update_password
     end
   end
 
