@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :roles, :address, :sno, :forum_id, :group_id, :qq,
-  :tel_number, :birth_date, :note, :name
+  :tel_number, :birth_date, :note, :name, :real_name, :education_experience, :work_experience, :favorite, :available_time, :duty,
+  :gender
 
   belongs_to :group
   has_many :user_activities
@@ -28,11 +29,18 @@ class User < ActiveRecord::Base
   has_many :interests
 
   ROLES = %w{master admin user documenter}
-  LEVELS = %w{bronze silver gold platinum}
+  LEVELS = %w{bronze silver gold platinum super}
+  DUTIES = %w{招生 大一 大二 大三 大四 女子 传媒 人力}
+  GENDER = ["男", "女"]
+
+  # visible means user exclude web master
+  scope :visible, where("level <> ? OR level IS NULL", "super")
 
   validates :sno, :email, :roles, :presence => true
   validates_uniqueness_of :sno
   validates_inclusion_of :level, in: LEVELS, allow_nil: true
+  validates_inclusion_of :duty, in: DUTIES, allow_nil: true
+  validates_inclusion_of :gender, in: GENDER, allow_nil: true
 
   def roles=(roles)
     self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)

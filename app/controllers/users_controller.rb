@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
-  # GET /users
-  # GET /users.json
   def index
-    @users = User.all
+    @users = User.visible
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,6 +38,23 @@ class UsersController < ApplicationController
     end
 
     redirect_to root_path
+  end
+
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to users_path, notice: '用户已更新' }
+      else
+        format.html { render action: "edit" }
+      end
+    end
   end
 
   def change_password

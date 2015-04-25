@@ -1,43 +1,57 @@
-<div class="show">
-  <p id="notice"><%= notice %></p>
+<h1><%= @user.name %></h1>
 
-  <p style="font-weight: bold"><%= @user.sno %></p>
+<div class="two-columns students">
+  <%= form_for(@user) do |f| %>
+    <div class="left-column">
+      <label>昵称</label>
+      <p><%= @user.name %></p>
 
-  <div>
-    <label><%= User.human_attribute_name("email") %></label>
-    <%= @user.email %>
-  </div>
+      <label>真实姓名</label>
+      <p><%= @user.real_name %></p>
 
-  <div>
-    <label><%= User.human_attribute_name("address") %></label>
-    <%= @user.address %>
-  </div>
+      <label>性别</label>
+      <p><%= @user.gender %></p>
 
-  <div>
-    <label><%= User.human_attribute_name("forum_id") %></label>
-    <%= @user.forum_id %>
-  </div>
+      <label>QQ</label>
+      <p><%= @user.qq %></p>
 
-  <div>
-    <label><%= User.human_attribute_name("qq") %></label>
-    <%= @user.qq %>
-  </div>
+      <label>生日</label>
+      <p><%= @user.birth_date %></p>
 
-  <div>
-    <label><%= User.human_attribute_name("tel_number") %></label>
-    <%= @user.tel_number %>
-  </div>
+      <label>电话</label>
+      <p><%= @user.tel_number %></p>
 
-  <div>
-    <label><%= User.human_attribute_name("birth_date") %></label>
-    <%= @user.birth_date %>
-  </div>
+      <label>地址</label>
+      <p><%= @user.address %></p>
 
-  <div>
-    <label><%= User.human_attribute_name("note") %></label>
-    <%= @user.note %>
-  </div>
-  <br>
+      <label>邮箱</label>
+      <p><%= @user.email %></p>
 
-  <%= link_to 'Back', users_path %>
+      <label>兴趣爱好</label>
+      <p><%= @user.favorite %></p>
+    </div>
+
+    <div class="right-column">
+      <label>部门</label>
+      <p><%= @user.duty %></p>
+
+      <label>可用服务时间</label>
+      <p><%= @user.available_time %></p>
+
+      <label>教育经历</label>
+      <p><%= @user.education_experience %></p>
+
+      <label>工作经历</label>
+      <p><%= @user.work_experience %></p>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="comment">
+      <label>备注</label>
+      <p><%= @user.note %></p>
+    </div>
+
+    <%= link_to '返回', users_path, :class => "btn btn-default" %>
+  <% end -%>
 </div>

@@ -1,31 +1,26 @@
-<h1>用户列表</h1>
+<h1>学长列表</h1>
 
 <table class="table table-hover">
   <tr>
     <th><%= User.human_attribute_name("sno") %></th>
-    <th><%= User.human_attribute_name("forum_id") %></th>
+    <th><%= User.human_attribute_name("name") %></th>
     <th><%= User.human_attribute_name("qq") %></th>
-    <th><%= Group.human_attribute_name("name") %></th>
     <th><%= User.human_attribute_name("tel_number") %></th>
-    <th><%= User.human_attribute_name("address") %></th>
-    <th><%= User.human_attribute_name("birth_date") %></th>
     <th><%= User.human_attribute_name("email") %></th>
-    <th><%= User.human_attribute_name("note") %></th>
     <th></th>
   </tr>
 
 <% @users.each do |user| %>
   <tr>
     <td><%= user.sno %></td>
-    <td><%= user.forum_id %></td>
+    <td><%= user.name %></td>
     <td><%= user.qq %></td>
-    <td><%= user.group.try(:name) %></td>
     <td><%= user.tel_number %></td>
-    <td><%= user.address %></td>
-    <td><%= user.birth_date %></td>
     <td><%= user.email %></td>
-    <td><%= user.note %></td>
-    <td><%= link_to 'Show', user %></td>
+    <td>
+        <%= link_to '查看', user %>
+        <%= link_to '编辑', edit_user_path(user) %>
+    </td>
   </tr>
 <% end %>
 </table>
