@@ -1,6 +1,19 @@
 class UsersController < ApplicationController
   def index
-    @users = User.visible
+    @options = {}
+    @options = %w{name}.inject({}.with_indifferent_access) { |m, key|
+      params.delete(key) if params[key].blank? # Strip out blank string
+
+      m[key] = params[key]
+
+      m
+    }
+
+    if @options[:name]
+      @users = User.where("name LIKE ?", "%#{@options[:name]}%")
+    else
+      @users = User.visible
+    end
 
     respond_to do |format|
       format.html # index.html.erb

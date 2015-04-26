@@ -1,5 +1,12 @@
 <h1>学长列表</h1>
 
+<%= form_tag(users_path, :method => :get, :class => "form-inline", :role => "form") do %>
+  <div class="searchfield-above-table no-border">
+    <%= text_field_tag :name, @options[:name], :placeholder => "昵称" %>
+    <%= submit_tag "搜索", :class => "btn btn-default" %>
+  </div>
+<% end -%>
+
 <table class="table table-hover">
   <tr>
     <th><%= User.human_attribute_name("sno") %></th>
