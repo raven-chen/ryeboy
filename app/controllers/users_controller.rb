@@ -71,7 +71,7 @@ class UsersController < ApplicationController
 
       if @target_user.save
         flash[:notice]= "标签已添加"
-        redirect_to users_path, status: :created
+        redirect_to users_path
       else
         redirect_to users_path, status: :unprocessible_entity
       end

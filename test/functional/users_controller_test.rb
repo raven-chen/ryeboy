@@ -38,7 +38,6 @@ class UsersControllerTest < ActionController::TestCase
 
       post :add_tag, @tags_params.merge(id: @other_user.id)
 
-      assert_response :created
       assert_equal @tags, @other_user.send("#{@skill_tag}_list").join(",")
     end
 
@@ -47,7 +46,6 @@ class UsersControllerTest < ActionController::TestCase
 
       post :add_tag, @tags_params.merge(id: @current_user.id)
 
-      assert_response :created
       assert_equal @tags, @current_user.send("#{@skill_tag}_list").join(",")
     end
 
