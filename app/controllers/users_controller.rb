@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def index
     @options = {}
-    @options = %w{name}.inject({}.with_indifferent_access) { |m, key|
+    @options = %w{name tag}.inject({}.with_indifferent_access) { |m, key|
       params.delete(key) if params[key].blank? # Strip out blank string
 
       m[key] = params[key]
@@ -10,7 +10,9 @@ class UsersController < ApplicationController
     }
 
     if @options[:name]
-      @users = User.where("name LIKE ?", "%#{@options[:name]}%")
+      @users = User.visible.where("name LIKE ?", "%#{@options[:name]}%")
+    elsif @options[:tag]
+      @users = User.visible.tagged_with(params[:tag])
     else
       @users = User.visible
     end
