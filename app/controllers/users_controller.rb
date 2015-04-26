@@ -57,6 +57,29 @@ class UsersController < ApplicationController
     end
   end
 
+  def new_tag
+    @target_user = User.find(params[:id])
+    @tag_type = params[:tag_type]
+
+    render "tagging"
+  end
+
+  def add_tag
+    if (current_user.hr? || current_user.id.to_s == params[:id]) && User::TAG_TYPES.include?(params[:tag_type])
+      @target_user = User.find(params[:id])
+      @target_user.send("#{params[:tag_type]}_list=", params[:tags])
+
+      if @target_user.save
+        flash[:notice]= "标签已添加"
+        redirect_to users_path, status: :created
+      else
+        redirect_to users_path, status: :unprocessible_entity
+      end
+    else
+      redirect_to users_path, status: :bad_request
+    end
+  end
+
   def change_password
     @user = current_user
   end

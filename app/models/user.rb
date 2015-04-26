@@ -1,6 +1,12 @@
 class User < ActiveRecord::Base
   has_soft_deletion :default_scope => true
 
+  TAG_TYPES = ["skill", "interest", "personality"]
+  TAG_TYPES_IN_PLURAL = [:skills, :interests, :personalities]
+  acts_as_tagger
+  acts_as_taggable
+  acts_as_taggable_on TAG_TYPES_IN_PLURAL
+
   devise :database_authenticatable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
@@ -28,7 +34,7 @@ class User < ActiveRecord::Base
   has_many :liked_exercises, :through => :interests, :class_name => "Exercise", :source => :exercise, :dependent => :destroy
   has_many :interests
 
-  ROLES = %w{master admin user documenter}
+  ROLES = %w{master admin user documenter hr}
   LEVELS = %w{bronze silver gold platinum super}
   DUTIES = %w{招生 大一 大二 大三 大四 女子 传媒 人力}
   GENDER = ["男", "女"]
@@ -50,6 +56,10 @@ class User < ActiveRecord::Base
     ROLES.reject do |r|
       ((roles_mask || 0) & 2**ROLES.index(r)).zero?
     end
+  end
+
+  def hr?
+    roles.include?("hr")
   end
 
   # The only one master :p

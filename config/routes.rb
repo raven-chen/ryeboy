@@ -13,6 +13,8 @@ Tao::Application.routes.draw do
 
   resources :users, :except => [:destroy] do
     member do
+      get :new_tag
+      post :add_tag
       put :assign_my_tasks
       get :change_password
       put :update_password

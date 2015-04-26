@@ -1,0 +1,11 @@
+<%= form_tag add_tag_user_path(@target_user) do %>
+  <div>
+    <h2><%= tag_type_map[@tag_type] %></h2>
+
+    <%= hidden_field_tag :tag_type, @tag_type %>
+    <label>请使用*英文*逗号分隔不同标签　例如"成就,行动"</label>
+    <%= text_field_tag :tags %>
+    <br>
+    <%= submit_tag "提交" %>
+  </div>
+<% end -%>

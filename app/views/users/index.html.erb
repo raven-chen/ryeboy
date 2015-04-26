@@ -19,6 +19,7 @@
     <td><%= user.email %></td>
     <td>
         <%= link_to '查看', user %>
+        <%= add_tag_links(user) %>
         <%= link_to '编辑', edit_user_path(user) %>
     </td>
   </tr>

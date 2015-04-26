@@ -43,6 +43,11 @@
 
       <label>工作经历</label>
       <p><%= @user.work_experience %></p>
+
+      <% User::TAG_TYPES.each do |tag_type| %>
+        <label><%= tag_type_map[tag_type] %></label>
+        <p><%= @user.send(tag_type.pluralize).map(&:name).join(", ") %></p>
+      <% end -%>
     </div>
 
     <div class="clearfix"></div>

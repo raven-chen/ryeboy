@@ -40,6 +40,7 @@ gem 'rails_admin'
 gem "rich"
 gem "cancan"
 gem "kaminari"
+gem 'acts-as-taggable-on', '~> 3.4'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
