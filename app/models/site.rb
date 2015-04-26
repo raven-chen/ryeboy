@@ -5,10 +5,10 @@ class Site < ActiveRecord::Base
   validates_inclusion_of :name, in: User::LEVELS
 
   def self.users
-    User.where(level: current_site.name)
+    User.where(level: current.name)
   end
 
-  def self.current_site
+  def self.current
     raise "Site not configured !" if Site.count != 1
     Site.first
   end
