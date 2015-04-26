@@ -4,7 +4,8 @@
 
     <%= hidden_field_tag :tag_type, @tag_type %>
     <label>请使用*英文*逗号分隔不同标签　例如"成就,行动"</label>
-    <%= text_field_tag :tags %>
+    <%= text_field_tag :tags, @target_user.send(@tag_type.pluralize).join(", "), :style => "width: 550px;"  %>
+
     <br>
     <%= submit_tag "提交" %>
   </div>
