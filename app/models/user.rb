@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   has_soft_deletion :default_scope => true
 
-  TAG_TYPES = ["skill", "interest", "personality"]
-  TAG_TYPES_IN_PLURAL = [:skills, :interests, :personalities]
+  TAG_TYPES = ["skill", "hobby", "personality"]
+  TAG_TYPES_IN_PLURAL = [:skills, :hobbies, :personalities]
   acts_as_tagger
   acts_as_taggable
   acts_as_taggable_on TAG_TYPES_IN_PLURAL

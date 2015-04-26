@@ -8,6 +8,6 @@ module UsersHelper
   end
 
   def tag_type_map
-    {"skill" => "技能倾向", "interest" => "关注倾向", "personality" => "性格倾向"}
+    {"skill" => "技能倾向", "hobby" => "关注倾向", "personality" => "性格倾向"}
   end
 end
