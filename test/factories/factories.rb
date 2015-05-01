@@ -20,4 +20,10 @@ FactoryGirl.define do
     date Date.current
     content "test"
   end
+
+  factory :topic do |t|
+    t.title "test"
+    t.content "test"
+    t.association :author, factory: :user
+  end
 end
