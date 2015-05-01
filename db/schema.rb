@@ -151,6 +151,8 @@ ActiveRecord::Schema.define(:version => 20150425071707) do
     t.string   "exercise_url"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
