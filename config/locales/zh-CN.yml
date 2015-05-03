@@ -211,10 +211,6 @@ zh-CN:
     models:
       user: "用户"
       topic: "话题"
-      fine: "罚款"
-      fund_exchange_activity:
-        one: "收支明细"
-        other: "收支明细"
       document: "文档"
       exercise: "日记"
       task: "功课"
@@ -258,7 +254,6 @@ zh-CN:
         remember_me: "记住我"
         roles: "权限"
         address: "地址"
-        forum_id: "论坛ID"
         qq: "QQ"
         tel_number: "电话号码"
         birth_date: "生日"

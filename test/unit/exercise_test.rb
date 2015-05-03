@@ -34,7 +34,7 @@ class ExerciseTest < ActiveSupport::TestCase
   end
 
   should "copy content from last exercise that has content" do
-    previous_one_with_content = Exercise.create!(:user_id => @user.id, :task_id => @task.id, :date => Date.yesterday, :content => "last one content")
+    previous_one_with_content = Exercise.create!(:user_id => @user.id, :task_id => @task.id, :date => 2.days.ago, :content => "last one content")
     previous_one = Exercise.create!(:user_id => @user.id, :task_id => @task.id, :date => Date.yesterday, :content => nil)
 
     new_exercise = Exercise.new(:user_id => @user.id, :task_id => @task.id, :date => @date)

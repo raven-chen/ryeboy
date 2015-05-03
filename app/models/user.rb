@@ -10,25 +10,19 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :roles, :address, :sno, :forum_id, :group_id, :qq,
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :roles, :address, :sno, :group_id, :qq,
   :tel_number, :birth_date, :note, :name, :real_name, :education_experience, :work_experience, :favorite, :available_time, :duty,
   :gender
 
   belongs_to :group
   has_many :user_activities
-  has_many :fund_exchange_activities
-  has_many :fines
   has_many :comments, :foreign_key => :author_id
 
   has_many :my_tasks, :class_name => "Task", :through => :user_tasks, :source => :task
   has_many :user_tasks
 
   has_many :tasks, :through => :exercises
-  has_many :exercises, :order => "date DESC" do
-    def finished_on_date date
-      where("date = ? AND created_at <= ?", date, User.valid_exercise_log_date(date))
-    end
-  end
+  has_many :exercises, :order => "date DESC"
   has_many :topics, :foreign_key => :author_id
 
   has_many :liked_exercises, :through => :interests, :class_name => "Exercise", :source => :exercise, :dependent => :destroy
@@ -74,9 +68,5 @@ class User < ActiveRecord::Base
 
   def has_task? task
     my_tasks.include?(task)
-  end
-
-  def self.valid_exercise_log_date date
-    date.tomorrow.to_datetime + 18.hours # Exercise must be logged before next day's 18pm
   end
 end

@@ -1,0 +1,77 @@
+Searching 455 files for "student"
+
+/Users/raven1/gitpersonal/ryeboy/app/controllers/students_controller.rb:
+    1: class StudentsController < ApplicationController
+   13:       @students = Student.where("name LIKE ?", "%#{@options[:name]}%")
+   15:       @students = Student.limit(30)
+   20:       format.json { render json: @students }
+   25:     @student = Student.new
+   29:     @student = Student.new(params[:student])
+   32:       if @student.save
+   33:         format.html { redirect_to @student, notice: 'Fine was successfully created.' }
+   34:         format.json { render json: @student, status: :created, location: @student }
+   37:         format.json { render json: @student.errors, status: :unprocessable_entity }
+   43:     @student = Student.find(params[:id])
+   46:       if @student.update_attributes(params[:student])
+   47:         format.html { redirect_to students_path, notice: '学员已更新' }
+   55:     @student = Student.find(params[:id])
+   59:     @student = Student.find(params[:id])
+   63:       format.json { render json: @student }
+
+/Users/raven1/gitpersonal/ryeboy/app/views/layouts/application.html.erb:
+   56:                 <li><%= link_to '思无邪数据库', students_path %></li>
+
+/Users/raven1/gitpersonal/ryeboy/db/schema.rb:
+  138:   create_table "students", :force => true do |t|
+
+28 matches across 3 files
+
+
+Searching 454 files for "fines"
+
+/Users/raven1/gitpersonal/ryeboy/app/assets/stylesheets/rich/editor.css:
+    2: 	This file defines the default set of CSS styles available in the Rich editor
+
+/Users/raven1/gitpersonal/ryeboy/config/initializers/devise.rb:
+  113:   # Defines which key will be used when confirming an account
+  145:   # Defines which strategy will be used to lock an account.
+  150:   # Defines which key will be used when locking and unlocking an account
+  153:   # Defines which strategy will be used to unlock an account.
+  169:   # Defines which key will be used when recovering the password for an account
+  188:   # Defines name of the authentication token params key
+
+/Users/raven1/gitpersonal/ryeboy/db/schema.rb:
+   51:   create_table "fines", :force => true do |t|
+
+8 matches across 3 files
+
+
+Searching 454 files for "fund_exchange_activities"
+
+/Users/raven1/gitpersonal/ryeboy/db/schema.rb:
+   62:   create_table "fund_exchange_activities", :force => true do |t|
+
+1 match in 1 file
+
+
+Searching 454 files for "site"
+
+/Users/raven1/gitpersonal/ryeboy/README.rdoc:
+    1: Website for Ryeboy.
+
+/Users/raven1/gitpersonal/ryeboy/config/initializers/devise.rb:
+   92:   # A period that the user is allowed to access the website even without
+   94:   # able to access the website for two days without confirming his account,
+   96:   # the user cannot access the website without confirming his account.
+  182:   # REST_AUTH_SITE_KEY to pepper).
+
+/Users/raven1/gitpersonal/ryeboy/config/locales/en.yml:
+   46:         title: "Site administration"
+
+/Users/raven1/gitpersonal/ryeboy/db/schema.rb:
+  132:   create_table "sites", :force => true do |t|
+
+/Users/raven1/gitpersonal/ryeboy/public/robots.txt:
+    3: # To ban all spiders from the entire site uncomment the next two lines:
+
+8 matches across 5 files

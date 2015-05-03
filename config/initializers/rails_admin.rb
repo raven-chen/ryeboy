@@ -29,7 +29,7 @@ RailsAdmin.config do |config|
   # config.default_items_per_page = 20
 
   # Exclude specific models (keep the others):
-  # config.excluded_models = ["UserTask", "Group", "UserActivity", "FundExchangeActivity", "Interest", "Reply", "Student", "Fine"]
+  # config.excluded_models = ["UserTask", "Group", "UserActivity", "FundExchangeActivity", "Interest", "Reply"]
 
   # Include specific models (exclude the others):
   config.included_models = ["Task", "Document", "Topic", "User", "Notification"]
@@ -55,8 +55,8 @@ RailsAdmin.config do |config|
   config.model 'User' do
     hide_attributes = [:reset_password_token, :reset_password_sent_at, :remember_created_at, :sign_in_count, :current_sign_in_at, :last_sign_in_at,
                   :current_sign_in_ip, :last_sign_in_ip, :confirmation_token, :confirmed_at, :confirmation_sent_at, :unconfirmed_email, :password,
-                  :password_confirmation, :roles_mask, :user_activities, :fund_exchange_activities, :fines, :my_tasks, :tasks, :exercises, :comments,
-                  :created_at, :updated_at, :forum_id]
+                  :password_confirmation, :roles_mask, :user_activities, :my_tasks, :tasks, :exercises, :comments,
+                  :created_at, :updated_at]
 
     list do
       hide_attributes.each {|attr| configure(attr) {hide} }
@@ -111,27 +111,6 @@ RailsAdmin.config do |config|
       end
     end
   end
-
-  # config.model "Fine" do
-  #   list do
-  #     field :user do
-  #       searchable [{User => :name}]
-  #       queryable true
-  #     end
-
-  #     field :amount do
-  #       searchable false
-  #     end
-  #     field :date
-  #     field :paid
-  #     field :reason do
-  #       searchable false
-  #     end
-  #     field :comment do
-  #       searchable false
-  #     end
-  #   end
-  # end
 
   config.model Document do
     edit do
