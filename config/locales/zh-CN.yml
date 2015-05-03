@@ -144,9 +144,9 @@ zh-CN:
   notices:
     "false": "否"
     "true": "是"
-    good_job: "干得好！今天所有功课都已打卡！"
+    good_job: "干得好！今天所有功课都已完成！"
     my_task: "所选的功课会被认为是你需要做的功课，查卡时会以此为准，请按实际情况选择"
-    quick_log_exercise: "快速打卡表示你做完了此功课，但是没有什么特别感想，请酌情使用"
+    quick_log_exercise: "快速记录表示你做完了此功课，但是没有什么特别感想，请酌情使用"
     common_task_cannot_be_added: "公共作业不能加入私人作业"
     create_%{obj}_successfully: "%{obj} 创建成功"
     update_%{obj}_successfully: "%{obj} 更新成功"
@@ -180,8 +180,8 @@ zh-CN:
     delete: "删除"
     enter: "进入"
     no_results: "无结果"
-    view_more_about_this_user: "查看此同学更多打卡"
-    may_want_to_edit: "如果想编辑所选日期的打卡，<a href='%{edit_exercise_link}'>请猛击这里</a>"
+    view_more_about_this_user: "查看此同学更多日记"
+    may_want_to_edit: "如果想编辑所选日期的日记，<a href='%{edit_exercise_link}'>请猛击这里</a>"
     are_you_sure: "你确定吗?"
     links:
       back: "Back"
@@ -205,7 +205,7 @@ zh-CN:
         exercise:
           attributes:
             date:
-              taken: "所选日期已经有当前功课的打卡"
+              taken: "所选日期已经有当前功课的日记"
             content:
               blank: "内容不能为空"
     models:
@@ -216,7 +216,7 @@ zh-CN:
         one: "收支明细"
         other: "收支明细"
       document: "文档"
-      exercise: "打卡"
+      exercise: "日记"
       task: "功课"
       notification: "通知"
       comment: "评论"

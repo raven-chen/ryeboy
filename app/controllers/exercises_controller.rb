@@ -18,11 +18,11 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.new(params[:exercise].merge(:user_id => current_user.id))
 
     if @exercise.save
-      flash[:notice]= "#{@exercise.task.name} 打卡完成"
+      flash[:notice]= "#{@exercise.task.name} 日记完成"
 
       redirect_to root_path
     else
-      flash[:alert]= "#{@exercise.task.try(:name)} 打卡失败. <br> #{@exercise.errors.messages.values.join}"
+      flash[:alert]= "#{@exercise.task.try(:name)} 日记失败. <br> #{@exercise.errors.messages.values.join}"
 
       if @exercise.errors.messages.keys.include?(:date) && @exercise.date.present?
         existing_exercise = Exercise.where(:date => @exercise.date, :task_id => @exercise.task_id, :user_id => @exercise.user_id).first
@@ -47,7 +47,7 @@ class ExercisesController < ApplicationController
 
     respond_to do |format|
       if @exercise.update_attributes(params[:exercise])
-        format.html { redirect_to root_path, notice: '打卡已更新' }
+        format.html { redirect_to root_path, notice: '日记已更新' }
       else
         format.html { render action: "edit" }
       end

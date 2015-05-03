@@ -2,7 +2,7 @@
 
 <%= render "exercises/slide_review" %>
 
-<h2>未打卡功课</h2>
+<h2>未日记功课</h2>
 <div class="tab">
   <ul class="nav-tabs nav">
     <li>
@@ -15,7 +15,7 @@
       <a href="#content-3" data-toggle="tab"><%= "我的功课" %></a>
     </li>
     <li>
-      <a href="#content-4" data-toggle="tab"><%= "我的打卡" %></a>
+      <a href="#content-4" data-toggle="tab"><%= "我的日记" %></a>
     </li>
     <li>
       <a href="#content-5" data-toggle="tab"><%= "全部功课" %></a>
@@ -40,8 +40,8 @@
         <thead>
           <tr>
             <th>功课名称</th>
-            <th>打卡日期</th>
-            <th>打卡内容</th>
+            <th>日记日期</th>
+            <th>日记内容</th>
             <th>操作</th>
           </tr>
         </thead>
@@ -66,7 +66,7 @@
           <tr>
             <th>功课名称</th>
             <th>功课内容</th>
-            <th>打卡</th>
+            <th>日记</th>
           </tr>
         </thead>
 
@@ -75,7 +75,7 @@
           <tr>
             <td><%= task.name %></td>
             <td><%= task.description %></td>
-            <td><%= link_to("打卡", new_exercise_path(:task_id => task.id)) %></td>
+            <td><%= link_to("日记", new_exercise_path(:task_id => task.id)) %></td>
           </tr>
           <% end -%>
         </tbody>

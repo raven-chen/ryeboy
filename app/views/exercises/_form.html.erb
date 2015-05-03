@@ -1,7 +1,7 @@
 <div>
   <%= form_for(@exercise) do |f| %>
     <fieldset>
-      <legend><%= @exercise.task.try(:name) %>　打卡 <%= content_tag(:span, "仅自己与老师可见", :class => "text-danger") if @task.visible_to_admin_only -%></legend>
+      <legend><%= @exercise.task.try(:name) %>　日记</legend>
       <%= f.hidden_field :task_id, :value => @exercise.task.id %>
       <div class="task-description">
         <%= @exercise.task.description.html_safe %>
@@ -11,7 +11,7 @@
       <%= f.text_field :date, :class => "js-date-field" %>
 
       <div class="checkbox">
-        <label><%= f.check_box :ask_for_comment %> <span class="text-danger">求点评</span> <span class="hint-text">(勾选此项，表示你希望此打卡收到同学们的点评!)</span></label>
+        <label><%= f.check_box :ask_for_comment %> <span class="text-danger">求点评</span> <span class="hint-text">(勾选此项，表示你希望此日记收到同学们的点评!)</span></label>
       </div>
 
       <label>内容</label>
