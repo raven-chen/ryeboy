@@ -6,19 +6,27 @@ class Ability
     @user.roles.each { |role| send(role) }
   end
 
-  def master
-    can :manage, :all
-  end
-
   def admin
     can :manage, :all
   end
 
-  def user
+  def newbie
+    can :manage, Topic
+  end
+
+  def student
+    can :read, Notification
+  end
+
+  def mentor
     can :read, Notification
   end
 
   def documenter
     can :manage, Document
+  end
+
+  def hr
+    can :manage, User
   end
 end

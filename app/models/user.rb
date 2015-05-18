@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   has_many :liked_exercises, :through => :interests, :class_name => "Exercise", :source => :exercise, :dependent => :destroy
   has_many :interests
 
-  ROLES = %w{master admin user documenter hr}
+  ROLES = %w{newbie student mentor admin documenter hr}
   LEVELS = %w{bronze silver gold platinum super}
   DUTIES = %w{招生 大一 大二 大三 大四 女子 传媒 人力}
   GENDER = ["男", "女"]
