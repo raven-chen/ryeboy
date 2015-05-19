@@ -36,11 +36,16 @@ class User < ActiveRecord::Base
   # visible means user exclude web master
   scope :visible, where("level <> ? OR level IS NULL", "super")
 
-  validates :sno, :email, :roles, :presence => true
+  validates :sno, :presence => true, :if => lambda{|user| user.roles.exclude?("newbie")}
+  validates :email, :roles, :presence => true
   validates_uniqueness_of :sno
   validates_inclusion_of :level, in: LEVELS, allow_nil: true
   validates_inclusion_of :duty, in: DUTIES, allow_nil: true
   validates_inclusion_of :gender, in: GENDER, allow_nil: true
+
+  before_validation { |user|
+    user.roles = ["newbie"] if user.roles.blank?
+  }
 
   def roles=(roles)
     self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)

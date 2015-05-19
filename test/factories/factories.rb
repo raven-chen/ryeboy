@@ -1,9 +1,14 @@
 FactoryGirl.define do
+  factory :new_user, :class => User do |user|
+    user.sequence(:email) { |n| "user#{n}@example.com" }
+    user.password "password"
+  end
+
   factory :user do |user|
     user.sequence(:email) { |n| "user#{n}@example.com" }
     user.password "password"
     user.sequence(:sno)
-    user.roles ["user"]
+    user.roles ["student"]
   end
 
   factory :task do |task|
