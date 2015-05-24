@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   acts_as_taggable
   acts_as_taggable_on TAG_TYPES_IN_PLURAL
 
-  devise :database_authenticatable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :rememberable, :trackable, :validatable, :registerable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :roles, :address, :sno, :group_id, :qq,
@@ -29,6 +29,8 @@ class User < ActiveRecord::Base
   has_many :interests
 
   ROLES = %w{newbie student mentor admin documenter hr}
+  ROLES_MAP = {newbie: "新人", student: "学员", mentor: "学长", admin: "管理员", documenter: "文档管理员", hr: "人力管理"}
+
   LEVELS = %w{bronze silver gold platinum super}
   DUTIES = %w{招生 大一 大二 大三 大四 女子 传媒 人力}
   GENDER = ["男", "女"]
@@ -44,7 +46,9 @@ class User < ActiveRecord::Base
   validates_inclusion_of :gender, in: GENDER, allow_nil: true
 
   before_validation { |user|
-    user.roles = ["newbie"] if user.roles.blank?
+    if user.roles.blank?
+      user.roles = ["newbie"]
+    end
   }
 
   def roles=(roles)
@@ -57,8 +61,10 @@ class User < ActiveRecord::Base
     end
   end
 
-  def hr?
-    roles.include?("hr")
+  ROLES.each do |role|
+    define_method("#{role}?") {
+      roles.include?(role)
+    }
   end
 
   # The only one master :p

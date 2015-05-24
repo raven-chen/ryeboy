@@ -58,6 +58,11 @@ footer {
       background-color: #F0F6F3;
       width: 90%;
       margin: 0;
+
+      &.inline {
+        display: inline;
+        background-color: inherit;
+      }
     }
 
     p {

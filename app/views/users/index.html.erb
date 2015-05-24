@@ -3,6 +3,7 @@
 <%= form_tag(users_path, :method => :get, :class => "form-inline", :role => "form") do %>
   <div class="searchfield-above-table no-border">
     <%= text_field_tag :name, @options[:name], :placeholder => "昵称" %>
+    <%= select_tag :role, options_from_collection_for_select(User::ROLES_MAP, "first", "last", @options[:role]), :prompt => "级别", :class => "js-select2 normal-width-select2" %>
     <%= submit_tag "搜索", :class => "btn btn-default" %>
   </div>
 <% end -%>
@@ -23,6 +24,7 @@
 
 <table class="table table-hover">
   <tr>
+    <th>级别</th>
     <th><%= User.human_attribute_name("sno") %></th>
     <th><%= User.human_attribute_name("name") %></th>
     <th><%= User.human_attribute_name("qq") %></th>
@@ -33,6 +35,7 @@
 
 <% @users.each do |user| %>
   <tr>
+    <td><%= user_type(user) %></td>
     <td><%= user.sno %></td>
     <td><%= user.name %></td>
     <td><%= user.qq %></td>

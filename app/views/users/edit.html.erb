@@ -6,6 +6,15 @@
       <label>昵称</label>
       <p><%= f.text_field :name, :class => "form-control" %></p>
 
+      <label>权限</label>
+      <p>
+        <% for role in User::ROLES %>
+          <%= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), {:name => "user[roles][]"} %>
+          <%= label_tag "user_roles_#{role}", User::ROLES_MAP[role.to_sym], :class => "inline" %><br />
+        <% end %>
+        <%= hidden_field_tag "user[roles][]", "" %>
+      </p>
+
       <label>真实姓名</label>
       <p><%= f.text_field :real_name, :class => "form-control" %></p>
 

@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
+  skip_authorize_resource :only => [:profile, :change_password, :update_password, :assign_my_tasks]
+
   def index
     @options = {}
-    @options = %w{name tag}.inject({}.with_indifferent_access) { |m, key|
+    @options = %w{name tag role}.inject({}.with_indifferent_access) { |m, key|
       params.delete(key) if params[key].blank? # Strip out blank string
 
       m[key] = params[key]
@@ -9,17 +12,17 @@ class UsersController < ApplicationController
       m
     }
 
-    if @options[:name]
-      @users = User.visible.where("name LIKE ?", "%#{@options[:name]}%")
-    elsif @options[:tag]
-      @users = User.visible.tagged_with(params[:tag])
-    else
-      @users = User.visible
-    end
+    @users = User.visible
+
+    @users = @users.where("name LIKE ?", "%#{@options[:name]}%") if @options[:name]
+
+    @users = @users.tagged_with(params[:tag]) if @options[:tag]
+
+    # TODO: temporarily check user role via Array. should be done in SQL when add pagination
+    @users = @users.select{|user| user.send("#{@options[:role]}?")} if @options[:role]
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @users }
     end
   end
 

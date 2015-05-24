@@ -10,4 +10,12 @@ module UsersHelper
   def tag_type_map
     {"skill" => "技能倾向", "hobby" => "关注倾向", "personality" => "性格倾向"}
   end
+
+  def user_type user
+    User::ROLES_MAP.each do |role, name|
+      if user.send("#{role}?")
+        return name
+      end
+    end
+  end
 end
