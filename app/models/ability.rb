@@ -6,20 +6,30 @@ class Ability
     @user.roles.each { |role| send(role) }
   end
 
-  def admin
-    can :manage, :all
-  end
-
+  # fundamental roles
   def newbie
     can :manage, Topic
+    can :manage, Exercise
+    cannot :unfinished, Exercise
   end
 
   def student
     can :read, Notification
+    can :manage, Topic
+    can :manage, Exercise
+    cannot :unfinished, Exercise
   end
 
   def mentor
     can :read, Notification
+    can :manage, Topic
+    can :manage, Exercise
+    can :read, User
+  end
+
+  # Functional roles
+  def admin
+    can :manage, :all
   end
 
   def documenter

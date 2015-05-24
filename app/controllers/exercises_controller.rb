@@ -1,4 +1,5 @@
 class ExercisesController < ApplicationController
+  load_and_authorize_resource
 
   def review
     @month = params[:month]
