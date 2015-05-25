@@ -7,8 +7,8 @@ worker_processes 2
 
 # Help ensure your application will always spawn in the symlinked
 # "current" directory that Capistrano sets up.
-home_dir = ENV['HOME_DIR'] || "/home/app/tao"
-unicorn_sock_file = ENV['UNICORN_SOCK_FILE'] || "/tmp/unicorn.sock"
+home_dir = ENV['HOME_DIR'] || "/home/app/ryeboy/current"
+unicorn_sock_file = ENV['UNICORN_SOCK_FILE'] || "/tmp/ryeboy.sock"
 
 working_directory home_dir # available in 0.94.0+
 
@@ -18,14 +18,14 @@ listen unicorn_sock_file
 timeout 30
 
 # feel free to point this anywhere accessible on the filesystem
-pid_file = ENV['UNICORN_PID_FILE'] || "/tmp/unicorn.pid"
+pid_file = "/tmp/ryeboy.pid"
 pid pid_file
 
 # By default, the Unicorn logger will write to stderr.
 # Additionally, ome applications/frameworks log to stderr or stdout,
 # so prevent them from going to /dev/null when daemonized here:
-stderr_path "#{home_dir}/log/unicorn.err.log"
-stdout_path "#{home_dir}/log/unicorn.out.log"
+stderr_path "#{home_dir}/log/ryeboy.err.log"
+stdout_path "#{home_dir}/log/ryeboy.out.log"
 
 # combine REE with "preload_app true" for memory savings
 # http://rubyenterpriseedition.com/faq.html#adapt_apps_for_cow
