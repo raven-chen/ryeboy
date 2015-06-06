@@ -6,6 +6,9 @@
       <label>昵称</label>
       <p><%= f.text_field :name, :class => "form-control" %></p>
 
+      <label>学号</label>
+      <p><%= f.text_field :sno, :class => "form-control" %></p>
+
       <label>权限</label>
       <p>
         <% for role in User::ROLES %>
