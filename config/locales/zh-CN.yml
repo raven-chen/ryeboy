@@ -202,6 +202,10 @@ zh-CN:
         record_invalid: "数据无效"
         answer_on_common_task_should_be_unique: "公共作业只能回答一次，如需补充请编辑已添加内容"
       models:
+        user:
+          attributes:
+            email:
+              taken: "已经被使用"
         exercise:
           attributes:
             date:
@@ -366,5 +370,5 @@ zh-CN:
       not_found: "not found"
       not_locked: "was not locked"
       not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
+        one: "表单中有错误:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
