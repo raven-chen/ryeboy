@@ -1,6 +1,10 @@
 class DocumentsController < ApplicationController
   def index
-    @documents = params[:category].present? ? Document.where(category: params[:category]) : Document.all
+    @options = process_query_params %w{name category}
+
+    @documents = Document.scoped
+    @documents = @documents.where("name LIKE ?", "%#{@options[:name]}%") if @options[:name]
+    @documents = @documents.where(category: @options[:category]) if @options[:category]
 
     respond_to do |format|
       format.html # index.html.erb

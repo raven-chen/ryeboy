@@ -1,10 +1,26 @@
 <h1>文档中心</h1>
 
-<div class="searchfield-above-table">
-  <% Document::CATEGORIES.each_with_index do |category, i| -%>
-    <%= link_to category, documents_path(category: category), :class => "btn btn-default" %>
-  <% end -%>
-</div>
+<%= form_tag(documents_path, :method => :get, :class => "form-inline", :role => "form") do %>
+  <div class="searchfield-above-table no-border">
+    <div class="radio">
+      <label>
+        <%= radio_button_tag :category, "", @options[:category].blank? %>
+        全部
+      </label>
+
+      <% Document::CATEGORIES.each_with_index do |category, i| -%>
+        <label>
+          <%= radio_button_tag :category, category, @options[:category] == category %>
+          <%= category %>
+        </label>
+      <% end -%>
+    </div>
+
+    <%= text_field_tag :name, @options[:name], :placeholder => "名称" %>
+    <%= submit_tag "搜索", :class => "btn btn-default" %>
+  </div>
+
+<% end -%>
 
 <div>
   <% if @documents.present? -%>
