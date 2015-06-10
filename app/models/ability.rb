@@ -18,6 +18,7 @@ class Ability
     can :manage, Topic
     can :manage, Exercise
     cannot :unfinished, Exercise
+    can :read, Document
   end
 
   def mentor
@@ -25,6 +26,7 @@ class Ability
     can :manage, Topic
     can :manage, Exercise
     can :read, User
+    can :read, Document
   end
 
   # Functional roles

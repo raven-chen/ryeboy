@@ -56,7 +56,7 @@
                 <% if false -%>
                   <li><%= link_to '作业', common_tasks_path %></li>
                 <% end -%>
-                <% if can? :manage, Document -%>
+                <% if can? :read, Document -%>
                   <li><%= link_to '文档', documents_path %></li>
                 <% end -%>
                 <% if can? :read, User -%>
