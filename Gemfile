@@ -22,7 +22,6 @@ group :assets do
 end
 
 group :production do
-  gem 'fog'
   gem 'unicorn'
 end
 
