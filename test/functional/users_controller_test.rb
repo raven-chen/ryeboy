@@ -41,25 +41,8 @@ class UsersControllerTest < ActionController::TestCase
       assert_equal @tags, @other_user.send("#{@skill_tag}_list").join(",")
     end
 
-    should "user can add tag to itself" do
-      sign_in @current_user
-
-      post :add_tag, @tags_params.merge(id: @current_user.id)
-
-      assert_equal @tags, @current_user.send("#{@skill_tag}_list").join(",")
-    end
-
-    should "non hr user can't add tag to other user" do
-      sign_in @current_user
-
-      post :add_tag, @tags_params.merge(id: @other_user.id)
-
-      assert_response :bad_request
-      assert @current_user.send("#{@skill_tag}_list").exclude?(@tags.first)
-    end
-
     should "not allow undefined tag tag_type to be added" do
-      sign_in @current_user
+      sign_in @hr
 
       post :add_tag, @tags_params.merge(id: @current_user.id, tag_type: "unknown")
 
