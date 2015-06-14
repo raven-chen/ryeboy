@@ -1,6 +1,6 @@
 <% if @comment.persisted? %>
-  $("<%= "#comments-of-#{@comment.exercise.id}"%>").append("<%= escape_javascript(render(partial: 'show', locals: { comment: @comment })) %>");
-  $("<%= "#new-comment-for-#{@comment.exercise.id}"%>").html(""); // Remove submitted form
+  $("<%= "#comments-of-#{@comment.commentable.id}"%>").append("<%= escape_javascript(render(partial: 'show', locals: { comment: @comment })) %>");
+  $("<%= "#new-comment-for-#{@comment.commentable.id}"%>").html(""); // Remove submitted form
 <% else %>
-  $("<%= "#new-comment-for-#{@comment.exercise.id}-errors"%>").html("<%= @notice %>"); // Show error notice
+  $("<%= "#new-comment-for-#{@comment.commentable.id}-errors"%>").html("<%= @notice %>"); // Show error notice
 <% end %>

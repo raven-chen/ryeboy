@@ -5,6 +5,6 @@
     <%= link_to t("helpers.edit"), edit_comment_path(comment) %>
     <%= link_to '删除', comment, method: :delete, data: { confirm: I18n.t("helpers.are_you_sure") } %>
   <% else -%>
-    <%= link_to t("helpers.reply"), new_comment_path(:exercise_id => comment.exercise.id, :replied_comment_id => comment.id), remote: true %>
+    <%= link_to t("helpers.reply"), new_comment_path(resource_id: comment.exercise.id, resource_name: "exercise", replied_comment_id: comment.id), remote: true %>
   <% end -%>
 </div>

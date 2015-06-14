@@ -3,9 +3,12 @@
     <fieldset>
       <legend><%= @exercise.task.try(:name) %>　日记</legend>
       <%= f.hidden_field :task_id, :value => @exercise.task.id %>
-      <div class="task-description">
-        <%= @exercise.task.description.html_safe %>
-      </div>
+
+      <% if @exercise.task.description.present? -%>
+        <div class="task-description">
+          <%= @exercise.task.description.html_safe %>
+        </div>
+      <% end -%>
 
       <label>日期</label>
       <%= f.text_field :date, :class => "js-date-field" %>

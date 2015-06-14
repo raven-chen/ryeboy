@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_filter :find_comment, :only => [:edit, :update, :destroy]
 
   def index
-    @comments = Comment.master_comments
+    @comments = Comment.all
   end
 
   def received
@@ -18,8 +18,15 @@ class CommentsController < ApplicationController
   end
 
   def new
-    exercise = Exercise.find(params[:exercise_id])
-    @comment = exercise.comments.build(replied_comment_id: params[:replied_comment_id])
+    resource_name = params[:resource_name]
+
+    if resource_name.blank? || !Kernel.const_defined?(resource_name.titleize)
+      redirect_to home_path, status: :unprocessable_entity, alert: "错误的请求"
+      return
+    end
+
+    resource = resource_name.classify.constantize.find(params[:resource_id])
+    @comment = resource.comments.build(replied_comment_id: params[:replied_comment_id])
   end
 
   def create
@@ -38,7 +45,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
-        format.html { redirect_to exercises_path, notice: I18n.t("notices.update_%{obj}_successfully", :obj => Comment.model_name.human) }
+        format.html { redirect_to home_path, notice: I18n.t("notices.update_%{obj}_successfully", :obj => Comment.model_name.human) }
       else
         flash[:alert]= I18n.t("notices.update_%{obj}_failed_%{errors}", :obj => Comment.model_name.human,
                       :errors => "<br> #{@comment.errors.messages.values.join}")
@@ -52,7 +59,7 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to exercises_path, notice: I18n.t("notices.delete_%{obj}_successfully", :obj => Comment.model_name.human) }
+      format.html { redirect_to home_path, notice: I18n.t("notices.delete_%{obj}_successfully", :obj => Comment.model_name.human) }
       format.json { head :no_content }
     end
   end

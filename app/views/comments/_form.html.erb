@@ -1,7 +1,8 @@
 <div>
   <%= form_for(@comment, :role => "form", :remote => @comment.new_record?) do |f| %>
     <fieldset>
-      <%= f.hidden_field :exercise_id, :value => @comment.exercise.id %>
+      <%= f.hidden_field :commentable_id, :value => @comment.commentable.id %>
+      <%= f.hidden_field :commentable_type, :value => @comment.commentable.class.name %>
       <%= f.hidden_field :replied_comment_id, :value => @comment.replied_comment_id %>
 
       <br>

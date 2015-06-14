@@ -6,7 +6,7 @@ class CommentsControllerTest < ActionController::TestCase
 
     @task = FactoryGirl.create(:task)
     @exercise = FactoryGirl.create(:exercise, :task => @task, :user => @user)
-    @comment = FactoryGirl.create(:comment, :exercise => @exercise)
+    @comment = FactoryGirl.create(:comment, :commentable => @exercise)
 
     sign_in @user
   end

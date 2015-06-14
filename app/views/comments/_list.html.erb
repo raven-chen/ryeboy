@@ -2,7 +2,6 @@
   <tbody>
     <% if comments.present? -%>
       <% comments.each do |comment| %>
-        <% exercise = comment.exercise -%>
         <tr>
           <td>
             <div class="comment">
@@ -12,7 +11,7 @@
             </div>
           </td>
           <td>
-            <%= link_to t("helpers.view"), exercise_path(exercise) %>
+            <%= link_to t("helpers.view"), comment_source_path(comment) %>
           </td>
         </tr>
       <% end %>
