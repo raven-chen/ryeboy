@@ -27,6 +27,7 @@ class Ability
     can :manage, Exercise
     can :read, User
     can :read, Document
+    can :read, Post
   end
 
   # Functional roles

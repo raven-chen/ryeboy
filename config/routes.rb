@@ -38,6 +38,7 @@ Tao::Application.routes.draw do
   end
 
   resources :documents, :only => [:index, :show]
+  resources :posts, :only => [:index, :show]
   resources :user_activities, :only => [:index, :show]
   resources :tasks, :only => [:index, :show] do
     collection do

@@ -40,7 +40,8 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html {
-        redirect_to document_path(@comment.commentable)
+        redirect_path = "#{@comment.commentable.class.table_name.singularize}_path"
+        redirect_to send(redirect_path, @comment.commentable)
       }
       format.js { render :create, status: :created }
     end

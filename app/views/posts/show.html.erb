@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<div class="document-view">
+  <%= link_to '返回', posts_path %>
+  <h2 class="title"><%= @post.name %></h2>
+
+  <% if @post.content -%>
+  <div class="document-content">
+    <%= sanitize @post.content %>
+  </div>
+  <% end -%>
+
+  <div class="document-comment">
+    <ul id="list">
+      <% @post.comments.each do |comment| %>
+        <li class="reply-container">
+          <ol class="title reply">
+            <li class="hint-text author-name"><%= comment.author.name %></li>
+            <li class="hint-text"><%= comment.created_at.strftime(t("time.formats.default")) %></li>
+          </ol>
+          <div class="clearfix"></div>
+
+          <div class="content">
+            <%= comment.content %>
+
+            <div class="operations">
+              <%= link_to t("helpers.edit"), edit_comment_path(comment) %>
+              <%= link_to '删除', comment, method: :delete, data: { confirm: I18n.t("helpers.are_you_sure") } %>
+            </div>
+          </div>
+        </li>
+      <% end -%>
+    </ul>
+
+    <div>
+      <%= form_for(@comment, :role => "form") do |f| %>
+        <fieldset>
+          <%= f.hidden_field :commentable_id, :value => @comment.commentable.id %>
+          <%= f.hidden_field :commentable_type, :value => @comment.commentable.class.name %>
+          <%= f.hidden_field :replied_comment_id, :value => @comment.replied_comment_id %>
+
+          <br>
+          <%= f.text_area :content, :class => "full-width", :rows => "2", :placeholder => comment_place_holder(@comment) %>
+          <br>
+          <%= submit_tag t("helpers.submit") %>
+        </fieldset>
+      <% end -%>
+    </div>
+  </div>
+
+</div>

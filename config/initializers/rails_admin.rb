@@ -32,7 +32,7 @@ RailsAdmin.config do |config|
   # config.excluded_models = ["UserTask", "Group", "UserActivity", "FundExchangeActivity", "Interest", "Reply"]
 
   # Include specific models (exclude the others):
-  config.included_models = ["Task", "Document", "Topic", "User", "Notification"]
+  config.included_models = ["Task", "Document", "Topic", "User", "Notification", "Post"]
 
   # Label methods for model instances:
   # config.label_methods << :description # Default is [:name, :title]
@@ -68,6 +68,29 @@ RailsAdmin.config do |config|
 
     show do
       hide_attributes.each {|attr| configure(attr) {hide} }
+    end
+  end
+
+  config.model 'Post' do
+    list do
+      field :name
+      field :category
+      field :author
+    end
+
+    edit do
+      field :name
+      field :category
+      field :author_id, :hidden do
+        default_value do
+          bindings[:view]._current_user.id
+        end
+      end
+      field :content, :rich_editor do
+        config({
+          :insert_many => true
+        })
+      end
     end
   end
 
@@ -116,6 +139,13 @@ RailsAdmin.config do |config|
     edit do
       field :name
       field :category
+
+      field :author_id, :hidden do
+        default_value do
+          bindings[:view]._current_user.id
+        end
+      end
+
       field :content, :rich_editor do
         config({
           :insert_many => true

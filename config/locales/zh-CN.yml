@@ -220,6 +220,7 @@ zh-CN:
       task: "功课"
       notification: "通知"
       comment: "评论"
+      post: "工作"
     attributes:
       comment:
         content: "内容"
