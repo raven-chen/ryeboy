@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
   scope :with_role, lambda { |role| { conditions: "roles_mask & #{2**ROLES.index(role.to_s)} > 0"} }
 
   validates :sno, :presence => true, :if => lambda{|user| user.roles.exclude?("newbie")}
-  validates :email, :roles, :presence => true
+  validates :email, :name, :roles, :presence => true
   validates_uniqueness_of :sno, allow_nil: true
   validates_inclusion_of :level, in: LEVELS, allow_nil: true
   validates_inclusion_of :duty, in: DUTIES, allow_nil: true

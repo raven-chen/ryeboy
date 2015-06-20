@@ -37,6 +37,13 @@ class CommentsController < ApplicationController
       @notice = I18n.t("notices.create_%{obj}_failed_%{errors}", :obj => Comment.model_name.human,
             :errors => "<br> #{@comment.errors.messages.values.join}")
     end
+
+    respond_to do |format|
+      format.html {
+        redirect_to document_path(@comment.commentable)
+      }
+      format.js { render :create, status: :created }
+    end
   end
 
   def edit

@@ -56,6 +56,20 @@
 
       div.content {
         padding: 10px 10px 25px 10px;
+        position: relative;
+
+        &:hover {
+          .operations {
+            display: block;
+          }
+        }
+
+        .operations {
+          position: absolute;
+          right: 10px;
+          top: 10px;
+          display: none;
+        }
       }
     }
   }

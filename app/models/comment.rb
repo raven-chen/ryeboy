@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :content, :commentable_id, :commentable_type, :read_at, :replied_comment_id
+  attr_accessible :content, :commentable, :commentable_id, :commentable_type, :read_at, :replied_comment_id
 
   belongs_to :commentable, polymorphic: true
   belongs_to :author, :class_name => "User"

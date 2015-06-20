@@ -22,5 +22,6 @@
  *= require tasks
  *= require tags
  *= require topics
+ *= require document
  *= require z_custom
  */

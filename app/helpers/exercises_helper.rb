@@ -53,7 +53,7 @@ module ExercisesHelper
     if comment.reply_to_comment?
       "#{t('helpers.reply')} : #{comment.replied_comment.author.name}"
     else
-      "新点评"
+      "新评论"
     end
   end
 
