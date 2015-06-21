@@ -10,8 +10,8 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   should "comment reply must belongs to same exercise" do
-    comment = FactoryGirl.create(:comment, :commentable_id => @exercise.id)
-    replied_comment = FactoryGirl.build(:comment, :exercise_id => @exercise2.id, :replied_comment_id => comment.id)
+    comment = FactoryGirl.create(:comment, :commentable => @exercise)
+    replied_comment = FactoryGirl.build(:comment, :commentable => @exercise2, :replied_comment_id => comment.id)
 
     assert replied_comment.invalid?
   end

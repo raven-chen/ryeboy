@@ -66,7 +66,7 @@
           <tr>
             <th>功课名称</th>
             <th>功课内容</th>
-            <th>日记</th>
+            <th>操作</th>
           </tr>
         </thead>
 
@@ -75,7 +75,7 @@
           <tr>
             <td><%= task.name %></td>
             <td><%= task.description %></td>
-            <td><%= link_to("日记", new_exercise_path(:task_id => task.id)) %></td>
+            <td><%= link_to(t("helpers.log"), new_exercise_path(:task_id => task.id)) %></td>
           </tr>
           <% end -%>
         </tbody>
