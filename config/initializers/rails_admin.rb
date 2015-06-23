@@ -9,7 +9,7 @@ RailsAdmin.config do |config|
     config.authorize_with :cancan
   end
   # Set the admin name here (optional second array element will appear in red). For example:
-  config.main_app_name = ['Tao', 'Admin']
+  config.main_app_name = ['Ryeboy', '后台管理']
   # or for a more dynamic name:
   # config.main_app_name = Proc.new { |controller| [Rails.application.engine_name.titleize, controller.params['action'].titleize] }
 
