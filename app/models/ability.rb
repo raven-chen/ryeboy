@@ -11,6 +11,7 @@ class Ability
     can :manage, Topic
     can :manage, Exercise
     cannot :unfinished, Exercise
+    can :read, Document
   end
 
   def student
