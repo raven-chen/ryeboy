@@ -48,7 +48,7 @@
             <ul class="nav">
               <% if user_signed_in? -%>
                 <li><%= link_to '首页', root_path %></li>
-                <li><%= link_to '日记', exercises_path %></li>
+                <li><%= link_to '浏览日记', exercises_path %></li>
                 <li><%= link_to '互动问答', topics_path %></li>
                 <% if can? :unfinished, Exercise -%>
                   <li><%= link_to '查卡', unfinished_exercises_path %></li>

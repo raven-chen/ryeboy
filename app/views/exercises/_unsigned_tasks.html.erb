@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>功课名称</th>
-      <th>快速完成</th>
       <th>操作</th>
     </tr>
   </thead>
@@ -18,7 +17,7 @@
         <% task_group.each do |task| -%>
           <tr>
             <td><%= link_to(task.name, new_exercise_path(:date => date, :task_id => task.id)) %></td>
-
+            <% if false -%>
             <td>
               <%= form_for(Exercise.new, :html => {:id => nil, :class => "form-in-table"}) do |f| %>
                 <%= f.hidden_field :task_id, :value => task.id %>
@@ -27,8 +26,8 @@
                 <%= submit_tag("完成", :class => "btn btn-success") %>
               <% end -%>
             </td>
-
-            <td><%= link_to("日记", new_exercise_path(:date => date, :task_id => task.id), class: "task-#{task.id}") %></td>
+            <% end -%>
+            <td><%= link_to("写日记", new_exercise_path(:date => date, :task_id => task.id), class: "task-#{task.id}") %></td>
           </tr>
         <% end -%>
 
