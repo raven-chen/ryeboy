@@ -23,3 +23,4 @@
 
 //= require tools
 //= require exercises
+//= require search
