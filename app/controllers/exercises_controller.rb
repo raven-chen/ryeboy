@@ -58,7 +58,7 @@ class ExercisesController < ApplicationController
   def index
     @options = {}
 
-    @options = %w{from to task_id user_id order}.inject({}.with_indifferent_access) { |m, key|
+    @options = %w{from to task_id user_id order duty}.inject({}.with_indifferent_access) { |m, key|
       params.delete(key) if params[key].blank? # Strip out blank string
 
       case key
@@ -75,17 +75,19 @@ class ExercisesController < ApplicationController
 
     @exercises = Exercise.scoped.includes(:comments, :task, :user)
 
+    @exercises = @exercises.joins(:user).where(users: { duty: @options[:duty] }) if @options[:duty]
+
     @exercises = @exercises.where(:date => @options[:from]..@options[:to])
 
     [:task_id, :user_id].each {|attr| @exercises = @exercises.where(attr => params[attr]) if params[attr].present? }
 
     @exercises = case @options[:order]
                    when "favorite"
-                     @exercises.order("fan DESC, updated_at")
+                     @exercises.order("exercises.fan DESC, exercises.updated_at")
                    when "ask_for_comment"
-                     @exercises.order("ask_for_comment DESC, updated_at")
+                     @exercises.order("exercises.ask_for_comment DESC, exercises.updated_at")
                    else
-                     @exercises.order("updated_at DESC")
+                     @exercises.order("exercises.updated_at DESC")
                  end
 
     @exercises = @exercises.page(params[:page])
