@@ -58,7 +58,7 @@ class ExercisesController < ApplicationController
   def index
     @options = {}
 
-    @options = %w{from to task_id user_id order duty}.inject({}.with_indifferent_access) { |m, key|
+    @options = %w{from to task_id user_id order grade}.inject({}.with_indifferent_access) { |m, key|
       params.delete(key) if params[key].blank? # Strip out blank string
 
       case key
@@ -75,7 +75,7 @@ class ExercisesController < ApplicationController
 
     @exercises = Exercise.scoped.includes(:comments, :task, :user)
 
-    @exercises = @exercises.joins(:user).where(users: { duty: @options[:duty] }) if @options[:duty]
+    @exercises = @exercises.joins(:user).where(users: { grade: @options[:grade] }) if @options[:grade]
 
     @exercises = @exercises.where(:date => @options[:from]..@options[:to])
 
@@ -113,9 +113,9 @@ class ExercisesController < ApplicationController
     @start_date = params[:start_date] || Date.current
     @end_date = params[:end_date] || Date.current
     @tasks = Task.where(id: params[:task_ids])
-    @duty = params[:duty]
+    @grade = params[:grade]
 
-    @unfinished_user_list = Exercise.unfinished_user(@duty, @tasks, @start_date.to_date, @end_date.to_date) if @tasks
+    @unfinished_user_list = Exercise.unfinished_user(@grade, @tasks, @start_date.to_date, @end_date.to_date) if @tasks
   end
 
   def like

@@ -9,6 +9,9 @@
       <label>学号</label>
       <p><%= f.text_field :sno, :class => "form-control" %></p>
 
+      <label>年级</label>
+      <p><%= f.select :grade, User::GRADES, prompt: "请选择" %></p>
+
       <label>权限</label>
       <p>
         <% for role in User::ROLES %>
@@ -45,7 +48,7 @@
 
     <div class="right-column">
       <label>部门</label>
-      <p><%= f.select :duty, User::DUTIES, prompt: "请选择" %></p>
+      <p><%= f.select :department, User::DEPARTMENTS, prompt: "请选择" %></p>
 
       <label>可用服务时间</label>
       <p><%= f.text_field :available_time %></p>

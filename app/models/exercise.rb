@@ -42,10 +42,10 @@ class Exercise < ActiveRecord::Base
   end
 
   class << self
-    def unfinished_user duty, tasks, start_date, end_date
+    def unfinished_user grade, tasks, start_date, end_date
       result = []
       date_range = start_date..end_date
-      users = duty ? User.where(duty: duty) : User.visible
+      users = grade ? User.where(grade: grade) : User.visible
       exercises = Exercise.where(date: date_range).to_a
 
       users.each do |user|

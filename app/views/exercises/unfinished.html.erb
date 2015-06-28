@@ -2,7 +2,7 @@
 
 <%= form_tag(unfinished_exercises_path, :method => :get, :class => "form-inline", :role => "form") do %>
   <div class="searchfield-above-table">
-    <%= select_tag :duty, options_for_select(User::DUTIES, @duty), :prompt => "年级" %>
+    <%= select_tag :grade, options_for_select(User::GRADES, @grade), :prompt => "年级" %>
     <%= select_tag "task_ids[]", options_from_collection_for_select(Task.all, "id", "name", @tasks.map(&:id)), :prompt => "功课", :multiple => "multiple", :class => "js-select2 normal-width-select2" %>
     <%= text_field_tag :start_date, @start_date, :class => "js-date-field", :placeholder => "开始日期" %>
     <%= text_field_tag :end_date, @end_date, :class => "js-date-field", :placeholder => "结束日期" %>

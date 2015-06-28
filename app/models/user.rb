@@ -11,8 +11,8 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :roles, :address, :sno, :group_id, :qq,
-  :tel_number, :birth_date, :note, :name, :real_name, :education_experience, :work_experience, :favorite, :available_time, :duty,
-  :gender
+  :tel_number, :birth_date, :note, :name, :real_name, :education_experience, :work_experience, :favorite, :available_time, :grade,
+  :gender, :department
 
   belongs_to :group
   has_many :user_activities
@@ -32,19 +32,23 @@ class User < ActiveRecord::Base
   ROLES = %w{newbie student mentor admin documenter hr}
   ROLES_MAP = {newbie: "新人", student: "学员", mentor: "学长", admin: "管理员", documenter: "文档管理员", hr: "人力管理"}
 
-  LEVELS = %w{bronze silver gold platinum super}
-  DUTIES = %w{招生 大一 大二 大三 大四 女子 传媒 人力}
+  DEPARTMENTS = %w{招生 大一 大二 大三 大四 女子 传媒 人力}
+  GRADES = %w{新生 大一 大二 大三 大四 女子}
+
   GENDER = ["男", "女"]
 
-  # visible means user exclude web master
-  scope :visible, where("level <> ? OR level IS NULL", "super")
   scope :with_role, lambda { |role| { conditions: "roles_mask & #{2**ROLES.index(role.to_s)} > 0"} }
+  scope :without_role, lambda { |role| { conditions: "roles_mask & #{2**ROLES.index(role.to_s)} = 0"} }
+
+  def self.visible
+    without_role("admin")
+  end
 
   validates :sno, :presence => true, :if => lambda{|user| user.roles.exclude?("newbie")}
   validates :email, :name, :roles, :presence => true
   validates_uniqueness_of :sno, allow_nil: true
-  validates_inclusion_of :level, in: LEVELS, allow_blank: true
-  validates_inclusion_of :duty, in: DUTIES, allow_blank: true
+  validates_inclusion_of :level, in: DEPARTMENTS, allow_blank: true
+  validates_inclusion_of :grade, in: GRADES, allow_blank: true
   validates_inclusion_of :gender, in: GENDER, allow_blank: true
 
   before_validation { |user|
