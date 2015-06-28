@@ -1,7 +1,3 @@
-<div class="alert alert-warning">
-  <%= t("notices.quick_log_exercise") %>
-</div>
-
 <table class="table table-hover has-inline-form">
   <thead>
     <tr>
@@ -17,16 +13,6 @@
         <% task_group.each do |task| -%>
           <tr>
             <td><%= link_to(task.name, new_exercise_path(:date => date, :task_id => task.id)) %></td>
-            <% if false -%>
-            <td>
-              <%= form_for(Exercise.new, :html => {:id => nil, :class => "form-in-table"}) do |f| %>
-                <%= f.hidden_field :task_id, :value => task.id %>
-                <%= f.hidden_field :date, :value => date %>
-
-                <%= submit_tag("完成", :class => "btn btn-success") %>
-              <% end -%>
-            </td>
-            <% end -%>
             <td><%= link_to("写日记", new_exercise_path(:date => date, :task_id => task.id), class: "task-#{task.id}") %></td>
           </tr>
         <% end -%>
