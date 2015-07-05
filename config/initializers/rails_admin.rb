@@ -97,6 +97,7 @@ RailsAdmin.config do |config|
   config.model 'Task' do
     list do
       field :name
+      field :grade
       field :required
       field :common
       field :due_date
@@ -104,6 +105,9 @@ RailsAdmin.config do |config|
 
     edit do
       field :name
+      field :grade do
+        help "如不选择,则为适用于所有年级"
+      end
       field :common
       field :required
       field :visible_to_admin_only
@@ -117,6 +121,7 @@ RailsAdmin.config do |config|
 
     show do
       field :name
+      field :grade
       field :common
       field :required
       field :description

@@ -148,6 +148,7 @@ zh-CN:
     my_task: "所选的功课会被认为是你需要做的功课，查卡时会以此为准，请按实际情况选择"
     quick_log_exercise: "快速记录表示你做完了此功课，但是没有什么特别感想，请酌情使用"
     common_task_cannot_be_added: "公共作业不能加入私人作业"
+    incorrect_grade_for_current_user: "不适用于当前用户"
     create_%{obj}_successfully: "%{obj} 创建成功"
     update_%{obj}_successfully: "%{obj} 更新成功"
     delete_%{obj}_successfully: "%{obj} 删除成功"
@@ -236,6 +237,7 @@ zh-CN:
         required: "必修"
         visible_to_admin_only: "仅管理员可见"
         due_date: "截至日期"
+        grade: "可用年级"
       exercise:
         date: "日期"
         content: "内容"

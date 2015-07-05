@@ -8,7 +8,7 @@
 
     <label>功课</label>
     <div class="task-list">
-      <% separated_tasks = separate_tasks_by_required(Task.daily) -%>
+      <% separated_tasks = separate_tasks_by_required(Task.daily.applicable(current_user)) -%>
       <% separated_tasks.each_with_index do |task_group, i| -%>
         <% task_group.each do |task| -%>
           <label class="checkbox-inline">
