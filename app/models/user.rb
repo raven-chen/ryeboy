@@ -57,6 +57,10 @@ class User < ActiveRecord::Base
     end
   }
 
+  before_create { |user|
+    user.grade = GRADES[0] if user.grade.blank? && user.newbie?
+  }
+
   def roles=(roles)
     self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
   end

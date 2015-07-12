@@ -20,15 +20,15 @@ class ExercisesControllerTest < ActionController::TestCase
 
       [@user1, @user2, @user3].each do |user|
         [@task1, @task2, @task3].each do |task|
-          FactoryGirl.create(:exercise, :user_id => user.id, :task_id => task.id, :date => (user == @user3) ? 1.week.ago : Date.current)
+          FactoryGirl.create(:exercise, :user_id => user.id, :task_id => task.id, :date => (user == @user3) ? 8.days.ago : Date.current)
         end
       end
     end
 
-    should "return newest records if no conditions passed in" do
+    should "return recent 1 week records as default if no conditions passed in" do
       get :index
 
-      assert_equal 9, assigns(:exercises).size
+      assert_equal 6, assigns(:exercises).size
     end
 
     should "return results by given conditions" do
