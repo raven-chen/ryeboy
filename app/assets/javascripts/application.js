@@ -12,10 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require dist/trumbowyg.min
-//= require twitter/bootstrap/bootstrap-tab
-//= require twitter/bootstrap/bootstrap-modal
-//= require twitter/bootstrap/bootstrap-collapse
+//= require twitter/bootstrap
+//= require dist/summernote
+//= require dist/lang/summernote-zh-CN
+//= require dist/plugin/summernote-ext-hello
+//= require dist/plugin/summernote-ext-hint
+//= require dist/plugin/summernote-ext-video
 //= require jquery.ui.datepicker
 //= require select2.min
 //= require select2_locale_zh-CN

@@ -30,9 +30,12 @@ $(function(){
 
   $(".js-select2").select2();
 
-  $(".rich-editor").trumbowyg({
-    lang: "zh_cn",
-    autogrow: true
+  $(".rich-editor").summernote({
+    minHeight: 300,             // set minimum height of editor
+    maxHeight: 900,             // set maximum height of editor
+    lang: "zh-CN",
+
+    focus: true,
   });
 
   // Clean content inside editor
