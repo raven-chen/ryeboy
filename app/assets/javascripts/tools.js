@@ -30,9 +30,31 @@ $(function(){
 
   $(".js-select2").select2();
 
-  $(".rich-editor").trumbowyg({
-    lang: "zh_cn",
-    autogrow: true
+  var $richEditor = $(".rich-editor");
+  $richEditor.summernote({
+    minHeight: 300,             // set minimum height of editor
+    maxHeight: 900,             // set maximum height of editor
+    lang: "zh-CN",
+    focus: true,
+    onImageUpload: function(files) {
+      var image = new FormData();
+      image.append("image[attachment]", files[0])
+
+      $.ajax({
+        url: Tao.Routes.uploadImage,
+        data: image,
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        success: function(data){
+          var imgNode = $('<img>').attr('src', data.imageUrl);
+          $richEditor.summernote('insertNode', imgNode[0]);
+        },
+        error: function(xhr) {
+          alert(JSON.parse(xhr.responseText).error);
+        }
+      });
+    }
   });
 
   // Clean content inside editor
