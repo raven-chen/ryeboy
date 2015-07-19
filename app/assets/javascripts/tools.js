@@ -37,7 +37,6 @@ $(function(){
     lang: "zh-CN",
     focus: true,
     onImageUpload: function(files) {
-      console.log('image upload:', files);
       var image = new FormData();
       image.append("image[attachment]", files[0])
 
@@ -50,6 +49,9 @@ $(function(){
         success: function(data){
           var imgNode = $('<img>').attr('src', data.imageUrl);
           $richEditor.summernote('insertNode', imgNode[0]);
+        },
+        error: function(xhr) {
+          alert(JSON.parse(xhr.responseText).error);
         }
       });
     }
