@@ -10,15 +10,13 @@ gem 'mysql2'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
+  gem 'font-awesome-sass', '~> 4.3.0'
 
   gem 'uglifier', '>= 1.0.3'
 end
 
 gem "twitter-bootstrap-rails", :branch => "bootstrap3"
-
-group :production do
-  gem 'unicorn'
-end
+gem 'unicorn'
 
 gem 'rails_12factor'
 gem "bugsnag"
@@ -41,21 +39,8 @@ gem "rich"
 gem "cancan"
 gem "kaminari"
 gem 'acts-as-taggable-on', '~> 3.4'
+gem "paperclip", "~> 4.3"
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
 
 group :test do
   gem 'factory_girl'

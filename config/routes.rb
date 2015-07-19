@@ -21,6 +21,8 @@ Tao::Application.routes.draw do
     end
   end
 
+  resources :images, only: [:create]
+
   resources :exercises do
     collection do
       get :my
