@@ -14,7 +14,7 @@ module ExercisesHelper
   def quick_date_select_buttons options
     result = [
       ["最近一天", 1.day.ago.to_date],
-      ["最近一周", 1.weeks.ago.to_date]
+      ["最近三天", 3.days.ago.to_date]
     ].map do |item|
       active_class = options[:from].try(:to_date) == item[1] ? "btn-default active" : "btn-default"
       content_tag(:button, item[0], :class => "btn #{active_class} js-quick-date-select", "data-from" => item[1], "data-to" => Date.current)

@@ -63,7 +63,7 @@ class ExercisesController < ApplicationController
 
       case key
       when "from"
-        m[key] = params[key] || 1.week.ago.to_date
+        m[key] = params[key] || 3.days.ago.to_date
       when "to"
         m[key] = params[key] || Date.current
       else
