@@ -9,13 +9,13 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require jquery.ui.datepicker
+ *= require font-awesome.min
  *= require bootstrap_and_overrides
  *= require select2-bootstrap
  *= require select2
  *= require summernote
  *= require layout
  *= require unslider
- *= require font-awesome-import
 
  *= require exercises
  *= require list
