@@ -37,16 +37,22 @@ set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 
 namespace :deploy do
   desc "Restart unicorn"
-  task :restart, roles(:app) do
-    %x("kill -USR2 `cat /tmp/ryeboy.pid`")
+  task :restart_s do
+    on roles(:app) do
+      execute("kill -USR2 `cat /tmp/ryeboy.pid`")
+    end
   end
 
-  task :stop, roles(:app) do
-    %x("kill -QUIT `cat /tmp/ryeboy.pid`")
+  task :stop do
+    on roles(:app) do
+      execute("kill -QUIT `cat /tmp/ryeboy.pid`")
+    end
   end
 
-  task :start, roles(:app) do
-    %x("cd #{release_path} && bundle exec unicorn -E production -D -c #{release_path}/config/system/unicorn.conf.rb")
+  task :start do
+    on roles(:app) do
+      execute("cd #{release_path} && bundle exec unicorn -E production -D -c #{release_path}/config/system/unicorn.conf.rb")
+    end
   end
 
   task :publishing, roles(:app) do
