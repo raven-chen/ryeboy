@@ -3,16 +3,18 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'capybara/rails'
 
-Capybara.register_driver :selenium do |app|
+Capybara.register_driver :selenium_chrome do |app|
   Capybara::Selenium::Driver.new(app, :browser => :chrome)
 end
+
+Capybara.default_driver = :selenium
 
 ActionController::TestCase.send :include, Devise::TestHelpers
 class ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
 
   setup do
-    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.start
   end
 
@@ -24,9 +26,9 @@ end
 class ActionDispatch::IntegrationTest
   # Make the Capybara DSL available in all integration tests
   include Capybara::DSL
+  self.use_transactional_fixtures = false
 
   setup do
-    DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.start
   end
 

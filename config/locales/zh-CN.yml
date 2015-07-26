@@ -182,6 +182,7 @@ zh-CN:
     enter: "进入"
     log: "日记"
     no_results: "无结果"
+    logout: "退出"
     view_more_about_this_user: "查看此同学更多日记"
     may_want_to_edit: "如果想编辑所选日期的日记，<a href='%{edit_exercise_link}'>请猛击这里</a>"
     are_you_sure: "你确定吗?"

@@ -1,7 +1,7 @@
 <ul id="list">
   <% exercises.each do |exercise| %>
     <% next unless visible_exercise?(exercise) -%>
-    <li class="item-container">
+    <li class="item-container" id=<%= "exercise-#{exercise.id}" %>>
       <ol class="title">
 
         <% if exercise.ask_for_comment? -%>

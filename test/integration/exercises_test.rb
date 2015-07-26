@@ -18,7 +18,7 @@ class ExercisesTest < ActionDispatch::IntegrationTest
 
     fill_in "exercise[content]", with: "test"
 
-    click_button "提交"
+    click_button I18n.t("helpers.submit")
 
     assert @mentor.exercises.present?
     assert_equal "test", @mentor.exercises.last.content
