@@ -18,7 +18,6 @@ gem "twitter-bootstrap-rails", :branch => "bootstrap3"
 gem 'unicorn'
 
 gem 'rails_12factor'
-gem "bugsnag"
 
 group :development do
   gem 'capistrano', '~> 3.4.0'
