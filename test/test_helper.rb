@@ -7,7 +7,7 @@ Capybara.register_driver :selenium_chrome do |app|
   Capybara::Selenium::Driver.new(app, :browser => :chrome)
 end
 
-Capybara.default_driver = :selenium
+Capybara.default_driver = :selenium_chrome
 
 ActionController::TestCase.send :include, Devise::TestHelpers
 class ActiveSupport::TestCase

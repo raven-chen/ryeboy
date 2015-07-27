@@ -38,6 +38,7 @@ class CommentsTest < ActionDispatch::IntegrationTest
 
     click_link I18n.t("helpers.logout")
 
+    sleep 1
     login @student
 
     assert_equal "1", find("span.unread-count").text
