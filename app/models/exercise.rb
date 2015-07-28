@@ -3,7 +3,7 @@ class Exercise < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :task
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
   has_many :fans, :through => :interests, :class_name => "User", :source => :user, :dependent => :destroy
   has_many :interests
 

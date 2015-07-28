@@ -6,7 +6,7 @@ class Comment < ActiveRecord::Base
   belongs_to :user
 
   # Self relation
-  has_many :comments, class_name: "Comment", foreign_key: "replied_comment_id"
+  has_many :comments, class_name: "Comment", foreign_key: "replied_comment_id", dependent: :destroy
   belongs_to :replied_comment, class_name: "Comment"
 
   validates_presence_of :commentable, :author, :user

@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
   attr_accessible :author, :author_id, :category, :content, :name
 
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
   belongs_to :author, class_name: "User"
 
   validates :name, :author, :category, presence: true
