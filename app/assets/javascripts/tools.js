@@ -36,6 +36,18 @@ $(function(){
     maxHeight: 900,             // set maximum height of editor
     lang: "zh-CN",
     focus: true,
+    toolbar: [
+      ['style', ['style']],
+      ['font', ['bold', 'italic', 'underline', 'clear']],
+      ['fontname', ['fontname']],
+      ['color', ['color']],
+      ['para', ['ul', 'ol', 'paragraph']],
+      ['height', ['height']],
+      ['table', ['table']],
+      ['insert', ['link', 'video', 'picture', 'hr']],
+      ['view', ['fullscreen', 'codeview']],
+      ['help', ['help']]
+    ],
     onImageUpload: function(files) {
       var image = new FormData();
       image.append("image[attachment]", files[0])

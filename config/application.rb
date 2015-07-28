@@ -65,6 +65,9 @@ module Tao
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     config.assets.initialize_on_precompile = false
+
+    config.action_view.sanitized_allowed_tags = %w(h1 h2 h3 h4 h5 iframe img p br div strong em a ul ol li b i table tr td embed)
+    config.action_view.sanitized_allowed_attributes = %w(style href src webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder height width)
   end
 end
 
