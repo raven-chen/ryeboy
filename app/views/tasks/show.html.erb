@@ -1,7 +1,7 @@
 <h1 class="page-title"><%= @task.name %></h1>
 
 <fieldset>
-  <legend><%= @task.description %></legend>
+  <legend><%= sanitize @task.description %></legend>
 
   <div>
     <h3>我的回答</h3>(<%= content_tag(:span, "仅自己与老师可见", :class => "text-danger") if @task.visible_to_admin_only -%>)
