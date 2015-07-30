@@ -84,7 +84,7 @@ class User < ActiveRecord::Base
   end
 
   def master?
-    self.id == User.master.id
+    false#self.id == User.master.id
   end
 
   def has_task? task
