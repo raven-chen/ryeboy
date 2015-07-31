@@ -4,7 +4,7 @@
   <legend><%= sanitize @task.description %></legend>
 
   <div>
-    <h3>我的回答</h3>(<%= content_tag(:span, "仅自己与老师可见", :class => "text-danger") if @task.visible_to_admin_only -%>)
+    <h3>我的回答</h3>(<%= content_tag(:span, "仅学长可见", :class => "text-danger") if @task.visible_to_admin_only -%>)
     <div class="clearfix"></div>
 
     <% if @exercise.new_record? %>

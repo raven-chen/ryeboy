@@ -77,16 +77,6 @@ class User < ActiveRecord::Base
     }
   end
 
-  # The only one master :p
-  # The reason why not define this as a scope is it has been used in another scope and the result of this one is not chain-able.
-  def self.master
-    where(:sno => "0").first
-  end
-
-  def master?
-    false#self.id == User.master.id
-  end
-
   def has_task? task
     my_tasks.include?(task)
   end

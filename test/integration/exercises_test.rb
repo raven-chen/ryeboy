@@ -16,9 +16,10 @@ class ExercisesTest < ActionDispatch::IntegrationTest
 
     page.find(:css, "div.active .task-#{@task.id}").click
 
-    fill_in "exercise[content]", with: "test"
+    fill_in_editor "test"
 
     click_button I18n.t("helpers.submit")
+    sleep 1
 
     assert @mentor.exercises.present?
     assert_equal "test", @mentor.exercises.last.content

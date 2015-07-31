@@ -236,7 +236,7 @@ zh-CN:
         description: "描述"
         common: "集体作业"
         required: "必修"
-        visible_to_admin_only: "仅管理员可见"
+        visible_to_admin_only: "仅学长可见"
         due_date: "截至日期"
         grade: "可用年级"
       exercise:

@@ -46,4 +46,8 @@ class ActionDispatch::IntegrationTest
 
     assert_text "登陆成功"
   end
+
+  def fill_in_editor text
+    find(".note-editable").set(text)
+  end
 end
