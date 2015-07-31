@@ -2,10 +2,6 @@ class CommentsController < ApplicationController
   before_filter :find_comment, :only => [:edit, :update, :destroy]
 
   def index
-    @comments = Comment.all
-  end
-
-  def received
     @unread_comments = Comment.unread(current_user)
 
     @read_comments = Comment.received(current_user) - @unread_comments

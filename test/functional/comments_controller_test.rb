@@ -11,8 +11,8 @@ class CommentsControllerTest < ActionController::TestCase
     sign_in @user
   end
 
-  test "Enter received page should set comment's read_at" do
-    get :received
+  test "Enter index page should set comment's read_at" do
+    get :index
 
     assert_response :success
     assert_not_nil @comment.reload.read_at

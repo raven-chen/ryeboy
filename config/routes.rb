@@ -33,11 +33,7 @@ Tao::Application.routes.draw do
     end
   end
 
-  resources :comments do
-    collection do
-      get :received
-    end
-  end
+  resources :comments
 
   resources :documents, :only => [:index, :show]
   resources :posts, :only => [:index, :show]
