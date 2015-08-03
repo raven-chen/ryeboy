@@ -7,6 +7,7 @@ worker_processes 2
 
 # Help ensure your application will always spawn in the symlinked
 # "current" directory that Capistrano sets up.
+
 home_dir = ENV['HOME_DIR'] || "/home/app/ryeboy/current"
 unicorn_sock_file = ENV['UNICORN_SOCK_FILE'] || "/tmp/ryeboy.sock"
 
@@ -18,7 +19,7 @@ listen unicorn_sock_file
 timeout 30
 
 # feel free to point this anywhere accessible on the filesystem
-pid_file = "/tmp/ryeboy.pid"
+pid_file = ENV['UNICORN_PID_FILE'] || "#{home_dir}/shared/tmp/pids/ryeboy.pid"
 pid pid_file
 
 # By default, the Unicorn logger will write to stderr.

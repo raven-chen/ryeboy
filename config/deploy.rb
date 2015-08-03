@@ -1,14 +1,10 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
-set :application, 'ryeboy'
 set :repo_url, 'git@github.com:raven-chen/ryeboy.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-
-# Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/home/app/ryeboy'
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -37,7 +33,7 @@ set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 
 namespace :deploy do
   desc "Restart unicorn"
-  task :restart_s do
+  task :restart do
     on roles(:app) do
       execute("kill -USR2 `cat /tmp/ryeboy.pid`")
     end
@@ -58,14 +54,4 @@ namespace :deploy do
   task :publishing, roles(:app) do
     invoke "deploy:restart"
   end
-
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
-    end
-  end
-
 end

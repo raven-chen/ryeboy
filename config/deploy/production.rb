@@ -31,8 +31,8 @@ role :app, "121.40.140.69"
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
-
-
+set :deploy_to, '/home/app/ryeboy'
+set :application, 'ryeboy'
 
 # Custom SSH Options
 # ==================
