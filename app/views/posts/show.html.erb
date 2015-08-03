@@ -23,10 +23,7 @@
           <div class="content">
             <%= comment.content %>
 
-            <div class="operations">
-              <%= link_to t("helpers.edit"), edit_comment_path(comment) %>
-              <%= link_to '删除', comment, method: :delete, data: { confirm: I18n.t("helpers.are_you_sure") } %>
-            </div>
+            <%= actions_on_comment comment, user %>
           </div>
         </li>
       <% end -%>
