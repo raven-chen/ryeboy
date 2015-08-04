@@ -19,7 +19,7 @@ listen unicorn_sock_file
 timeout 30
 
 # feel free to point this anywhere accessible on the filesystem
-pid_file = ENV['UNICORN_PID_FILE'] || "#{home_dir}/shared/tmp/pids/ryeboy.pid"
+pid_file = ENV['UNICORN_PID_FILE'] || "/tmp/ryeboy.pid"
 pid pid_file
 
 # By default, the Unicorn logger will write to stderr.

@@ -35,19 +35,19 @@ namespace :deploy do
   desc "Restart unicorn"
   task :restart do
     on roles(:app) do
-      execute("kill -USR2 `cat /tmp/ryeboy.pid`")
+      execute("kill -USR2 `cat /tmp/#{fetch(:application)}.pid`")
     end
   end
 
   task :stop do
     on roles(:app) do
-      execute("kill -QUIT `cat /tmp/ryeboy.pid`")
+      execute("kill -QUIT `cat /tmp/#{fetch(:application)}.pid`")
     end
   end
 
   task :start do
     on roles(:app) do
-      execute("cd #{release_path} && bundle exec unicorn -E production -D -c #{release_path}/config/system/unicorn.conf.rb")
+      execute("cd #{release_path} && UNICORN_SOCK_FILE=/tmp/#{fetch(:application)}.sock UNICORN_PID_FILE=/tmp/#{fetch(:application)}.pid HOME_DIR=#{current_path}  bundle exec unicorn -E production -D -c #{release_path}/config/system/unicorn.conf.rb")
     end
   end
 
