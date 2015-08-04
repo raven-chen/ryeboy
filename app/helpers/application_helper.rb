@@ -7,4 +7,8 @@ module ApplicationHelper
   def maybe_selected_class value, current_value, classes, selected_classes
     current_value == value ? selected_classes : classes
   end
+
+  def brand_name
+    Dir.pwd =~ /ryegirl/ ? "莲花伊人" : "麦田男孩"
+  end
 end
