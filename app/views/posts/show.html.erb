@@ -12,7 +12,7 @@
 
   <div class="document-comment">
     <ul id="list">
-      <% @post.comments.each do |comment| %>
+      <% @comments.each do |comment| %>
         <li class="reply-container">
           <ol class="title reply">
             <li class="hint-text author-name"><%= comment.author.name %></li>
