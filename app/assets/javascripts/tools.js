@@ -32,8 +32,8 @@ $(function(){
 
   var $richEditor = $(".rich-editor");
   $richEditor.summernote({
-    minHeight: 300,             // set minimum height of editor
-    maxHeight: 900,             // set maximum height of editor
+    height: 200,
+    maxHeight: 900,
     lang: "zh-CN",
     focus: true,
     toolbar: [
