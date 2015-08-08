@@ -1,4 +1,5 @@
 class RepliesController < ApplicationController
+  load_and_authorize_resource
   # GET /replies/1/edit
   def edit
     @reply = Reply.find(params[:id])

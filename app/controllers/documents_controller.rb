@@ -1,4 +1,6 @@
 class DocumentsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @options = process_query_params %w{name category}
 

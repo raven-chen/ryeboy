@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @posts = params[:category].present? ? Post.where(category: params[:category]) : Post.all
 
