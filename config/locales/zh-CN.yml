@@ -267,6 +267,7 @@ zh-CN:
         tel_number: "电话号码"
         birth_date: "生日"
         note: "备注"
+        department: "部门"
       fund_exchange_activity:
         amount: "金额"
         comment: "备注"

@@ -25,27 +25,30 @@
 <table class="table table-hover">
   <tr>
     <th>级别</th>
+    <th><%= User.human_attribute_name("department") %></th>
     <th><%= User.human_attribute_name("sno") %></th>
     <th><%= User.human_attribute_name("name") %></th>
     <th><%= User.human_attribute_name("qq") %></th>
     <th><%= User.human_attribute_name("tel_number") %></th>
-    <th><%= User.human_attribute_name("email") %></th>
     <th></th>
   </tr>
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user_type(user) %></td>
-    <td><%= user.sno %></td>
-    <td><%= user.name %></td>
-    <td><%= user.qq %></td>
-    <td><%= user.tel_number %></td>
-    <td><%= user.email %></td>
-    <td>
-        <%= link_to '查看', user %>
-        <%= add_tag_links(user) %>
-        <%= link_to '编辑', edit_user_path(user) %>
-    </td>
-  </tr>
-<% end %>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user_type(user) %></td>
+      <td><%= user.department %></td>
+      <td><%= user.sno %></td>
+      <td><%= user.name %></td>
+      <td><%= user.qq %></td>
+      <td><%= user.tel_number %></td>
+
+      <td>
+          <%= link_to '查看', user %>
+          <%= add_tag_links(user) %>
+          <%= link_to '编辑', edit_user_path(user) %>
+      </td>
+    </tr>
+  <% end %>
 </table>
+
+<%= paginate @users %>

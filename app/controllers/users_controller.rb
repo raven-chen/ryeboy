@@ -18,8 +18,9 @@ class UsersController < ApplicationController
 
     @users = @users.tagged_with(params[:tag]) if @options[:tag]
 
-    # TODO: temporarily check user role via Array. should be done in SQL when add pagination
-    @users = @users.select{|user| user.send("#{@options[:role]}?")} if @options[:role]
+    @users = @users.with_role(@options[:role]) if @options[:role]
+
+    @users = @users.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
