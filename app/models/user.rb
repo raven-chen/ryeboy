@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   belongs_to :group
   has_many :user_activities
   has_many :comments, :foreign_key => :author_id, dependent: :destroy
-  has_many :posts, :foreign_key => :author_id
+  has_many :posts, :foreign_key => :author_id, dependent: :destroy
 
   has_many :my_tasks, :class_name => "Task", :through => :user_tasks, :source => :task
   has_many :user_tasks

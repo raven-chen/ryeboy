@@ -2,12 +2,16 @@
 
 <div class="document-view">
   <%= link_to '返回', posts_path %>
-  <h2 class="title"><%= @post.name %></h2>
+  <h2 class="title">
+    <%= @post.name %>
+    <%= author_info @post %>
+  </h2>
+
 
   <% if @post.content -%>
-  <div class="document-content">
-    <%= sanitize @post.content %>
-  </div>
+    <div class="document-content">
+      <%= sanitize @post.content %>
+    </div>
   <% end -%>
 
   <div class="document-comment">
@@ -23,7 +27,7 @@
           <div class="content">
             <%= comment.content %>
 
-            <%= actions_on_comment comment, current_user %>
+            <%= actions_on_object comment, current_user %>
           </div>
         </li>
       <% end -%>

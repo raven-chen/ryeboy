@@ -23,4 +23,8 @@ module UsersHelper
     # TODO: move this to site configuration
     content_tag(:div, link_to("自学流程", "http://bbs.ryeboy.com/documents/101", :class => "btn btn-success btn-large", :target => "_blank"), :class => "self-study alert alert-warning") if user.newbie?
   end
+
+  def author_info object
+    content_tag(:span, "#{object.author.name} 创建于 #{I18n.l(object.created_at)}", :class => "hint-text author-info")
+  end
 end
