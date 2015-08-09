@@ -1,7 +1,13 @@
 <h1>问答</h1>
 
 <div class="top-button-area clearfix">
-  <%= link_to '提问', new_topic_path, :class => "btn btn-primary pull-right" %>
+  <%= link_to '发帖', new_topic_path, :class => "btn btn-primary pull-right" %>
+</div>
+
+<div class="searchfield-above-table">
+  <% Topic::CATEGORIES.each_with_index do |category, i| -%>
+    <%= link_to category, topics_path(category: category), :class => "btn btn-default" %>
+  <% end -%>
 </div>
 
 <div>

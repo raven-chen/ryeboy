@@ -22,6 +22,8 @@
 
         <div class="content">
           <%= sanitize(reply.content) %>
+
+          <%= actions_on_object reply, current_user %>
         </div>
       </li>
     <% end -%>

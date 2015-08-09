@@ -1,9 +1,9 @@
 class TopicsController < ApplicationController
   load_and_authorize_resource
-  # GET /topics
-  # GET /topics.json
+
   def index
-    @topics = Topic.includes(:replies).all(order: "updated_at DESC")
+    @topics = params[:category].present? ? Topic.includes(:replies).where(category: params[:category]) : Topic.includes(:replies).scoped
+    @topics.order("updated_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -11,8 +11,6 @@ class TopicsController < ApplicationController
     end
   end
 
-  # GET /topics/1
-  # GET /topics/1.json
   def show
     @topic = Topic.find(params[:id])
     @reply = Reply.new(:topic_id => @topic.id)
@@ -23,8 +21,6 @@ class TopicsController < ApplicationController
     end
   end
 
-  # GET /topics/new
-  # GET /topics/new.json
   def new
     @topic = Topic.new
 
@@ -34,20 +30,17 @@ class TopicsController < ApplicationController
     end
   end
 
-  # GET /topics/1/edit
   def edit
-    @topic = Topic.find(params[:id])
+    @topic = current_user.topics.find(params[:id])
   end
 
-  # POST /topics
-  # POST /topics.json
   def create
     @topic = Topic.new(params[:topic])
     @topic.author = current_user
 
     respond_to do |format|
       if @topic.save
-        format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
+        format.html { redirect_to @topic, notice: I18n.t("notices.create_%{obj}_successfully", :obj => @topic.title) }
         format.json { render json: @topic, status: :created, location: @topic }
       else
         format.html { render action: "new" }
@@ -56,14 +49,12 @@ class TopicsController < ApplicationController
     end
   end
 
-  # PUT /topics/1
-  # PUT /topics/1.json
   def update
-    @topic = Topic.find(params[:id])
+    @topic = current_user.topics.find(params[:id])
 
     respond_to do |format|
       if @topic.update_attributes(params[:topic])
-        format.html { redirect_to @topic, notice: 'Topic was successfully updated.' }
+        format.html { redirect_to @topic, notice: I18n.t("notices.update_%{obj}_successfully", :obj => @topic.title) }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -72,11 +63,11 @@ class TopicsController < ApplicationController
     end
   end
 
-  # DELETE /topics/1
-  # DELETE /topics/1.json
   def destroy
-    @topic = Topic.find(params[:id])
+    @topic = current_user.topics.find(params[:id])
     @topic.destroy
+
+    flash[:notice] = I18n.t("notices.delete_%{obj}_successfully", :obj => @topic.title)
 
     respond_to do |format|
       format.html { redirect_to topics_url }

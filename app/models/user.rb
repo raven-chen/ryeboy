@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   has_many :tasks, :through => :exercises
   has_many :exercises, :order => "date DESC"
   has_many :topics, :foreign_key => :author_id
+  has_many :replies, :foreign_key => :author_id
 
   has_many :liked_exercises, :through => :interests, :class_name => "Exercise", :source => :exercise, :dependent => :destroy
   has_many :interests

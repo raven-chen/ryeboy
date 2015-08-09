@@ -13,11 +13,16 @@ module ApplicationHelper
   end
 
   # To use this method, the object must have author and support edit and delete actions
-  def actions_on_object object, user
-    return if object.author != user
+  def actions_on_object object, user, have_show_link = false
+    operations = []
 
-    edit = link_to(I18n.t("helpers.edit"), eval("edit_#{object.class.name.downcase}_path(object)"))
-    delete = link_to(I18n.t("helpers.delete"), object, method: :delete, data: { confirm: I18n.t("helpers.are_you_sure") })
-    content_tag(:div, [edit, delete].join(" ").html_safe, :class => "operations")
+    operations << link_to(I18n.t("helpers.view"), object) if have_show_link
+
+    if object.author == user
+      operations << link_to(I18n.t("helpers.edit"), eval("edit_#{object.class.name.downcase}_path(object)"))
+      operations << link_to(I18n.t("helpers.delete"), object, method: :delete, data: { confirm: I18n.t("helpers.are_you_sure") })
+    end
+
+    content_tag(:div, operations.join(" ").html_safe, :class => "operations")
   end
 end

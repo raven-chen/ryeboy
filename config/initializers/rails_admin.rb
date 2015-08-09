@@ -132,6 +132,7 @@ RailsAdmin.config do |config|
   config.model 'Topic' do
     edit do
       field :title
+      field :category
       field :content, :rich_editor do
         config({
           :insert_many => true
