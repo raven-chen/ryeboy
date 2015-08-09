@@ -49,7 +49,6 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
-        commentable_show_path = eval("#{@comment.commentable.class.table_name.singularize}_path(:id => #{@comment.commentable.id})")
         format.html { redirect_to commentable_show_path, notice: I18n.t("notices.update_%{obj}_successfully", :obj => Comment.model_name.human) }
       else
         flash[:alert]= I18n.t("notices.update_%{obj}_failed_%{errors}", :obj => Comment.model_name.human,
@@ -64,12 +63,17 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to home_path, notice: I18n.t("notices.delete_%{obj}_successfully", :obj => Comment.model_name.human) }
+      format.html { redirect_to commentable_show_path(@comment), notice: I18n.t("notices.delete_%{obj}_successfully", :obj => Comment.model_name.human) }
       format.json { head :no_content }
     end
   end
 
+  private
   def find_comment
     @comment = current_user.comments.find(params[:id])
+  end
+
+  def commentable_show_path comment
+    eval("#{comment.commentable.class.table_name.singularize}_path(:id => #{comment.commentable.id})")
   end
 end
