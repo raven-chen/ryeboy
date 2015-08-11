@@ -44,8 +44,11 @@
 
       <td>
           <%= link_to '查看', user %>
-          <%= add_tag_links(user) %>
-          <%= link_to '编辑', edit_user_path(user) %>
+          <% if can? :manage, User -%>
+            <%= add_tag_links(user) %>
+            <%= link_to '编辑', edit_user_path(user) %>
+            <%= link_to "重置密码", reset_password_user_path(user), method: :put, data: { confirm: I18n.t("helpers.are_you_sure") } -%>
+          <% end -%>
       </td>
     </tr>
   <% end %>

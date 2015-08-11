@@ -18,6 +18,7 @@ Tao::Application.routes.draw do
       put :assign_my_tasks
       get :change_password
       put :update_password
+      put :reset_password
     end
   end
 

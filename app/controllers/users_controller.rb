@@ -114,4 +114,21 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  def reset_password
+    @user = User.find(params[:id])
+    @user.password = User::DEFAULT_PASSWORD
+
+    if @user.save
+      notice = "密码重置成功"
+    else
+      notice = "密码重置失败 #{@user.errors.inspect}"
+    end
+
+    respond_to do |format|
+      format.html {
+        redirect_to users_path, notice: notice
+      }
+    end
+  end
 end

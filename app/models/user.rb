@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_soft_deletion :default_scope => true
 
+  DEFAULT_PASSWORD = "99999999"
   TAG_TYPES = ["skill", "hobby", "personality"]
   TAG_TYPES_IN_PLURAL = [:skills, :hobbies, :personalities]
   acts_as_tagger
