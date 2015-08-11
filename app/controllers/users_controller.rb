@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       m
     }
 
-    @users = User.visible
+    @users = current_user.admin? ? User.all : User.visible
 
     @users = @users.where("name LIKE ?", "%#{@options[:name]}%") if @options[:name]
 
