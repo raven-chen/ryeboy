@@ -33,4 +33,18 @@ FactoryGirl.define do
     t.content "test"
     t.association :author, factory: :user
   end
+
+  factory :document do |t|
+    t.name "test"
+    t.content "test"
+    t.category Document::CATEGORIES.first
+    t.association :author, factory: :user
+  end
+
+  factory :post do |t|
+    t.name "test"
+    t.content "test"
+    t.category Post::CATEGORIES.first
+    t.association :author, factory: :user
+  end
 end

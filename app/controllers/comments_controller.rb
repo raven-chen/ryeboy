@@ -49,7 +49,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
-        format.html { redirect_to commentable_show_path, notice: I18n.t("notices.update_%{obj}_successfully", :obj => Comment.model_name.human) }
+        format.html { redirect_to commentable_show_path(@comment), notice: I18n.t("notices.update_%{obj}_successfully", :obj => Comment.model_name.human) }
       else
         flash[:alert]= I18n.t("notices.update_%{obj}_failed_%{errors}", :obj => Comment.model_name.human,
                       :errors => "<br> #{@comment.errors.messages.values.join}")

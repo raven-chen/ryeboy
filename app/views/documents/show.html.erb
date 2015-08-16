@@ -27,21 +27,7 @@
       <% end -%>
     </ul>
 
-    <div>
-      <h4>你的回复</h4>
-      <%= form_for(@comment, :role => "form") do |f| %>
-        <fieldset>
-          <%= f.hidden_field :commentable_id, :value => @comment.commentable.id %>
-          <%= f.hidden_field :commentable_type, :value => @comment.commentable.class.name %>
-          <%= f.hidden_field :replied_comment_id, :value => @comment.replied_comment_id %>
-
-          <br>
-          <%= f.text_area :content, :class => "rich-editor", :placeholder => comment_place_holder(@comment) %>
-          <br>
-          <%= submit_tag t("helpers.submit") %>
-        </fieldset>
-      <% end -%>
-    </div>
+    <%= render partial: "comments/form", locals: { rich_editor: true, has_title: true, remote_form: false } %>
   </div>
 
 </div>
