@@ -1,12 +1,12 @@
 <%
-  has_title = false unless defined?(has_title)
-  remote_form = true unless defined?(remote_form)
-  rich_editor = false unless defined?(rich_editor)
+  has_title ||= local_assigns[:has_title] = local_assigns.fetch(:has_title, false)
+  ajax_form ||= local_assigns[:ajax_form] = local_assigns.fetch(:ajax_form, true)
+  rich_editor ||= local_assigns[:rich_editor] = local_assigns.fetch(:rich_editor, false)
 -%>
 
 <div>
   <%= content_tag(:h4, "你的回复") if has_title %>
-  <%= form_for(@comment, :role => "form", :remote => remote_form) do |f| %>
+  <%= form_for(@comment, :role => "form", :remote => ajax_form) do |f| %>
     <fieldset>
       <%= f.hidden_field :commentable_id, :value => @comment.commentable.id %>
       <%= f.hidden_field :commentable_type, :value => @comment.commentable.class.name %>
