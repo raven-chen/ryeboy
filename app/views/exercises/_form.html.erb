@@ -4,6 +4,10 @@
       <legend><%= @exercise.task.try(:name) %>　日记</legend>
       <%= f.hidden_field :task_id, :value => @exercise.task.id %>
 
+      <div class="alert alert-warning">
+        <%= I18n.t("notices.religion_notice") %>
+      </div>
+
       <% if @exercise.task.description.present? -%>
         <div class="task-description">
           <%= @exercise.task.description.html_safe %>
