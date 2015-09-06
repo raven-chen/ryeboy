@@ -110,8 +110,8 @@ class ExercisesController < ApplicationController
   end
 
   def unfinished
-    @start_date = params[:start_date] || Date.current
-    @end_date = params[:end_date] || Date.current
+    @start_date = params[:start_date].try(:to_date) || Date.current
+    @end_date = params[:end_date].try(:to_date) || Date.current
     @tasks = Task.where(id: params[:task_ids])
     @grade = params[:grade]
 
