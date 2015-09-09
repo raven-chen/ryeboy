@@ -6,7 +6,7 @@ class ExercisesController < ApplicationController
   end
 
   def show
-    @exercise = Exercise.find(params[:id])
+    @exercise = Exercise.visible_to(current_user).find(params[:id])
   end
 
   def new
@@ -73,7 +73,7 @@ class ExercisesController < ApplicationController
       m
     }
 
-    @exercises = Exercise.scoped.includes(:comments, :task, :user)
+    @exercises = Exercise.visible_to(current_user).includes(:comments, :task, :user)
 
     @exercises = @exercises.joins(:user).where(users: { grade: @options[:grade] }) if @options[:grade]
 

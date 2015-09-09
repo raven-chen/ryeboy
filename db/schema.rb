@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150809025952) do
+ActiveRecord::Schema.define(:version => 20150908230801) do
 
   create_table "comments", :force => true do |t|
     t.integer  "author_id"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20150809025952) do
     t.datetime "updated_at",                     :null => false
     t.integer  "fan",             :default => 0
     t.boolean  "ask_for_comment"
+    t.boolean  "visible_to_mentor_only", :default => false
   end
 
   create_table "groups", :force => true do |t|

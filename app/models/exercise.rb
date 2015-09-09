@@ -1,5 +1,5 @@
 class Exercise < ActiveRecord::Base
-  attr_accessible :content, :date, :task_id, :user_id, :ask_for_comment
+  attr_accessible :content, :date, :task_id, :user_id, :ask_for_comment, :visible_to_mentor_only
 
   belongs_to :user
   belongs_to :task
@@ -10,6 +10,10 @@ class Exercise < ActiveRecord::Base
   validates :user, :task, :date, :presence => :true
   validates_uniqueness_of :date, :scope => [:user_id, :task_id]
   validate :unique_for_common_task, :on => :create
+
+  scope :visible_to, lambda { |user|
+    user.generalized_mentor? ? scoped : where(visible_to_mentor_only: false)
+  }
 
   def unique_for_common_task
     return true if !task.common

@@ -52,3 +52,12 @@ table.has-inline-form tr td {
 #clean-editor {
   margin-bottom: 5px;
 }
+.log-exercise {
+  label.main {
+    font-size: 18px;
+
+    &.content {
+      margin-top: 20px;
+    }
+  }
+}

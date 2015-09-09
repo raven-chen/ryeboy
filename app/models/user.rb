@@ -82,4 +82,8 @@ class User < ActiveRecord::Base
   def has_task? task
     my_tasks.include?(task)
   end
+
+  def generalized_mentor?
+    (["mentor", "admin", "hr"] & roles).size != 0
+  end
 end
