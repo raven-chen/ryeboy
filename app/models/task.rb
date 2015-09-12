@@ -15,7 +15,7 @@ class Task < ActiveRecord::Base
     t.grade = nil if t.grade.blank?
   }
 
-  def finished? user
+  def finished_by? user
     date = due_date.present? ? due_date : Date.tomorrow
     exercises.where("date <= ? AND user_id = ?", date, user.id).present?
   end

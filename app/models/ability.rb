@@ -48,4 +48,8 @@ class Ability
   def hr
     can :manage, User
   end
+
+  def dean
+    can :manage, Task
+  end
 end

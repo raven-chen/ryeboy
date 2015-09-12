@@ -31,8 +31,8 @@ class User < ActiveRecord::Base
   has_many :liked_exercises, :through => :interests, :class_name => "Exercise", :source => :exercise, :dependent => :destroy
   has_many :interests
 
-  ROLES = %w{newbie student mentor admin documenter hr}
-  ROLES_MAP = {newbie: "新人", student: "学员", mentor: "学长", admin: "管理员", documenter: "文档管理员", hr: "人力管理"}
+  ROLES = %w{newbie student mentor admin documenter hr dean}
+  ROLES_MAP = {newbie: "新人", student: "学员", mentor: "学长", admin: "管理员", documenter: "文档管理员", hr: "人力管理", dean: "教务长"}
 
   DEPARTMENTS = %w{招生 大一 大二 大三 大四 女子 传媒 人力}
   GRADES = %w{新生 大一 大二 大三 大四 女子 学长}
@@ -85,5 +85,15 @@ class User < ActiveRecord::Base
 
   def generalized_mentor?
     (["mentor", "admin", "hr"] & roles).size != 0
+  end
+
+  # High grade could view lower grade, instead lower grade could not view higher
+  def visible_grades
+    if generalized_mentor?
+      GRADES
+    else
+      current_grade_index = GRADES.index(grade) || 0
+      GRADES[0..current_grade_index]
+    end
   end
 end

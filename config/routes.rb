@@ -39,9 +39,5 @@ Tao::Application.routes.draw do
   resources :documents, :only => [:index, :show]
   resources :posts
   resources :user_activities, :only => [:index, :show]
-  resources :tasks, :only => [:index, :show] do
-    collection do
-      get :common
-    end
-  end
+  resources :tasks, :except => [:destroy]
 end

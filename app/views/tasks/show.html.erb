@@ -1,35 +1,57 @@
 <h1 class="page-title"><%= @task.name %></h1>
 
-<fieldset>
-  <legend><%= sanitize @task.description %></legend>
-
-  <div>
-    <h3>我的回答</h3>(<%= content_tag(:span, "仅学长可见", :class => "text-danger") if @task.visible_to_admin_only -%>)
-    <div class="clearfix"></div>
-
-    <% if @exercise.new_record? %>
-      <%= form_for(@exercise) do |f| %>
-        <%= f.hidden_field :task_id, :value => @task.id %>
-        <label>日期</label>
-        <%= f.text_field :date, :class => "js-date-field" %>
-        <label>内容</label>
-        <%= f.text_area :content, :class => "rich-editor" %>
-        <br>
-        <%= submit_tag "提交" %>
-      <% end -%>
-    <% else -%>
-      <%= link_to I18n.t("helpers.edit"), edit_exercise_path(@exercise) %>
-      <%= render :partial => "exercises/list", locals: { exercises: [@exercise] } %>
-    <% end -%>
+<div>
+  <div class="task-description">
+    <%= sanitize @task.description %>
   </div>
 
-  <div class="others-exercises">
-    <% if @task.exercises.present? -%>
-      <%= render :partial => "exercises/list", locals: { exercises: visible_exercises(@task) } %>
-    <% else -%>
-      <div class="well no-result">
-        <%= t("helpers.no_results") %>
+  <div class="tab">
+    <ul class="nav-tabs nav">
+      <li class="active">
+        <a href="#content-1" data-toggle="tab">我的答案</a>
+      </li>
+
+      <li>
+        <a href="#content-2" data-toggle="tab">所有答案</a>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="content-1" class="tab-pane active">
+        <% if @my_exercise.new_record? %>
+          <%= form_for(@my_exercise) do |f| %>
+            <%= f.hidden_field :task_id, :value => @my_exercise.task.id %>
+
+            <label class="main">日期</label>
+            <%= f.text_field :date, :class => "js-date-field" %>
+
+            <div class="checkbox">
+              <label><%= f.check_box :visible_to_mentor_only %> <span class="text-danger">仅对学长可见</span> <span class="hint-text">(勾选此项, 你的答案只会被学长看到, 对其它学员不可见)</span></label>
+            </div>
+
+            <label class="main content">内容</label>
+            <button id="clean-editor" type="button">清空内容</button>
+            <%= f.text_area :content, :class => "rich-editor" %>
+            <br>
+
+            <%= submit_tag "提交" %>
+          <% end -%>
+        <% else -%>
+          <%= link_to I18n.t("helpers.edit"), edit_exercise_path(@my_exercise), :class => "btn btn-primary" %><br><br>
+
+          <%= @my_exercise.content %>
+        <% end -%>
       </div>
-    <% end -%>
+
+      <div id="content-2" class="tab-pane">
+        <% if @all_exercises.present? -%>
+          <%= render :partial => "exercises/list", locals: { exercises: @all_exercises } %>
+        <% else -%>
+          <div class="well no-result">
+            <%= t("helpers.no_results") %>
+          </div>
+        <% end -%>
+      </div>
+    </div>
   </div>
-</fieldset>
+</div>

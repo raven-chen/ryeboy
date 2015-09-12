@@ -19,9 +19,13 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.new(params[:exercise].merge(:user_id => current_user.id))
 
     if @exercise.save
-      flash[:notice]= "#{@exercise.task.name} 日记完成"
+      flash[:notice]= "#{@exercise.task.name} 完成"
 
-      redirect_to root_path
+      if @exercise.task.common?
+        redirect_to task_path(@exercise.task)
+      else
+        redirect_to root_path
+      end
     else
       flash[:alert]= "#{@exercise.task.try(:name)} 日记失败. <br> #{@exercise.errors.messages.values.join}"
 
@@ -48,7 +52,15 @@ class ExercisesController < ApplicationController
 
     respond_to do |format|
       if @exercise.update_attributes(params[:exercise])
-        format.html { redirect_to root_path, notice: '日记已更新' }
+        format.html {
+          flash[:notice]= "已更新"
+
+          if @exercise.task.common?
+            redirect_to task_path(@exercise.task)
+          else
+            redirect_to root_path
+          end
+        }
       else
         format.html { render action: "edit" }
       end
