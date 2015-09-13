@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   # Actions in this controller are for common task ONLY
 
   def index
-    @tasks = Task.common
+    @tasks = Task.common.where(grade: current_user.visible_grades)
   end
 
   def show
@@ -16,7 +16,7 @@ class TasksController < ApplicationController
                      Exercise.new(:date => Date.current, :task_id => @task.id, :user_id => current_user.id)
                    end
 
-    @all_exercises = @task.exercises.joins(:user).where("users.grade IN (?)", current_user.visible_grades)
+    @all_exercises = @task.exercises.joins(:user).where("users.grade IN (?)", current_user.visible_grades).visible_to(current_user)
   end
 
   def new

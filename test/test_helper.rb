@@ -47,7 +47,17 @@ class ActionDispatch::IntegrationTest
     assert_text "登陆成功"
   end
 
+  def logout
+    click_link I18n.t("helpers.logout")
+    sleep 1
+  end
+
   def fill_in_editor text
     find(".note-editable").set(text)
+  end
+
+  def submit_form waiting_time = 1
+    click_button I18n.t("helpers.submit")
+    sleep waiting_time
   end
 end

@@ -22,6 +22,7 @@ class Ability
     can :manage, Exercise
     cannot :unfinished, Exercise
     can :read, Document
+    can :read, Task
   end
 
   def mentor
