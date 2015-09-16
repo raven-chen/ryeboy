@@ -33,6 +33,7 @@ class Ability
     can :read, User
     can :read, Document
     can :manage, Post
+    can :read, Task
   end
 
   # Functional roles
