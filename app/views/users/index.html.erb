@@ -27,7 +27,7 @@
     <th>级别</th>
     <th><%= User.human_attribute_name("department") %></th>
     <th><%= User.human_attribute_name("sno") %></th>
-    <th><%= User.human_attribute_name("name") %></th>
+    <th><%= User.human_attribute_name("name") %>(点击可查看打卡)</th>
     <th><%= User.human_attribute_name("qq") %></th>
     <th><%= User.human_attribute_name("tel_number") %></th>
     <th></th>
@@ -38,7 +38,7 @@
       <td><%= user_type(user) %></td>
       <td><%= user.department %></td>
       <td><%= user.sno %></td>
-      <td><%= user.name %></td>
+      <td><%= link_to_user_exercises user %></td>
       <td><%= user.qq %></td>
       <td><%= user.tel_number %></td>
 
