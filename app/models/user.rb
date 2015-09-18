@@ -38,6 +38,7 @@ class User < ActiveRecord::Base
   GRADES = %w{新生 大一 大二 大三 大四 女子 学长}
 
   GENDER = ["男", "女"]
+  NEWBIE_TASK_NAME = "自学一星"
 
   scope :with_role, lambda { |role| { conditions: "roles_mask & #{2**ROLES.index(role.to_s)} > 0"} }
   scope :without_role, lambda { |role| { conditions: "roles_mask & #{2**ROLES.index(role.to_s)} = 0"} }
@@ -61,6 +62,15 @@ class User < ActiveRecord::Base
 
   before_create { |user|
     user.grade = GRADES[0] if user.grade.blank? && user.newbie?
+  }
+
+  after_create { |user|
+    # Set task for newbie
+    # TODO: Better to have a column instead of this magic string
+    if user.newbie?
+      newbie_task = Task.find_by_name(NEWBIE_TASK_NAME)
+      user.my_tasks << newbie_task if newbie_task
+    end
   }
 
   def roles=(roles)
