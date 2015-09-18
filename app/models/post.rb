@@ -6,7 +6,7 @@ class Post < ActiveRecord::Base
 
   validates :name, :author, :category, presence: true
 
-  CATEGORIES = ["通知", "资料中心", "教学部", "人力部", "传媒部", "运营部", "院办"]
+  CATEGORIES = ["通知", "资料中心", "教学部", "人力部", "传媒部", "技术部", "院办"]
   validates_inclusion_of :category, in: CATEGORIES
 
   def category_enum
