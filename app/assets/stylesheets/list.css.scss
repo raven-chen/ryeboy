@@ -10,16 +10,14 @@
     margin-left: 0px;
 
     &.reply {
-      height: 20px;
+      height: 30px;
       background: #F0F6F3;
-      padding-left: 5px;
     }
 
     li {
-      margin-right: 5px;
       list-style: none;
-      height: 30px;
       display: inline-block;
+      padding: 5px;
 
       &.name {
         font-size: 24px;
@@ -27,7 +25,7 @@
       }
 
       &.author-name {
-        margin-right: 10px;
+        margin-left: 5px;
       }
     }
   }
@@ -64,10 +62,15 @@
           }
         }
 
+        .reply-to-comment {
+          position: absolute;
+          right: 5px;
+        }
+
         .operations {
           position: absolute;
           right: 10px;
-          top: -20px;
+          top: -25px;
           display: none;
         }
       }

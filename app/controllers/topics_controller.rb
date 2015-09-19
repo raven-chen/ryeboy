@@ -13,7 +13,7 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
-    @reply = Reply.new(:topic_id => @topic.id)
+    @comment = Comment.new(commentable: @topic)
 
     respond_to do |format|
       format.html # show.html.erb

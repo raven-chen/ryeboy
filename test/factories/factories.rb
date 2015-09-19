@@ -31,6 +31,7 @@ FactoryGirl.define do
   factory :topic do |t|
     t.title "test"
     t.content "test"
+    t.category Topic::CATEGORIES.first
     t.association :author, factory: :user
   end
 

@@ -15,7 +15,7 @@
         <td><%= link_to topic.title, topic_path(topic) %></td>
         <td><%= topic.category %></td>
         <td><%= topic.author.name %></td>
-        <td><%= topic.replies.count %></td>
+        <td><%= topic.comments.count %></td>
         <td><%= topic.updated_at.strftime(t("time.formats.default")) %></td>
         <td>
           <%= actions_on_object topic, current_user, true %>
