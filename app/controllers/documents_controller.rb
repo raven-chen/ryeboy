@@ -14,8 +14,6 @@ class DocumentsController < ApplicationController
     end
   end
 
-  # GET /documents/1
-  # GET /documents/1.json
   def show
     @document = Document.find(params[:id])
     @comment = Comment.new(commentable: @document)

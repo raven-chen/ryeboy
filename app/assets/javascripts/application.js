@@ -26,3 +26,4 @@
 //= require tools
 //= require exercises
 //= require search
+//= require comment
