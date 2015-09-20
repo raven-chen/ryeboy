@@ -4,7 +4,8 @@ class TopicsController < ApplicationController
   def index
     @topics = params[:category].present? ? Topic.includes(:replies).where(category: params[:category]) : Topic.includes(:replies).scoped
     @topics.order("updated_at DESC")
-
+    @topics = @topics.page(params[:page])
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @topics }
