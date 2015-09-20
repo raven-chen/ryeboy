@@ -39,6 +39,8 @@ class UsersController < ApplicationController
   end
 
   def profile
+    @topics = Topic.recent_five
+
     respond_to do |format|
       format.html # show.html.erb
     end

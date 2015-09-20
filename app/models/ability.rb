@@ -9,7 +9,6 @@ class Ability
   # fundamental roles
   def newbie
     can :manage, Topic
-    can :manage, Reply
     can :manage, Exercise
     cannot :unfinished, Exercise
     can :read, Document
@@ -18,7 +17,6 @@ class Ability
   def student
     can :read, Notification
     can :manage, Topic
-    can :manage, Reply
     can :manage, Exercise
     cannot :unfinished, Exercise
     can :read, Document
@@ -28,7 +26,6 @@ class Ability
   def mentor
     can :read, Notification
     can :manage, Topic
-    can :manage, Reply
     can :manage, Exercise
     can :read, User
     can :read, Document
