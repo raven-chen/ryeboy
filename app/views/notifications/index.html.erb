@@ -1,0 +1,42 @@
+<h1>通知管理</h1>
+
+<div class="top-button-area clearfix">
+  <%= link_to '新建', new_notification_path, :class => "btn btn-primary pull-right" %>
+</div>
+
+<div class="searchfield-above-table">
+  <% Notification::CATEGORIES.each_with_index do |category, i| -%>
+    <%= link_to category, notifications_path(category: category), :class => "btn btn-default" %>
+  <% end -%>
+</div>
+
+<div>
+  <% if @notifications.present? -%>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>通知</th>
+          <th>类型</th>
+          <th>通知对象</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @notifications.each do |notification| %>
+          <tr>
+            <td><%= truncate(notification.content, 40) %></td>
+            <td><%= notification.category %></td>
+            <td><%= notification.grade %></td>
+            <td>
+              <%= actions_on_object notification, current_user %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else -%>
+    <div class="well no-result">
+      <%= t("helpers.no_results") %>
+    </div>
+  <% end -%>
+</div>

@@ -32,7 +32,7 @@ RailsAdmin.config do |config|
   # config.excluded_models = ["UserTask", "Group", "UserActivity", "FundExchangeActivity", "Interest", "Reply"]
 
   # Include specific models (exclude the others):
-  config.included_models = ["Task", "Document", "Topic", "User", "Notification", "Post"]
+  config.included_models = ["Task", "Document", "Topic", "User", "Post"]
 
   # Label methods for model instances:
   # config.label_methods << :description # Default is [:name, :title]

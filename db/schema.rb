@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150920040026) do
+ActiveRecord::Schema.define(:version => 20150920235535) do
 
   create_table "comments", :force => true do |t|
     t.integer  "author_id"
@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(:version => 20150920040026) do
     t.text     "content"
     t.integer  "task_id"
     t.integer  "user_id"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-    t.integer  "fan",             :default => 0
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.integer  "fan",                    :default => 0
     t.boolean  "ask_for_comment"
     t.boolean  "visible_to_mentor_only", :default => false
   end
@@ -53,8 +53,9 @@ ActiveRecord::Schema.define(:version => 20150920040026) do
   create_table "groups", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "accessible_posts"
   end
 
   create_table "images", :force => true do |t|
@@ -80,6 +81,8 @@ ActiveRecord::Schema.define(:version => 20150920040026) do
     t.boolean  "active"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "category"
+    t.string   "grade"
   end
 
   create_table "posts", :force => true do |t|
