@@ -1,0 +1,18 @@
+<div class="document-view">
+  <h2 class="title">
+    <%= @notification.name %>
+    <%= content_tag(:span, "创建于 #{I18n.l(@notification.created_at)}", :class => "hint-text author-info") %>
+    <span class="label label-primary"><%= @notification.grade.blank? ? "全员" : @notification.grade %></span>
+    <span class="label label-info"><%= @notification.category %></span>
+  </h2>
+
+  <% if @notification.content -%>
+    <div class="document-content">
+      <%= sanitize @notification.content %>
+    </div>
+  <% end -%>
+
+  <br>
+  <%= link_to I18n.t("helpers.edit"), edit_notification_path(@notification), :class => "btn btn-primary" %>
+  <%= link_to I18n.t("helpers.back"), notifications_path, :class => "btn btn-default" %>
+</div>

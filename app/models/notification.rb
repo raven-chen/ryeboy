@@ -1,5 +1,5 @@
 class Notification < ActiveRecord::Base
-  attr_accessible :active, :content
+  attr_accessible :active, :content, :grade, :category, :name
 
   scope :active, where(:active => true).order("updated_at DESC")
 

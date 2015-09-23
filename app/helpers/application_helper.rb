@@ -25,4 +25,14 @@ module ApplicationHelper
 
     content_tag(:div, operations.join(" ").html_safe, :class => "operations")
   end
+
+  def actions_on_object_no_author object
+    operations = []
+
+    operations << link_to(I18n.t("helpers.view"), object)
+    operations << link_to(I18n.t("helpers.edit"), eval("edit_#{object.class.name.downcase}_path(object)"))
+    operations << link_to(I18n.t("helpers.delete"), object, method: :delete, data: { confirm: I18n.t("helpers.are_you_sure") })
+
+    content_tag(:div, operations.join(" ").html_safe, :class => "operations")
+  end
 end

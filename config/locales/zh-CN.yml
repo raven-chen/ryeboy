@@ -184,6 +184,7 @@ zh-CN:
     detail: "查看详细"
     actions: "操作"
     edit: "编辑"
+    back: "返回"
     delete: "删除"
     enter: "进入"
     log: "日记"
@@ -193,7 +194,7 @@ zh-CN:
     may_want_to_edit: "如果想编辑所选日期的日记，<a href='%{edit_exercise_link}'>请猛击这里</a>"
     are_you_sure: "你确定吗?"
     links:
-      back: "Back"
+      back: "返回"
       cancel: "Cancel"
       confirm: "Are you sure?"
       destroy: "Delete"
