@@ -23,6 +23,6 @@ module ApplicationHelper
       operations << link_to(I18n.t("helpers.delete"), object, method: :delete, data: { confirm: I18n.t("helpers.are_you_sure") })
     end
 
-    content_tag(:div, operations.join(" ").html_safe, :class => "operations")
+    operations.join(" ").html_safe
   end
 end

@@ -21,7 +21,9 @@
           <div class="content">
             <%= sanitize comment.content %>
 
-            <%= actions_on_object(comment, current_user) %>
+            <div class="operations">
+              <%= actions_on_object(comment, current_user) %>
+            </div>
           </div>
         </li>
       <% end -%>

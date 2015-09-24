@@ -28,7 +28,9 @@
             <td><%= post.category %></td>
             <td><%= post.comments.count %></td>
             <td>
-              <%= actions_on_object post, current_user %>
+              <div class="operations">
+                <%= actions_on_object post, current_user %>
+              </div>
             </td>
           </tr>
         <% end %>
