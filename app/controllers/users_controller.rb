@@ -14,6 +14,8 @@ class UsersController < ApplicationController
 
     @users = current_user.admin? ? User.scoped : User.visible
 
+    @users = @users.order("roles_mask ASC")
+
     @users = @users.where("name LIKE ?", "%#{@options[:name]}%") if @options[:name]
 
     @users = @users.tagged_with(params[:tag]) if @options[:tag]
