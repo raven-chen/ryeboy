@@ -2,6 +2,8 @@ class Notification < ActiveRecord::Base
   attr_accessible :active, :content, :grade, :category, :name
 
   default_scope where(:active => true).order("updated_at DESC")
+  scope :unread, lambda{ |read_at| where("updated_at > ?", read_at || Date.new(2000,1,1)) }
+  scope :applicable, lambda{ |grade| where("grade IS NULL OR grade = '' OR grade = ?", grade) }
 
   CATEGORIES = ["功能更新", "通知"]
 

@@ -7,7 +7,7 @@
       <%= f.text_field :name  %>
 
       <label>通知对象</label>
-      <%= f.select :grade, User::GRADES, { "aria-describedby" => "helpBlock", prompt: "全员" } %>
+      <%= f.select :grade, User::GRADES, { include_blank: "全员" } %>
 
       <label>类型</label>
       <%= f.select :category, Notification::CATEGORIES %>
