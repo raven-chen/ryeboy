@@ -2,8 +2,8 @@ require "test_helper"
 
 class NotificationsTest < ActionDispatch::IntegrationTest
   setup do
-    @student_grade_1 = FactoryGirl.create(:user, grade: User::GRADES[0])
-    @student_grade_2 = FactoryGirl.create(:user, grade: User::GRADES[1])
+    @student_grade_1 = FactoryGirl.create(:user, grade: User::GRADES[0], created_at: Date.yesterday)
+    @student_grade_2 = FactoryGirl.create(:user, grade: User::GRADES[1], created_at: Date.yesterday)
   end
 
   {"new_features" => 0, "new_notices" => 1}.each do |category, index|
