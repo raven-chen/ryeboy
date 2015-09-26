@@ -79,8 +79,12 @@ class UsersController < ApplicationController
   end
 
   def update_self
-    if params[:read_notification_at]
-      params[:user] = { read_notification_at: Time.now }
+    # TODO: Tell, Don't ask !
+    case params[:source]
+    when "newNotices"
+      params[:user] = { read_new_notices_at: Time.now }
+    when "newFeatures"
+      params[:user] = { read_new_features_at: Time.now }
     end
 
     respond_to do |format|

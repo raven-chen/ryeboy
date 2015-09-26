@@ -1,6 +1,11 @@
 <% if current_user -%>
-  <% new_features = notifications(current_user, Notification::CATEGORIES[0]) -%>
+  <% new_features = new_features(current_user) -%>
   <% if new_features.present? -%>
-    <%= render partial: "notifications/new_features", locals: { new_features: new_features } %>
+    <%= render partial: "notifications/popup", locals: { notifications: new_features, trigger_text_key: "notifications.new_features_%count_html", popup_title_key: "notifications.new_features", category: "newFeatures" } %>
+  <% end -%>
+
+  <% new_notices = new_notices(current_user) -%>
+  <% if new_notices.present? -%>
+    <%= render partial: "notifications/popup", locals: { notifications: new_notices, trigger_text_key: "notifications.new_notices_%count_html", popup_title_key: "notifications.new_notices", category: "newNotices" } %>
   <% end -%>
 <% end -%>
