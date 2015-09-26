@@ -48,4 +48,11 @@ FactoryGirl.define do
     t.category Post::CATEGORIES.first
     t.association :author, factory: :user
   end
+
+  factory :notification do |t|
+    t.name "test notification"
+    t.content "test notification"
+    t.category Notification::CATEGORIES.first
+    t.active true
+  end
 end

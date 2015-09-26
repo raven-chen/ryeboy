@@ -12,6 +12,7 @@ class Ability
     can :manage, Exercise
     cannot :unfinished, Exercise
     can :read, Document
+    can :update_self, User
   end
 
   def student
@@ -21,6 +22,7 @@ class Ability
     cannot :unfinished, Exercise
     can :read, Document
     can :read, Task
+    can :update_self, User
   end
 
   def mentor
@@ -31,6 +33,7 @@ class Ability
     can :read, Document
     can :manage, Post
     can :read, Task
+    can :update_self, User
   end
 
   # Functional roles

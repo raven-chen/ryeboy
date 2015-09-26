@@ -193,6 +193,7 @@ zh-CN:
     delete: "删除"
     enter: "进入"
     log: "日记"
+    close: "关闭"
     no_results: "无结果"
     logout: "退出"
     view_more_about_this_user: "查看此同学更多日记"
