@@ -24,10 +24,10 @@
           <%= content_tag(:span, "回复 #{comment.replied_comment.author.name}: ", :class => "hint-text") if comment.replied_comment %>
           <%= sanitize(comment.content) %>
 
-          <div class="reply-to-comment js-reply-to-comment">
-            <%= link_to t("helpers.reply"), "#new-reply", :class => "hint-text", "data-comment-id" => comment.id, "data-reply-to" => "回复: #{comment.author.name}" %>
+          <div class="operations js-reply-to-comment">
+            <%= link_to t("helpers.reply"), "#new-reply", :class => "hint-text js-reply", "data-comment-id" => comment.id, "data-reply-to" => "回复: #{comment.author.name}" %>
+            <%= actions_on_object comment, current_user %>
           </div>
-          <%= actions_on_object comment, current_user %>
         </div>
       </li>
     <% end -%>

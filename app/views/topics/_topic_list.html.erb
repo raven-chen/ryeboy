@@ -18,7 +18,9 @@
         <td><%= topic.comments.count %></td>
         <td><%= topic.updated_at.strftime(t("time.formats.default")) %></td>
         <td>
-          <%= actions_on_object topic, current_user, true %>
+          <div class="operations">
+            <%= actions_on_object topic, current_user, true %>
+          </div>
         </td>
       </tr>
       <% end -%>
