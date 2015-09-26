@@ -1,4 +1,7 @@
 zh-CN:
+  notifications:
+    new_features_%count_html: "网站更新 (%{count})"
+    new_features: "网站更新"
   views:
     pagination:
       first: "&laquo; 第一页"

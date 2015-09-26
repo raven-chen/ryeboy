@@ -1,0 +1,28 @@
+<div class="notification-trigger js-read-notification" data-toggle="modal" data-target="#myModal">
+  <%= t("notifications.new_features_%count_html", count: content_tag(:span, new_features.count, class: "text-danger")) %>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><%= t("notifications.new_features") %></h4>
+      </div>
+      <div class="modal-body">
+        <% new_features.each do |feature| -%>
+          <div class="notification">
+            <h3><%= feature.updated_at.to_date %>&nbsp;<%= feature.name %></h3>
+            <div>
+              <%= sanitize feature.content -%>
+            </div>
+          </div>
+        <% end -%>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"><%= t("helpers.close") %></button>
+      </div>
+    </div>
+  </div>
+</div>

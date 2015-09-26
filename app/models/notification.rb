@@ -1,7 +1,7 @@
 class Notification < ActiveRecord::Base
   attr_accessible :active, :content, :grade, :category, :name
 
-  scope :active, where(:active => true).order("updated_at DESC")
+  default_scope where(:active => true).order("updated_at DESC")
 
   CATEGORIES = ["功能更新", "通知"]
 

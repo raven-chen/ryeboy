@@ -5,7 +5,7 @@
   <div class="well sidebar-nav notification" id="notification">
     <ul class="nav nav-list">
       <% if user_signed_in? -%>
-        <% Notification.active.each do |notification| -%>
+        <% Notification.all.each do |notification| -%>
           <li><%= notification.updated_at.strftime(t("date.formats.default")) %></li>
           <li class="alert alert-danger"><%= notification.content %></li>
         <% end -%>

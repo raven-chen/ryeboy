@@ -214,6 +214,7 @@ ActiveRecord::Schema.define(:version => 20150920235535) do
     t.text     "favorite"
     t.string   "available_time"
     t.boolean  "marriage"
+    t.datetime "read_notification_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

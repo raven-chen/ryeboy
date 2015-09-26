@@ -1,0 +1,6 @@
+<% if current_user -%>
+  <% new_features = notifications(current_user, Notification::CATEGORIES[0]) -%>
+  <% if new_features.present? -%>
+    <%= render partial: "notifications/new_features", locals: { new_features: new_features } %>
+  <% end -%>
+<% end -%>

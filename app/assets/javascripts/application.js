@@ -27,3 +27,5 @@
 //= require exercises
 //= require search
 //= require comment
+//= require notification
+

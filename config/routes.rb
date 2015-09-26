@@ -22,6 +22,8 @@ Tao::Application.routes.draw do
     end
   end
 
+  put "/user/update", to: "users#update_self", as: :self_update
+
   resources :images, only: [:create]
 
   resources :exercises do

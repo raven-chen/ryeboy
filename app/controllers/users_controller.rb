@@ -78,6 +78,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_self
+    if params[:read_notification_at]
+      params[:user] = { read_notification_at: Time.now }
+    end
+
+    respond_to do |format|
+      if current_user.update_attributes(params[:user])
+        format.json { head :no_content }
+      else
+        format.json { render json: current_user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def new_tag
     @target_user = User.find(params[:id])
     @tag_type = params[:tag_type]
