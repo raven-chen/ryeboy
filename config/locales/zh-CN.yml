@@ -1,4 +1,14 @@
 zh-CN:
+  menus:
+    homepage: "首页"
+    exercises: "浏览日记"
+    topics: "互动问答"
+    homework: "作业区"
+    documents: "资料中心"
+  titles:
+    newest_exercises: "最新日记"
+    documents: "资料中心"
+    topics: "互动问答"
   notifications:
     new_features_%count_html: "网站更新 (%{count})"
     new_notices_%count_html: "最新通知 (%{count})"

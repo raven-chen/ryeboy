@@ -1,7 +1,7 @@
 <div class="comment">
   <%= comment_detail comment %>
 
-  <% if current_user.id == comment.author_id -%>
+  <% if current_user && current_user.id == comment.author_id -%>
     <%= link_to t("helpers.edit"), edit_comment_path(comment) %>
     <%= link_to '删除', comment, method: :delete, data: { confirm: I18n.t("helpers.are_you_sure") } %>
   <% else -%>

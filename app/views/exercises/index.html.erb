@@ -1,4 +1,8 @@
-<h1>最新日记</h1>
+<h1><%= t("titles.newest_exercises") %></h1>
+
+<div class="alert alert-warning">
+  <%= I18n.t("notices.religion_notice") %>
+</div>
 
 <%= form_tag(exercises_path, :method => :get, :class => "form-inline", :role => "form") do %>
   <div class="searchfield-above-table">

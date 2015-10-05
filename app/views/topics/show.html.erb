@@ -25,7 +25,7 @@
           <%= sanitize(comment.content) %>
 
           <div class="operations js-reply-to-comment">
-            <%= link_to t("helpers.reply"), "#new-reply", :class => "hint-text js-reply", "data-comment-id" => comment.id, "data-reply-to" => "回复: #{comment.author.name}" %>
+            <%= link_to t("helpers.reply"), "#new-reply", :class => "hint-text js-reply", "data-comment-id" => comment.id, "data-reply-to" => "回复: #{comment.author.name}" if current_user %>
             <%= actions_on_object comment, current_user %>
           </div>
         </div>
@@ -34,8 +34,10 @@
   </ul>
 </div>
 
-<div id="new-reply" class="new-reply">
-  <%= render partial: "comments/form", locals: { rich_editor: true, has_title: true, ajax_form: false } %>
-</div>
+<% if current_user -%>
+  <div id="new-reply" class="new-reply">
+    <%= render partial: "comments/form", locals: { rich_editor: true, has_title: true, ajax_form: false } %>
+  </div>
 
-<%= link_to('编辑', edit_topic_path(@topic), :class => "btn btn-primary") if is_own_topic?(@topic) %>
+  <%= link_to('编辑', edit_topic_path(@topic), :class => "btn btn-primary") if is_own_topic?(@topic) %>
+<% end -%>

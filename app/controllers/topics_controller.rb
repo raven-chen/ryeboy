@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:index, :show]
+  skip_before_filter :authenticate_user!, only: [:index, :show]
 
   def index
     @topics = params[:category].present? ? Topic.includes(:comments).where(category: params[:category]) : Topic.includes(:comments).scoped

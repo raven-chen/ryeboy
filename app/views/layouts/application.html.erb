@@ -27,20 +27,17 @@
           <%= link_to brand_name, root_path, :class => "brand" %>
           <div class="container nav-collapse">
             <ul class="nav">
-              <% if user_signed_in? -%>
-                <li><%= link_to '首页', root_path %></li>
+                <li><%= link_to t("menus.homepage"), root_path if user_signed_in? %></li>
 
-                <li><%= link_to '浏览日记', exercises_path %></li>
+                <li><%= link_to t("menus.exercises"), exercises_path %></li>
 
-                <li><%= link_to '互动问答', topics_path %></li>
+                <li><%= link_to t("menus.topics"), topics_path %></li>
 
-                <li><%= link_to '作业区', tasks_path %></li>
+                <li><%= link_to t("menus.homework"), tasks_path if user_signed_in? %></li>
 
-                <% if can? :read, Document -%>
-                  <li><%= link_to '资料中心', documents_path %></li>
-                <% end -%>
+                <li><%= link_to t("menus.documents"), documents_path %></li>
 
-                <% if current_user.generalized_mentor? -%>
+                <% if current_user.try(:generalized_mentor?) -%>
                 <li class="dropdown" role="presentation">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">学长专区<span class="caret"></span></a>
 
@@ -63,7 +60,6 @@
                   </ul>
                 </li>
                 <% end -%>
-              <% end -%>
             </ul>
 
             <ul class="nav pull-right">
