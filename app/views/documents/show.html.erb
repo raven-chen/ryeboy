@@ -29,7 +29,9 @@
       <% end -%>
     </ul>
 
-    <%= render partial: "comments/form", locals: { rich_editor: true, has_title: true, ajax_form: false } %>
+    <% if current_user -%>
+      <%= render partial: "comments/form", locals: { rich_editor: true, has_title: true, ajax_form: false } %>
+    <% end -%>
   </div>
 
 </div>

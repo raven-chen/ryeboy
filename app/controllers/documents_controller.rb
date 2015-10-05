@@ -1,5 +1,5 @@
 class DocumentsController < ApplicationController
-  skip_before_filter :authenticate_user!, only: [:index]
+  skip_before_filter :authenticate_user!
 
   def index
     @options = process_query_params %w{name category}
