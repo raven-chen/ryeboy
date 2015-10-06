@@ -4,7 +4,7 @@ class TopicsController < ApplicationController
 
   def index
     @topics = params[:category].present? ? Topic.includes(:comments).where(category: params[:category]) : Topic.includes(:comments).scoped
-    @topics.order("updated_at DESC")
+    @topics = @topics.order("updated_at DESC")
     @topics = @topics.page(params[:page])
 
     respond_to do |format|
