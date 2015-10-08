@@ -75,6 +75,7 @@ class UsersController < ApplicationController
       if @user.update_attributes(params[:user])
         format.html { redirect_to users_path, notice: '用户已更新' }
       else
+        flash[:alert]= "更新失败. <br> #{@user.errors.messages.values.join}"
         format.html { render action: "edit" }
       end
     end

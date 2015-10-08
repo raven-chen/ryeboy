@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150920235535) do
+ActiveRecord::Schema.define(:version => 20151008093854) do
 
   create_table "comments", :force => true do |t|
     t.integer  "author_id"
@@ -216,6 +216,7 @@ ActiveRecord::Schema.define(:version => 20150920235535) do
     t.boolean  "marriage"
     t.datetime "read_new_features_at"
     t.datetime "read_new_notices_at"
+    t.string   "sub_department"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

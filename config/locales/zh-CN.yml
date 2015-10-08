@@ -3,7 +3,7 @@ zh-CN:
     homepage: "首页"
     exercises: "浏览日记"
     topics: "互动问答"
-    homework: "作业区"
+    homework: "功课作业区"
     documents: "资料中心"
   titles:
     newest_exercises: "最新日记"
@@ -232,6 +232,8 @@ zh-CN:
           attributes:
             email:
               taken: "已经被使用"
+            sno:
+              taken: "学号已占用"
         exercise:
           attributes:
             date:

@@ -50,6 +50,9 @@
       <label>部门</label>
       <p><%= f.select :department, User::DEPARTMENTS, prompt: "请选择" %></p>
 
+      <label>兼职部门</label>
+      <p><%= f.select :sub_department, User::DEPARTMENTS, prompt: "请选择" %></p>
+
       <label>可用服务时间</label>
       <p><%= f.text_field :available_time %></p>
 

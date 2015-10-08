@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :roles, :address, :sno, :group_id, :qq,
   :tel_number, :birth_date, :note, :name, :real_name, :education_experience, :work_experience, :favorite, :available_time, :grade,
-  :gender, :department, :read_new_notices_at, :read_new_features_at
+  :gender, :department, :sub_department, :read_new_notices_at, :read_new_features_at
 
   belongs_to :group
   has_many :user_activities
@@ -51,6 +51,7 @@ class User < ActiveRecord::Base
   validates :email, :name, :roles, :presence => true
   validates_uniqueness_of :sno, allow_nil: true
   validates_inclusion_of :department, in: DEPARTMENTS, allow_blank: true
+  validates_inclusion_of :sub_department, in: DEPARTMENTS, allow_blank: true
   validates_inclusion_of :grade, in: GRADES, allow_blank: true
   validates_inclusion_of :gender, in: GENDER, allow_blank: true
 
