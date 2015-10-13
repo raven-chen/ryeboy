@@ -10,6 +10,11 @@ $(function(){
     $("form").submit();
   });
 
+  $("#quick-search-conditions button.js-no-comment-select").click(function(){
+    $("#no_comment").val(true);
+    $("form").submit();
+  });
+
   $(".js-like-exercise").click(function(){
     var view = $(this);
 

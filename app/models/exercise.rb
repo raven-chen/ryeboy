@@ -15,6 +15,15 @@ class Exercise < ActiveRecord::Base
     (user.present? && user.generalized_mentor?) ? scoped : where(visible_to_mentor_only: false)
   }
 
+  scope :no_comment, where(comments_count: 0)
+
+  after_touch :set_comments_count
+
+  def set_comments_count
+    self.comments_count = comments.count
+    self.save!
+  end
+
   def unique_for_common_task
     return true if !task.common
 

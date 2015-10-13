@@ -35,6 +35,11 @@ module ExercisesHelper
     result.join(" ").html_safe
   end
 
+  def no_comment_search_button options
+    active_class = "active" if options[:no_comment].present?
+    content_tag(:button, "无人问津", :class => "btn #{active_class} js-no-comment-select btn-warning")
+  end
+
   def like_widget user, exercise
     icon_class = user.liked_exercises.include?(exercise) ? "icon-heart hint-text liked" : "icon-heart-empty hint-text"
     icon = content_tag(:i, nil, :class => icon_class)
