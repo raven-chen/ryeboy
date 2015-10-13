@@ -3,7 +3,7 @@ class AddCommentsCountToExercises < ActiveRecord::Migration
     add_column :exercises, :comments_count, :integer, :default => 0
 
     Exercise.find_each do |e|
-      e.touch
+      e.update_attribute :comments_count, e.comments.count
     end
   end
 end
