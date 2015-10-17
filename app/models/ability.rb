@@ -13,6 +13,7 @@ class Ability
     cannot :unfinished, Exercise
     can :read, Document
     can :update_self, User
+    can :read, Task
   end
 
   def student
