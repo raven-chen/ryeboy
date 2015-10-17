@@ -3,7 +3,11 @@ class TopicsController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:index, :show]
 
   def index
-    @topics = params[:category].present? ? Topic.includes(:comments).where(category: params[:category]) : Topic.includes(:comments).scoped
+    @options = process_query_params %w{title category}
+
+    @topics = Topic.includes(:comments).scoped
+    @topics = @topics.where(category: @options[:category]) if @options[:category]
+    @topics = @topics.where("title LIKE ?", "%#{@options[:title]}%") if @options[:title]
     @topics = @topics.order("updated_at DESC")
     @topics = @topics.page(params[:page])
 

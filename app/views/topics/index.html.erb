@@ -4,11 +4,23 @@
   <%= link_to '发帖', new_topic_path, :class => "btn btn-primary pull-right" %>
 </div>
 
-<div class="searchfield-above-table">
-  <% Topic::CATEGORIES.each_with_index do |category, i| -%>
-    <%= link_to category, topics_path(category: category), :class => "btn btn-default" %>
-  <% end -%>
-</div>
+<%= form_tag(topics_path, :method => :get, :class => "form-inline", :role => "form") do %>
+  <div class="searchfield-above-table no-border">
+    <div class="search">
+      <%= text_field_tag :title, @options[:title], :placeholder => "标题" %>
+      <%= submit_tag "搜索", :class => "btn btn-default" %>
+    </div>
+
+    <div class="js-submit-links">
+      <%= hidden_field_tag :category, @options[:category] %>
+      <%= link_to "全部", "javascript:;", :class => maybe_selected_class(nil, @options[:category], "btn btn-default", "btn btn-warning"), "data-target-name" => "category", "data-target-value" => "" %>
+
+      <% Topic::CATEGORIES.each_with_index do |category, i| -%>
+        <%= link_to category, "javascript:;", :class => maybe_selected_class(category, @options[:category], "btn btn-default", "btn btn-warning"), "data-target-name" => "category", "data-target-value" => category %>
+      <% end -%>
+    </div>
+  </div>
+<% end -%>
 
 <div>
   <%= render :partial => "topics/topic_list", :locals => { :topics => @topics } %>
