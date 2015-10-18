@@ -19,6 +19,7 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
+    @comments = @topic.comments.page(params[:page])
     @comment = Comment.new(commentable: @topic)
 
     respond_to do |format|

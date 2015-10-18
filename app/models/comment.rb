@@ -1,4 +1,5 @@
 class Comment < ActiveRecord::Base
+  paginates_per 20
   attr_accessible :content, :commentable, :commentable_id, :commentable_type, :read_at, :replied_comment_id
 
   belongs_to :commentable, polymorphic: true, touch: true

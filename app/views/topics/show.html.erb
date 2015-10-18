@@ -12,7 +12,7 @@
 
 <div class="replies">
   <ul id="list">
-    <% @topic.comments.each do |comment| %>
+    <% @comments.each do |comment| %>
       <li class="reply-container">
         <ol class="title reply">
           <li class="hint-text author-name"><%= comment.author.name %></li>
@@ -31,6 +31,8 @@
         </div>
       </li>
     <% end -%>
+
+    <%= paginate @comments %>
   </ul>
 </div>
 
