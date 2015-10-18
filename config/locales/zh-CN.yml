@@ -1,9 +1,9 @@
 zh-CN:
   menus:
     homepage: "首页"
-    exercises: "浏览日记"
-    topics: "互动问答"
-    homework: "功课作业区"
+    exercises: "写日记"
+    topics: "提问题"
+    homework: "交作业"
     documents: "资料中心"
   titles:
     newest_exercises: "最新日记"

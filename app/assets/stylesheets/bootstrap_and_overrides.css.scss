@@ -19,6 +19,19 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
   }
 }
 
+ul.nav li.selected {
+  border-bottom: 2px solid #EB5424;
+
+  a {
+    color: #EB5424;
+
+    &:hover {
+      color: #EB5424;
+    }
+  }
+}
+
+
 /* Override default .fade since it makes navigation links not click-able */
 .modal.fade {
   top: -100%;

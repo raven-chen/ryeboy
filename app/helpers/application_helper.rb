@@ -35,4 +35,12 @@ module ApplicationHelper
 
     content_tag(:div, operations.join(" ").html_safe, :class => "operations")
   end
+
+  def controller?(*controller)
+    controller.include?(params[:controller])
+  end
+
+  def action?(*action)
+    action.include?(params[:action])
+  end
 end
