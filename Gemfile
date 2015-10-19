@@ -17,8 +17,6 @@ end
 gem "twitter-bootstrap-rails", :branch => "bootstrap3"
 gem 'unicorn'
 
-gem 'rails_12factor'
-
 group :development do
   gem 'capistrano', '~> 3.4.0'
   gem 'capistrano-rails'
