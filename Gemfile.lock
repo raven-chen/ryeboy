@@ -35,7 +35,7 @@ GEM
     bootstrap-sass (2.3.2.0)
       sass (~> 3.2)
     builder (3.0.4)
-    cancan (1.6.10)
+    cancancan (1.13.1)
     capistrano (3.4.0)
       i18n
       rake (>= 10.0.0)
@@ -240,7 +240,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on (~> 3.4)
-  cancan
+  cancancan
   capistrano (~> 3.4.0)
   capistrano-rails
   capistrano-rvm

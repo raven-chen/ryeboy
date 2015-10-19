@@ -34,7 +34,7 @@ gem 'jquery-ui-rails'
 
 gem 'rails_admin'
 gem "rich"
-gem "cancan"
+gem "cancancan"
 gem "kaminari"
 gem 'acts-as-taggable-on', '~> 3.4'
 gem "paperclip", "~> 4.3"
