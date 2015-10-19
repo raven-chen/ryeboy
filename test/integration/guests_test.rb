@@ -9,7 +9,7 @@ class GuestsTest < ActionDispatch::IntegrationTest
       assert page.has_content?(I18n.t("menus.topics"))
       assert page.has_content?(I18n.t("menus.documents"))
 
-      click_link I18n.t("menus.exercises")
+      within(".navbar") { click_link I18n.t("menus.exercises") }
       sleep 1
       assert page.has_content?(I18n.t("titles.newest_exercises"))
 
