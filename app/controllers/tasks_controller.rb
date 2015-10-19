@@ -1,10 +1,12 @@
 class TasksController < ApplicationController
   load_and_authorize_resource
 
-  # Actions in this controller are for common task ONLY
-
   def index
     @tasks = Task.common.where(grade: current_user.visible_grades)
+  end
+
+  def manage
+    @tasks = Task.all
   end
 
   def show
@@ -24,16 +26,15 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task = Task.common.find(params[:id])
+    @task = Task.find(params[:id])
   end
 
   def create
     @task = Task.new(params[:task])
-    @task.common = true # only common task is allowed to be created by front-end
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to tasks_path, notice: I18n.t("notices.create_%{obj}_successfully", :obj => @task.name) }
+        format.html { redirect_to manage_tasks_path, notice: I18n.t("notices.create_%{obj}_successfully", :obj => @task.name) }
       else
         format.html { render action: "new" }
       end
@@ -44,9 +45,8 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
 
     respond_to do |format|
-      @task.common = true
       if @task.update_attributes(params[:task])
-        format.html { redirect_to tasks_path, notice: I18n.t("notices.update_%{obj}_successfully", :obj => @task.name) }
+        format.html { redirect_to manage_tasks_path, notice: I18n.t("notices.update_%{obj}_successfully", :obj => @task.name) }
       else
         format.html { render action: "edit" }
       end

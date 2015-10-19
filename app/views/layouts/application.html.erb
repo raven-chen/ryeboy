@@ -57,6 +57,10 @@
                     <% if can? :manage, Notification -%>
                       <li><%= link_to '通知管理', notifications_path %></li>
                     <% end -%>
+
+                    <% if can? :manage, Task -%>
+                      <li><%= link_to '功课管理', manage_tasks_path %></li>
+                    <% end -%>
                   </ul>
                 </li>
                 <% end -%>

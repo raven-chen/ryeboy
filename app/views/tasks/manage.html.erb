@@ -1,0 +1,36 @@
+<h1><%= t("titles.task_manage") %></h1>
+
+<div class="top-button-area clearfix">
+  <%= link_to(t("helpers.new"), new_task_path, :class => "btn btn-primary btn-large pull-right") if can?(:manage, Task) %>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th width="200"><%= Task.human_attribute_name("name") %></th>
+      <th width="100"><%= Task.human_attribute_name("grade") %></th>
+      <th width="100">类型</th>
+      <th width="100"><%= I18n.t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @tasks.present? -%>
+      <% @tasks.each do |task| %>
+        <tr id=<%= "task-#{task.id}" %>>
+          <td><%= link_to task.name, edit_task_path(task) %></td>
+          <td><%= task.grade %></td>
+          <td><%= task.common ? Task.human_attribute_name("common") : "" %></td>
+          <td>
+            <% if can? :manage, Task -%>
+              <%= link_to I18n.t("helpers.edit"), edit_task_path(task) %>
+            <% end -%>
+          </td>
+        </tr>
+      <% end %>
+    <% else -%>
+      <tr>
+        <td colpan="4"><%= t("helpers.no_results") %></td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>

@@ -41,6 +41,10 @@ Tao::Application.routes.draw do
   resources :documents, :only => [:index, :show]
   resources :posts
   resources :user_activities, :only => [:index, :show]
-  resources :tasks, :except => [:destroy]
+  resources :tasks, :except => [:destroy] do
+    collection do
+      get :manage
+    end
+  end
   resources :notifications
 end

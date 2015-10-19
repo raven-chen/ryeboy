@@ -11,16 +11,16 @@ class TasksTest < ActionDispatch::IntegrationTest
 
       login dean
 
-      visit tasks_path
+      visit manage_tasks_path
 
-      click_on I18n.t("helpers.create_task")
+      click_on I18n.t("helpers.new")
 
       fill_in "task[name]", with: task_name
       select task_grade, from: "task[grade]"
       fill_in_editor task_description
       submit_form
 
-      task = Task.common.last
+      task = Task.last
       assert_equal task_name, task.name
       assert_equal task_description, task.description
       assert_equal task_grade, task.grade

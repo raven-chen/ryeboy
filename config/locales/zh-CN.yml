@@ -9,6 +9,7 @@ zh-CN:
     newest_exercises: "最新日记"
     documents: "资料中心"
     topics: "互动问答"
+    task_manage: "功课管理"
   notifications:
     new_features_%count_html: "网站更新 (%{count})"
     new_notices_%count_html: "最新通知 (%{count})"
@@ -185,6 +186,7 @@ zh-CN:
       more_pages:
         display_entries: "显示 %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b>"
     create_task: "发布作业"
+    new: "新建"
     view: "查看"
     reply: "回复"
     unread_comments: "未读评论"
@@ -293,16 +295,6 @@ zh-CN:
         birth_date: "生日"
         note: "备注"
         department: "部门"
-      fund_exchange_activity:
-        amount: "金额"
-        comment: "备注"
-        date: "交易日期"
-        exchange_type: "类型"
-        place: "交易地点"
-        trading_way: "交易方式"
-        usage: "用途"
-
-
 
   datetime:
     distance_in_words:
