@@ -32,8 +32,6 @@ end
 gem 'jquery-rails', '~> 2.0.0'
 gem 'jquery-ui-rails'
 
-gem 'rails_admin'
-gem "rich"
 gem "cancancan"
 gem "kaminari"
 gem 'acts-as-taggable-on', '~> 3.4'

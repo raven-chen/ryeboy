@@ -44,7 +44,6 @@ class Ability
 
   def documenter
     can :manage, Document
-    can :access, :rails_admin
     can :dashboard
   end
 

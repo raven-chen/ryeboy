@@ -1,13 +1,9 @@
 Tao::Application.routes.draw do
-  mount Rich::Engine => '/rich', :as => 'rich'
-
   resources :replies, :except => [:index, :show, :new]
 
   resources :topics
 
   devise_for :users
-
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   root :to => 'users#profile'
 
