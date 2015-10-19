@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   has_many :user_tasks
 
   has_many :tasks, :through => :exercises
-  has_many :exercises, :order => "date DESC"
+  has_many :exercises
   has_many :topics, :foreign_key => :author_id
   has_many :replies, :foreign_key => :author_id
 

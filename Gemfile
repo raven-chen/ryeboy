@@ -1,15 +1,14 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-gem 'rails', '3.2.21'
+gem 'rails', "~>4.2.2"
 
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.18'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem "sass-rails", '~> 5.0.3'
 
   gem 'uglifier', '>= 1.0.3'
 end
@@ -34,7 +33,7 @@ gem "cancancan"
 gem "kaminari"
 gem 'acts-as-taggable-on', '~> 3.4'
 gem "paperclip", "~> 4.3"
-
+gem "protected_attributes"
 
 group :test do
   gem 'factory_girl'
@@ -46,5 +45,5 @@ group :test do
   gem 'selenium-webdriver'
 end
 
-gem "devise"
+gem 'devise', :git => 'https://github.com/plataformatec/devise.git'
 gem "soft_deletion"
