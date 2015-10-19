@@ -9,7 +9,7 @@ Tao::Application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
-  root :to => 'users#profile'
+  root :to => 'home#homepage'
 
   resources :users, :except => [:destroy] do
     member do

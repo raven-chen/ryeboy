@@ -27,7 +27,7 @@
           <%= link_to brand_name, root_path, :class => "brand" %>
           <div class="container nav-collapse">
             <ul class="nav">
-                <li><%= link_to t("menus.homepage"), root_path %></li>
+                <li class=<%= "selected" if controller?("home") %>><%= link_to t("menus.homepage"), root_path %></li>
 
                 <li class=<%= "selected" if controller?("exercises") %>><%= link_to t("menus.exercises"), exercises_path %></li>
 
