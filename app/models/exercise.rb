@@ -15,7 +15,7 @@ class Exercise < ActiveRecord::Base
     (user.present? && user.generalized_mentor?) ? scoped : where(visible_to_mentor_only: false)
   }
 
-  scope :no_comment, where(comments_count: 0)
+  scope :no_comment, -> { where(comments_count: 0) }
 
   after_touch :set_comments_count
 

@@ -18,7 +18,7 @@
 //= require dist/plugin/summernote-ext-hello
 //= require dist/plugin/summernote-ext-hint
 //= require dist/plugin/summernote-ext-video
-//= require jquery.ui.datepicker
+//= require jquery-ui/datepicker
 //= require select2.min
 //= require select2_locale_zh-CN
 //= require unslider

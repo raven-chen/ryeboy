@@ -7,8 +7,8 @@ class Task < ActiveRecord::Base
   has_many :users, :through => :exercises
   has_many :exercises
 
-  scope :common, where(:common => true).order("updated_at DESC")
-  scope :daily, where("common IS NOT TRUE").order("updated_at DESC")
+  scope :common, -> { where(:common => true).order("updated_at DESC") }
+  scope :daily, -> { where("common IS NOT TRUE").order("updated_at DESC") }
   scope :applicable, lambda { |user| where("grade IS NULL OR grade = ?", user.grade).order("updated_at DESC") }
 
   before_validation { |t|
