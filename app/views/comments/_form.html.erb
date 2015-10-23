@@ -15,7 +15,7 @@
       <br>
       <%= f.text_area :content, :class => rich_editor ? "rich-editor" : "full-width", :rows => "2", :placeholder => comment_place_holder(@comment) %>
       <br>
-      <%= submit_tag t("helpers.submit") %>
+      <%= submit_tag t("helpers.submit"), class: "btn btn-primary" %>
     </fieldset>
   <% end -%>
 </div>

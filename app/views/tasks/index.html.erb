@@ -1,30 +1,30 @@
-<h1>功课作业区</h1>
-
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th width="200"><%= Task.human_attribute_name("name") %></th>
-      <th width="200"><%= Task.human_attribute_name("grade") %></th>
-      <th width="100"><%= I18n.t("helpers.status") %></th>
-      <th width="100"><%= I18n.t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if @tasks.present? -%>
-      <% @tasks.each do |task| %>
-        <tr id=<%= "task-#{task.id}" %>>
-          <td><%= link_to task.name, task_path(task) %></td>
-          <td><%= task.grade %></td>
-          <td><%= task.finished_by?(current_user) ? content_tag(:span, I18n.t("helpers.finished"), :class => "label label-success") : content_tag(:span, I18n.t("helpers.unfinished"), :class => "label label-danger") %></td>
-          <td>
-            <%= link_to I18n.t("helpers.enter"), task_path(task) %>
-          </td>
-        </tr>
-      <% end %>
-    <% else -%>
+<div class="highlight-block">
+  <table class="table table-hover">
+    <thead>
       <tr>
-        <td colpan="4"><%= t("helpers.no_results") %></td>
+        <th width="200"><%= Task.human_attribute_name("name") %></th>
+        <th width="200"><%= Task.human_attribute_name("grade") %></th>
+        <th width="100"><%= I18n.t("helpers.status") %></th>
+        <th width="100"><%= I18n.t("helpers.actions") %></th>
       </tr>
-    <% end -%>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% if @tasks.present? -%>
+        <% @tasks.each do |task| %>
+          <tr id=<%= "task-#{task.id}" %>>
+            <td><%= link_to task.name, task_path(task) %></td>
+            <td><%= task.grade %></td>
+            <td><%= task.finished_by?(current_user) ? content_tag(:span, I18n.t("helpers.finished"), :class => "label label-success") : content_tag(:span, I18n.t("helpers.unfinished"), :class => "label label-danger") %></td>
+            <td>
+              <%= link_to I18n.t("helpers.enter"), task_path(task) %>
+            </td>
+          </tr>
+        <% end %>
+      <% else -%>
+        <tr>
+          <td colpan="4"><%= t("helpers.no_results") %></td>
+        </tr>
+      <% end -%>
+    </tbody>
+  </table>
+</div>

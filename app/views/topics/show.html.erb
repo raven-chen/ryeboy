@@ -1,45 +1,49 @@
-<div class="topic-title">
-  <h2><%= @topic.title %></h2>
-  <span class="hint-text"><%= @topic.author.name %></span>
-  发布于
-  <span class="hint-text"><%= @topic.created_at.strftime(t("time.formats.default")) %></span>
-  <%= link_to "编辑", edit_topic_path(@topic) if current_user == @topic.author %>
-</div>
-
-<div class="well">
-  <%= sanitize @topic.content %>
-</div>
-
-<div class="replies">
-  <ul id="list">
-    <% @comments.each do |comment| %>
-      <li class="reply-container">
-        <ol class="title reply">
-          <li class="hint-text author-name"><%= comment.author.name %></li>
-          <li class="hint-text"><%= comment.created_at.strftime(t("time.formats.default")) %></li>
-        </ol>
-        <div class="clearfix"></div>
-
-        <div class="content">
-          <%= content_tag(:span, "回复 #{comment.replied_comment.author.name}: ", :class => "hint-text") if comment.replied_comment %>
-          <%= sanitize(comment.content) %>
-
-          <div class="operations js-reply-to-comment">
-            <%= link_to t("helpers.reply"), "#new-reply", :class => "hint-text js-reply", "data-comment-id" => comment.id, "data-reply-to" => "回复: #{comment.author.name}" if current_user %>
-            <%= actions_on_object comment, current_user %>
-          </div>
-        </div>
-      </li>
-    <% end -%>
-
-    <%= paginate @comments %>
-  </ul>
-</div>
-
-<% if current_user -%>
-  <div id="new-reply" class="new-reply">
-    <%= render partial: "comments/form", locals: { rich_editor: true, has_title: true, ajax_form: false } %>
+<div class="highlight-block">
+  <div class="topic-title">
+    <h2><%= @topic.title %></h2>
+    <span class="hint-text"><%= @topic.author.name %></span>
+    发布于
+    <span class="hint-text"><%= @topic.created_at.strftime(t("time.formats.default")) %></span>
+    <%= link_to "编辑", edit_topic_path(@topic) if current_user == @topic.author %>
   </div>
 
-  <%= link_to('编辑', edit_topic_path(@topic), :class => "btn btn-primary") if is_own_topic?(@topic) %>
-<% end -%>
+  <div class="well">
+    <%= sanitize @topic.content %>
+  </div>
+
+  <div class="replies">
+    <ul id="list">
+      <% @comments.each do |comment| %>
+        <li class="reply-container">
+          <ol class="title reply">
+            <li class="hint-text author-name"><%= comment.author.name %></li>
+            <li class="hint-text"><%= comment.created_at.strftime(t("time.formats.default")) %></li>
+          </ol>
+          <div class="clearfix"></div>
+
+          <div class="content">
+            <%= content_tag(:span, "回复 #{comment.replied_comment.author.name}: ", :class => "hint-text") if comment.replied_comment %>
+            <%= sanitize(comment.content) %>
+
+            <div class="operations js-reply-to-comment">
+              <%= link_to t("helpers.reply"), "#new-reply", :class => "hint-text js-reply", "data-comment-id" => comment.id, "data-reply-to" => "回复: #{comment.author.name}" if current_user %>
+              <%= actions_on_object comment, current_user %>
+            </div>
+          </div>
+        </li>
+      <% end -%>
+
+      <%= paginate @comments %>
+    </ul>
+  </div>
+</div>
+
+<div class="highlight-block with-top-margin">
+  <% if current_user -%>
+    <div id="new-reply" class="new-reply">
+      <%= render partial: "comments/form", locals: { rich_editor: true, has_title: true, ajax_form: false } %>
+    </div>
+
+    <%= link_to('编辑', edit_topic_path(@topic), :class => "btn btn-primary") if is_own_topic?(@topic) %>
+  <% end -%>
+</div>

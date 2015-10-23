@@ -2,16 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#exercise_content {
-  width: 400px;
-  height: 150px;
-}
 .task-description {
   margin: 10px 0;
   padding: 10px;
   color: seagreen;
   border: 1px solid seagreen;
   border-radius: 5px;
+}
+.tab-content.with-margin {
+  margin-top: 20px;
 }
 .searchfield-above-table {
   text-align: right;

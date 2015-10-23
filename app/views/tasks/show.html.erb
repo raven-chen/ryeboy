@@ -1,9 +1,12 @@
 <h1 class="page-title"><%= @task.name %></h1>
 
-<div>
-  <div class="task-description">
-    <%= sanitize @task.description %>
-  </div>
+<div class="highlight-block">
+
+  <% if @task.description.present? -%>
+    <div class="task-description">
+      <%= sanitize @task.description %>
+    </div>
+  <% end -%>
 
   <div class="tab">
     <ul class="nav-tabs nav">
@@ -16,7 +19,7 @@
       </li>
     </ul>
 
-    <div class="tab-content">
+    <div class="tab-content with-margin">
       <div id="content-1" class="tab-pane active">
         <% if @my_exercise.new_record? %>
           <%= form_for(@my_exercise) do |f| %>
@@ -30,11 +33,11 @@
             </div>
 
             <label class="main content">内容</label>
-            <button id="clean-editor" type="button">清空内容</button>
+            <button id="clean-editor" type="button" class="btn btn-link">清空内容</button>
             <%= f.text_area :content, :class => "rich-editor" %>
             <br>
 
-            <%= submit_tag "提交" %>
+            <%= submit_tag "提交", class: "btn btn-primary" %>
           <% end -%>
         <% else -%>
           <%= link_to I18n.t("helpers.edit"), edit_exercise_path(@my_exercise), :class => "btn btn-primary" %><br><br>

@@ -11,7 +11,7 @@ footer {
   margin-top: 30px;
 }
 .page-title {
-  margin-top: 30px;
+  margin-top: 0px;
 }
 
 .two-columns {
@@ -74,5 +74,16 @@ ul.nav li.selected {
     &:hover {
       color: #EB5424;
     }
+  }
+}
+
+.highlight-block {
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 3px 0 rgba(0, 0, 0, 0.26);
+  border-radius: 2px;
+
+  &.with-top-margin {
+    margin-top: 20px;
   }
 }

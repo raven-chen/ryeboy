@@ -1,11 +1,9 @@
-<h1><%= t("titles.topics") %></h1>
-
-<div class="top-button-area clearfix">
-  <%= link_to '发帖', new_topic_path, :class => "btn btn-primary pull-right" %>
-</div>
-
 <%= form_tag(topics_path, :method => :get, :class => "form-inline", :role => "form") do %>
   <div class="searchfield-above-table no-border">
+    <div class="new-button pull-left">
+      <%= link_to '发帖', new_topic_path, :class => "btn btn-primary btn-lg" %>
+    </div>
+
     <div class="search">
       <%= text_field_tag :title, @options[:title], :placeholder => "标题" %>
       <%= submit_tag "搜索", :class => "btn btn-default" %>
@@ -22,7 +20,7 @@
   </div>
 <% end -%>
 
-<div>
+<div class="highlight-block">
   <%= render :partial => "topics/topic_list", :locals => { :topics => @topics } %>
 </div>
 

@@ -6,9 +6,6 @@ zh-CN:
     homework: "功课作业区"
     documents: "资料中心"
   titles:
-    newest_exercises: "最新日记"
-    documents: "资料中心"
-    topics: "互动问答"
     task_manage: "功课管理"
   notifications:
     new_features_%count_html: "网站更新 (%{count})"
@@ -37,7 +34,7 @@ zh-CN:
     "false": "否"
     "true": "是"
     good_job: "干得好！今天所有功课都已完成！"
-    religion_notice: "日记内容涉及宗教信仰不代表麦田立场，麦田尊重每个人的信仰自由。"
+    religion_notice: "如果学员日记内容涉及宗教信仰这不代表麦田立场，麦田尊重每个人的信仰自由。"
     my_task: "所选的功课会被认为是你需要做的功课，查卡时会以此为准，请按实际情况选择"
     quick_log_exercise: "快速记录表示你做完了此功课，但是没有什么特别感想，请酌情使用"
     common_task_cannot_be_added: "公共作业不能加入私人作业"

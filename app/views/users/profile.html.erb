@@ -3,7 +3,8 @@
 <%= self_study_notice(current_user) -%>
 
 <h2>未日记功课</h2>
-<div class="tab">
+<div class="tab highlight-block">
+
   <ul class="nav-tabs nav">
     <li role="navigation">
       <a href="#content-1" data-toggle="tab">昨日</a>
@@ -24,7 +25,7 @@
     <% end -%>
   </ul>
 
-  <div class="tab-content">
+  <div class="tab-content with-margin">
     <div id="content-1" class="tab-pane">
       <%= render :partial => "exercises/unsigned_tasks", :locals => { :unsigned_tasks => unsigned_tasks_at(Date.yesterday), :date => Date.yesterday } %>
     </div>
@@ -87,7 +88,9 @@
   </div>
 </div>
 
-<h4>最新问答</h4>
-<div class="recent-topics">
-  <%= render :partial => "topics/topic_list", :locals => { :topics => @topics } %>
+<div class="highlight-block with-top-margin">
+  <h4>最新问答</h4>
+  <div class="recent-topics">
+    <%= render :partial => "topics/topic_list", :locals => { :topics => @topics } %>
+  </div>
 </div>
