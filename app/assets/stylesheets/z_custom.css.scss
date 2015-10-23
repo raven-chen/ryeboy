@@ -1,3 +1,7 @@
+body {
+  background: #f5f5f5;
+}
+
 .full-width {
   width: 100%;
 }
@@ -21,7 +25,8 @@
   text-align: center;
 }
 .guest-notice {
-  margin-left: 40px;
+  border-top: 1px solid #e5e5e5;
+  margin-top: 20px;
 }
 
 ul,ol {
