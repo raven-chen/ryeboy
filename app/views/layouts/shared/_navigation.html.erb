@@ -13,15 +13,15 @@
 
      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><%= link_to t("menus.homepage"), root_path if user_signed_in? %></li>
+        <li class=<%= "selected" if controller?("users") %>><%= link_to t("menus.homepage"), root_path if user_signed_in? %></li>
 
-        <li><%= link_to t("menus.exercises"), exercises_path %></li>
+        <li class=<%= "selected" if controller?("exercises") %>><%= link_to t("menus.exercises"), exercises_path %></li>
 
-        <li><%= link_to t("menus.topics"), topics_path %></li>
+        <li class=<%= "selected" if controller?("topics") %>><%= link_to t("menus.topics"), topics_path %></li>
 
-        <li><%= link_to t("menus.homework"), tasks_path if user_signed_in? %></li>
+        <li class=<%= "selected" if controller?("tasks") %>><%= link_to t("menus.homework"), tasks_path if user_signed_in? %></li>
 
-        <li><%= link_to t("menus.documents"), documents_path %></li>
+        <li class=<%= "selected" if controller?("documents") %>><%= link_to t("menus.documents"), documents_path %></li>
 
         <% if current_user.try(:generalized_mentor?) -%>
           <li class="dropdown" role="presentation">

@@ -64,3 +64,15 @@ footer {
     float: left;
   }
 }
+
+ul.nav li.selected {
+  border-bottom: 2px solid #EB5424;
+
+  a {
+    color: #EB5424;
+
+    &:hover {
+      color: #EB5424;
+    }
+  }
+}
