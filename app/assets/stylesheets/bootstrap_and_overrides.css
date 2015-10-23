@@ -2,10 +2,6 @@
   =require twitter-bootstrap-static/bootstrap
 */
 
-body {
-  padding-top: 40px;
-}
-
 /* Make dropdown show up on hover */
 ul.nav li.dropdown:hover > ul.dropdown-menu {
     display: block;

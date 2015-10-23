@@ -5,16 +5,16 @@
 <h2>未日记功课</h2>
 <div class="tab">
   <ul class="nav-tabs nav">
-    <li>
+    <li role="navigation">
       <a href="#content-1" data-toggle="tab">昨日</a>
     </li>
-    <li class="active">
+    <li role="navigation" class="active">
       <a href="#content-2" data-toggle="tab"><%= "今日 #{Date.current.strftime(t("date.formats.default"))}" %></a>
     </li>
-    <li>
+    <li role="navigation">
       <a href="#content-3" data-toggle="tab"><%= "我的功课" %></a>
     </li>
-    <li>
+    <li role="navigation">
       <a href="#content-4" data-toggle="tab"><%= "我的日记" %></a>
     </li>
     <% if false -%>

@@ -15,7 +15,7 @@
         <tr id=<%= "task-#{task.id}" %>>
           <td><%= link_to task.name, task_path(task) %></td>
           <td><%= task.grade %></td>
-          <td><%= task.finished_by?(current_user) ? content_tag(:span, I18n.t("helpers.finished"), :class => "alert alert-success") : content_tag(:span, I18n.t("helpers.unfinished"), :class => "alert alert-danger") %></td>
+          <td><%= task.finished_by?(current_user) ? content_tag(:span, I18n.t("helpers.finished"), :class => "label label-success") : content_tag(:span, I18n.t("helpers.unfinished"), :class => "label label-danger") %></td>
           <td>
             <%= link_to I18n.t("helpers.enter"), task_path(task) %>
           </td>

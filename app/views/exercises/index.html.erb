@@ -6,7 +6,7 @@
 
 <%= form_tag(exercises_path, :method => :get, :class => "form-inline", :role => "form") do %>
   <div class="searchfield-above-table">
-    <%= select_tag :grade, options_for_select(User::GRADES, @options[:grade]), :prompt => "年级" %>
+    <%= select_tag :grade, options_for_select(User::GRADES, @options[:grade]), :prompt => "年级", :class => "js-select2 normal-width-select2" %>
     <%= select_tag :user_id, options_from_collection_for_select(User.all, "id", "name", @options[:user_id]), :prompt => "昵称", :class => "js-select2 normal-width-select2" %>
     <%= select_tag :task_id, options_from_collection_for_select(Task.all, "id", "name", @options[:task_id]), :prompt => "功课", :class => "js-select2 normal-width-select2" %>
     <%= text_field_tag :from, @options[:from], :class => "js-date-field", :placeholder => "起始日期" %>
