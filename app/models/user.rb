@@ -40,8 +40,8 @@ class User < ActiveRecord::Base
   GENDER = ["男", "女"]
   NEWBIE_TASK_NAME = "自学一星"
 
-  scope :with_role, lambda { |role| { conditions: "roles_mask & #{2**ROLES.index(role.to_s)} > 0"} }
-  scope :without_role, lambda { |role| { conditions: "roles_mask & #{2**ROLES.index(role.to_s)} = 0"} }
+  scope :with_role, lambda { |role| where("roles_mask & #{2**ROLES.index(role.to_s)} > 0") }
+  scope :without_role, lambda { |role| where("roles_mask & #{2**ROLES.index(role.to_s)} = 0") }
 
   def self.visible
     without_role("admin")
