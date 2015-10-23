@@ -110,7 +110,7 @@ class ExercisesController < ApplicationController
 
   def my
     if params[:task_id] or params[:date]
-      @exercises = Exercise.scoped
+      @exercises = Exercise.all
       @date = params[:date]
       @task_id = params[:task_id]
 

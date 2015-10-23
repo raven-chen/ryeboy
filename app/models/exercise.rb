@@ -12,7 +12,7 @@ class Exercise < ActiveRecord::Base
   validate :unique_for_common_task, :on => :create
 
   scope :visible_to, lambda { |user|
-    (user.present? && user.generalized_mentor?) ? scoped : where(visible_to_mentor_only: false)
+    (user.present? && user.generalized_mentor?) ? all : where(visible_to_mentor_only: false)
   }
 
   scope :no_comment, -> { where(comments_count: 0) }

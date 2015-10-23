@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       m
     }
 
-    @users = current_user.admin? ? User.scoped : User.visible
+    @users = current_user.admin? ? User.all : User.visible
 
     @users = @users.order("roles_mask ASC")
 

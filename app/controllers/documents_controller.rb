@@ -4,7 +4,7 @@ class DocumentsController < ApplicationController
   def index
     @options = process_query_params %w{name category}
 
-    @documents = Document.scoped
+    @documents = Document.all
     @documents = @documents.where("name LIKE ?", "%#{@options[:name]}%") if @options[:name]
     @documents = @documents.where(category: @options[:category]) if @options[:category]
 

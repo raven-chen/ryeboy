@@ -5,7 +5,7 @@ class TopicsController < ApplicationController
   def index
     @options = process_query_params %w{title category}
 
-    @topics = Topic.includes(:comments).scoped
+    @topics = Topic.includes(:comments).all
     @topics = @topics.where(category: @options[:category]) if @options[:category]
     @topics = @topics.where("title LIKE ?", "%#{@options[:title]}%") if @options[:title]
     @topics = @topics.order("updated_at DESC")

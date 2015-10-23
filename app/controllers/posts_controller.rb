@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @posts = params[:category].present? ? Post.includes(:comments).where(category: params[:category]) : Post.includes(:comments).scoped
+    @posts = params[:category].present? ? Post.includes(:comments).where(category: params[:category]) : Post.includes(:comments).all
     @posts = @posts.order("updated_at DESC")
     @posts = @posts.page(params[:page])
 
