@@ -1,9 +1,9 @@
-<h1>日记</h1>
-
 <% if @edit_existing_exercise -%>
   <div class="alert alert-warning">
     <%= @edit_existing_exercise.html_safe %>
   </div>
 <% end -%>
 
-<%= render "form" %>
+<div class="highlight-block">
+  <%= render "form" %>
+</div>

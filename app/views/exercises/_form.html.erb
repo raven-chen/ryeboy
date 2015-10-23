@@ -26,11 +26,11 @@
       </div>
 
       <label class="main content">内容</label>
-      <button id="clean-editor" type="button">清空内容</button>
+      <button id="clean-editor" type="button" class="btn btn-link">清空内容</button>
       <%= f.text_area :content, :class => "rich-editor" %>
       <br>
 
-      <%= submit_tag "提交" %>
+      <%= submit_tag "提交", class: "btn btn-primary" %>
     </fieldset>
   <% end -%>
 </div>
