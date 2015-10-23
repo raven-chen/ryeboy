@@ -21,8 +21,6 @@
 
         <li class=<%= "selected" if controller?("tasks") %>><%= link_to t("menus.homework"), tasks_path if user_signed_in? %></li>
 
-        <li class=<%= "selected" if controller?("documents") %>><%= link_to t("menus.documents"), documents_path %></li>
-
         <% if current_user.try(:generalized_mentor?) -%>
           <li class="dropdown" role="presentation">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">学长专区<span class="caret"></span></a>
