@@ -10,54 +10,55 @@
   </div>
 <% end -%>
 
-<table class="table table-hover table-bordered">
-  <thead>
-    <tr>
-      <th>昵称</th>
-      <% (@start_date..@end_date).each do |date| -%>
-        <th colspan=<%= @tasks.try(:size) %>><%= date %></th>
-      <% end -%>
-    </tr>
-  </thead>
+<div class="highlight-block">
+  <table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>昵称</th>
+        <% (@start_date..@end_date).each do |date| -%>
+          <th colspan=<%= @tasks.try(:size) %>><%= date %></th>
+        <% end -%>
+      </tr>
+    </thead>
 
-  <tbody>
-      <% if @unfinished_user_list -%>
-        <tr>
-          <td></td>
-          <% (@start_date..@end_date).each do |_| -%>
-            <% @tasks.each do |task| -%>
-              <td><%= task.name %></td>
-            <% end -%>
-          <% end -%>
-        </tr>
-
-        <% @unfinished_user_list.each do |data| -%>
+    <tbody>
+        <% if @unfinished_user_list -%>
           <tr>
-            <td>
-              <%= data.keys.first %>
-            </td>
-            <% data.values.each do |exercise_detail| -%>
-              <% (@start_date..@end_date).each do |date| -%>
-                <% @tasks.each do |task| -%>
-                  <td>
-                    <% if exercise_detail[date.to_s][task.name] -%>
-                      <span class="text-success">完成</span>
-                    <% else -%>
-                      <span class="text-danger">未完成</span>
-                    <% end -%>
-                  </td>
-                <% end -%>
+            <td></td>
+            <% (@start_date..@end_date).each do |_| -%>
+              <% @tasks.each do |task| -%>
+                <td><%= task.name %></td>
               <% end -%>
             <% end -%>
           </tr>
-        <% end -%>
-      <% else -%>
-      <tr>
-        <td>
-          <%= t("helpers.no_results") %>
-        </td>
-      </tr>
-      <% end -%>
-  </tbody>
-</table>
 
+          <% @unfinished_user_list.each do |data| -%>
+            <tr>
+              <td>
+                <%= data.keys.first %>
+              </td>
+              <% data.values.each do |exercise_detail| -%>
+                <% (@start_date..@end_date).each do |date| -%>
+                  <% @tasks.each do |task| -%>
+                    <td>
+                      <% if exercise_detail[date.to_s][task.name] -%>
+                        <span class="text-success">完成</span>
+                      <% else -%>
+                        <span class="text-danger">未完成</span>
+                      <% end -%>
+                    </td>
+                  <% end -%>
+                <% end -%>
+              <% end -%>
+            </tr>
+          <% end -%>
+        <% else -%>
+        <tr>
+          <td>
+            <%= t("helpers.no_results") %>
+          </td>
+        </tr>
+        <% end -%>
+    </tbody>
+  </table>
+</div>

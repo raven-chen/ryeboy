@@ -1,18 +1,22 @@
-<div>
+<div class="highlight-block">
   <%= form_for(@topic) do |f| %>
-    <fieldset>
-      <legend></legend>
-
+    <div class="form-group">
       <label>标题</label>
-      <%= f.text_field :title %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
 
+    <div class="form-group">
       <label>分类</label>
-      <%= f.select :category, Topic::CATEGORIES %>
+      <%= f.select :category, Topic::CATEGORIES, {}, class: "form-control" %>
+    </div>
 
+    <div class="form-group">
       <label>内容</label>
       <%= f.text_area :content, :class => "rich-editor" %>
-      <br>
-      <%= submit_tag "提交", :class => "btn btn-primary" %>  <%= link_to '返回', topics_path, :class => "btn btn-default" %>
-    </fieldset>
+    </div>
+
+    <div>
+      <%= submit_tag "提交", :class => "btn btn-primary" %>  <%= link_to '返回', notifications_path, :class => "btn btn-default" %>
+    </div>
   <% end -%>
 </div>
