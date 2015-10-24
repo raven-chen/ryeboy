@@ -1,5 +1,6 @@
 <h1>人员列表</h1>
 
+<div class="highlight-block">
 <%= form_tag(users_path, :method => :get, :class => "form-inline", :role => "form") do %>
   <div class="searchfield-above-table no-border">
     <%= text_field_tag :name, @options[:name], :placeholder => "昵称" %>
@@ -21,37 +22,39 @@
     <div class="clearfix clear"></div>
   <% end -%>
 </div>
+</div>
 
-<table class="table table-hover">
-  <tr>
-    <th>级别</th>
-    <th><%= User.human_attribute_name("department") %></th>
-    <th><%= User.human_attribute_name("sno") %></th>
-    <th><%= User.human_attribute_name("name") %>(点击可查看打卡)</th>
-    <th><%= User.human_attribute_name("qq") %></th>
-    <th><%= User.human_attribute_name("tel_number") %></th>
-    <th></th>
-  </tr>
-
-  <% @users.each do |user| %>
+<div class="highlight-block with-top-margin">
+  <table class="table table-hover">
     <tr>
-      <td><%= user_type(user) %></td>
-      <td><%= user.department %></td>
-      <td><%= user.sno %></td>
-      <td><%= link_to_user_exercises user %></td>
-      <td><%= user.qq %></td>
-      <td><%= user.tel_number %></td>
-
-      <td>
-          <%= link_to '查看', user %>
-          <% if can? :manage, User -%>
-            <%= add_tag_links(user) %>
-            <%= link_to '编辑', edit_user_path(user) %>
-            <%= link_to "重置密码", reset_password_user_path(user), method: :put, data: { confirm: I18n.t("helpers.are_you_sure") } -%>
-          <% end -%>
-      </td>
+      <th>级别</th>
+      <th><%= User.human_attribute_name("department") %></th>
+      <th><%= User.human_attribute_name("sno") %></th>
+      <th><%= User.human_attribute_name("name") %>(点击可查看打卡)</th>
+      <th><%= User.human_attribute_name("qq") %></th>
+      <th><%= User.human_attribute_name("tel_number") %></th>
+      <th></th>
     </tr>
-  <% end %>
-</table>
 
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user_type(user) %></td>
+        <td><%= user.department %></td>
+        <td><%= user.sno %></td>
+        <td><%= link_to_user_exercises user %></td>
+        <td><%= user.qq %></td>
+        <td><%= user.tel_number %></td>
+
+        <td>
+            <%= link_to '查看', user %>
+            <% if can? :manage, User -%>
+              <%= add_tag_links(user) %>
+              <%= link_to '编辑', edit_user_path(user) %>
+              <%= link_to "重置密码", reset_password_user_path(user), method: :put, data: { confirm: I18n.t("helpers.are_you_sure") } -%>
+            <% end -%>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
 <%= paginate @users %>
