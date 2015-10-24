@@ -64,7 +64,7 @@ class ExerciseTest < ActiveSupport::TestCase
     end
 
     should "select all users that didn't log given taks's exercise in given date range" do
-      pending
+      skip
     end
   end
 end

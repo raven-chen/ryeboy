@@ -58,7 +58,7 @@ class ExercisesControllerTest < ActionController::TestCase
 
       post :create, :exercise => {:user_id => @user.id, :task_id => @task.id, :date => Date.yesterday, :content => "new one content"}
 
-      assert_present assigns(:exercise).errors
+      assert assigns(:exercise).errors.present?
       assert assigns(:edit_existing_exercise).present?
       assert_match /#{exist_exercise.id}/, assigns(:edit_existing_exercise)
     end
@@ -68,7 +68,7 @@ class ExercisesControllerTest < ActionController::TestCase
 
       post :create, :exercise => {:user_id => @user.id, :task_id => @task.id, :date => nil, :content => "new one content"}
 
-      assert_present assigns(:exercise).errors
+      assert assigns(:exercise).errors.present?
       assert !assigns(:edit_existing_exercise).present?
     end
   end
