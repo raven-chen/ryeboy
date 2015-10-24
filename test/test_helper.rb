@@ -44,7 +44,7 @@ class ActionDispatch::IntegrationTest
 
     click_button "登陆"
 
-    assert_text "登陆成功"
+    assert_text "欢迎你"
   end
 
   def logout

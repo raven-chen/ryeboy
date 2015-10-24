@@ -60,7 +60,7 @@ class TasksTest < ActionDispatch::IntegrationTest
 
       within("#task-#{task.id}") { click_on I18n.t("helpers.enter") }
 
-      sleep 1
+      sleep 3
       fill_in_editor exercise_content
       submit_form
 

@@ -12,6 +12,7 @@
 
   <div class="document-comment highlight-block">
     <ul id="list">
+      <% if @comments.present? -%>
       <% @comments.each do |comment| %>
         <li class="reply-container">
           <ol class="title reply">
@@ -28,6 +29,9 @@
             </div>
           </div>
         </li>
+      <% end -%>
+      <% else -%>
+        <li>暂无回复</li>
       <% end -%>
     </ul>
   </div>
