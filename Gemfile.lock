@@ -236,6 +236,7 @@ DEPENDENCIES
   paperclip (~> 4.3)
   protected_attributes
   pry
+  rack (~> 1.6.4)
   rails (~> 4.2.2)
   sass-rails (~> 5.0.3)
   selenium-webdriver
