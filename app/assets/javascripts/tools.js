@@ -74,10 +74,6 @@ $(function(){
     $(".rich-editor").trumbowyg("html", new String);
   });
 
-  $(".slider").unslider({
-    dots: true
-  });
-
   // Auto trigger review before 2015-1-1
   var newYear = new Date(2015,0,2);
   var today = new Date;

@@ -21,7 +21,6 @@
 //= require jquery-ui/datepicker
 //= require select2.min
 //= require select2_locale_zh-CN
-//= require unslider
 
 //= require tools
 //= require exercises
