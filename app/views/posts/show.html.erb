@@ -1,20 +1,16 @@
-<p id="notice"><%= notice %></p>
-
 <div class="document-view">
-  <%= link_to '返回', posts_path %>
   <h2 class="title">
     <%= @post.name %>
     <%= author_info @post %>
   </h2>
 
-
   <% if @post.content -%>
-    <div class="document-content">
+    <div class="document-content highlight-block">
       <%= sanitize @post.content %>
     </div>
   <% end -%>
 
-  <div class="document-comment">
+  <div class="document-comment highlight-block">
     <ul id="list">
       <% @comments.each do |comment| %>
         <li class="reply-container">
@@ -34,22 +30,20 @@
         </li>
       <% end -%>
     </ul>
-
-    <div>
-      <h4>你的回复</h4>
-      <%= form_for(@comment, :role => "form") do |f| %>
-        <fieldset>
-          <%= f.hidden_field :commentable_id, :value => @comment.commentable.id %>
-          <%= f.hidden_field :commentable_type, :value => @comment.commentable.class.name %>
-          <%= f.hidden_field :replied_comment_id, :value => @comment.replied_comment_id %>
-
-          <br>
-          <%= f.text_area :content, :class => "rich-editor", :placeholder => comment_place_holder(@comment) %>
-          <br>
-          <%= submit_tag t("helpers.submit") %>
-        </fieldset>
-      <% end -%>
-    </div>
   </div>
 
+  <div class="highlight-block with-top-margin">
+    <%= form_for(@comment, :role => "form") do |f| %>
+      <fieldset>
+        <%= f.hidden_field :commentable_id, :value => @comment.commentable.id %>
+        <%= f.hidden_field :commentable_type, :value => @comment.commentable.class.name %>
+        <%= f.hidden_field :replied_comment_id, :value => @comment.replied_comment_id %>
+
+        <br>
+        <%= f.text_area :content, :class => "rich-editor", :placeholder => comment_place_holder(@comment) %>
+        <br>
+        <%= submit_tag t("helpers.submit"), class: "btn btn-primary" %>
+      </fieldset>
+    <% end -%>
+  </div>
 </div>

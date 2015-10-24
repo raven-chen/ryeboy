@@ -2,7 +2,11 @@ class PostsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @posts = params[:category].present? ? Post.includes(:comments).where(category: params[:category]) : Post.includes(:comments).all
+    @options = process_query_params %w{name category}
+
+    @posts = Post.includes(:comments).all
+    @posts = @posts.where(category: @options[:category]) if @options[:category]
+    @posts = @posts.where("name LIKE ?", "%#{@options[:name]}%") if @options[:name]
     @posts = @posts.order("updated_at DESC")
     @posts = @posts.page(params[:page])
 
