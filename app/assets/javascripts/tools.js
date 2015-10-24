@@ -53,7 +53,7 @@ $(function(){
       image.append("image[attachment]", files[0])
 
       $.ajax({
-        url: Tao.Routes.uploadImage,
+        url: Ryeboy.Routes.uploadImage,
         data: image,
         processData: false,
         contentType: false,

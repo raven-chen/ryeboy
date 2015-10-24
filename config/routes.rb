@@ -1,4 +1,4 @@
-Tao::Application.routes.draw do
+Ryeboy::Application.routes.draw do
   resources :replies, :except => [:index, :show, :new]
 
   resources :topics

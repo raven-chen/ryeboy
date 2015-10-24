@@ -20,7 +20,7 @@ $(function(){
 
     if (view.find("i").hasClass("liked")) {
       $.post(
-        Tao.Routes.disLikeExercises,
+        Ryeboy.Routes.disLikeExercises,
         { id: view.data("exercise-id") },
 
         function() {
@@ -36,7 +36,7 @@ $(function(){
       });
     } else {
       $.post(
-        Tao.Routes.likeExercises,
+        Ryeboy.Routes.likeExercises,
         { id: view.data("exercise-id") },
 
         function() {

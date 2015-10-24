@@ -1,6 +1,6 @@
 $(".modal.notifications").on("shown.bs.modal", function(){
   $.ajax({
-    url: Tao.Routes.readNotification,
+    url: Ryeboy.Routes.readNotification,
     data: { source: $(this).attr("id") },
     type: 'PUT',
     dataType: 'json',

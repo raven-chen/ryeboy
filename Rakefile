@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Tao::Application.load_tasks
+Ryeboy::Application.load_tasks
