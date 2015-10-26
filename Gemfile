@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.2.3'
 
 gem 'rails', "~>4.2.2"
 
@@ -19,7 +19,6 @@ gem 'unicorn'
 group :development do
   gem 'capistrano', '~> 3.4.0'
   gem 'capistrano-rails'
-  gem "capistrano-rvm"
 end
 
 group :development, :test do
