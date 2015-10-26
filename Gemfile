@@ -1,4 +1,5 @@
-source 'https://rubygems.org'
+source 'https://ruby.taobao.org'
+
 ruby '2.2.3'
 
 gem 'rails', "~>4.2.2"
@@ -24,7 +25,7 @@ end
 group :development, :test do
   gem "pry"
 end
-gem "bundler", "1.3.5"
+
 gem 'jquery-rails', '~> 2.0.0'
 gem 'jquery-ui-rails'
 
