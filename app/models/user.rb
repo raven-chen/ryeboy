@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
   ROLES_MAP = {newbie: "新人", student: "学员", mentor: "学长", admin: "管理员", documenter: "文档管理员", hr: "人力管理", dean: "教务长"}
 
   DEPARTMENTS = %w{招生 大一 大二 大三 大四 女子 传媒 人力}
-  GRADES = %w{新生 大一 大二 大三 大四 女子 学长}
+  GRADES = %w{新人 预科 大一 大二 大三 大四 女子 学长}
 
   GENDER = ["男", "女"]
   NEWBIE_TASK_NAME = "自学一星"
