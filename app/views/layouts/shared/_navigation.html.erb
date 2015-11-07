@@ -13,7 +13,7 @@
 
      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class=<%= "selected" if controller?("users") %>><%= link_to t("menus.homepage"), root_path if user_signed_in? %></li>
+        <li class=<%= "selected" if controller?("home") %>><%= link_to t("menus.homepage"), root_path %></li>
 
         <li class=<%= "selected" if controller?("exercises") %>><%= link_to t("menus.exercises"), exercises_path %></li>
 

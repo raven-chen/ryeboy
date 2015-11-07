@@ -5,7 +5,7 @@ Ryeboy::Application.routes.draw do
 
   devise_for :users
 
-  root :to => 'users#profile'
+  root :to => 'home#homepage'
 
   resources :users, :except => [:destroy] do
     member do
