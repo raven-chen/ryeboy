@@ -30,6 +30,8 @@
           <th>标题</th>
           <th>所属部门</th>
           <th>回复数</th>
+          <th>创建时间</th>
+          <th>最后回复</th>
           <th>操作</th>
         </tr>
       </thead>
@@ -39,6 +41,8 @@
             <td><%= link_to post.name, post %></td>
             <td><%= post.category %></td>
             <td><%= post.comments.count %></td>
+            <td><%= post.created_at.strftime(t("time.formats.default")) %></td>
+            <td><%= post.updated_at.strftime(t("time.formats.default")) %></td>
             <td>
               <div class="operations">
                 <%= actions_on_object post, current_user %>
