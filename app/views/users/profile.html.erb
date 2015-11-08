@@ -50,7 +50,7 @@
         </thead>
 
         <tbody>
-          <% current_user.exercises.limit(10).each do |exercise| -%>
+          <% current_user.exercises.order("date DESC").limit(10).each do |exercise| -%>
           <tr>
             <td><%= exercise.task.try(:name) %></td>
             <td><%= exercise.date %></td>
