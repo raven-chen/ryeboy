@@ -5,7 +5,7 @@
         <tr>
           <td>
             <div class="comment">
-              <%= comment.author.name %> <%= I18n.l(comment.updated_at.to_date) %>
+              <%= comment.author.try(:name) %> <%= I18n.l(comment.updated_at.to_date) %>
               <br>
               <%= comment.content %>
             </div>

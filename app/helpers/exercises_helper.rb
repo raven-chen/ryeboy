@@ -49,14 +49,14 @@ module ExercisesHelper
   end
 
   def comment_detail comment
-    author_info = [content_tag(:span, comment.author.name, class: "username")]
-    author_info.concat [t('helpers.reply'), content_tag(:span, comment.replied_comment.author.name, class: "username")] if comment.reply_to_comment?
+    author_info = [content_tag(:span, comment.author.try(:name), class: "username")]
+    author_info.concat [t('helpers.reply'), content_tag(:span, comment.replied_comment.author.try(:name), class: "username")] if comment.reply_to_comment?
     "#{author_info.join(" ")} : #{comment.content}".html_safe
   end
 
   def comment_place_holder comment
     if comment.reply_to_comment?
-      "#{t('helpers.reply')} : #{comment.replied_comment.author.name}"
+      "#{t('helpers.reply')} : #{comment.replied_comment.author.try(:name)}"
     else
       "新评论"
     end
@@ -64,7 +64,7 @@ module ExercisesHelper
 
   # Display visible_to_admin_only exercise for admin only
   def visible_exercise? exercise
-    !exercise.task.visible_to_admin_only || current_user.mentor?
+    !exercise.task.try(:visible_to_admin_only) || current_user.mentor?
   end
 
   def exercises_from_each_month user

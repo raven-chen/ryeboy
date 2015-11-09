@@ -14,7 +14,7 @@
       <tr>
         <td><%= link_to topic.title, topic_path(topic) %></td>
         <td><%= topic.category %></td>
-        <td><%= topic.author.name %></td>
+        <td><%= topic.author.try(:name) %></td>
         <td><%= topic.comments.count %></td>
         <td><%= topic.updated_at.strftime(t("time.formats.default")) %></td>
         <td>

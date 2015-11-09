@@ -16,17 +16,17 @@
       <% @comments.each do |comment| %>
         <li class="reply-container">
           <ol class="title reply">
-            <li class="hint-text author-name"><%= comment.author.name %></li>
+            <li class="hint-text author-name"><%= comment.author.try(:name) %></li>
             <li class="hint-text"><%= comment.created_at.strftime(t("time.formats.default")) %></li>
           </ol>
           <div class="clearfix"></div>
 
           <div class="content">
-            <%= content_tag(:span, "回复 #{comment.replied_comment.author.name}: ", :class => "hint-text") if comment.replied_comment %>
+            <%= content_tag(:span, "回复 #{comment.replied_comment.author.try(:name)}: ", :class => "hint-text") if comment.replied_comment %>
             <%= sanitize comment.content %>
 
             <div class="operations js-reply-to-comment">
-              <%= link_to t("helpers.reply"), "#new-reply", :class => "hint-text js-reply", "data-comment-id" => comment.id, "data-reply-to" => "回复: #{comment.author.name}" if current_user %>
+              <%= link_to t("helpers.reply"), "#new-reply", :class => "hint-text js-reply", "data-comment-id" => comment.id, "data-reply-to" => "回复: #{comment.author.try(:name)}" if current_user %>
               <%= actions_on_object comment, current_user %>
             </div>
           </div>

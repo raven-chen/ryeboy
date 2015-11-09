@@ -25,7 +25,7 @@ module UsersHelper
   end
 
   def author_info object
-    content_tag(:span, "#{object.author.name} 创建于 #{I18n.l(object.created_at)}", :class => "hint-text author-info")
+    content_tag(:span, "#{object.author.try(:name)} 创建于 #{I18n.l(object.created_at)}", :class => "hint-text author-info")
   end
 
   def link_to_user_exercises user
