@@ -14,6 +14,9 @@ class ExercisesTest < ActionDispatch::IntegrationTest
 
     login @mentor
 
+    visit exercises_path
+
+    page.find(:css, ".write-exercise").click
     page.find(:css, "div.active .task-#{@task.id}").click
 
     fill_in_editor "test"
