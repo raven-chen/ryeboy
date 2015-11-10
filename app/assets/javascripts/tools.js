@@ -31,7 +31,7 @@ $(function(){
     height: 200,
     maxHeight: 900,
     lang: "zh-CN",
-    focus: true,
+    focus: false,
     toolbar: [
       ['style', ['style']],
       ['font', ['bold', 'italic', 'underline', 'clear']],
@@ -69,11 +69,4 @@ $(function(){
   $("#clean-editor").click(function(){
     $(".rich-editor").trumbowyg("html", new String);
   });
-
-  // Auto trigger review before 2015-1-1
-  var newYear = new Date(2015,0,2);
-  var today = new Date;
-  if (today < newYear) {
-    $("button#review").trigger("click");
-  }
 });
