@@ -1,0 +1,22 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>功课名称</th>
+      <th>日记日期</th>
+      <th>日记内容</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% current_user.exercises.limit(10).each do |exercise| -%>
+    <tr>
+      <td><%= exercise.task.try(:name) %></td>
+      <td><%= exercise.date %></td>
+      <td><%= exercise.content %></td>
+      <td><%= link_to "编辑", edit_exercise_path(exercise) %></td>
+    </tr>
+    <% end -%>
+    <tr><td colspan="4" style="text-align:center;"><%= link_to "更多...", my_exercises_path %></td></tr>
+  </tbody>
+</table>

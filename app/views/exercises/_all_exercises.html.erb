@@ -1,0 +1,31 @@
+<%= form_tag(exercises_path, :method => :get, :class => "form-inline", :role => "form") do %>
+  <div class="searchfield-above-table">
+    <%= select_tag :grade, options_for_select(User::GRADES, @options[:grade]), :prompt => "年级", :class => "js-select2 normal-width-select2" %>
+    <%= select_tag :user_id, options_from_collection_for_select(User.all, "id", "name", @options[:user_id]), :prompt => "昵称", :class => "js-select2 normal-width-select2" %>
+    <%= select_tag :task_id, options_from_collection_for_select(Task.all, "id", "name", @options[:task_id]), :prompt => "功课", :class => "js-select2 normal-width-select2" %>
+    <%= text_field_tag :from, @options[:from], :class => "js-date-field", :placeholder => "起始日期" %>
+    <%= text_field_tag :to, @options[:to], :class => "js-date-field", :placeholder => "结束日期" %>
+    <%= hidden_field_tag :order, @options[:order] %>
+    <%= hidden_field_tag :no_comment, @options[:no_comment] %>
+
+    <%= submit_tag "搜索", :class => "btn btn-default" %>
+  </div>
+
+
+  <div id="quick-search-conditions">
+    <%= quick_date_select_buttons @options %>
+    <%= order_buttons @options %>
+    <%= no_comment_search_button @options %>
+  </div>
+<% end -%>
+
+<div>
+  <% if @exercises.present? -%>
+    <%= render :partial => "list", locals: { exercises: @exercises } %>
+    <%= paginate @exercises %>
+  <% else -%>
+    <div class="well no-result">
+      <%= t("helpers.no_results") %>
+    </div>
+  <% end -%>
+</div>

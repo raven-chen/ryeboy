@@ -1,0 +1,56 @@
+<div class="col-md-9">
+  <div class="highlight-block">
+    <div class="list-title">
+      在麦田成功恢复健康的例子
+      <%= link_to "更多...", @cases_view_more_link.try(:url), class: "view-more" %>
+    </div>
+
+    <ul class="normal-list">
+      <% @cases.each do |item| %>
+        <li>
+          <%= link_to item.name, item.url %>
+        </li>
+      <% end -%>
+    </ul>
+  </div>
+
+  <div class="highlight-block with-top-margin">
+    <div class="list-title">
+      最新活动
+      <%= link_to "更多...", @events_view_more_link.try(:url), class: "view-more" %>
+    </div>
+
+    <ul class="normal-list">
+      <% @events.each do |item| %>
+        <li>
+          <%= link_to item.name, item.url %>
+        </li>
+      <% end -%>
+    </ul>
+  </div>
+</div>
+
+<div class="col-md-3">
+  <div class="highlight-block newbie-start">
+    <%= link_to "立即开始", @newbie_link.try(:url), class: "btn btn-lg btn-success" %>
+  </div>
+
+  <div class="highlight-block with-top-margin">
+    <div class="list-title">
+      麦田微信公众号
+      <%= link_to "更多...", @wechats_view_more_link.try(:url), class: "view-more" %>
+    </div>
+
+    <ul class="normal-list">
+      <% @wechat_links.each do |item| %>
+        <li>
+          <%= link_to item.name, item.url %>
+        </li>
+      <% end -%>
+    </ul>
+
+    <div class="wechat-poster">
+      <%= image_tag("wechat-poster.jpg") %>
+    </div>
+  </div>
+</div>

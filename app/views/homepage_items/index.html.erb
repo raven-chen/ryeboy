@@ -1,0 +1,58 @@
+<h1>首页管理</h1>
+
+<div class="top-button-area clearfix">
+  <%= link_to '新建', new_homepage_item_path, :class => "btn btn-primary pull-right btn-lg" %>
+</div>
+
+<%= form_tag(homepage_items_path, :method => :get, :class => "form-inline", :role => "form") do %>
+  <div class="searchfield-above-table">
+    <div class="search">
+      <%= text_field_tag :name, @options[:name], :placeholder => "名称" %>
+      <%= submit_tag "搜索", :class => "btn btn-default" %>
+    </div>
+
+    <div class="js-submit-links">
+      <%= hidden_field_tag :category, @options[:category] %>
+      <%= link_to "全部", "javascript:;", :class => maybe_selected_class(nil, @options[:category], "btn btn-default", "btn btn-warning"), "data-target-name" => "category", "data-target-value" => "" %>
+
+      <% HomepageItem::CATEGORIES.each_with_index do |category, i| -%>
+        <%= link_to category, "javascript:;", :class => maybe_selected_class(category, @options[:category], "btn btn-default", "btn btn-warning"), "data-target-name" => "category", "data-target-value" => category %>
+      <% end -%>
+    </div>
+  </div>
+<% end -%>
+
+<div class="highlight-block">
+  <% if @items.present? -%>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>标题</th>
+          <th>类别</th>
+          <th>顺序</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+          <tr>
+            <td><%= link_to item.name, item %></td>
+            <td><%= item.category %></td>
+            <td><%= item.sequence %></td>
+            <td>
+              <div class="operations">
+                <%= actions_on_object_no_author item, false %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else -%>
+    <div class="well no-result">
+      <%= t("helpers.no_results") %>
+    </div>
+  <% end -%>
+</div>
+
+<%= paginate @items %>

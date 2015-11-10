@@ -1,35 +1,44 @@
+<%= self_study_notice(current_user) -%>
+
 <div class="alert alert-warning">
   <%= I18n.t("notices.religion_notice") %>
 </div>
 
-<%= form_tag(exercises_path, :method => :get, :class => "form-inline", :role => "form") do %>
-  <div class="searchfield-above-table">
-    <%= select_tag :grade, options_for_select(User::GRADES, @options[:grade]), :prompt => "年级", :class => "js-select2 normal-width-select2" %>
-    <%= select_tag :user_id, options_from_collection_for_select(User.all, "id", "name", @options[:user_id]), :prompt => "昵称", :class => "js-select2 normal-width-select2" %>
-    <%= select_tag :task_id, options_from_collection_for_select(Task.all, "id", "name", @options[:task_id]), :prompt => "功课", :class => "js-select2 normal-width-select2" %>
-    <%= text_field_tag :from, @options[:from], :class => "js-date-field", :placeholder => "起始日期" %>
-    <%= text_field_tag :to, @options[:to], :class => "js-date-field", :placeholder => "结束日期" %>
-    <%= hidden_field_tag :order, @options[:order] %>
-    <%= hidden_field_tag :no_comment, @options[:no_comment] %>
+<div class="tab">
+  <ul class="nav-pills nav">
+    <li role="navigation" class="active">
+      <a href="#content-1" data-toggle="tab"><%= "所有日记" %></a>
+    </li>
+    <% if user_signed_in? -%>
+      <li role="navigation">
+        <a href="#content-2" data-toggle="tab" class="write-exercise">写日记</a>
+      </li>
+      <li role="navigation">
+        <a href="#content-3" data-toggle="tab"><%= "我的功课" %></a>
+      </li>
+      <li role="navigation">
+        <a href="#content-4" data-toggle="tab"><%= "我的日记" %></a>
+      </li>
+    <% end -%>
+  </ul>
 
-    <%= submit_tag "搜索", :class => "btn btn-default" %>
-  </div>
-
-
-  <div id="quick-search-conditions">
-    <%= quick_date_select_buttons @options %>
-    <%= order_buttons @options %>
-    <%= no_comment_search_button @options %>
-  </div>
-<% end -%>
-
-<div>
-  <% if @exercises.present? -%>
-    <%= render :partial => "list", locals: { exercises: @exercises } %>
-    <%= paginate @exercises %>
-  <% else -%>
-    <div class="well no-result">
-      <%= t("helpers.no_results") %>
+  <div class="tab-content with-margin">
+    <div id="content-1" class="tab-pane active">
+      <%= render :partial => "exercises/all_exercises" %>
     </div>
-  <% end -%>
+
+    <% if user_signed_in? -%>
+      <div id="content-2" class="tab-pane highlight-block">
+        <%= render :partial => "exercises/unsigned_tasks", :locals => { :unsigned_tasks => unsigned_tasks_at(Date.yesterday), :date => Date.current } %>
+      </div>
+
+      <div id="content-3" class="tab-pane highlight-block">
+        <%= render :partial => "users/my_tasks" %>
+      </div>
+
+      <div id="content-4" class="tab-pane highlight-block">
+        <%= render :partial => "exercises/my_exercises" %>
+      </div>
+    <% end -%>
+  </div>
 </div>

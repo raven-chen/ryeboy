@@ -21,7 +21,7 @@ module UsersHelper
 
   def self_study_notice user
     # TODO: move this to site configuration
-    content_tag(:div, link_to("自学流程", "http://bbs.ryeboy.org/topics/133", :class => "btn btn-success btn-large", :target => "_blank"), :class => "self-study alert alert-warning") if user.newbie?
+    content_tag(:div, link_to("自学流程", "http://bbs.ryeboy.org/topics/133", :class => "btn btn-success btn-large", :target => "_blank"), :class => "self-study alert alert-warning") if user.blank? || user.newbie?
   end
 
   def author_info object
