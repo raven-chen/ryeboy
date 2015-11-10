@@ -2,60 +2,51 @@
   <div class="highlight-block">
     <div class="list-title">
       在麦田成功恢复健康的例子
-      <a href="#" class="view-more">更多...</a>
+      <%= link_to "更多...", @cases_view_more_link.try(:url), class: "view-more" %>
     </div>
 
     <ul class="normal-list">
-      <li><a href="#">【经典案例1】阿林 — 10年慢前的康复之路 （关键字：前列腺、阳痿早泄）</a></li>
-      <li><a href="#">【经典案例1】阿林 — 10年慢前的康复之路 （关键字：前列腺、阳痿早泄）</a></li>
-      <li><a href="#">【经典案例1】阿林 — 10年慢前的康复之路 （关键字：前列腺、阳痿早泄）</a></li>
-      <li><a href="#">【经典案例1】阿林 — 10年慢前的康复之路 （关键字：前列腺、阳痿早泄）</a></li>
-      <li><a href="#">【经典案例1】阿林 — 10年慢前的康复之路 （关键字：前列腺、阳痿早泄）</a></li>
-      <li><a href="#">【经典案例1】阿林 — 10年慢前的康复之路 （关键字：前列腺、阳痿早泄）</a></li>
+      <% @cases.each do |item| %>
+        <li>
+          <%= link_to item.name, item.url %>
+        </li>
+      <% end -%>
     </ul>
   </div>
 
   <div class="highlight-block with-top-margin">
     <div class="list-title">
       最新活动
-      <a href="#" class="view-more">更多...</a>
+      <%= link_to "更多...", @events_view_more_link.try(:url), class: "view-more" %>
     </div>
 
     <ul class="normal-list">
-      <li><a href="#">【经典案例1】阿林 — 10年慢前的康复之路 （关键字：前列腺、阳痿早泄）</a></li>
-      <li><a href="#">【经典案例1】阿林 — 10年慢前的康复之路 （关键字：前列腺、阳痿早泄）</a></li>
-      <li><a href="#">【经典案例1】阿林 — 10年慢前的康复之路 （关键字：前列腺、阳痿早泄）</a></li>
-      <li><a href="#">【经典案例1】阿林 — 10年慢前的康复之路 （关键字：前列腺、阳痿早泄）</a></li>
-      <li><a href="#">【经典案例1】阿林 — 10年慢前的康复之路 （关键字：前列腺、阳痿早泄）</a></li>
-      <li><a href="#">【经典案例1】阿林 — 10年慢前的康复之路 （关键字：前列腺、阳痿早泄）</a></li>
+      <% @events.each do |item| %>
+        <li>
+          <%= link_to item.name, item.url %>
+        </li>
+      <% end -%>
     </ul>
   </div>
 </div>
 
 <div class="col-md-3">
-  <div class="highlight-block">
-    <div class="list-title">
-      新手专区
-      <a href="#" class="view-more">更多...</a>
-    </div>
-
-    <ul class="normal-list">
-      <li><a href="#">如何开始</a></li>
-      <li><a href="#">常见问题</a></li>
-      <li><a href="#">新手指南</a></li>
-    </ul>
+  <div class="highlight-block newbie-start">
+    <%= link_to "立即开始", @newbie_link.try(:url), class: "btn btn-lg btn-success" %>
   </div>
 
   <div class="highlight-block with-top-margin">
     <div class="list-title">
       麦田微信公众号
-      <a href="#" class="view-more">更多...</a>
+      <%= link_to "更多...", @wechats_view_more_link.try(:url), class: "view-more" %>
     </div>
 
     <ul class="normal-list">
-      <li><a href="#">麦田课程每日分享</a></li>
-      <li><a href="#">麦田课程每日分享</a></li>
-      <li><a href="#">麦田课程每日分享</a></li>
+      <% @wechat_links.each do |item| %>
+        <li>
+          <%= link_to item.name, item.url %>
+        </li>
+      <% end -%>
     </ul>
 
     <div class="wechat-poster">

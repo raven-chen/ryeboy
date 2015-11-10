@@ -28,7 +28,7 @@
       <div class="clearfix"></div>
 
       <div class="content">
-        <%= exercise.content %>
+        <%= sanitize exercise.content %>
       </div>
 
       <div id=<%= "comments-of-#{exercise.id}" %>>

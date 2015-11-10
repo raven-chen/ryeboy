@@ -19,18 +19,18 @@ module ApplicationHelper
     operations << link_to(I18n.t("helpers.view"), object) if have_show_link
 
     if object.author == user
-      operations << link_to(I18n.t("helpers.edit"), eval("edit_#{object.class.name.downcase}_path(object)"))
+      operations << link_to(I18n.t("helpers.edit"), eval("edit_#{object.class.name.underscore}_path(object)"))
       operations << link_to(I18n.t("helpers.delete"), object, method: :delete, data: { confirm: I18n.t("helpers.are_you_sure") })
     end
 
     operations.join(" ").html_safe
   end
 
-  def actions_on_object_no_author object
+  def actions_on_object_no_author object, has_show_link = true
     operations = []
 
-    operations << link_to(I18n.t("helpers.view"), object)
-    operations << link_to(I18n.t("helpers.edit"), eval("edit_#{object.class.name.downcase}_path(object)"))
+    operations << link_to(I18n.t("helpers.view"), object) if has_show_link
+    operations << link_to(I18n.t("helpers.edit"), eval("edit_#{object.class.name.underscore}_path(object)"))
     operations << link_to(I18n.t("helpers.delete"), object, method: :delete, data: { confirm: I18n.t("helpers.are_you_sure") })
 
     content_tag(:div, operations.join(" ").html_safe, :class => "operations")

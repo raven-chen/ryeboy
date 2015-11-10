@@ -33,6 +33,7 @@ Ryeboy::Application.routes.draw do
   end
 
   resources :comments
+  resources :homepage_items, except: [:show]
 
   resources :documents, :only => [:index, :show]
   resources :posts

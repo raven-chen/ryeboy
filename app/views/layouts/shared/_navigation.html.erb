@@ -45,6 +45,10 @@
               <% if can? :manage, Task -%>
                 <li><%= link_to '功课管理', manage_tasks_path %></li>
               <% end -%>
+
+              <% if can? :manage, HomepageItem -%>
+                <li><%= link_to '首页管理', homepage_items_path %></li>
+              <% end -%>
             </ul>
           </li>
         <% end -%>

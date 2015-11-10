@@ -54,4 +54,8 @@ class Ability
   def dean
     can :manage, Task
   end
+
+  def editor
+    can :manage, HomepageItem
+  end
 end
