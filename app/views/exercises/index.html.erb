@@ -29,7 +29,7 @@
 
     <% if user_signed_in? -%>
       <div id="content-2" class="tab-pane highlight-block">
-        <%= render :partial => "exercises/unsigned_tasks", :locals => { :unsigned_tasks => unsigned_tasks_at(Date.yesterday), :date => Date.current } %>
+        <%= render :partial => "exercises/unsigned_tasks", :locals => { :unsigned_tasks => unsigned_tasks_at(Date.current), :date => Date.current } %>
       </div>
 
       <div id="content-3" class="tab-pane highlight-block">
