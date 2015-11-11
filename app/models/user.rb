@@ -50,6 +50,7 @@ class User < ActiveRecord::Base
   validates :sno, :presence => true, :if => lambda{|user| user.roles.exclude?("newbie")}
   validates :email, :name, :roles, :presence => true
   validates_uniqueness_of :sno, allow_nil: true
+  validates_uniqueness_of :name, :email
   validates_inclusion_of :department, in: DEPARTMENTS, allow_blank: true
   validates_inclusion_of :sub_department, in: DEPARTMENTS, allow_blank: true
   validates_inclusion_of :grade, in: GRADES, allow_blank: true
