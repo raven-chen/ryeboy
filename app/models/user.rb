@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   GRADES = %w{新人 预科 大一 大二 大三 大四 女子 学长}
 
   GENDER = ["男", "女"]
-  NEWBIE_TASK_NAME = "自学一星"
+  NEWBIE_TASK_NAME = "新人功课"
 
   scope :with_role, lambda { |role| where("roles_mask & #{2**ROLES.index(role.to_s)} > 0") }
   scope :without_role, lambda { |role| where("roles_mask & #{2**ROLES.index(role.to_s)} = 0") }
