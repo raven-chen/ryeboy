@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
     # TODO: Better to have a column instead of this magic string
     if user.newbie?
       newbie_task = Task.find_by_name(NEWBIE_TASK_NAME)
-      user.my_tasks << newbie_task if newbie_task
+      user.my_tasks << newbie_task if newbie_task && newbie_task.valid?
     end
   }
 
