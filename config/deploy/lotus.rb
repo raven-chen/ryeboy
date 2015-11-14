@@ -3,7 +3,7 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-server '121.40.140.69', user: 'app', roles: %w{app db web}
+server '182.92.168.27', user: 'app', roles: %w{app db web}
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
@@ -17,7 +17,7 @@ server '121.40.140.69', user: 'app', roles: %w{app db web}
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 
-role :app, "121.40.140.69"
+role :app, "182.92.168.27"
 # role :app, %w{deploy@example.com}, my_property: :my_value
 # role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
 # role :db,  %w{deploy@example.com}
@@ -31,8 +31,9 @@ role :app, "121.40.140.69"
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
-set :deploy_to, '/home/app/ryegirl'
-set :application, 'ryegirl'
+set :deploy_to, '/home/app/lotus'
+set :application, 'lotus'
+set :rails_env, "production"
 
 # Custom SSH Options
 # ==================
