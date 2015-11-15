@@ -62,11 +62,16 @@ $(function(){
           alert(JSON.parse(xhr.responseText).error);
         }
       });
+    },
+    onPaste: function(content) {
+      setTimeout(function () {
+        $richEditor.code(content.currentTarget.textContent);
+      }, 10);
     }
   });
 
   // Clean content inside editor
   $("#clean-editor").click(function(){
-    $(".rich-editor").trumbowyg("html", new String);
+    $richEditor.code(new String).summernote("focus");
   });
 });
