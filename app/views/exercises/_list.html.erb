@@ -12,14 +12,11 @@
 
         <li class="name">
           <%= link_to exercise.task.try(:name), exercise_path(exercise) %>
-          <% if exercise.quick_logged? -%>
-            <span class="label label-success">快速日记</span>
-          <% end -%>
         </li>
 
         <% if current_user -%>
           <li><%= like_widget(current_user, exercise) %></li>
-          <li><%= link_to t("helpers.comment"), new_comment_path(resource_id: exercise.id, resource_name: "exercise"), remote: true unless exercise.quick_logged? %></li>
+          <li><%= link_to t("helpers.comment"), new_comment_path(resource_id: exercise.id, resource_name: "exercise"), remote: true %></li>
         <% end -%>
 
         <li class="hint-text"><%= link_to_user_exercises exercise.user %></li>

@@ -18,9 +18,6 @@
                   <ol class="title">
                     <li class="name">
                       <%= link_to exercise.task.try(:name), exercise_path(exercise) %>
-                      <% if exercise.quick_logged? -%>
-                        <span class="label label-success">快速日记</span>
-                      <% end -%>
                     </li>
 
                     <li class="hint-text"><%= exercise.date.strftime(t("date.formats.default")) %></li>

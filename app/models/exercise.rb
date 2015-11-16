@@ -42,10 +42,6 @@ class Exercise < ActiveRecord::Base
     order("updated_at DESC").limit(20)
   end
 
-  def quick_logged?
-    content.blank?
-  end
-
   def previous_one
     self.class.where(:user_id => user_id, :task_id => task_id).where("content IS NOT NULL").order("date DESC").limit(1).try(:first)
   end
