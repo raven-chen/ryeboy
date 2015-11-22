@@ -21,6 +21,8 @@
 
         <li class="hint-text"><%= link_to_user_exercises exercise.user %></li>
         <li class="hint-text"><%= exercise.date.strftime(t("date.formats.default")) %></li>
+
+        <%= render partial: "exercises/rating", locals: { exercise: exercise } %>
       </ol>
       <div class="clearfix"></div>
 

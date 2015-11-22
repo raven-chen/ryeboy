@@ -29,6 +29,7 @@ Ryeboy::Application.routes.draw do
       post :like
       post :dislike
       get :review
+      patch :rate
     end
   end
 

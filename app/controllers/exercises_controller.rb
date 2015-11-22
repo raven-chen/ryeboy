@@ -156,4 +156,19 @@ class ExercisesController < ApplicationController
       render :json => "", :status => :unprocessable_entity
     end
   end
+
+  def rate
+    @exercise = Exercise.find(params[:id])
+    @exercise.score = params[:score]
+    @exercise.rater = current_user
+    @exercise.scored_at = Time.now
+
+    respond_to do |format|
+      if @exercise.save
+        format.json { render json: I18n.t("notices.exercise_get_%{score}", score: @exercise.score).to_json }
+      else
+        format.json { render status: :unprocessable_entity }
+      end
+    end
+  end
 end
