@@ -46,10 +46,6 @@ class Exercise < ActiveRecord::Base
     self.class.where(:user_id => user_id, :task_id => task_id).where("content IS NOT NULL").order("date DESC").limit(1).try(:first)
   end
 
-  def content
-    read_attribute(:content).try(:html_safe)
-  end
-
   def content= val
     if !val.valid_encoding?
       val = val.encode("UTF-8", invalid: :replace, replace: "?")

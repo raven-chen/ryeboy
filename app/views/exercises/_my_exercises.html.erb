@@ -13,7 +13,7 @@
     <tr>
       <td><%= exercise.task.try(:name) %></td>
       <td><%= exercise.date %></td>
-      <td><%= exercise.content %></td>
+      <td><%= sanitize exercise.content %></td>
       <td><%= link_to "编辑", edit_exercise_path(exercise) %></td>
     </tr>
     <% end -%>

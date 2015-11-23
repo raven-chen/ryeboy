@@ -42,7 +42,7 @@
         <% else -%>
           <%= link_to I18n.t("helpers.edit"), edit_exercise_path(@my_exercise), :class => "btn btn-primary" %><br><br>
 
-          <%= @my_exercise.content %>
+          <%= sanitize @my_exercise.content %>
         <% end -%>
       </div>
 
