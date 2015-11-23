@@ -50,6 +50,14 @@ class Exercise < ActiveRecord::Base
     read_attribute(:content).try(:html_safe)
   end
 
+  def content= val
+    if !val.valid_encoding?
+      val = val.encode("UTF-8", invalid: :replace, replace: "?")
+    end
+
+    write_attribute(:content, val)
+  end
+
   class << self
     def unfinished_user grade, tasks, start_date, end_date
       result = []
