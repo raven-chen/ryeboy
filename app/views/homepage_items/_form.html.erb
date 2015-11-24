@@ -28,7 +28,7 @@
     </div>
 
     <div>
-      <%= submit_tag "提交", :class => "btn btn-primary" %>  <%= link_to '返回', posts_path, :class => "btn btn-default" %>
+      <%= submit_tag "提交", :class => "btn btn-primary", data: { disable_with: "请等待..." } %>  <%= link_to '返回', posts_path, :class => "btn btn-default" %>
     </div>
   <% end -%>
 </div>
