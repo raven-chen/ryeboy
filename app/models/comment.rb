@@ -33,4 +33,12 @@ class Comment < ActiveRecord::Base
   def comment_reply_must_belongs_to_same_resource
     errors.add(:commentable_id, "comment reply must belongs to same resource") unless replied_comment.commentable_id == commentable_id
   end
+
+  def content= val
+    if !val.valid_encoding?
+      val = val.encode("UTF-8", invalid: :replace, replace: "?")
+    end
+
+    write_attribute(:content, val)
+  end
 end
