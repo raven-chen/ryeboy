@@ -31,6 +31,7 @@ group :development, :test do
 end
 
 gem "airbrake", '4.3.0'
+gem 'rollbar', '~> 2.5.0'
 gem 'jquery-rails', '~> 2.0.0'
 gem 'jquery-ui-rails'
 
