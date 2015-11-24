@@ -1,7 +1,7 @@
-<li class="pull-right">
+<li class="pull-right exercise-rating">
   <% if exercise.rated? -%>
     <%= t("notices.exercise_get_%{score}", score: exercise.score) %>
-  <% else -%>
+  <% elsif current_user.try(:mentor?) -%>
     <% ratable, countdown = rate_count_down(exercise) %>
 
     <% if ratable -%>
@@ -10,5 +10,7 @@
     <% end -%>
 
     <%= countdown %>
+  <% else -%>
+    <%= t("notices.not_scored") %>
   <% end -%>
 </li>

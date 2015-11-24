@@ -10,7 +10,7 @@ module ExercisesHelper
   RATE_COUNT_DOWN = 48.hours
 
   def rate_count_down exercise
-    time_passed_in_sec = (exercise.created_at + RATE_COUNT_DOWN - Time.now).abs
+    time_passed_in_sec = (Time.now - exercise.created_at).abs
 
     if time_passed_in_sec > RATE_COUNT_DOWN.to_i
       [false, t("notices.over_count_down")]

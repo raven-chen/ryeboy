@@ -31,6 +31,7 @@ zh-CN:
       default: '%Y-%m-%d %H:%M'
 
   notices:
+    not_scored: "未评分"
     "false": "否"
     "true": "是"
     good_job: "干得好！今天所有功课都已完成！"
