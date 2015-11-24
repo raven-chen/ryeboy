@@ -11,6 +11,7 @@
 <%= javascript_include_tag "application" %>
 
 <!-- Baidu analysis -->
+<% if Rails.env.production? -%>
 <script>
   var _hmt = _hmt || [];
   (function() {
@@ -20,3 +21,4 @@
     s.parentNode.insertBefore(hm, s);
   })();
 </script>
+<% end -%>
