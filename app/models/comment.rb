@@ -35,7 +35,7 @@ class Comment < ActiveRecord::Base
   end
 
   def content= val
-    if !val.valid_encoding?
+    if val && !val.valid_encoding?
       val = val.encode("UTF-8", invalid: :replace, replace: "?")
     end
 
