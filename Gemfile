@@ -1,4 +1,8 @@
-source 'https://ruby.taobao.org'
+if ENV['CI']
+  source 'https://rubygems.org'
+else
+  source 'https://ruby.taobao.org'
+end
 
 ruby '2.2.3'
 
