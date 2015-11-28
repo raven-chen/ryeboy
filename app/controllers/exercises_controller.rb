@@ -13,7 +13,7 @@ class ExercisesController < ApplicationController
   def new
     @task = Task.find(params[:task_id])
     @exercise = Exercise.new(:date => (params[:date].try(:to_date) || Date.today), :task_id => @task.id, :user_id => current_user.id)
-    @exercise.copy_content_from_previous_one
+    @exercise.copy_template_from_task
   end
 
   def create

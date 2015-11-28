@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151109085832) do
+ActiveRecord::Schema.define(version: 20151128033241) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "author_id",          limit: 4
@@ -136,6 +136,7 @@ ActiveRecord::Schema.define(version: 20151109085832) do
     t.boolean  "required"
     t.boolean  "visible_to_admin_only"
     t.string   "grade",                 limit: 255
+    t.text     "template",              limit: 65535
   end
 
   create_table "topics", force: :cascade do |t|
