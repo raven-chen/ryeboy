@@ -14,10 +14,11 @@ class Ability
     can :read, Document
     can :update_self, User
     can :read, Task
+    can [:read, :list_view], Notification
   end
 
   def student
-    can :read, Notification
+    can [:read, :list_view], Notification
     can :manage, Topic
     can :manage, Exercise
     cannot :unfinished, Exercise
@@ -27,7 +28,7 @@ class Ability
   end
 
   def mentor
-    can :read, Notification
+    can [:read, :list_view], Notification
     can :manage, Topic
     can :manage, Exercise
     can :read, User

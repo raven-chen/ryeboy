@@ -2,7 +2,17 @@ class NotificationsController < ApplicationController
   load_and_authorize_resource
 
   def index
+    @options = process_query_params %w{name category}
+
     @notifications = Notification.all
+    @notifications = @notifications.where(category: @options[:category]) if @options[:category]
+  end
+
+  def list_view
+    @options = process_query_params %w{name category}
+
+    @notifications = Notification.all
+    @notifications = @notifications.where(category: @options[:category]) if @options[:category]
   end
 
   def show

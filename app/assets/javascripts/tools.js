@@ -74,4 +74,9 @@ $(function(){
   $("#clean-editor").click(function(){
     $richEditor.code(new String).summernote("focus");
   });
+
+  // Go back
+  $(".js-go-back").click(function(){
+    window.history.back();
+  });
 });

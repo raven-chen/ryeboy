@@ -13,6 +13,6 @@
   <% end -%>
 
   <br>
-  <%= link_to I18n.t("helpers.edit"), edit_notification_path(@notification), :class => "btn btn-primary" %>
-  <%= link_to I18n.t("helpers.back"), notifications_path, :class => "btn btn-default" %>
+  <%= link_to(I18n.t("helpers.edit"), edit_notification_path(@notification), :class => "btn btn-primary") if can?(:manage, Notification)  %>
+  <%= link_to I18n.t("helpers.back"), "javascript: ;", :class => "btn btn-default js-go-back" %>
 </div>

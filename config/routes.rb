@@ -43,5 +43,9 @@ Ryeboy::Application.routes.draw do
       get :manage
     end
   end
-  resources :notifications
+  resources :notifications do
+    collection do
+      get :list_view
+    end
+  end
 end
