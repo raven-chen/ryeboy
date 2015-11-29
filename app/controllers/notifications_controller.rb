@@ -11,7 +11,7 @@ class NotificationsController < ApplicationController
   def list_view
     @options = process_query_params %w{name category}
 
-    @notifications = Notification.all
+    @notifications = Notification.applicable(current_user.grade)
     @notifications = @notifications.where(category: @options[:category]) if @options[:category]
   end
 
