@@ -40,11 +40,11 @@ class HomepageItemsController < ApplicationController
   end
 
   def edit
-    @item = current_user.items.find(params[:id])
+    @item = HomepageItem.find(params[:id])
   end
 
   def update
-    @item = current_user.items.find(params[:id])
+    @item = HomepageItem.find(params[:id])
 
     respond_to do |format|
       if @item.update_attributes(params[:homepage_item])
@@ -58,7 +58,7 @@ class HomepageItemsController < ApplicationController
   end
 
   def destroy
-    @item = current_user.items.find(params[:id])
+    @item = HomepageItem.find(params[:id])
     @item.destroy
 
     flash[:notice] = I18n.t("notices.delete_%{obj}_successfully", :obj => @item.name)
