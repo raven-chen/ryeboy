@@ -1,5 +1,5 @@
 class Task < ActiveRecord::Base
-  attr_accessible :description, :name, :common, :due_date, :required, :visible_to_admin_only, :grade
+  attr_accessible :description, :name, :common, :due_date, :required, :visible_to_admin_only, :grade, :template
 
   validates :name, :presence => true
   validates_inclusion_of :grade, in: User::GRADES, allow_nil: true

@@ -45,11 +45,12 @@ class ExercisesControllerTest < ActionController::TestCase
     end
   end
 
-  should "copy content from last one" do
-    previous_one = Exercise.create!(:user_id => @user.id, :task_id => @task.id, :date => Date.yesterday, :content => "last one content")
+  should "copy content from task template" do
+    template = "task template"
+    @task.update_attributes!({template: template})
 
     get :new, :task_id => @task.id
-    assert_equal "last one content", assigns(:exercise).content
+    assert_equal template, assigns(:exercise).content
   end
 
   context "Friendly notice of taken date" do

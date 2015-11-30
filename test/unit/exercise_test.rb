@@ -24,23 +24,21 @@ class ExerciseTest < ActiveSupport::TestCase
     assert_equal I18n.t("activerecord.errors.messages.answer_on_common_task_should_be_unique"), exercise.errors[:user_id].first
   end
 
-  should "copy content from last exercise" do
-    previous_one = Exercise.create!(:user_id => @user.id, :task_id => @task.id, :date => Date.yesterday, :content => "last one content")
+  should "copy content from task's template" do
+    template = "task template"
+    @task.update_attributes!({template: template})
 
     new_exercise = Exercise.new(:user_id => @user.id, :task_id => @task.id, :date => @date)
-    new_exercise.copy_content_from_previous_one
+    new_exercise.copy_template_from_task
 
-    assert_equal "last one content", new_exercise.content
+    assert_equal template, new_exercise.content
   end
 
-  should "copy content from last exercise that has content" do
-    previous_one_with_content = Exercise.create!(:user_id => @user.id, :task_id => @task.id, :date => 2.days.ago, :content => "last one content")
-    previous_one = Exercise.create!(:user_id => @user.id, :task_id => @task.id, :date => Date.yesterday, :content => nil)
-
+  should "copy nothing if task's template is blank" do
     new_exercise = Exercise.new(:user_id => @user.id, :task_id => @task.id, :date => @date)
-    new_exercise.copy_content_from_previous_one
+    new_exercise.copy_template_from_task
 
-    assert_equal previous_one_with_content.content, new_exercise.content
+    assert new_exercise.content.blank?
   end
 
   context "Unfinished exercises" do

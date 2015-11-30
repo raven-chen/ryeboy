@@ -17,7 +17,7 @@ class TasksTest < ActionDispatch::IntegrationTest
 
       fill_in "task[name]", with: task_name
       select task_grade, from: "task[grade]"
-      fill_in_editor task_description
+      within(".t-content") { fill_in_editor(task_description)  }
       submit_form
 
       task = Task.last

@@ -30,8 +30,8 @@ class Exercise < ActiveRecord::Base
     errors.add(:user_id, I18n.t("activerecord.errors.messages.answer_on_common_task_should_be_unique")) if Exercise.exists?(:task_id => task.id, :user_id => user.id)
   end
 
-  def copy_content_from_previous_one
-    self.content = previous_one.content if previous_one
+  def copy_template_from_task
+    self.content = task.template
   end
 
   def self.on_date date

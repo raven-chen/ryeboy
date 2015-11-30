@@ -11,6 +11,7 @@
         <th width="200"><%= Task.human_attribute_name("name") %></th>
         <th width="100"><%= Task.human_attribute_name("grade") %></th>
         <th width="100">类型</th>
+        <th width="100">是否有模板</th>
         <th width="100"><%= I18n.t("helpers.actions") %></th>
       </tr>
     </thead>
@@ -21,6 +22,7 @@
             <td><%= link_to task.name, edit_task_path(task) %></td>
             <td><%= task.grade %></td>
             <td><%= task.common ? Task.human_attribute_name("common") : "" %></td>
+            <td><%= task.template.present? ? content_tag(:span, "是", class: "text-success") : content_tag(:span, "否", class: "text-danger") %></td>
             <td>
               <% if can? :manage, Task -%>
                 <%= link_to I18n.t("helpers.edit"), edit_task_path(task) %>
