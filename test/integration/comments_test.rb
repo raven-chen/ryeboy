@@ -36,7 +36,7 @@ class CommentsTest < ActionDispatch::IntegrationTest
     assert_equal @student, comment.user
     assert_equal @mentor, comment.author
 
-    click_link I18n.t("helpers.logout")
+    logout
 
     sleep 1
     login @student

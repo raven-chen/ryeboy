@@ -4,13 +4,14 @@ class Ability
   def initialize(user)
     @user = user || User.new # for guest
     @user.roles.each { |role| send(role) }
+
+    alias_action :create, :edit, :read, :update, :destroy, :to => :crud
   end
 
   # fundamental roles
   def newbie
     can :crud, Topic
     can [:crud, :like, :dislike, :my], Exercise
-    cannot :unfinished, Exercise
     can :read, Document
     can :update_self, User
     can :read, Task
@@ -21,7 +22,6 @@ class Ability
     can [:read, :list_view], Notification
     can :crud, Topic
     can [:crud, :like, :dislike, :my], Exercise
-    cannot :unfinished, Exercise
     can :read, Document
     can :read, Task
     can :update_self, User

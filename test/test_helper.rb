@@ -48,6 +48,7 @@ class ActionDispatch::IntegrationTest
   end
 
   def logout
+    find("li.t-welcome.dropdown").click
     click_link I18n.t("helpers.logout")
     sleep 1
   end
