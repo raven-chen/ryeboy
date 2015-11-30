@@ -1,0 +1,16 @@
+<li class="pull-right exercise-rating">
+  <% if exercise.rated? -%>
+    <%= t("notices.exercise_get_%{score}", score: exercise.score) %>
+  <% elsif current_user.try(:mentor?) -%>
+    <% ratable, countdown = rate_count_down(exercise) %>
+
+    <% if ratable -%>
+      <i title="评分倒计时" class="fa fa-clock-o"></i>
+      <%= select_tag(:score, options_for_select(1..10), prompt: "选择评分", class: "js-rate-exercise", "data-exercise-id": exercise.id) %>
+    <% end -%>
+
+    <%= countdown %>
+  <% else -%>
+    <%= t("notices.not_scored") %>
+  <% end -%>
+</li>

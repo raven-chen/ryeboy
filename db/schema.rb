@@ -49,6 +49,9 @@ ActiveRecord::Schema.define(version: 20151128033241) do
     t.boolean  "ask_for_comment"
     t.boolean  "visible_to_mentor_only",               default: false
     t.integer  "comments_count",         limit: 4,     default: 0
+    t.integer  "rater_id",               limit: 4
+    t.integer  "score",                  limit: 4
+    t.datetime "scored_at"
   end
 
   create_table "groups", force: :cascade do |t|

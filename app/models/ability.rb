@@ -8,8 +8,8 @@ class Ability
 
   # fundamental roles
   def newbie
-    can :manage, Topic
-    can :manage, Exercise
+    can :crud, Topic
+    can [:crud, :like, :dislike, :my], Exercise
     cannot :unfinished, Exercise
     can :read, Document
     can :update_self, User
@@ -19,8 +19,8 @@ class Ability
 
   def student
     can [:read, :list_view], Notification
-    can :manage, Topic
-    can :manage, Exercise
+    can :crud, Topic
+    can [:crud, :like, :dislike, :my], Exercise
     cannot :unfinished, Exercise
     can :read, Document
     can :read, Task
@@ -29,11 +29,11 @@ class Ability
 
   def mentor
     can [:read, :list_view], Notification
-    can :manage, Topic
+    can :crud, Topic
     can :manage, Exercise
     can :read, User
     can :read, Document
-    can :manage, Post
+    can :crud, Post
     can :read, Task
     can :update_self, User
   end

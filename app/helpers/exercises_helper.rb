@@ -7,6 +7,23 @@ module ExercisesHelper
     tasks.partition{ |task| task.required }
   end
 
+  RATE_COUNT_DOWN = 48.hours
+
+  def rate_count_down exercise
+    time_passed_in_sec = (Time.now - exercise.created_at).abs
+
+    if time_passed_in_sec > RATE_COUNT_DOWN.to_i
+      [false, t("notices.over_count_down")]
+    else
+      [true, seconds2dhm(time_passed_in_sec)]
+    end
+  end
+
+  # seconds(int) to Day Hour Minute
+  def seconds2dhm seconds
+    "%2d天 %02d小时 %02d分钟" % [seconds/86400, seconds/3600%24, seconds/60%60]
+  end
+
   def unfinished_title
     "#{@start_date} - #{@end_date} #{@task.name}" if @unfinished_user_list
   end

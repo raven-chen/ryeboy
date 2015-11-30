@@ -15,6 +15,26 @@ $(function(){
     $("form").submit();
   });
 
+  // Score exercise
+  $(".js-rate-exercise").change(function(){
+    var view = $(this);
+
+    $.ajax({
+      url: Ryeboy.Routes.rateExercise,
+      data: { id: view.data("exercise-id"), score: view.val() },
+      type: 'PATCH',
+      dataType: 'json',
+      context: view,
+      success: function(data){
+        $(this).parent().html(data);
+      },
+      error: function() {
+        alert("未成功,请刷新重试或联系管理员");
+      }
+    });
+  });
+
+  // Like exercise
   $(".js-like-exercise").click(function(){
     var view = $(this);
 

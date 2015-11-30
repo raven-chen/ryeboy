@@ -1,15 +1,18 @@
 class Exercise < ActiveRecord::Base
-  attr_accessible :content, :date, :task_id, :user_id, :ask_for_comment, :visible_to_mentor_only
+  attr_accessible :content, :date, :task_id, :user_id, :ask_for_comment, :visible_to_mentor_only, :rater_id, :score, :rated_at
 
   belongs_to :user
   belongs_to :task
+  belongs_to :rater, class_name: "User", foreign_key: "rater_id", dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :fans, :through => :interests, :class_name => "User", :source => :user, :dependent => :destroy
   has_many :interests
 
   validates :user, :task, :date, :presence => :true
   validates_uniqueness_of :date, :scope => [:user_id, :task_id]
+  validates_numericality_of :score, :greater_than => 0, :less_than => 11, :only_integer => true, :allow_blank => true
   validate :unique_for_common_task, :on => :create
+  validate :check_rating
 
   scope :visible_to, lambda { |user|
     (user.present? && user.generalized_mentor?) ? all : where(visible_to_mentor_only: false)
@@ -22,6 +25,13 @@ class Exercise < ActiveRecord::Base
   def set_comments_count
     self.comments_count = comments.count
     self.save!
+  end
+
+  def check_rating
+    if score.present?
+      errors.add(:rater_id, "评分人不可为空") if rater.blank?
+      errors.add(:scored_at, "评分时间不可为空") if scored_at.blank?
+    end
   end
 
   def unique_for_common_task
@@ -40,6 +50,10 @@ class Exercise < ActiveRecord::Base
 
   def self.newest
     order("updated_at DESC").limit(20)
+  end
+
+  def rated?
+    rater && score && scored_at
   end
 
   def previous_one
