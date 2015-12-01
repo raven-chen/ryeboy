@@ -57,6 +57,11 @@ module ExercisesHelper
     content_tag(:button, "无人问津", :class => "btn #{active_class} js-no-comment-select btn-warning")
   end
 
+  def no_score_button options
+    active_class = "active" if options[:no_score].present?
+    content_tag(:button, "未评分", :class => "btn #{active_class} js-no-score-select btn-danger")
+  end
+
   def like_widget user, exercise
     icon_class = user.liked_exercises.include?(exercise) ? "icon-heart hint-text liked" : "icon-heart-empty hint-text"
     icon = content_tag(:i, nil, :class => icon_class)

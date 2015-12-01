@@ -19,6 +19,7 @@ class Exercise < ActiveRecord::Base
   }
 
   scope :no_comment, -> { where(comments_count: 0) }
+  scope :no_score, -> { where(score: nil) }
 
   after_touch :set_comments_count
 

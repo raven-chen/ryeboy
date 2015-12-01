@@ -15,6 +15,11 @@ $(function(){
     $("form").submit();
   });
 
+  $("#quick-search-conditions button.js-no-score-select").click(function(){
+    $("#no_score").val(true);
+    $("form").submit();
+  });
+
   // Score exercise
   $(".js-rate-exercise").change(function(){
     var view = $(this);
