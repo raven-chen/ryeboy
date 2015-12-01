@@ -7,15 +7,15 @@ module ExercisesHelper
     tasks.partition{ |task| task.required }
   end
 
-  RATE_COUNT_DOWN = 48.hours
+  RATE_COUNT_DOWN = 48.hours.to_i
 
   def rate_count_down exercise
     time_passed_in_sec = (Time.now - exercise.created_at).abs
 
-    if time_passed_in_sec > RATE_COUNT_DOWN.to_i
+    if time_passed_in_sec > RATE_COUNT_DOWN
       [false, t("notices.over_count_down")]
     else
-      [true, seconds2dhm(time_passed_in_sec)]
+      [true, seconds2dhm(RATE_COUNT_DOWN - time_passed_in_sec)]
     end
   end
 
