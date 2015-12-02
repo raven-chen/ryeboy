@@ -75,6 +75,9 @@
 
   .content {
     padding: 10px;
+    img {
+      max-width: 100%;
+    }
 
     &:hover {
       @include hover-style;
