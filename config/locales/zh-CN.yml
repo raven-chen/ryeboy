@@ -166,6 +166,7 @@ zh-CN:
         birth_date: "生日"
         note: "备注"
         department: "部门"
+        grade: "年级"
 
   datetime:
     distance_in_words:
