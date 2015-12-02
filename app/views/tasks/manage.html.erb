@@ -26,6 +26,7 @@
             <td>
               <% if can? :manage, Task -%>
                 <%= link_to I18n.t("helpers.edit"), edit_task_path(task) %>
+                <%= link_to I18n.t("helpers.delete"), task, method: :delete, data: { confirm: I18n.t("helpers.are_you_sure") } %>
               <% end -%>
             </td>
           </tr>

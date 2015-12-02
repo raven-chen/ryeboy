@@ -52,4 +52,16 @@ class TasksController < ApplicationController
       end
     end
   end
+
+  def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+
+    flash[:notice] = I18n.t("notices.delete_%{obj}_successfully", :obj => @task.name)
+
+    respond_to do |format|
+      format.html { redirect_to manage_tasks_url }
+      format.json { head :no_content }
+    end
+  end
 end

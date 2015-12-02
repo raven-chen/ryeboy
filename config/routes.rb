@@ -39,7 +39,7 @@ Ryeboy::Application.routes.draw do
   resources :documents, :only => [:index, :show]
   resources :posts
   resources :user_activities, :only => [:index, :show]
-  resources :tasks, :except => [:destroy] do
+  resources :tasks do
     collection do
       get :manage
     end
