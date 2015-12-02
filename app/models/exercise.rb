@@ -61,6 +61,14 @@ class Exercise < ActiveRecord::Base
     self.class.where(:user_id => user_id, :task_id => task_id).where("content IS NOT NULL").order("date DESC").limit(1).try(:first)
   end
 
+  def read_task attr_name, bool_return = false
+    if task.present?
+      task.send(attr_name)
+    else
+      bool_return ? false : "功课已删除"
+    end
+  end
+
   def content= val
     if val && !val.valid_encoding?
       val = val.encode("UTF-8", invalid: :replace, replace: "?")

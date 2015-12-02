@@ -20,15 +20,15 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.new(params[:exercise].merge(:user_id => current_user.id))
 
     if @exercise.save
-      flash[:notice]= "#{@exercise.task.name} 完成"
+      flash[:notice]= "#{@exercise.read_task(:name)} 完成"
 
-      if @exercise.task.common?
+      if @exercise.read_task(:common?, true)
         redirect_to task_path(@exercise.task)
       else
         redirect_to root_path
       end
     else
-      flash[:alert]= "#{@exercise.task.try(:name)} 日记失败. <br> #{@exercise.errors.messages.values.join}"
+      flash[:alert]= "#{@exercise.read_task(:name)} 日记失败. <br> #{@exercise.errors.messages.values.join}"
 
       if @exercise.errors.messages.keys.include?(:date) && @exercise.date.present?
         existing_exercise = Exercise.where(:date => @exercise.date, :task_id => @exercise.task_id, :user_id => @exercise.user_id).first
@@ -56,7 +56,7 @@ class ExercisesController < ApplicationController
         format.html {
           flash[:notice]= "已更新"
 
-          if @exercise.task.common?
+          if @exercise.read_task(:common?, true)
             redirect_to task_path(@exercise.task)
           else
             redirect_to root_path

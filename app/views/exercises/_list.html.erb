@@ -11,7 +11,7 @@
         <% end -%>
 
         <li class="name">
-          <%= link_to exercise.task.try(:name), exercise_path(exercise) %>
+          <%= link_to exercise.read_task(:name), exercise_path(exercise) %>
         </li>
 
         <% if current_user -%>

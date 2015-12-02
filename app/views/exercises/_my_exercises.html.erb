@@ -11,7 +11,7 @@
   <tbody>
     <% current_user.exercises.limit(10).each do |exercise| -%>
     <tr>
-      <td><%= exercise.task.try(:name) %></td>
+      <td><%= exercise.read_task(:name) %></td>
       <td><%= exercise.date %></td>
       <td><%= sanitize exercise.content %></td>
       <td><%= link_to "编辑", edit_exercise_path(exercise) %></td>

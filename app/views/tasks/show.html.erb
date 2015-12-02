@@ -23,7 +23,7 @@
       <div id="content-1" class="tab-pane active">
         <% if @my_exercise.new_record? %>
           <%= form_for(@my_exercise) do |f| %>
-            <%= f.hidden_field :task_id, :value => @my_exercise.task.id %>
+            <%= f.hidden_field :task_id, :value => @my_exercise.read_task(:id) %>
 
             <label class="main">日期</label>
             <%= f.text_field :date, :class => "js-date-field" %>

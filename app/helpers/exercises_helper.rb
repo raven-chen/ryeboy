@@ -86,7 +86,7 @@ module ExercisesHelper
 
   # Display visible_to_admin_only exercise for admin only
   def visible_exercise? exercise
-    !exercise.task.try(:visible_to_admin_only) || current_user.mentor?
+    !exercise.read_task(:visible_to_admin_only) || current_user.mentor?
   end
 
   def exercises_from_each_month user

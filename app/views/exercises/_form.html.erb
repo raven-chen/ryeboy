@@ -1,16 +1,16 @@
 <div class="log-exercise highlight-block">
   <%= form_for(@exercise) do |f| %>
     <fieldset>
-      <legend><%= @exercise.task.try(:name) %></legend>
-      <%= f.hidden_field :task_id, :value => @exercise.task.id %>
+      <legend><%= @exercise.read_task(:name) %></legend>
+      <%= f.hidden_field :task_id, :value => @exercise.read_task(:id) %>
 
       <div class="alert alert-warning">
         <%= I18n.t("notices.religion_notice") %>
       </div>
 
-      <% if @exercise.task.description.present? -%>
+      <% if @exercise.read_task(:description, true).present? -%>
         <div class="task-description">
-          <%= @exercise.task.description.html_safe %>
+          <%= @exercise.read_task(:description).html_safe %>
         </div>
       <% end -%>
 
