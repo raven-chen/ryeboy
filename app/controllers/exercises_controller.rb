@@ -25,7 +25,7 @@ class ExercisesController < ApplicationController
       if @exercise.read_task(:common?, true)
         redirect_to task_path(@exercise.task)
       else
-        redirect_to root_path
+        redirect_to exercises_path
       end
     else
       flash[:alert]= "#{@exercise.read_task(:name)} 日记失败. <br> #{@exercise.errors.messages.values.join}"
@@ -59,7 +59,7 @@ class ExercisesController < ApplicationController
           if @exercise.read_task(:common?, true)
             redirect_to task_path(@exercise.task)
           else
-            redirect_to root_path
+            redirect_to exercises_path
           end
         }
       else
