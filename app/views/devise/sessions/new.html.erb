@@ -1,5 +1,5 @@
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { class: "centered-form" }) do |f| %>
-  <h2>登陆</h2>
+  <h2>登录</h2>
 
   <div class="form-group">
     <%= f.label :email %>
@@ -21,7 +21,7 @@
   <% end -%>
 
   <div>
-    <%= f.submit "登陆", :class => "btn btn-primary" %>
+    <%= f.submit "登录", :class => "btn btn-primary" %>
     <%= render "devise/shared/links" %>
   </div>
 

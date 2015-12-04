@@ -217,13 +217,13 @@ zh-CN:
       send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
     failure:
-      already_authenticated: "You are already signed in."
+      already_authenticated: "您已经登录"
       inactive: "Your account was not activated yet."
       invalid: "错误的邮箱或密码"
       invalid_token: "Invalid authentication token."
       locked: "Your account is locked."
-      not_found_in_database: "Invalid email or password."
-      timeout: "Your session expired, please sign in again to continue."
+      not_found_in_database: "无效的用户名或密码"
+      timeout: "您的登录已过期,请重新登录"
       unauthenticated: "请登录"
       unconfirmed: "You have to confirm your account before continuing."
     mailer:
@@ -241,17 +241,17 @@ zh-CN:
       send_instructions: "You will receive an email with instructions about how to reset your password in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
       updated: "Your password was changed successfully. You are now signed in."
-      updated_not_active: "Your password was changed successfully."
+      updated_not_active: "密码已更新"
     registrations:
       destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
-      signed_up: "Welcome! You have signed up successfully."
+      signed_up: "欢迎! 您已成功注册"
       signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
       signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
       signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
       updated: "You updated your account successfully."
     sessions:
-      signed_in: "登陆成功"
+      signed_in: "登录成功"
       signed_out: "登出成功"
     unlocks:
       send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."

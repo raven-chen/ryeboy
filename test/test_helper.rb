@@ -42,7 +42,7 @@ class ActionDispatch::IntegrationTest
     fill_in "user[email]", with: user.email
     fill_in "user[password]", with: user.password
 
-    click_button "登陆"
+    click_button "登录"
 
     assert_text "欢迎你"
   end
