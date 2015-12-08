@@ -56,6 +56,10 @@
 
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? -%>
+          <form class="navbar-form navbar-left" action=<%= exercises_url + "#content-2" %>>
+            <button class="btn btn-success"><%= t("menus.new_exercise") %></button>
+          </form>
+
           <li class=<%= "selected" if controller?("comments") %>>
             <%= link_to received_comment_text.html_safe, comments_path %>
           </li>

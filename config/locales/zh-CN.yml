@@ -1,7 +1,8 @@
 zh-CN:
   menus:
     homepage: "首页"
-    exercises: "写日记"
+    exercises: "看日记"
+    new_exercise: "写日记"
     topics: "提问题"
     homework: "交作业"
     documents: "资料中心"
