@@ -5,8 +5,9 @@
     <% ratable, countdown = rate_count_down(exercise) %>
 
     <% if ratable -%>
-      <i title="评分倒计时" class="fa fa-clock-o"></i>
       <%= select_tag(:score, options_for_select(1..10), prompt: "选择评分", class: "js-rate-exercise", "data-exercise-id": exercise.id) %>
+      <i title="评分倒计时" class="fa fa-hourglass"></i>
+      评分倒计时:
     <% end -%>
 
     <%= countdown %>
