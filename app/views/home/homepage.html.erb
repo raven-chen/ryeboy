@@ -2,13 +2,13 @@
   <div class="highlight-block">
     <div class="list-title">
       在麦田成功恢复健康的例子
-      <%= link_to "更多...", @cases_view_more_link.try(:url), class: "view-more" %>
+      <%= link_to "更多...", @cases_view_more_link.try(:url), class: "view-more", target: "_blank" %>
     </div>
 
     <ul class="normal-list">
       <% @cases.each do |item| %>
         <li>
-          <%= link_to item.name, item.url %>
+          <%= link_to item.name, item.url, target: "_blank" %>
         </li>
       <% end -%>
     </ul>
@@ -17,13 +17,13 @@
   <div class="highlight-block with-top-margin">
     <div class="list-title">
       最新活动
-      <%= link_to "更多...", @events_view_more_link.try(:url), class: "view-more" %>
+      <%= link_to "更多...", @events_view_more_link.try(:url), class: "view-more", target: "_blank" %>
     </div>
 
     <ul class="normal-list">
       <% @events.each do |item| %>
         <li>
-          <%= link_to item.name, item.url %>
+          <%= link_to item.name, item.url, target: "_blank" %>
         </li>
       <% end -%>
     </ul>
@@ -38,13 +38,13 @@
   <div class="highlight-block with-top-margin">
     <div class="list-title">
       麦田微信公众号
-      <%= link_to "更多...", @wechats_view_more_link.try(:url), class: "view-more" %>
+      <%= link_to "更多...", @wechats_view_more_link.try(:url), class: "view-more", target: "_blank" %>
     </div>
 
     <ul class="normal-list">
       <% @wechat_links.each do |item| %>
         <li>
-          <%= link_to item.name, item.url %>
+          <%= link_to item.name, item.url, target: "_blank" %>
         </li>
       <% end -%>
     </ul>

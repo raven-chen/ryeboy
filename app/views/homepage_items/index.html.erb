@@ -28,6 +28,8 @@
       <thead>
         <tr>
           <th>标题</th>
+          <th>链接地址</th>
+          <th>为"更多.."链接</th>
           <th>类别</th>
           <th>顺序</th>
           <th>操作</th>
@@ -37,6 +39,8 @@
         <% @items.each do |item| %>
           <tr>
             <td><%= link_to item.name, item %></td>
+            <td><%= link_to item.url, item.url, target: "_blank" %></td>
+            <td><%= t("notices.#{item.view_more}") %></td>
             <td><%= item.category %></td>
             <td><%= item.sequence %></td>
             <td>
