@@ -8,7 +8,7 @@ class Topic < ActiveRecord::Base
 
   validates :title, :content, :author, :presence => true
 
-  CATEGORIES = ["反省改过", "心得体验", "问题求助", "资料分享", "方法推荐", "青春励志", "意见反馈", "其它分类"]
+  CATEGORIES = ["蜕变案例", "学员互动", "问题求助", "精品微信"]
   validates_inclusion_of :category, in: CATEGORIES
 
   def user_id
