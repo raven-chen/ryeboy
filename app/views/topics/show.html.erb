@@ -1,7 +1,7 @@
 <div class="highlight-block">
   <div class="topic-title">
     <h2><%= @topic.title %></h2>
-    <span class="hint-text"><%= @topic.author.try(:name) %></span>
+    <span class="hint-text"><%= @topic.author.try(:display_name) %></span>
     发布于
     <span class="hint-text"><%= @topic.created_at.strftime(t("time.formats.default")) %></span>
     <%= link_to "编辑", edit_topic_path(@topic) if current_user == @topic.author %>
@@ -16,7 +16,7 @@
       <% @comments.each do |comment| %>
         <li class="reply-container">
           <ol class="title reply">
-            <li class="hint-text author-name"><%= comment.author.try(:name) %></li>
+            <li class="hint-text author-name"><%= comment.author.try(:display_name) %></li>
             <li class="hint-text"><%= comment.created_at.strftime(t("time.formats.default")) %></li>
           </ol>
           <div class="clearfix"></div>

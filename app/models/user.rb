@@ -99,6 +99,14 @@ class User < ActiveRecord::Base
     (["mentor", "admin", "hr"] & roles).size != 0
   end
 
+  def display_name
+    if generalized_mentor?
+      "#{department} #{name}"
+    else
+      "#{grade} #{name}"
+    end
+  end
+
   # High grade could view lower grade, instead lower grade could not view higher
   def visible_grades
     if generalized_mentor?

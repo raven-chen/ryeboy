@@ -2,7 +2,7 @@
   <thead>
     <th width="50%">话题</th>
     <th width="10%">分类</th>
-    <th width="10%">作者</th>
+    <th width="15%">作者</th>
     <th width="5%">回复</th>
     <th width="15%">最后回应</th>
     <th></th>
@@ -14,7 +14,7 @@
       <tr>
         <td><%= link_to topic.title, topic_path(topic) %></td>
         <td><%= topic.category %></td>
-        <td><%= topic.author.try(:name) %></td>
+        <td><%= topic.author.try(:display_name) %></td>
         <td><%= topic.comments.count %></td>
         <td><%= topic.updated_at.strftime(t("time.formats.default")) %></td>
         <td>
