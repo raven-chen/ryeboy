@@ -41,6 +41,7 @@ zh-CN:
     quick_log_exercise: "快速记录表示你做完了此功课，但是没有什么特别感想，请酌情使用"
     common_task_cannot_be_added: "公共作业不能加入私人作业"
     incorrect_grade_for_current_user: "不适用于当前用户"
+    view_more_already_exists_in_%{category}: "%{category} 已有'更多..'链接"
     over_count_down: "评分失败,学长被外星人绑架了..快去救救他吧!"
     exercise_get_%{score}_by_%{rater}: "日记获得 %{score} 学分, 由 %{rater} 评分"
     create_%{obj}_successfully: "%{obj} 创建成功"

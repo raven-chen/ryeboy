@@ -55,4 +55,10 @@ FactoryGirl.define do
     t.category Notification::CATEGORIES.first
     t.active true
   end
+
+  factory :homepage_item do |t|
+    t.name "test homepage item"
+    t.url "bbs.ryeboy.org"
+    t.category HomepageItem::CATEGORIES.first
+  end
 end
