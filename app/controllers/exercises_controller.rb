@@ -167,7 +167,7 @@ class ExercisesController < ApplicationController
 
     respond_to do |format|
       if @exercise.save
-        format.json { render json: I18n.t("notices.exercise_get_%{score}", score: @exercise.score).to_json }
+        format.json { render json: I18n.t("notices.exercise_get_%{score}_by_%{rater}", score: @exercise.score, rater: current_user.name).to_json }
       else
         format.json { render status: :unprocessable_entity }
       end
