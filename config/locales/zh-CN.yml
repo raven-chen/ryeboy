@@ -105,6 +105,8 @@ zh-CN:
       models:
         user:
           attributes:
+            name:
+              taken: "用户名已被占用"
             email:
               taken: "已经被使用"
             sno:
