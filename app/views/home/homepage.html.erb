@@ -16,17 +16,18 @@
 
   <div class="highlight-block with-top-margin">
     <div class="list-title">
-      最新活动
-      <%= link_to "更多...", @events_view_more_link.try(:url), class: "view-more", target: "_blank" %>
+      麦田微信公众号
+      <%= link_to "更多...", @wechats_view_more_link.try(:url), class: "view-more", target: "_blank" %>
     </div>
 
     <ul class="normal-list">
-      <% @events.each do |item| %>
+      <% @wechat_links.each do |item| %>
         <li>
           <%= link_to item.name, item.url, target: "_blank" %>
         </li>
       <% end -%>
     </ul>
+
   </div>
 </div>
 
@@ -37,12 +38,12 @@
 
   <div class="highlight-block with-top-margin">
     <div class="list-title">
-      麦田微信公众号
-      <%= link_to "更多...", @wechats_view_more_link.try(:url), class: "view-more", target: "_blank" %>
+      最新活动
+      <%= link_to "更多...", @events_view_more_link.try(:url), class: "view-more", target: "_blank" %>
     </div>
 
     <ul class="normal-list">
-      <% @wechat_links.each do |item| %>
+      <% @events.each do |item| %>
         <li>
           <%= link_to item.name, item.url, target: "_blank" %>
         </li>
