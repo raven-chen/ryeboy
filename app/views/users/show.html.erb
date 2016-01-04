@@ -12,6 +12,9 @@
       <label>年级</label>
       <p><%= @user.grade %></p>
 
+      <label>创建时间</label>
+      <p><%= I18n.l(@user.created_at) %></p>
+
       <label>真实姓名</label>
       <p><%= @user.real_name %></p>
 
