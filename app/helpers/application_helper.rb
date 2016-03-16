@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def brand_name
-    Dir.pwd =~ /ryegirl/ ? "莲花伊人" : "麦田男孩"
+    Dir.pwd =~ /lotus/ ? "莲花伊人" : "麦田男孩"
   end
 
   # To use this method, the object must have author and support edit and delete actions
