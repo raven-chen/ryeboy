@@ -54,6 +54,7 @@ class Ability
 
   def dean
     can :manage, Task
+    can :manage, LcUser
   end
 
   def editor

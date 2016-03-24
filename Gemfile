@@ -55,3 +55,4 @@ end
 gem 'devise', :git => 'https://github.com/plataformatec/devise.git'
 gem "soft_deletion"
 gem 'rack', '~> 1.6.4'
+gem "leancloud-ruby-client"

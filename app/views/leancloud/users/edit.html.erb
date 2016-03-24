@@ -1,0 +1,23 @@
+<h1>编辑 <%= @user.username %></h1>
+
+<div class="two-columns users highlight-block">
+  <%= form_for(:lc_user, url: leancloud_user_path(objectId: @user.objectId), method: :patch) do |f| %>
+    <%= f.hidden_field :objectId, value: @user.objectId %>
+    <div>
+      <label>邮箱</label>
+      <p><%= f.text_field :email, :class => "form-control", value: @user.email %></p>
+    </div>
+
+    <div>
+      <label>昵称</label>
+      <p><%= f.text_field :username, :class => "form-control", value: @user.username %></p>
+    </div>
+
+    <div>
+      <label>级别</label>
+      <p><%= f.select :level, LcUser::LEVEL_MAP, value: @user.level %></p>
+    </div>
+
+    <%= submit_tag "提交", :class => "btn btn-primary" %>  <%= link_to '返回', leancloud_users_path, :class => "btn btn-default" %>
+  <% end -%>
+</div>

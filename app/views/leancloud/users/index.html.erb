@@ -1,0 +1,32 @@
+<h1>APP用户管理</h1>
+
+<div class="highlight-block with-top-margin">
+  <%= form_tag(leancloud_users_path, :method => :get, :class => "form-inline", :role => "form") do %>
+    <div class="searchfield-above-table no-border">
+      <%= text_field_tag :email, @options[:email], :placeholder => "Email" %>
+      <%= submit_tag "搜索", :class => "btn btn-default" %>
+    </div>
+  <% end -%>
+
+  <table class="table table-hover">
+    <tr>
+      <th>昵称</th>
+      <th>Email</th>
+      <th>级别</th>
+      <th>操作</th>
+    </tr>
+
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.username %></td>
+        <td><%= user.email %></td>
+        <td><%= LcUser::LEVEL_MAP.key(user.level) %></td>
+
+        <td>
+            <%= link_to '编辑', edit_leancloud_user_path(objectId: user.objectId) %>
+            <%= link_to "重置密码", reset_password_leancloud_user_path(objectId: user.objectId), method: :patch -%>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

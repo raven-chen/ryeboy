@@ -1,4 +1,12 @@
 Ryeboy::Application.routes.draw do
+  namespace "leancloud" do
+    resources :users, only: [:index, :edit, :update], param: :objectId do
+      member do
+        patch :reset_password
+      end
+    end
+  end
+
   resources :replies, :except => [:index, :show, :new]
 
   resources :topics

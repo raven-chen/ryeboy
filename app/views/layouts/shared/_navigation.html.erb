@@ -51,6 +51,10 @@
               <% end -%>
             </ul>
           </li>
+
+          <% if can? :manage, LcUser -%>
+            <li><%= link_to "APP用户管理", leancloud_users_path %></li>
+          <% end -%>
         <% end -%>
       </ul>
 
