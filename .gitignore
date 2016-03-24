@@ -12,6 +12,7 @@ dump.rdb
 # Ignore the default SQLite database.
 /db/*.sqlite3
 config/database.yml
+config/secrets.yml
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
