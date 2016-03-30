@@ -1,0 +1,2 @@
+class Leancloud::Report
+end

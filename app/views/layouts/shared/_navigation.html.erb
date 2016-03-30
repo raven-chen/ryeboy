@@ -53,7 +53,13 @@
           </li>
 
           <% if can? :manage, LcUser -%>
-            <li><%= link_to "APP用户管理", leancloud_users_path %></li>
+            <li class="dropdown" role="presentation">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">APP专区<span class="caret"></span></a>
+
+              <ul class="dropdown-menu">
+                <li><%= link_to "APP用户管理", leancloud_users_path %></li>
+                <li><%= link_to "APP统计分析", leancloud_reports_path %></li>
+              </ul>
           <% end -%>
         <% end -%>
       </ul>

@@ -27,6 +27,7 @@ zh-CN:
   date:
     formats:
       default: "%Y-%m-%d"
+      short: "%Y/%m/%d"
   time:
     formats:
       default: '%Y-%m-%d %H:%M'

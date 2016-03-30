@@ -1,0 +1,48 @@
+<div class="alert alert-warning">
+  <p>总用户数: <%= @total_users %></p>
+  <p>总日记数: <%= @total_diaries %></p>
+</div>
+
+<div class="highlight-block">
+  <h3>过去10天每日日记记录数</h3>
+  <table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <% @daily_diariees[0].each do |date| -%>
+          <th><%= l date, format: :short %></th>
+        <% end -%>
+        <th>合计</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% @daily_diariees[1].each do |count| -%>
+          <td><%= count %></td>
+        <% end -%>
+        <td><%= @daily_diariees[1].inject(0){|total, c| total + c } %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="highlight-block with-top-margin">
+  <h3>过去10天每日新用户注册数</h3>
+  <table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <% @daily_new_users[0].each do |date| -%>
+          <th><%= l date %></th>
+        <% end -%>
+        <th>合计</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% @daily_new_users[1].each do |count| -%>
+          <td><%= count %></td>
+        <% end -%>
+        <td><%= @daily_new_users[1].inject(0){|total, c| total + c } %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
