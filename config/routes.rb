@@ -1,6 +1,6 @@
 Ryeboy::Application.routes.draw do
   namespace "leancloud" do
-    resources :users, only: [:index, :edit, :update], param: :objectId do
+    resources :users, only: [:index, :edit, :update] do
       member do
         patch :reset_password
       end

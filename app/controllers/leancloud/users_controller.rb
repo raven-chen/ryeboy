@@ -11,30 +11,21 @@ class Leancloud::UsersController < ApplicationController
       m
     }
 
-    users = AV::Query.new("_User").tap do |u|
-              if @options[:email]
-                u.eq("email", @options[:email])
-              else
-                u.limit = 25
-              end
-            end.get
-
-    @users = users.map{|u| LcUser.new(objectId: u["objectId"], email: u["email"], username: u["username"], level: u["level"])}
+    @users = if @options[:email]
+               LcUser.where(email: @options[:email])
+             else
+               LcUser.order("updated_at DESC").limit(25)
+             end
   end
 
   def edit
-    user = AV::Query.new("_User").eq("objectId", params[:objectId]).get.first
-    @user = LcUser.new(objectId: user["objectId"], email: user["email"], username: user["username"], level: user["level"])
+    @user = LcUser.find(params[:id])
   end
 
   def update
-    user = AV::Query.new("_User").eq("objectId", params[:objectId]).get.first
-    lc_user = params["lc_user"]
-    user["username"] = lc_user[:username]
-    user["email"] = lc_user[:email]
-    user["level"] = lc_user[:level]
+    @user = LcUser.find(params[:id])
 
-    if user.save
+    if @user.update_attributes(user_params)
       flash[:notice] = "更新成功"
       redirect_to leancloud_users_path
     else
@@ -44,9 +35,9 @@ class Leancloud::UsersController < ApplicationController
   end
 
   def reset_password
-    user = AV::Query.new("_User").eq("objectId", params[:objectId]).get.first
+    user = LcUser.find(params[:id])
 
-    user["password"] = User::DEFAULT_PASSWORD
+    user.password = User::DEFAULT_PASSWORD
 
     if user.save
       flash[:notice] = "密码重置成功"
@@ -55,5 +46,10 @@ class Leancloud::UsersController < ApplicationController
     end
 
     redirect_to leancloud_users_path
+  end
+
+  private
+  def user_params
+    params.require(:lc_user).permit(:username, :email, :level)
   end
 end

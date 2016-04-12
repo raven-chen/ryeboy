@@ -23,8 +23,8 @@
         <td><%= LcUser::LEVEL_MAP.key(user.level) %></td>
 
         <td>
-            <%= link_to '编辑', edit_leancloud_user_path(objectId: user.objectId) %>
-            <%= link_to "重置密码", reset_password_leancloud_user_path(objectId: user.objectId), method: :patch -%>
+            <%= link_to '编辑', edit_leancloud_user_path(id: user._id) %>
+            <%= link_to "重置密码", reset_password_leancloud_user_path(id: user._id), method: :patch -%>
         </td>
       </tr>
     <% end %>

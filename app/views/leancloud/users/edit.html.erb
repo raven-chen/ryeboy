@@ -1,8 +1,8 @@
 <h1>编辑 <%= @user.username %></h1>
 
 <div class="two-columns users highlight-block">
-  <%= form_for(:lc_user, url: leancloud_user_path(objectId: @user.objectId), method: :patch) do |f| %>
-    <%= f.hidden_field :objectId, value: @user.objectId %>
+  <%= form_for(:lc_user, url: leancloud_user_path(@user._id), method: :patch) do |f| %>
+    <%= f.hidden_field :id, value: @user._id %>
     <div>
       <label>邮箱</label>
       <p><%= f.text_field :email, :class => "form-control", value: @user.email %></p>
