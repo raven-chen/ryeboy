@@ -7,7 +7,7 @@ class Leancloud::ReportsController < ApplicationController
 
     @daily_diariees = [[],[]]
     @daily_new_users = [[],[]]
-    (40.days.ago.to_date..30.days.ago.to_date).each do |date|
+    (10.days.ago.to_date..Date.today).each do |date|
       @daily_diariees[0] << date
       @daily_new_users[0] << date
 
