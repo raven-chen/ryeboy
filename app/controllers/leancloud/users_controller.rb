@@ -37,7 +37,7 @@ class Leancloud::UsersController < ApplicationController
   def reset_password
     user = LcUser.find(params[:id])
 
-    user.password = User::DEFAULT_PASSWORD
+    user.generate_encrypted_default_password
 
     if user.save
       flash[:notice] = "密码重置成功"
