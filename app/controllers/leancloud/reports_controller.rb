@@ -2,12 +2,15 @@ class Leancloud::ReportsController < ApplicationController
   load_and_authorize_resource :lc_user
 
   def index
+    @start_date = params[:start_date].try(:to_date) || 10.days.ago.to_date
+    @end_date = params[:end_date].try(:to_date) || Date.today
+
     @total_users = LcUser.count
     @total_diaries = Diary.count
 
     @daily_diariees = [[],[]]
     @daily_new_users = [[],[]]
-    (10.days.ago.to_date..Date.today).each do |date|
+    (@start_date..@end_date).each do |date|
       @daily_diariees[0] << date
       @daily_new_users[0] << date
 

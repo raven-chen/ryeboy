@@ -3,8 +3,17 @@
   <p>总日记数: <%= @total_diaries %></p>
 </div>
 
+<%= form_tag(leancloud_reports_path, :method => :get, :class => "form-inline", :role => "form") do %>
+  <div class="searchfield-above-table">
+    <%= text_field_tag :start_date, @start_date, :class => "js-date-field", :placeholder => "开始日期" %>
+    <%= text_field_tag :end_date, @end_date, :class => "js-date-field", :placeholder => "结束日期" %>
+    <%= submit_tag "搜索", :class => "btn btn-default" %>
+  </div>
+<% end -%>
+
+
 <div class="highlight-block">
-  <h3>过去10天每日日记记录数</h3>
+  <h3><%= "#{@start_date} 至 #{@end_date} 每日日记记录数" %></h3>
   <table class="table table-hover table-bordered">
     <thead>
       <tr>
@@ -26,7 +35,7 @@
 </div>
 
 <div class="highlight-block with-top-margin">
-  <h3>过去10天每日新用户注册数</h3>
+  <h3><%= "#{@start_date} 至 #{@end_date} 每日新用户注册数" %></h3>
   <table class="table table-hover table-bordered">
     <thead>
       <tr>
