@@ -27,4 +27,33 @@ class Leancloud::ReportsController < ApplicationController
   def new_users_in_day date
     LcUser.where(createdAt: (date.beginning_of_day..date.end_of_day)).count
   end
+
+  # [
+  #    [user1, count_in_date1, count_in_date2],
+  #    [user2, count_in_date1, count_in_date2]
+  # ]
+  def mentor
+    @start_date = params[:start_date].try(:to_date) || 10.days.ago.to_date
+    @end_date = params[:end_date].try(:to_date) || Date.today
+
+    mentors = LcUser.where(:level.gte => LcUser::LEVEL_MAP['实习学长'])
+    @results = []
+
+    mentors.each do |mentor|
+      mentor_detail = [mentor.username]
+
+      (@start_date..@end_date).each do |date|
+        mentor_detail << replied_comments_count(mentor, date)
+      end
+
+      @results << mentor_detail
+    end
+  end
+
+  private
+
+  def replied_comments_count mentor, date
+    Diary.where({ comments: {"$elemMatch" => {createdAt: (date.beginning_of_day..date.end_of_day), userid: mentor.id} }}).count
+  end
+
 end

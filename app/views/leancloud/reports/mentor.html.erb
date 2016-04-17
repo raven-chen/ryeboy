@@ -1,0 +1,22 @@
+<div class="highlight-block">
+  <h3><%= "#{@start_date} 至 #{@end_date}" %></h3>
+  <table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>学长</th>
+        <% (@start_date..@end_date).each do |date| -%>
+          <th><%= l date, format: :short %></th>
+        <% end -%>
+      </tr>
+    </thead>
+    <tbody>
+      <% @results.each do |result| -%>
+        <tr>
+          <% result.each do |record| -%>
+            <td><%= record %></td>
+          <% end -%>
+        </tr>
+      <% end -%>
+    </tbody>
+  </table>
+</div>

@@ -5,7 +5,11 @@ Ryeboy::Application.routes.draw do
         patch :reset_password
       end
     end
-    resources :reports, only: [:index]
+    resources :reports, only: [:index] do
+      collection do
+        get :mentor
+      end
+    end
   end
 
   resources :replies, :except => [:index, :show, :new]
