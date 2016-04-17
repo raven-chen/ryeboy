@@ -16,7 +16,7 @@ working_directory home_dir # available in 0.94.0+
 listen unicorn_sock_file
 
 # nuke workers after 30 seconds instead of 60 seconds (the default)
-timeout 30
+timeout 90
 
 # feel free to point this anywhere accessible on the filesystem
 pid_file = ENV['UNICORN_PID_FILE'] || "/tmp/ryeboy.pid"
