@@ -53,7 +53,7 @@ class Leancloud::ReportsController < ApplicationController
   private
 
   def replied_comments_count mentor, date
-    Diary.where({ comments: {"$elemMatch" => {createdAt: (date.beginning_of_day..date.end_of_day), userid: mentor.id} }}).count
+    Diary.where({ createdAt: {"$gte" => @start_date}, comments: {"$elemMatch" => {createdAt: (date.beginning_of_day..date.end_of_day), userid: mentor.id} }}).count
   end
 
 end
