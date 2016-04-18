@@ -3,7 +3,7 @@ class Leancloud::UsersController < ApplicationController
 
   def index
     @options = {}
-    @options = %w{email}.inject({}.with_indifferent_access) { |m, key|
+    @options = %w{email name}.inject({}.with_indifferent_access) { |m, key|
       params.delete(key) if params[key].blank? # Strip out blank string
 
       m[key] = params[key]
@@ -11,11 +11,11 @@ class Leancloud::UsersController < ApplicationController
       m
     }
 
-    @users = if @options[:email]
-               LcUser.where(email: @options[:email])
-             else
-               LcUser.order("updated_at DESC").limit(25)
-             end
+    @users = LcUser.order("updated_at DESC")
+
+    @users = @users.where(email: @options[:email]) if @options[:email]
+    @users = @users.where(username: /#{@options[:name]}/) if @options[:name]
+    @users = @users.limit(25)
   end
 
   def edit
