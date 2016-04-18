@@ -6,6 +6,7 @@ class LcUser
   store_in collection: "User"
   field :email, type: String
   field :username, type: String
+  field :nickname, type: String
   field :level, type: String
   field :password, type: String
   field :salt, type: String

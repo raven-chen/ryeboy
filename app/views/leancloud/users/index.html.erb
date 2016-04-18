@@ -12,6 +12,7 @@
   <table class="table table-hover">
     <tr>
       <th>昵称</th>
+      <th>用户名</th>
       <th>Email</th>
       <th>级别</th>
       <th>操作</th>
@@ -19,6 +20,7 @@
 
     <% @users.each do |user| %>
       <tr>
+        <td><%= user.nickname %></td>
         <td><%= user.username %></td>
         <td><%= user.email %></td>
         <td><%= LcUser::LEVEL_MAP.key(user.level) %></td>

@@ -14,7 +14,11 @@ class Leancloud::UsersController < ApplicationController
     @users = LcUser.order("updated_at DESC")
 
     @users = @users.where(email: @options[:email]) if @options[:email]
-    @users = @users.where(username: /#{@options[:name]}/) if @options[:name]
+
+    if @options[:name]
+      @users = @users.where(username: /#{@options[:name]}/)
+      @users = @users.where(nickname: /#{@options[:name]}/)
+    end
     @users = @users.limit(25)
   end
 
