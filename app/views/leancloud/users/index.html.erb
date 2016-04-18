@@ -4,7 +4,8 @@
   <%= form_tag(leancloud_users_path, :method => :get, :class => "form-inline", :role => "form") do %>
     <div class="searchfield-above-table no-border">
       <%= text_field_tag :email, @options[:email], :placeholder => "Email" %>
-      <%= text_field_tag :name, @options[:name], :placeholder => "昵称" %>
+      <%= text_field_tag :username, @options[:username], :placeholder => "用户名" %>
+      <%= text_field_tag :nickname, @options[:nickname], :placeholder => "昵称" %>
       <%= submit_tag "搜索", :class => "btn btn-default" %>
     </div>
   <% end -%>
