@@ -12,6 +12,8 @@ class LcUser
   field :salt, type: String
   field :createdAt, type: Time
 
+  validates_uniqueness_of :email
+
   LEVEL_MAP = {"新手" => "10", "预科" => "15", "大一" => "20", "大二" => "30", "大三" => "40", "大四" => "50",
                "实习学长" => "60", "认证学长" => "70", "资深学长" => "80"}
 
