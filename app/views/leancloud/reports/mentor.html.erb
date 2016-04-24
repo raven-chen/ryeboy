@@ -1,12 +1,17 @@
+<%= form_tag(mentor_leancloud_reports_path, :method => :get, :class => "form-inline", :role => "form") do %>
+  <div class="searchfield-above-table">
+    <%= text_field_tag :date, @date, :class => "js-date-field", :placeholder => "选择日期" %>
+    <%= submit_tag "搜索", :class => "btn btn-default" %>
+  </div>
+<% end -%>
+
 <div class="highlight-block">
-  <h3><%= "#{@start_date} 至 #{@end_date}" %></h3>
+  <h3><%= @date %> 所有学长回复日记总数</h3>
   <table class="table table-hover table-bordered">
     <thead>
       <tr>
         <th>学长</th>
-        <% (@start_date..@end_date).each do |date| -%>
-          <th><%= l date, format: :short %></th>
-        <% end -%>
+        <th><%= l @date, format: :short %></th>
       </tr>
     </thead>
     <tbody>
