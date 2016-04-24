@@ -40,11 +40,16 @@ class Leancloud::ReportsController < ApplicationController
     mentors.each do |mentor|
       @results << [mentor.username, replied_comments_count(mentor, @date)]
     end
+
+    @results.sort!{|a,b| a[1] <=> b[1]}.reverse!
   end
 
   private
 
   def replied_comments_count mentor, date
-    Diary.where({ comments: {"$elemMatch" => {createdAt: (date.beginning_of_day..date.end_of_day), userid: mentor.id}}}).count
+    Diary.where({
+      createdAt: { "$gte" => 1.week.ago },
+      comments: { "$elemMatch" => {createdAt: (date.beginning_of_day..date.end_of_day), userid: mentor.id.to_s} }
+    }).count
   end
 end
