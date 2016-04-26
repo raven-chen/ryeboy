@@ -1,17 +1,28 @@
+<div class="alert alert-warning">
+  因查询速度问题，建议时间段最长选择一周，否则可能因为过慢而无法看到结果.
+</div>
+
 <%= form_tag(mentor_leancloud_reports_path, :method => :get, :class => "form-inline", :role => "form") do %>
   <div class="searchfield-above-table">
-    <%= text_field_tag :date, @date, :class => "js-date-field", :placeholder => "选择日期" %>
+    <%= select_tag "mentor_ids[]", mentor_options(@mentors), :prompt => "选择学长", :multiple => "multiple", :class => "js-select2" %>
+
+    <%= text_field_tag :start_date, @start_date, :class => "js-date-field", :placeholder => "开始日期" %>
+    <%= text_field_tag :end_date, @end_date, :class => "js-date-field", :placeholder => "结束日期" %>
+
     <%= submit_tag "搜索", :class => "btn btn-default" %>
   </div>
 <% end -%>
 
 <div class="highlight-block">
-  <h3><%= @date %> 所有学长回复日记总数</h3>
+  <h3><%= @date %> 回复日记总数</h3>
   <table class="table table-hover table-bordered">
     <thead>
       <tr>
         <th>学长</th>
-        <th><%= l @date, format: :short %></th>
+        <% (@start_date..@end_date).each do |date| %>
+          <th><%= l date, format: :short %></th>
+        <% end -%>
+        <th>总计</th>
       </tr>
     </thead>
     <tbody>

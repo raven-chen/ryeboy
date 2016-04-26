@@ -33,15 +33,29 @@ class Leancloud::ReportsController < ApplicationController
   #    [user2, count_in_date1, count_in_date2]
   # ]
   def mentor
-    @date = params[:date].try(:to_date) || Date.today
-    mentors = LcUser.where(:level.gte => LcUser::LEVEL_MAP['实习学长'])
+    @start_date = params[:start_date].try(:to_date) || 7.days.ago.to_date
+    @end_date = params[:end_date].try(:to_date) || Date.today
+
+    @mentors = LcUser.where(:level.gte => LcUser::LEVEL_MAP['实习学长'])
+    @mentors = @mentors.find(params[:mentor_ids]) if params[:mentor_ids]
 
     @results = []
-    mentors.each do |mentor|
-      @results << [mentor.username, replied_comments_count(mentor, @date)]
+    @mentors.each do |mentor|
+      one_user_result = [mentor.username]
+      total = 0
+
+      (@start_date..@end_date).each do |date|
+        comments_in_day = replied_comments_count(mentor, date)
+        total += comments_in_day
+        one_user_result << comments_in_day
+      end
+
+      one_user_result << total
+
+      @results << one_user_result
     end
 
-    @results.sort!{|a,b| a[1] <=> b[1]}.reverse!
+    @results.sort!{|a,b| a[-1] <=> b[-1]}.reverse! # Sort by total
   end
 
   private
