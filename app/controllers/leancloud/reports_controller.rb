@@ -19,13 +19,12 @@ class Leancloud::ReportsController < ApplicationController
     end
   end
 
-
   def diaries_in_day date
-    Diary.where(createdAt: (date.beginning_of_day..date.end_of_day)).count
+    Diary.where(createdAt: (date.beginning_of_day.utc..date.end_of_day.utc)).count
   end
 
   def new_users_in_day date
-    LcUser.where(createdAt: (date.beginning_of_day..date.end_of_day)).count
+    LcUser.where(createdAt: (date.beginning_of_day.utc..date.end_of_day.utc)).count
   end
 
   # [
