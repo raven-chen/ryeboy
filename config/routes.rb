@@ -7,7 +7,7 @@ Ryeboy::Application.routes.draw do
     end
     resources :reports, only: [:index] do
       collection do
-        get :mentor
+        post :mentor
       end
     end
   end

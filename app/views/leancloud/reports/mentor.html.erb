@@ -2,7 +2,7 @@
   因查询速度问题，建议时间段最长选择一周，否则可能因为过慢而无法看到结果.
 </div>
 
-<%= form_tag(mentor_leancloud_reports_path, :method => :get, :class => "form-inline", :role => "form") do %>
+<%= form_tag(mentor_leancloud_reports_path, :method => :post, :class => "form-inline", :role => "form") do %>
   <div class="searchfield-above-table">
     <%= select_tag "mentor_ids[]", mentor_options(@mentors), :prompt => "选择学长", :multiple => "multiple", :class => "js-select2" %>
 

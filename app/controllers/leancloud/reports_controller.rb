@@ -33,7 +33,7 @@ class Leancloud::ReportsController < ApplicationController
   #    [user2, count_in_date1, count_in_date2]
   # ]
   def mentor
-    @start_date = params[:start_date].try(:to_date) || 7.days.ago.to_date
+    @start_date = params[:start_date].try(:to_date) || 3.days.ago.to_date
     @end_date = params[:end_date].try(:to_date) || Date.today
 
     @mentors = LcUser.where(:level.gte => LcUser::LEVEL_MAP['实习学长'])
@@ -59,11 +59,9 @@ class Leancloud::ReportsController < ApplicationController
   end
 
   private
-
   def replied_comments_count mentor, date
     Diary.where({
-      createdAt: { "$gte" => 1.week.ago },
-      comments: { "$elemMatch" => {createdAt: (date.beginning_of_day..date.end_of_day), userid: mentor.id.to_s} }
+      comments: { "$elemMatch" => {createdAt: (date.beginning_of_day.utc..date.end_of_day.utc), userid: mentor.id.to_s} }
     }).count
   end
 end

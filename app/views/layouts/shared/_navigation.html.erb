@@ -59,7 +59,7 @@
               <ul class="dropdown-menu">
                 <li><%= link_to "APP用户管理", leancloud_users_path %></li>
                 <li><%= link_to "APP统计分析", leancloud_reports_path %></li>
-                <li><%= link_to "学长回复记录数", mentor_leancloud_reports_path %></li>
+                <li><%= link_to "学长回复记录数", mentor_leancloud_reports_path, method: :post %></li>
               </ul>
           <% end -%>
         <% end -%>
