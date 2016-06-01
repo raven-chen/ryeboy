@@ -2,3 +2,4 @@
 MAILTO=enn.raven@gmail.com
 
 * 0 * * * db_backup.sh
+1 0 * * * cd /home/app/ryeboy/current && bundle exec rake RAILS_ENV=production collect_daily_login_count

@@ -11,8 +11,12 @@
   </div>
 <% end -%>
 
+<div>
+  <h2><%= "#{@start_date} 至 #{@end_date} " %></h2>
+</div>
+
 <div class="highlight-block">
-  <h3><%= "#{@start_date} 至 #{@end_date} 每日日记记录数" %></h3>
+  <h3><%= "新增日记" %></h3>
   <table class="table table-hover table-bordered">
     <thead>
       <tr>
@@ -34,7 +38,7 @@
 </div>
 
 <div class="highlight-block with-top-margin">
-  <h3><%= "#{@start_date} 至 #{@end_date} 每日新用户注册数" %></h3>
+  <h3><%= "新用户注册" %></h3>
   <table class="table table-hover table-bordered">
     <thead>
       <tr>
@@ -50,6 +54,29 @@
           <td><%= count %></td>
         <% end -%>
         <td><%= @daily_new_users[1].inject(0){|total, c| total + c } %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="highlight-block with-top-margin">
+  <h3><%= "用户登录次数" %></h3>
+  <span class="hint-text">记录为0表示未收集到有效信息</span>
+  <table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <% @daily_login_users[0].each do |date| -%>
+          <th><%= l date %></th>
+        <% end -%>
+        <th>合计</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% @daily_login_users[1].each do |count| -%>
+          <td><%= count %></td>
+        <% end -%>
+        <td><%= @daily_login_users[1].inject(0){|total, c| total + c } %></td>
       </tr>
     </tbody>
   </table>

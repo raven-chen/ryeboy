@@ -10,12 +10,15 @@ class Leancloud::ReportsController < ApplicationController
 
     @daily_diariees = [[],[]]
     @daily_new_users = [[],[]]
+    @daily_login_users = [[],[]]
     (@start_date..@end_date).each do |date|
       @daily_diariees[0] << date
       @daily_new_users[0] << date
+      @daily_login_users[0] << date
 
       @daily_diariees[1] << diaries_in_day(date)
       @daily_new_users[1] << new_users_in_day(date)
+      @daily_login_users[1] << login_users_in_day(date)
     end
   end
 
@@ -25,6 +28,10 @@ class Leancloud::ReportsController < ApplicationController
 
   def new_users_in_day date
     LcUser.where(createdAt: (date.beginning_of_day.utc..date.end_of_day.utc)).count
+  end
+
+  def login_users_in_day date
+    Leancloud::Report.where(date: date).first.try(:login_count) || 0
   end
 
   # [

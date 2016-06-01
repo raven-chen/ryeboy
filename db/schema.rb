@@ -11,30 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151128033241) do
+ActiveRecord::Schema.define(version: 20160601190511) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "author_id",          limit: 4
     t.integer  "commentable_id",     limit: 4
     t.string   "commentable_type",   limit: 255
-    t.text     "content",            limit: 65535
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.text     "content",            limit: 16777215
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.datetime "read_at"
     t.integer  "user_id",            limit: 4
     t.integer  "replied_comment_id", limit: 4
   end
 
   add_index "comments", ["author_id"], name: "index_comments_on_author_id", using: :btree
-  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
+  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", length: {"commentable_id"=>nil, "commentable_type"=>191}, using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "documents", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.text     "content",    limit: 65535
+    t.text     "content",    limit: 16777215
     t.integer  "author_id",  limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "category",   limit: 255
   end
 
@@ -56,9 +56,9 @@ ActiveRecord::Schema.define(version: 20151128033241) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "name",             limit: 255
-    t.text     "description",      limit: 65535
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.text     "description",      limit: 16777215
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "accessible_posts", limit: 255
   end
 
@@ -91,10 +91,10 @@ ActiveRecord::Schema.define(version: 20151128033241) do
   add_index "interests", ["user_id", "exercise_id"], name: "index_interests_on_user_id_and_exercise_id", unique: true, using: :btree
 
   create_table "notifications", force: :cascade do |t|
-    t.text     "content",    limit: 65535
+    t.text     "content",    limit: 16777215
     t.boolean  "active"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "category",   limit: 255
     t.string   "grade",      limit: 255
     t.string   "name",       limit: 255
@@ -102,11 +102,18 @@ ActiveRecord::Schema.define(version: 20151128033241) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.text     "content",    limit: 65535
+    t.text     "content",    limit: 16777215
     t.integer  "author_id",  limit: 4
     t.string   "category",   limit: 255
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.date     "date"
+    t.integer  "login_count", limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -131,33 +138,33 @@ ActiveRecord::Schema.define(version: 20151128033241) do
 
   create_table "tasks", force: :cascade do |t|
     t.string   "name",                  limit: 255
-    t.text     "description",           limit: 65535
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.text     "description",           limit: 16777215
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.boolean  "common"
     t.date     "due_date"
     t.boolean  "required"
     t.boolean  "visible_to_admin_only"
     t.string   "grade",                 limit: 255
-    t.text     "template",              limit: 65535
+    t.text     "template",              limit: 16777215
   end
 
   create_table "topics", force: :cascade do |t|
     t.string   "title",      limit: 255
-    t.text     "content",    limit: 65535
+    t.text     "content",    limit: 16777215
     t.integer  "author_id",  limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "category",   limit: 255
   end
 
   create_table "user_activities", force: :cascade do |t|
-    t.text     "note",          limit: 65535
+    t.text     "note",          limit: 16777215
     t.boolean  "sign_in"
     t.boolean  "ask_for_leave"
     t.integer  "user_id",       limit: 4
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "user_tasks", force: :cascade do |t|
