@@ -64,10 +64,35 @@ class Leancloud::ReportsController < ApplicationController
     @results.sort!{|a,b| a[-1] <=> b[-1]}.reverse! # Sort by total
   end
 
+  def diaries
+    @results = []
+
+    levels = ["预科", "大一", "大二", "大三", "大四"]
+
+    dates = (7.days.ago.to_date..Date.today).to_a
+
+    @results << (["日期"] + dates)
+
+    levels.each do |level|
+      @results << [level]
+
+      users = LcUser.where(level: LcUser::LEVEL_MAP[level])
+      related_diaries = Diary.where(:userid => { "$in" => users.map{|u| u.id.to_s} }, :date.gte => 7.days.ago.to_date).map{|diary| [diary.userid, diary.date]}
+
+      users.each do |user|
+        @results << [user.name] + dates.map{ |date| dairy_in_date(related_diaries, user, date) }
+      end
+    end
+  end
+
   private
   def replied_comments_count mentor, date
     Diary.where({
       comments: { "$elemMatch" => {createdAt: (date.beginning_of_day.utc..date.end_of_day.utc), userid: mentor.id.to_s} }
     }).count
+  end
+
+  def dairy_in_date related_diaries, user, date
+    !related_diaries.select{ |diary| diary[0] == user.id.to_s && diary[1] == date }.flatten.empty? ? "<span class='text-success'>是</span>" : "<span class='text-danger'>否</span>"
   end
 end

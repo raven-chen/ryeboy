@@ -1,0 +1,22 @@
+<div class="highlight-block">
+  <h3>学员打卡统计</h3>
+  <table class="table table-hover table-bordered header-fixed">
+    <thead>
+      <tr>
+        <% @results.shift.each do |head_item| -%>
+          <th><%= head_item %></th>
+        <% end -%>
+      </tr>
+    </thead>
+    <tbody>
+      <% @results.each do |result| -%>
+        <% @level_name = result[0] if result.length == 1 -%>
+        <tr>
+          <% result.each do |item| -%>
+            <td title=<%= @level_name %>><%= item.html_safe %></td>
+          <% end -%>
+        </tr>
+      <% end -%>
+    </tbody>
+  </table>
+</div>
