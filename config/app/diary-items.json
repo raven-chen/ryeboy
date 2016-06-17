@@ -1,0 +1,553 @@
+[
+  {
+    "name": "我愿每天做麦田功课，我必每天做麦田功课。|我愿每天真实写日记，我必每天真实写日记。|我愿遵守麦田的规则，我必遵守麦田的规则。|我愿远离不良性信息，我必远离不良性信息。|我愿被帮助后帮别人，我必被帮助后帮别人。|种上麦子杂草就少了，做正确事问题就没了。",
+    "value": 1,
+    "category": 1,
+    "type": "check",
+    "special": "multiline",
+    "level": "*",
+    "score": 1
+  },
+  {
+    "name": "没看黄",
+    "value": 13,
+    "category": 2,
+    "type": "option",
+    "level": "*",
+    "after": "第%s项",
+    "prompt": "今天看黄的来源",
+    "score": 1,
+    "negativeButton": "没看",
+    "option": {
+      "1": {
+        "name": "电子设备",
+        "description": "手机/电脑等"
+      },
+      "2": {
+        "name": "音像制品",
+        "description": "书籍/图片/电影等"
+      },
+      "3": {
+        "name": "人际关系",
+        "description": "损友等"
+      }
+    }
+  },
+  {
+    "name": "没遗精",
+    "value": 12,
+    "category": 2,
+    "type": "number",
+    "level": "*",
+    "after": "遗精%s次",
+    "prompt": "请填写遗精次数",
+    "noneText": "没遗精",
+    "default": 0,
+    "checkCondition": "=0",
+    "score": 1
+  },
+  {
+    "name": "没撸",
+    "value": 11,
+    "category": 2,
+    "type": "number",
+    "level": "*",
+    "after": "撸了%s次",
+    "prompt": "请填写次数",
+    "noneText": "没撸",
+    "default": 0,
+    "checkCondition": "=0",
+    "score": 1
+  },
+  {
+    "name": "早上5点起床",
+    "value": 21,
+    "category": 3,
+    "type": "time",
+    "after": "%s起床",
+    "default": "05:00",
+    "minHour": "4",
+    "maxHour": "12",
+    "checkCondition": "<=05:00",
+    "prompt": "请填写当天早上起床时间",
+    "level": ">10",
+    "score": 1
+  },
+  {
+    "name": "中午不睡觉",
+    "value": 22,
+    "category": 3,
+    "type": "time-range",
+    "prompt": "请填写当天中午睡觉时间",
+    "default": "13:00-13:15",
+    "minHour": "11",
+    "maxHour": "17",
+    "after": "%s午睡",
+    "noneText": "没午睡",
+    "checkCondition": "!",
+    "level": "*",
+    "score": 1
+  },
+  {
+    "name": "睡前30分钟关闭手机和电脑等",
+    "value": 101,
+    "category": 3,
+    "type": "check",
+    "level": "*",
+    "score": 1
+  },
+  {
+    "name": "睡前泡脚15分钟",
+    "value": 24,
+    "category": 3,
+    "type": "check",
+    "level": "*",
+    "score": 1
+  },
+  {
+    "name": "泡脚后搓脚3*108组",
+    "value": 102,
+    "category": 3,
+    "type": "radio",
+    "level": "*",
+    "after": "%s",
+    "prompt": "",
+    "noneText": "没搓",
+    "score": 1,
+    "option": {
+      "A": {
+        "name": "A.各1个108"
+      },
+      "B": {
+        "name": "B.各2个108"
+      },
+      "C": {
+        "name": "C.各3个108"
+      }
+    }
+  },
+  {
+    "name": "晚上9点前睡觉",
+    "value": 23,
+    "category": 3,
+    "type": "time",
+    "after": "%s睡觉",
+    "default": "21:00",
+    "minHour": "17",
+    "maxHour": "23",
+    "checkCondition": "<=21:00",
+    "prompt": "请填写当天晚上睡觉时间",
+    "level": "*",
+    "score": 1
+  },
+  {
+    "name": "大/小便时微闭双眼",
+    "value": 51,
+    "category": 3,
+    "type": "check",
+    "level": ">10",
+    "score": 1
+  },
+  {
+    "name": "大/小便时闭上嘴巴，不说话",
+    "value": 61,
+    "category": 3,
+    "type": "check",
+    "level": ">10",
+    "score": 1
+  },
+  {
+    "name": "小便时咬紧全部牙齿，重咬后牙",
+    "value": 62,
+    "category": 3,
+    "type": "check",
+    "level": "*",
+    "score": 1
+  },
+  {
+    "name": "大便时咬紧全部牙齿，重咬前牙",
+    "value": 52,
+    "category": 3,
+    "type": "check",
+    "level": "*",
+    "score": 1
+  },
+  {
+    "name": "大便时双手握固",
+    "value": 53,
+    "category": 3,
+    "type": "check",
+    "level": ">10",
+    "score": 1
+  },
+  {
+    "name": "大便结束后提肛36次",
+    "value": 54,
+    "category": 3,
+    "type": "check",
+    "level": ">10",
+    "score": 1
+  },
+  {
+    "name": "三餐专心吃饭不说话",
+    "value": 112,
+    "category": 4,
+    "type": "check",
+    "level": "*",
+    "score": 1
+  },
+  {
+    "name": "三餐每口食物咀嚼36次",
+    "value": 31,
+    "category": 4,
+    "type": "radio",
+    "level": "*",
+    "after": "%s",
+    "prompt": "",
+    "noneText": "不记得了",
+    "score": 1,
+    "option": {
+      "A": {
+        "name": "A.每口嚼9次"
+      },
+      "B": {
+        "name": "B.每口嚼21次"
+      },
+      "C": {
+        "name": "C.每口嚼36次"
+      }
+    }
+  },
+  {
+    "name": "晚上7点之后不吃东西不喝饮料",
+    "value": 36,
+    "category": 4,
+    "type": "check",
+    "level": "*",
+    "score": 1
+  },
+  {
+    "name": "不抽烟不喝酒",
+    "value": 113,
+    "category": 4,
+    "type": "check",
+    "level": "*",
+    "score": 1
+  },
+  {
+    "name": "不吃生冷/辛辣等刺激食物",
+    "value": 34,
+    "category": 4,
+    "type": "check",
+    "level": "*",
+    "score": 1
+  },
+  {
+    "name": "不吃大油大腻的食物",
+    "value": 33,
+    "category": 4,
+    "type": "check",
+    "level": ">15",
+    "score": 1
+  },
+  {
+    "name": "不吃重调料和香精等重口味食物",
+    "value": 32,
+    "category": 4,
+    "type": "check",
+    "level": ">15",
+    "score": 1
+  },
+  {
+    "name": "饭前饭后1小时内不喝水",
+    "value": 115,
+    "category": 4,
+    "type": "check",
+    "level": ">15",
+    "score": 1
+  },
+  {
+    "name": "早餐07:00~08:00之间吃",
+    "value": 116,
+    "category": 4,
+    "type": "check",
+    "level": ">15",
+    "score": 1
+  },
+  {
+    "name": "早餐喝粥/吃干的/粘稠的食物",
+    "value": 117,
+    "category": 4,
+    "type": "check",
+    "level": ">15",
+    "score": 1
+  },
+  {
+    "name": "早餐吃八九分饱",
+    "value": 118,
+    "category": 4,
+    "type": "check",
+    "level": ">15",
+    "score": 1
+  },
+  {
+    "name": "午餐11:30~12:30之间吃",
+    "value": 119,
+    "category": 4,
+    "type": "check",
+    "level": ">15",
+    "score": 1
+  },
+  {
+    "name": "午餐只吃干的和粘稠的食物",
+    "value": 120,
+    "category": 4,
+    "type": "check",
+    "level": ">15",
+    "score": 1
+  },
+  {
+    "name": "午餐吃六七分饱",
+    "value": 121,
+    "category": 4,
+    "type": "check",
+    "level": ">15",
+    "score": 1
+  },
+  {
+    "name": "午餐后散步15分钟",
+    "value": 122,
+    "category": 4,
+    "type": "check",
+    "level": ">15",
+    "score": 1
+  },
+  {
+    "name": "晚餐17:30~19:00之间吃",
+    "value": 123,
+    "category": 4,
+    "type": "check",
+    "level": ">15",
+    "score": 1
+  },
+  {
+    "name": "晚餐只吃干的和粘稠的食物",
+    "value": 124,
+    "category": 4,
+    "type": "check",
+    "level": ">15",
+    "score": 1
+  },
+  {
+    "name": "晚餐不吃肉",
+    "value": 125,
+    "category": 4,
+    "type": "check",
+    "level": ">15",
+    "score": 1
+  },
+  {
+    "name": "晚餐吃四五分饱",
+    "value": 126,
+    "category": 4,
+    "type": "check",
+    "level": ">15",
+    "score": 1
+  },
+  {
+    "name": "衣着整洁/宽松",
+    "value": 127,
+    "category": 9,
+    "type": "check",
+    "level": ">15",
+    "score": 1
+  },
+  {
+    "name": "房间整洁",
+    "value": 128,
+    "category": 9,
+    "type": "check",
+    "level": ">15",
+    "score": 1
+  },
+  {
+    "name": "勤俭节约",
+    "value": 129,
+    "category": 9,
+    "type": "check",
+    "level": ">15",
+    "score": 1
+  },
+  {
+    "name": "孝顺父母",
+    "value": 136,
+    "category": 9,
+    "type": "check",
+    "level": ">15",
+    "score": 1
+  },
+  {
+    "name": "帮助他人",
+    "value": 137,
+    "category": 9,
+    "type": "check",
+    "level": ">15",
+    "score": 1
+  },
+  {
+    "name": "读祝福篇的次数",
+    "value": 130,
+    "category": 10,
+    "type": "number",
+    "after": "%s次",
+    "prompt": "请填写读祝福篇的次数",
+    "default": 0,
+    "checkCondition": ">0",
+    "level": ">15",
+    "score": 1
+  },
+  {
+    "name": "坚持收腹挺腰",
+    "value": 131,
+    "category": 11,
+    "type": "check",
+    "level": ">20",
+    "score": 1
+  },
+  {
+    "name": "伸懒腰打哈欠",
+    "value": 132,
+    "category": 11,
+    "type": "check",
+    "level": ">20",
+    "score": 1
+  },
+  {
+    "name": "麦式第五式数量",
+    "value": 41,
+    "category": 5,
+    "type": "number",
+    "after": "%s次",
+    "prompt": "请填写次数",
+    "default": 0,
+    "checkCondition": ">0",
+    "level": "<20",
+    "score": 1
+  },
+  {
+    "name": "麦式第六式数量",
+    "value": 42,
+    "category": 5,
+    "type": "number",
+    "after": "%s次",
+    "prompt": "请填写次数",
+    "default": 0,
+    "checkCondition": ">0",
+    "level": "<20",
+    "score": 1
+  },
+  {
+    "name": "麦式第八式数量",
+    "value": 43,
+    "category": 5,
+    "type": "number",
+    "after": "%s次",
+    "prompt": "请填写次数",
+    "default": 0,
+    "checkCondition": ">0",
+    "level": "<20",
+    "score": 1
+  },
+  {
+    "name": "麦式运动套餐选择",
+    "value": 133,
+    "category": 5,
+    "type": "radio",
+    "level": ">15",
+    "after": "%s",
+    "prompt": "运动的阶段档位",
+    "noneText": "没做运动",
+    "score": 1,
+    "option": {
+      "精简式": {
+        "name": "精简式"
+      },
+      "A7入手版": {
+        "name": "A7入手版"
+      },
+      "B7升级版": {
+        "name": "B7升级版"
+      },
+      "C7完整版": {
+        "name": "C7完整版"
+      },
+      "D14": {
+        "name": "D14"
+      },
+      "E21": {
+        "name": "E21"
+      },
+      "F28": {
+        "name": "F28"
+      },
+      "G35": {
+        "name": "G35"
+      },
+      "H42": {
+        "name": "H42"
+      },
+      "I49": {
+        "name": "I49"
+      },
+      "J50": {
+        "name": "J50"
+      }
+    }
+  },
+  {
+    "name": "麦式运动时间",
+    "value": 134,
+    "category": 5,
+    "type": "time-range",
+    "prompt": "请填写开始时间和结束时间",
+    "default": "05:30-06:30",
+    "minHour": "0",
+    "maxHour": "23",
+    "after": "?intervalMinutes",
+    "noneText": "没运动",
+    "checkCondition": ">0",
+    "level": "*",
+    "score": 1
+  },
+  {
+    "name": "第八式平均憋气时间",
+    "value": 135,
+    "category": 5,
+    "type": "number",
+    "after": "%s秒",
+    "prompt": "请填写平均憋气时间多少秒",
+    "default": 0,
+    "checkCondition": ">0",
+    "level": "*",
+    "score": 1
+  },
+  {
+    "name": "我全心全意的度过了这一天生活。|我无比认真仔细的做了麦田功课。|我无比诚实客观的写了麦田日记。|我无比谨慎自律的遵守麦田规则。|我无比严肃认真的远离不良信息。|我的一天过的毫无遗憾问心无愧。|我会继续坚持不断的做正确的事。",
+    "value": 71,
+    "category": 8,
+    "type": "confirm",
+    "special": "multiline",
+    "prompt": "你都做到了吗？",
+    "after": "今天我做错了XX，我一定铭记在心，认真改正，绝不再犯。",
+    "level": "*",
+    "score": 1
+  },
+  {
+    "name": "心得和疑问",
+    "value": 82,
+    "category": 0,
+    "type": "text",
+    "level": "*",
+    "score": 1
+  }
+]

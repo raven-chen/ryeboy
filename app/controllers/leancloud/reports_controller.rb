@@ -77,7 +77,7 @@ class Leancloud::ReportsController < ApplicationController
       @results << [level]
 
       users = LcUser.where(level: LcUser::LEVEL_MAP[level])
-      related_diaries = Diary.where(:userid => { "$in" => users.map{|u| u.id.to_s} }, :date.gte => 7.days.ago.to_date).map{|diary| [diary.userid, diary.date]}
+      related_diaries = Diary.where(:userid => { "$in" => users.map{|u| u.id.to_s} }, :date.gte => 7.days.ago.to_date).map{|diary| [diary.userid, diary.date, diary.score]}
 
       users.each do |user|
         @results << [user.name] + dates.map{ |date| dairy_in_date(related_diaries, user, date) }
@@ -93,6 +93,12 @@ class Leancloud::ReportsController < ApplicationController
   end
 
   def dairy_in_date related_diaries, user, date
-    !related_diaries.select{ |diary| diary[0] == user.id.to_s && diary[1] == date }.flatten.empty? ? "<span class='text-success'>是</span>" : "<span class='text-danger'>否</span>"
+    diary = related_diaries.select{ |diary| diary[0] == user.id.to_s && diary[1] == date }.flatten
+
+    if diary.empty?
+      "<span class='text-danger'>否</span>"
+    else
+      "<span class='text-success'>#{diary[2]}</span>"
+    end
   end
 end
